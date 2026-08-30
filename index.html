@@ -4,37 +4,71 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Limina Labs — Enterprise AI that can be trusted to act</title>
-<meta name="description" content="Limina Labs builds the persistent, deterministic reasoning substrate for enterprise AI. Intent Studio, Precepta, Cerebrio and Forge turn ephemeral model output into compounding, structurally safe institutional intelligence.">
+<meta name="description" content="Limina Labs makes enterprise AI accountable. Intent Studio, Precepta and Cerebrio keep what you meant, what it did and what you learned as one governed record — with any model, inside your own walls.">
 <meta name="theme-color" content="#ffffff">
+
+<!-- ============================================================
+     BEFORE DEPLOY — the only host-dependent values on this page.
+     Replace https://liminalabs.ai with the live origin in the four
+     absolute URLs below and in the JSON-LD block at the foot of the
+     page. Everything else is relative and needs no change.
+     ============================================================ -->
+<link rel="canonical" href="https://liminalabs.ai/">
+<meta property="og:url" content="https://liminalabs.ai/">
 <meta property="og:title" content="Limina Labs — Enterprise AI that can be trusted to act">
-<meta property="og:description" content="Capability is purchasable. Permission is not. The deterministic substrate beneath the model layer.">
+<meta property="og:description" content="What you meant, what it did, what you learned. One governed record, inside your own walls.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Limina Labs">
+<meta property="og:image" content="https://liminalabs.ai/assets/logo/og-image-1200x630-light.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Limina Labs — Enterprise AI that can be trusted to act">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://liminalabs.ai/assets/logo/og-image-1200x630-light.png">
+
+<link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo/icon-180-light.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600;12..96,75..100,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    TOKENS
-   Palette derived from the Limina mark (monochrome ink) plus the
-   four product hues already established in the deck and the
-   live product sites.
+   Palette derived from the Limina mark — cobalt light theme.
+   The four bar tints of the mark are the spine of the system;
+   product accents sit under them.
    ============================================================ */
 :root{
+  /* surfaces — cooled toward cobalt */
   --paper:#FFFFFF;
-  --vellum:#F6F7F9;
-  --vellum-2:#EFF1F4;
-  --ink:#0B0F1A;
-  --ink-2:#394153;
-  --ink-3:#6E7688;
-  --ink-4:#9BA2B0;
-  --rule:#E1E4EA;
-  --rule-soft:#EDEFF3;
+  --vellum:#F5F7FC;
+  --vellum-2:#EBEFF9;
+  --ink:#0B1024;
+  --ink-2:#3A4260;
+  --ink-3:#6C7593;
+  --ink-4:#99A1BC;
+  --rule:#DFE4F0;
+  --rule-soft:#EBEEF7;
 
-  --intent:#2F5BEA;
+  /* cobalt ramp — the mark, bar 1 to bar 4 */
+  --cobalt-900:#0C1258;
+  --cobalt-800:#141F8F;
+  --cobalt:#2A3DCC;
+  --cobalt-600:#4356DE;
+  --cobalt-400:#7C8CEB;
+  --cobalt-300:#B3BEF6;
+  --cobalt-100:#E4E8FC;
+  --cobalt-050:#F1F4FE;
+
+  /* product accents */
+  --intent:#2A3DCC;
   --precepta:#A8620A;
-  --cerebrio:#6B3FBF;
+  --cerebrio:#7638C0;
   --forge:#0E7A4F;
 
+  --brand:"Bricolage Grotesque","Archivo","IBM Plex Sans",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
   --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   --serif:"IBM Plex Serif",Georgia,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -53,7 +87,7 @@ body{
 }
 img{max-width:100%;display:block}
 a{color:inherit}
-::selection{background:#0B0F1A;color:#fff}
+::selection{background:var(--cobalt);color:#fff}
 
 .wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
 section[id]{scroll-margin-top:78px}
@@ -64,12 +98,39 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-3);margin:0;
 }
-.lede{font-size:clamp(17px,2vw,20px);line-height:1.6;color:var(--ink-2);max-width:60ch}
+.lede{font-size:clamp(17px,2vw,20px);line-height:1.6;color:var(--ink-2);max-width:62ch}
 .prose{max-width:66ch;color:var(--ink-2)}
 .prose p{margin:0 0 1.05em}
 .prose p:last-child{margin-bottom:0}
 .prose strong{color:var(--ink);font-weight:500}
 .mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em}
+
+/* ============================================================
+   THE MARK — four bars, cobalt light theme
+   ============================================================ */
+.mark{
+  --m1:#141F8F;--m2:#2A3DCC;--m3:#7C8CEB;--m4:#B3BEF6;
+  display:block;height:auto;overflow:visible;
+}
+.mark--frost{--m1:#FFFFFF;--m2:#D3DAEA;--m3:#98A3BE;--m4:#6A7492}
+.mark--flat{--m1:var(--cobalt);--m2:var(--cobalt);--m3:var(--cobalt);--m4:var(--cobalt)}
+
+/* Lift — the logo animation. Plays once on load, then stays still. */
+.js .mark--lift{
+  opacity:0;transform:translateY(6px);
+  animation:lift .66s var(--ease) .08s forwards;
+}
+@keyframes lift{to{opacity:1;transform:none}}
+
+.lockup{display:flex;align-items:center;gap:11px;text-decoration:none}
+.lockup .mark{width:26px;flex:0 0 auto}
+.lockup .word{
+  font-family:var(--brand);font-weight:700;font-size:19px;letter-spacing:-.028em;
+  color:var(--ink);white-space:nowrap;line-height:1;
+}
+.lockup .word i{font-style:normal;font-weight:600;color:var(--ink-3)}
+.lockup--frost .word{color:#fff}
+.lockup--frost .word i{color:rgba(255,255,255,.62)}
 
 /* ============================================================
    NAV
@@ -82,19 +143,18 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 }
 .nav-in{display:flex;align-items:center;gap:28px;height:64px}
 .brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
-.brand img{width:132px;height:auto}
 .nav-links{display:flex;gap:22px;margin-left:auto;align-items:center}
 .nav-links a{
   font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--ink-2);
   text-decoration:none;letter-spacing:-.005em;transition:color .18s var(--ease);
 }
-.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover{color:var(--cobalt)}
 .nav-cta{
   font-family:var(--sans);font-size:13.5px;font-weight:500;text-decoration:none;
-  background:var(--ink);color:#fff;padding:9px 15px;border-radius:3px;
-  transition:opacity .18s var(--ease);white-space:nowrap;
+  background:var(--cobalt);color:#fff;padding:9px 15px;border-radius:3px;
+  transition:background .18s var(--ease);white-space:nowrap;
 }
-.nav-cta:hover{opacity:.82}
+.nav-cta:hover{background:var(--cobalt-800)}
 @media(max-width:940px){.nav-links{display:none}.nav-in{gap:16px}.nav-cta{margin-left:auto}}
 
 /* ============================================================
@@ -113,10 +173,6 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
    HERO
    ============================================================ */
 .hero{position:relative;overflow:hidden;padding-block:clamp(56px,8vw,104px) clamp(52px,7vw,88px)}
-.hero-mark{
-  position:absolute;right:-9%;top:-12%;width:min(620px,58vw);opacity:.035;
-  pointer-events:none;user-select:none;
-}
 .hero-grid{
   display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
   gap:clamp(36px,5vw,72px);align-items:center;position:relative;
@@ -126,23 +182,23 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   font-size:clamp(38px,6.4vw,66px);letter-spacing:-.035em;line-height:1.02;
   margin:20px 0 24px;
 }
-.hero h1 .dim{color:var(--ink-4)}
+.hero h1 .dim{color:var(--cobalt-400)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .btn{
   font-family:var(--sans);font-size:14.5px;font-weight:500;text-decoration:none;
   padding:12px 20px;border-radius:3px;display:inline-flex;align-items:center;gap:8px;
   transition:all .18s var(--ease);border:1px solid transparent;
 }
-.btn-primary{background:var(--ink);color:#fff}
-.btn-primary:hover{opacity:.84}
+.btn-primary{background:var(--cobalt);color:#fff}
+.btn-primary:hover{background:var(--cobalt-800)}
 .btn-ghost{border-color:var(--rule);color:var(--ink)}
-.btn-ghost:hover{border-color:var(--ink-4);background:var(--vellum)}
+.btn-ghost:hover{border-color:var(--cobalt-400);background:var(--cobalt-050);color:var(--cobalt-800)}
 .invariant{
   margin-top:34px;padding-top:18px;border-top:1px solid var(--rule);
   font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--ink-3);
   text-transform:uppercase;line-height:1.9;
 }
-.invariant b{color:var(--ink);font-weight:500}
+.invariant b{color:var(--cobalt-800);font-weight:500}
 
 /* ---------- hero artifact: the substrate stack ---------- */
 .stack-fig{border:1px solid var(--rule);border-radius:5px;background:#fff;padding:22px 22px 20px}
@@ -151,7 +207,7 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   color:var(--ink-4);margin-bottom:14px;
 }
 .layer{border-radius:4px;padding:13px 15px;margin-bottom:9px}
-.layer-top{border:1px dashed var(--rule);background:repeating-linear-gradient(135deg,#fbfbfc 0 6px,#fff 6px 12px)}
+.layer-top{border:1px dashed var(--rule);background:repeating-linear-gradient(135deg,#FAFBFE 0 6px,#fff 6px 12px)}
 .layer-name{font-family:var(--sans);font-size:13.5px;font-weight:600;letter-spacing:-.01em}
 .layer-sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-4);margin-top:5px;text-transform:uppercase}
 .layer-gap{
@@ -159,14 +215,18 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-4);
 }
 .layer-gap::before,.layer-gap::after{content:"";height:1px;background:var(--rule);flex:1}
-.layer-sub-block{border:1.5px solid var(--ink);background:var(--ink);color:#fff;padding:15px}
-.layer-sub-block .layer-sub{color:rgba(255,255,255,.55)}
+.layer-sub-block{
+  border:1.5px solid var(--cobalt-900);color:#fff;padding:15px;
+  background:linear-gradient(155deg,var(--cobalt-800) 0%,var(--cobalt-900) 100%);
+}
+.layer-sub-block .layer-sub{color:rgba(255,255,255,.6)}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
 .chip{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:rgba(255,255,255,.9);
-  background:rgba(255,255,255,.09);border-radius:3px;padding:7px 9px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:rgba(255,255,255,.92);
+  background:rgba(255,255,255,.10);border-radius:3px;padding:7px 9px;
   border-left:2px solid var(--c,#fff);
 }
+.chip--soft{color:rgba(255,255,255,.55)}
 .layer-base{border:1px solid var(--rule);background:var(--vellum)}
 .stack-note{
   margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
@@ -215,7 +275,9 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   display:block;text-decoration:none;border:1px solid rgba(255,255,255,.18);border-radius:4px;
   padding:20px;transition:border-color .2s var(--ease),background .2s var(--ease);
 }
-.route:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.04)}
+.route:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05)}
+.route--flat{cursor:default}
+.route--flat:hover{border-color:rgba(255,255,255,.18);background:none}
 .route .rname{
   font-family:var(--sans);font-size:15px;font-weight:600;color:#fff;letter-spacing:-.015em;
   display:flex;align-items:baseline;gap:7px;margin-bottom:8px;
@@ -241,25 +303,43 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 .plink .ext{font-size:.42em;vertical-align:.85em;margin-left:.3em;color:var(--c);font-weight:500}
 
 /* ============================================================
-   PREMISES
+   PROBLEM / PREMISES
    ============================================================ */
-.premises{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px)}
-@media(max-width:860px){.premises{grid-template-columns:1fr;gap:40px}}
-.premise{border-top:2px solid var(--ink);padding-top:20px}
+.premises{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,44px)}
+@media(max-width:900px){.premises{grid-template-columns:1fr;gap:36px}}
+.premises--two{grid-template-columns:1fr 1fr}
+@media(max-width:860px){.premises--two{grid-template-columns:1fr;gap:40px}}
+.premise{border-top:2px solid var(--cobalt);padding-top:20px}
 .premise .eyebrow{margin-bottom:12px}
-.premise h3{font-size:clamp(20px,2.4vw,25px);margin-bottom:14px;letter-spacing:-.024em}
+.premise h3{font-size:clamp(19px,2.2vw,24px);margin-bottom:14px;letter-spacing:-.024em}
 .premise p{font-size:16px;color:var(--ink-2);margin:0 0 .95em}
 .premise p:last-child{margin-bottom:0}
 .premise .term{
-  font-family:var(--mono);font-size:13px;color:var(--ink);background:var(--vellum-2);
+  font-family:var(--mono);font-size:13px;color:var(--cobalt-800);background:var(--cobalt-050);
   padding:1px 5px;border-radius:2px;
 }
 .verdict{
-  margin-top:clamp(34px,5vw,52px);padding:26px 30px;background:var(--ink);color:#fff;border-radius:4px;
+  margin-top:clamp(34px,5vw,52px);padding:26px 30px;border-radius:4px;color:#fff;
+  background:linear-gradient(120deg,var(--cobalt-800) 0%,var(--cobalt-900) 100%);
   display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;
 }
-.verdict .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.verdict .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55)}
 .verdict .v{font-family:var(--sans);font-weight:500;font-size:clamp(17px,2.4vw,23px);letter-spacing:-.02em;line-height:1.35;flex:1;min-width:260px}
+
+/* ---------- pull quote ---------- */
+.pull{
+  margin:clamp(34px,5vw,52px) 0 0;padding:clamp(26px,3.4vw,38px) clamp(26px,4vw,44px);
+  border:1px solid var(--rule);border-left:3px solid var(--cobalt);border-radius:4px;
+  background:var(--cobalt-050);
+}
+.pull blockquote{
+  margin:0;font-family:var(--sans);font-weight:500;letter-spacing:-.022em;line-height:1.3;
+  font-size:clamp(20px,3vw,30px);color:var(--cobalt-900);max-width:26ch;
+}
+.pull .attrib{
+  margin:16px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);
+}
 
 /* ============================================================
    AUTONOMY DIAL  — signature element
@@ -300,7 +380,7 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 .stop.passed::before{border-color:var(--intent);background:var(--intent)}
 .stop[aria-checked="true"]::before{
   border-color:var(--intent);background:#fff;transform:translateX(-50%) scale(1.5);
-  box-shadow:0 0 0 4px rgba(47,91,234,.13);
+  box-shadow:0 0 0 4px rgba(42,61,204,.15);
 }
 .stop:focus-visible{outline:2px solid var(--intent);outline-offset:3px;border-radius:2px}
 @media(max-width:760px){
@@ -323,7 +403,7 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 .needs{font-family:var(--mono);font-size:11.5px;line-height:1.7;color:var(--ink-3)}
 .needs b{color:var(--ink-2);font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:10.5px;display:block;margin-bottom:5px}
 
-.intent-card{border:1px solid var(--rule);border-radius:4px;background:var(--vellum);padding:18px 20px}
+.intent-card{border:1px solid var(--rule);border-radius:4px;background:var(--cobalt-050);padding:18px 20px}
 .intent-id{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--intent);
   text-transform:uppercase;margin-bottom:7px;
@@ -340,10 +420,10 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;
 }
-.dial-foot b{color:var(--ink);font-weight:500}
+.dial-foot b{color:var(--cobalt-800);font-weight:500}
 
 /* ============================================================
-   THE STACK — four pillars
+   THE STACK — product layers
    ============================================================ */
 .pillar{
   display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
@@ -362,6 +442,8 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
 }
 .pillar-status::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--c)}
+.pillar-status--road{color:var(--ink-4)}
+.pillar-status--road::before{background:none;box-shadow:inset 0 0 0 1.5px var(--ink-4)}
 .pillar-body p{font-size:16px;color:var(--ink-2);margin:0 0 1em}
 .pillar-body p:last-of-type{margin-bottom:0}
 .pillar-link{
@@ -372,6 +454,12 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 .pillar-link:hover{border-bottom-color:var(--c)}
 .pillar-link .arw{transition:transform .18s var(--ease)}
 .pillar-link:hover .arw{transform:translateX(3px)}
+.pillar--aside{
+  grid-template-columns:1fr;gap:14px;background:var(--vellum);
+  border:1px dashed var(--rule);border-radius:5px;padding:clamp(22px,3vw,30px);
+  margin-top:clamp(34px,4.6vw,54px);
+}
+.pillar--aside h3{font-size:clamp(20px,2.4vw,26px)}
 
 .spec{margin-top:20px;border-top:1px solid var(--rule-soft);padding-top:18px}
 .spec-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4);margin-bottom:12px}
@@ -385,6 +473,13 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink-2);
   border:1px solid var(--rule);border-radius:2px;padding:5px 8px;background:#fff;
 }
+/* the Precepta request path */
+.path{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px}
+.path span{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink-2);
+  border:1px solid var(--rule);border-radius:2px;padding:5px 8px;background:#fff;
+}
+.path i{font-style:normal;color:var(--precepta);font-size:11px}
 
 /* ============================================================
    LOOP
@@ -394,30 +489,58 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 .loop-svg{width:100%;height:auto;overflow:visible}
 .loop-svg .edge{fill:none;stroke-width:1.4;stroke-linecap:round;
   stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400);}
-.in .loop-svg .edge{animation:draw 1.15s var(--ease) forwards}
+.in .loop-svg .edge{animation:draw 1.1s var(--ease) forwards}
 .in .loop-svg .edge.d1{animation-delay:.05s}
-.in .loop-svg .edge.d2{animation-delay:.28s}
-.in .loop-svg .edge.d3{animation-delay:.51s}
-.in .loop-svg .edge.d4{animation-delay:.74s}
+.in .loop-svg .edge.d2{animation-delay:.24s}
+.in .loop-svg .edge.d3{animation-delay:.43s}
+.in .loop-svg .edge.d4{animation-delay:.62s}
+.in .loop-svg .edge.d5{animation-delay:.81s}
 @keyframes draw{to{stroke-dashoffset:0}}
 .loop-svg .nodebox{fill:#fff;stroke-width:1.4}
-.loop-svg .nname{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:-.01em}
-.loop-svg .nrole{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;fill:var(--ink-3);text-transform:uppercase}
-.loop-svg .elabel{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase}
-.loop-svg .core{font-family:var(--mono);font-size:10px;letter-spacing:.14em;fill:var(--ink-4);text-transform:uppercase}
+.loop-svg .nodebox--road{stroke-dasharray:4 3.5}
+.loop-svg .nname{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:-.01em}
+.loop-svg .nkey{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase}
+.loop-svg .nrole{font-family:var(--mono);font-size:8.5px;letter-spacing:.07em;fill:var(--ink-3);text-transform:uppercase}
+.loop-svg .elabel{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase}
+.loop-svg .core{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;fill:var(--ink-4);text-transform:uppercase}
+.loop-legend{
+  margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-4);text-align:center;
+}
 @media(prefers-reduced-motion:reduce){
   .loop-svg .edge{stroke-dashoffset:0;animation:none!important}
 }
 
+/* ---------- the three states ---------- */
+.states{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-bottom:clamp(30px,4vw,44px)}
+@media(max-width:760px){.states{grid-template-columns:1fr}}
+.states > div{background:#fff;padding:20px}
+.states .st{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4);margin-bottom:9px}
+.states h4{font-size:17px;margin-bottom:7px;letter-spacing:-.02em}
+.states p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.55}
+.states .who{display:block;margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--c);letter-spacing:.04em}
+
+/* ---------- the control loop strip ---------- */
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:22px}
+.chain span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--cobalt-800);background:var(--cobalt-050);border:1px solid var(--cobalt-100);
+  border-radius:2px;padding:6px 10px;
+}
+.chain i{font-style:normal;color:var(--ink-4);font-size:11px}
+
 /* ============================================================
    MOAT
    ============================================================ */
-.moat{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.moat{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
 @media(max-width:860px){.moat{grid-template-columns:1fr}}
+.moat > div:first-child{grid-column:1/-1}
 .moat > div{background:#fff;padding:clamp(22px,2.8vw,30px)}
-.moat h3{font-size:19px;letter-spacing:-.022em;margin:12px 0 10px}
+.moat h3{font-size:18px;letter-spacing:-.022em;margin:12px 0 10px}
 .moat p{font-size:15.5px;color:var(--ink-2);margin:0}
-.moat .num{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;color:var(--ink-4)}
+.moat .num{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;color:var(--cobalt-400)}
+.moat > div:first-child{background:var(--cobalt-050)}
+.moat > div:first-child .num{color:var(--cobalt)}
 
 /* ============================================================
    DEPLOY
@@ -425,7 +548,7 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 .deploy{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,28px)}
 @media(max-width:820px){.deploy{grid-template-columns:1fr}}
 .dep{border:1px solid var(--rule);border-radius:5px;padding:clamp(22px,3vw,30px);background:#fff}
-.dep--emph{border-color:var(--ink);border-width:1.5px}
+.dep--emph{border-color:var(--cobalt);border-width:1.5px}
 .dep h3{font-size:21px;letter-spacing:-.024em;margin-bottom:10px}
 .dep p{font-size:15.5px;color:var(--ink-2);margin:0 0 .9em}
 .dep p:last-child{margin-bottom:0}
@@ -433,32 +556,61 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 .boundary{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:16px 0 6px}
 .boundary div{
   font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--ink-2);
-  background:var(--vellum);border-radius:3px;padding:10px 11px;
+  background:var(--cobalt-050);border-radius:3px;padding:10px 11px;
 }
 .boundary-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4)}
 
 /* ============================================================
-   ROADMAP
+   HORIZON — now / next / long term
    ============================================================ */
-.road{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:2px solid var(--ink);margin-top:8px}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--cobalt);margin-top:8px}
 @media(max-width:900px){.road{grid-template-columns:1fr;border-top:0}}
-.road-col{padding:20px 18px 0 0;position:relative}
+.road-col{padding:20px 26px 0 0;position:relative}
 @media(max-width:900px){
   .road-col{border-top:1px solid var(--rule);padding:16px 0}
-  .road-col:first-child{border-top:2px solid var(--ink)}
+  .road-col:first-child{border-top:2px solid var(--cobalt)}
 }
 .road-col::before{
   content:"";position:absolute;top:-5px;left:0;width:8px;height:8px;border-radius:50%;
-  background:var(--ink);
+  background:var(--cobalt);
 }
 @media(max-width:900px){.road-col::before{display:none}}
-.road-col.future::before{background:#fff;border:2px solid var(--ink-4);top:-6px}
-.road-when{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
+.road-col.future::before{background:#fff;border:2px solid var(--cobalt-300);top:-6px}
+.road-when{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--cobalt-800);margin-bottom:8px}
 .road-col.future .road-when{color:var(--ink-4)}
-.road-what{font-size:15px;color:var(--ink-2);line-height:1.55;padding-right:8px}
+.road-what{font-size:15.5px;color:var(--ink-2);line-height:1.6;padding-right:8px}
 .road-note{
   margin-top:26px;font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;
   text-transform:uppercase;color:var(--ink-3);
+}
+
+/* ============================================================
+   STATUS — built vs roadmap, stated plainly
+   ============================================================ */
+.status{width:100%;border-collapse:collapse;border:1px solid var(--rule);border-radius:4px;overflow:hidden;font-size:15px}
+.status caption{
+  caption-side:top;text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-4);padding-bottom:12px;
+}
+.status th,.status td{text-align:left;padding:13px 16px;border-top:1px solid var(--rule-soft);vertical-align:top}
+.status thead th{
+  border-top:0;background:var(--vellum);font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:400;
+}
+.status tbody th{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--ink);width:52%}
+.status td{color:var(--ink-2);font-family:var(--mono);font-size:12px;letter-spacing:.03em}
+.status .st-yes{color:var(--forge)}
+.status .st-yes::before{content:"● "}
+.status .st-road{color:var(--ink-4)}
+.status .st-road::before{content:"○ "}
+.status .st-none{color:var(--precepta)}
+.status .st-none::before{content:"○ "}
+@media(max-width:640px){
+  .status,.status tbody,.status tr,.status tbody th,.status td{display:block;width:auto}
+  .status thead{position:absolute;left:-9999px}
+  .status tbody th,.status td{padding:12px 16px}
+  .status tbody th{border-top:1px solid var(--rule);padding-bottom:4px}
+  .status td{border-top:0;padding-top:0}
 }
 
 /* ============================================================
@@ -475,20 +627,15 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 /* ============================================================
    ASK
    ============================================================ */
-.ask{background:var(--ink);color:#fff;border-radius:6px;padding:clamp(30px,5vw,60px)}
-.ask .eyebrow{color:rgba(255,255,255,.5)}
+.ask{
+  border-radius:6px;padding:clamp(30px,5vw,60px);color:#fff;
+  background:linear-gradient(150deg,var(--cobalt-800) 0%,var(--cobalt-900) 62%,#070B3A 100%);
+}
+.ask .eyebrow{color:rgba(255,255,255,.55)}
 .ask h2{font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:16px 0 20px;max-width:26ch}
-.ask p{color:rgba(255,255,255,.76);font-size:16.5px;max-width:62ch;margin:0 0 1em}
+.ask p{color:rgba(255,255,255,.78);font-size:16.5px;max-width:62ch;margin:0 0 1em}
 .ask p:last-of-type{margin-bottom:0}
 .ask strong{color:#fff;font-weight:500}
-.ask-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(26px,4vw,54px);align-items:start}
-@media(max-width:860px){.ask-grid{grid-template-columns:1fr;gap:30px}}
-.ask-terms{border-top:1px solid rgba(255,255,255,.16);padding-top:18px}
-.ask-terms dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:9px 18px}
-.ask-terms dt{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.45);padding-top:3px}
-.ask-terms dd{margin:0;font-size:15px;color:#fff}
-.btn-light{background:#fff;color:var(--ink);margin-top:26px}
-.btn-light:hover{opacity:.88}
 
 /* ============================================================
    FOOTER
@@ -497,13 +644,13 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 .foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,40px)}
 @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr;gap:30px}}
 @media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
-.foot img{width:126px;margin-bottom:14px}
+.foot .lockup{margin-bottom:14px}
 .foot p{font-size:14.5px;color:var(--ink-3);margin:0;max-width:34ch}
 .foot h5{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4);margin:0 0 12px;font-weight:400}
 .foot ul{list-style:none;margin:0;padding:0}
 .foot li{margin-bottom:8px}
 .foot li a,.foot li span{font-family:var(--sans);font-size:14px;color:var(--ink-2);text-decoration:none;transition:color .18s var(--ease)}
-.foot li a:hover{color:var(--ink)}
+.foot li a:hover{color:var(--cobalt)}
 .foot-base{
   margin-top:clamp(34px,4vw,48px);padding-top:20px;border-top:1px solid var(--rule-soft);
   display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;
@@ -519,29 +666,41 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}
   .fade-swap{animation:none}
+  .js .mark--lift{opacity:1;transform:none;animation:none!important}
   *{transition-duration:.01ms!important}
 }
-:focus-visible{outline:2px solid var(--intent);outline-offset:3px}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
 .skip{position:absolute;left:-9999px}
-.skip:focus{left:16px;top:12px;z-index:99;background:var(--ink);color:#fff;padding:9px 14px;border-radius:3px;font-family:var(--sans);font-size:14px}
+.skip:focus{left:16px;top:12px;z-index:99;background:var(--cobalt);color:#fff;padding:9px 14px;border-radius:3px;font-family:var(--sans);font-size:14px}
 </style>
 </head>
 <script>document.documentElement.className+=" js";</script>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- The mark, defined once. Four bars, cobalt light theme. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="limina-mark" viewBox="0 0 88 62">
+    <path class="b1" style="fill:var(--m1,#141F8F)" d="M24 0 H88 L80 11 H16 Z"/>
+    <path class="b2" style="fill:var(--m2,#2A3DCC)" d="M19 17 H78 L70 28 H11 Z"/>
+    <path class="b3" style="fill:var(--m3,#7C8CEB)" d="M14 34 H68 L60 45 H6 Z"/>
+    <path class="b4" style="fill:var(--m4,#B3BEF6)" d="M9 51 H49 L41 62 H1 Z"/>
+  </symbol>
+</svg>
+
 <!-- ================= NAV ================= -->
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="Limina Labs — home">
-      <img src="assets/logo/limina-lockup.png" alt="Limina Labs">
+    <a class="brand lockup" href="#top" aria-label="Limina Labs — home">
+      <svg class="mark mark--lift" viewBox="0 0 88 62" aria-hidden="true" focusable="false"><use href="#limina-mark"/></svg>
+      <span class="word">Limina <i>Labs</i></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#premise">The premise</a>
+      <a href="#problem">The problem</a>
       <a href="#autonomy">Autonomy</a>
       <a href="#stack">The stack</a>
       <a href="#loop">The loop</a>
-      <a href="#deploy">Deployment</a>
+      <a href="#status">What's built</a>
       <a href="#team">Team</a>
     </nav>
     <a class="nav-cta" href="#start">Talk to us</a>
@@ -553,21 +712,20 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <img class="hero-mark" src="assets/logo/limina-mark.png" alt="" aria-hidden="true">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">Limina Labs · Enterprise AI infrastructure</p>
-      <h1>Capability is purchasable.<br><span class="dim">Permission is not.</span></h1>
+      <p class="eyebrow">Limina Labs · Sovereign AI for the enterprise</p>
+      <h1>What you meant.<br>What it did.<br><span class="dim">What you learned.</span></h1>
       <p class="lede">
-        Any enterprise can buy frontier-grade reasoning this afternoon, from three vendors,
-        at falling prices. What it cannot buy is the ability to defend having let that
-        reasoning act. We build the deterministic substrate that makes autonomy something
-        you set, move and account for — instead of a property somebody else hard-coded
-        into a model.
+        Companies are putting AI into real operations, but they cannot say what it was
+        supposed to do, cannot stop it doing something else, and cannot prove what it did.
+        We fix that. We give the enterprise a layer it owns — where the work is specified,
+        the execution is governed, and the learning is kept. It works with any model, and it
+        stays inside your walls.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#start">Talk to us</a>
-        <a class="btn btn-ghost" href="#premise">Read the argument</a>
+        <a class="btn btn-ghost" href="#problem">Read the argument</a>
       </div>
       <p class="invariant">
         Holds at every setting:<br>
@@ -584,21 +742,21 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
       <div class="layer-gap">depreciating · commoditising</div>
       <div class="layer layer-sub-block">
         <div class="layer-name" style="color:#fff">The Limina substrate</div>
-        <div class="layer-sub">persistent · deterministic · yours</div>
+        <div class="layer-sub">specified · governed · yours</div>
         <div class="chips">
-          <div class="chip" style="--c:#7B9BFF">Intent Studio</div>
+          <div class="chip" style="--c:#8E9CF5">Intent Studio</div>
           <div class="chip" style="--c:#E2A24A">Precepta</div>
-          <div class="chip" style="--c:#B08FF0">Cerebrio</div>
-          <div class="chip" style="--c:#4FC08A">Forge</div>
+          <div class="chip chip--soft" style="--c:#B08FF0">Cerebrio — roadmap</div>
+          <div class="chip chip--soft" style="--c:#4FC08A">Forge — a function</div>
         </div>
       </div>
       <div class="layer layer-base">
-        <div class="layer-name">Your cloud</div>
+        <div class="layer-name">Your infrastructure</div>
         <div class="layer-sub">your models · your identity provider · your audit store</div>
       </div>
       <p class="stack-note">
         Models depreciate. The record of how your organisation decides does not.
-        We capture value below the model layer, where it compounds.
+        Sovereignty is not about hosting weights — it is about owning your reasoning.
       </p>
     </figure>
   </div>
@@ -614,15 +772,15 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
     <div class="brief rv">
       <div>
         <div class="q">What it is</div>
-        <p>A <strong>governance and reasoning substrate</strong> that sits between your enterprise and whichever AI models it uses — bounding what agents may do, recording what they did, and keeping what was learned.</p>
+        <p>A layer the enterprise <strong>owns</strong>, sitting between it and whichever AI models it uses — where work is specified before it starts, execution is governed while it runs, and what was learned is kept afterwards.</p>
       </div>
       <div>
         <div class="q">Who it is for</div>
-        <p>Enterprises in <strong>low-tolerance industries</strong> — regulated manufacturing, finance, biotech, aerospace, critical infrastructure — and the executive who owns the risk when an agent touches a live process.</p>
+        <p>Enterprises in <strong>high-precision, regulated environments</strong> — finance, healthcare, legal, regulated manufacturing — and the executive who owns the risk when an agent touches a live process.</p>
       </div>
       <div>
         <div class="q">What it does</div>
-        <p>Turns a thin instruction into something an agent can safely act on, runs it inside policy gates, and <strong>compiles every run into structure your organisation keeps</strong> after the session ends.</p>
+        <p>Turns a thin instruction into a written intent people agreed to, runs it inside limits <strong>the model cannot argue its way past</strong>, and keeps the trace as evidence.</p>
       </div>
       <div>
         <div class="q">Why it matters</div>
@@ -632,44 +790,112 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   </div>
 </section>
 
-<!-- ================= PREMISE ================= -->
-<section class="sec" id="premise">
+<!-- ================= THE PROBLEM ================= -->
+<section class="sec" id="problem">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow">The premise</p>
-      <h2>Two things are true, and most of the industry is building as if neither were.</h2>
+      <p class="eyebrow">The problem</p>
+      <h2>Three failures, and every enterprise has all three at once.</h2>
     </div>
 
     <div class="premises">
       <article class="premise rv">
-        <p class="eyebrow">First premise</p>
-        <h3>Context evaporates, and you pay for it again.</h3>
+        <p class="eyebrow">First failure</p>
+        <h3>Intent is thin.</h3>
         <p>
-          Enterprise AI today treats a foundation model as an end-to-end reasoning engine.
-          When the context window closes, the operational context and the reasoning history
-          close with it. Nothing survives the session but the output.
+          Work gets handed to people and agents as a sentence, not a specification. Everyone
+          fills the gaps with assumptions, and the assumptions stack silently until the output
+          is wrong.
         </p>
         <p>
-          So the organisation pays a second time — the same GPU hours, the same tokens, the
-          same logic path — to rediscover a conclusion it already reached last quarter.
-          <span class="term">Repeated reasoning engineering</span> is the largest silent line
-          item in enterprise AI, and it grows with every deployment.
+          Agents do not fail because the model is weak. They fail because
+          <span class="term">the intent was thin</span>.
         </p>
       </article>
 
       <article class="premise rv">
-        <p class="eyebrow">Second premise</p>
-        <h3>Alignment cannot be finished inside the weights.</h3>
+        <p class="eyebrow">Second failure</p>
+        <h3>Execution is ungoverned.</h3>
         <p>
-          Perfect alignment through internal neural weights is not merely difficult. For
-          systems expressive enough to be useful, it is uncomputable — behaviour stays
-          irreducible, and at the margin it stays unpredictable. No amount of fine-tuning
-          converts a black box into an auditable one.
+          Data leaves through third-party APIs. Every team applies different rules. Limits live
+          inside prompts, where the model can talk its way past them.
         </p>
         <p>
-          Reliability, auditability and safety therefore have to be enforced from outside,
-          by a <span class="term">deterministic structural harness</span> that does not
-          depend on the model behaving in order to hold.
+          When the auditor asks what happened, there is
+          <span class="term">no answer that holds up</span>.
+        </p>
+      </article>
+
+      <article class="premise rv">
+        <p class="eyebrow">Third failure</p>
+        <h3>Learning evaporates.</h3>
+        <p>
+          The reasoning happened inside a model call and then vanished. The next team starts
+          from zero. When the senior person leaves, their judgement leaves too.
+        </p>
+        <p>
+          And when the provider ships an update, the prompts that encoded your rules
+          <span class="term">quietly break</span>.
+        </p>
+      </article>
+    </div>
+
+    <div class="verdict rv">
+      <span class="k">The compounding cost</span>
+      <span class="v">
+        Every new use case becomes another AI engineering project. Nothing accumulates. You are
+        renting intelligence and rebuilding it every quarter.
+      </span>
+    </div>
+
+    <div class="pull rv">
+      <blockquote>Capability is purchasable. Permission is not.</blockquote>
+      <p class="attrib">Any enterprise can buy frontier reasoning this afternoon. What it cannot buy is the ability to defend having let that reasoning act.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE INSIGHT ================= -->
+<section class="sec sec--fill" id="insight">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">The insight</p>
+      <h2>Sovereignty is not about hosting weights. It is about owning your reasoning.</h2>
+      <p class="lede">
+        Models are becoming a commodity. They are interchangeable, they get cheaper, and they
+        will keep changing under you. That is fine — that is the <strong>muscle</strong>. What
+        must not be interchangeable is the <strong>mind</strong>.
+      </p>
+    </div>
+
+    <div class="premises premises--two">
+      <article class="premise rv">
+        <p class="eyebrow">What must be yours</p>
+        <h3>What you are trying to do, what you are allowed to do, and what you have learned.</h3>
+        <p>
+          Today that lives in people's heads, in brittle prompts, and inside vendor runtimes.
+          So it is not really owned at all.
+        </p>
+        <p>
+          We make that layer explicit, governed and portable — and put it on the enterprise's
+          side of the boundary.
+        </p>
+      </article>
+
+      <article class="premise rv">
+        <p class="eyebrow">Why the boundary sits outside the model</p>
+        <h3>You cannot make a system safe by asking it nicely.</h3>
+        <p>
+          Prompts and fine-tuning are requests, not guarantees — the model can be argued out of
+          them. A real limit has to sit outside the model, where the model cannot reach it.
+        </p>
+        <p>
+          Formally: perfect alignment of a sufficiently expressive model's internal weights is
+          not merely difficult, it is <span class="term">uncomputable</span> — for the same
+          reason the halting problem and Gödel's incompleteness results hold. More compute does
+          not close the gap. The engineering response is not to solve the unsolvable but to
+          <strong>encapsulate</strong> it: wrap the probabilistic system in a deterministic
+          boundary that enforces limits it cannot alter.
         </p>
       </article>
     </div>
@@ -677,14 +903,14 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
     <div class="verdict rv">
       <span class="k">Therefore</span>
       <span class="v">
-        We build the harness — and everything the harness leaves behind.
+        That boundary is Precepta. The theory and the product are the same thing.
       </span>
     </div>
   </div>
 </section>
 
 <!-- ================= AUTONOMY ================= -->
-<section class="sec sec--fill" id="autonomy">
+<section class="sec" id="autonomy">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">The instrument</p>
@@ -743,40 +969,47 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 </section>
 
 <!-- ================= STACK ================= -->
-<section class="sec" id="stack">
+<section class="sec sec--fill" id="stack">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">The stack</p>
-      <h2>Four layers. Each stands alone and is worth buying alone.</h2>
+      <h2>Three products. Layers, not stages.</h2>
       <p class="lede">
-        Intent Studio is complete on its own. Precepta, Cerebrio and Forge compose with it
-        rather than depending on it. Run all four and the loop closes.
+        The control loop runs <em>inside</em> Intent Studio, <em>on top of</em> Precepta,
+        <em>grounded by</em> Cerebrio. Nothing is compulsory: each product works on its own,
+        inside someone else's stack, with neither of the others present. They are independent
+        layers <strong>and</strong> composable.
       </p>
     </div>
 
     <!-- Intent Studio -->
     <article class="pillar rv" style="--c:var(--intent)">
       <div>
-        <div class="pillar-id"><span class="pillar-dot"></span><span class="pillar-role">Blueprint &amp; boundary layer</span></div>
+        <div class="pillar-id"><span class="pillar-dot"></span><span class="pillar-role">The desired state</span></div>
         <h3><a class="plink" href="https://intent.preceptaai.com/" target="_blank" rel="noopener">Intent Studio<span class="ext">↗</span></a></h3>
-        <p class="pillar-tag">Turn intent into something that can be acted on.</p>
-        <div class="pillar-status">Shipped</div>
+        <p class="pillar-tag">Governed work for people and their agents.</p>
+        <div class="pillar-status">Public · early access</div>
       </div>
       <div class="pillar-body">
         <p>
-          Translates a high-level enterprise goal into a formal, bounded intent model and a
-          structural logic graph. Explicit constraints replace unstructured prompting, so
-          ambiguity is resolved <em>before</em> execution rather than discovered twenty steps into it.
+          A workspace where a team and its agents converge on <strong>one written intent</strong>
+          before work starts. An intent is one real piece of work — a line changeover, a
+          migration, an audit response — held as a structured record instead of a thread.
         </p>
         <p>
-          An intent is one piece of work — a line changeover, a migration, an audit response —
-          held as a structured record instead of a thread. Every line in it is a claim with a
-          state: <strong>proposed</strong>, <strong>agreed</strong> or <strong>contested</strong>,
-          carrying who said it, what it rests on, and whether anyone still disagrees. An agent
-          cannot promote its own claim.
+          Every line in it is a claim with a state: <strong>proposed</strong>,
+          <strong>agreed</strong>, <strong>contested</strong> or <strong>escalated</strong>,
+          attributed by name. Disagreement stays on the record instead of being averaged away,
+          and an agent cannot promote its own claim.
+        </p>
+        <p>
+          The autonomy dial above lives here, and so do the evaluation criteria for an intent.
+          It is not staying a specification tool: the direction is that Intent Studio generates
+          the spec artifacts <strong>and carries out the execution itself</strong>, with its own
+          coding, research and other agents.
         </p>
         <div class="spec">
-          <div class="spec-lbl">What an intent carries</div>
+          <div class="spec-lbl">Eight fixed sections</div>
           <div class="tags">
             <span class="tag">At a glance</span><span class="tag">Goal</span>
             <span class="tag">In scope</span><span class="tag">Out of scope</span>
@@ -793,38 +1026,37 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
     <!-- Precepta -->
     <article class="pillar rv" style="--c:var(--precepta)">
       <div>
-        <div class="pillar-id"><span class="pillar-dot"></span><span class="pillar-role">Application &amp; execution layer</span></div>
+        <div class="pillar-id"><span class="pillar-dot"></span><span class="pillar-role">The harness</span></div>
         <h3><a class="plink" href="https://preceptaai.com/" target="_blank" rel="noopener">Precepta<span class="ext">↗</span></a></h3>
-        <p class="pillar-tag">Govern how your enterprise consumes AI.</p>
-        <div class="pillar-status">Private beta</div>
+        <p class="pillar-tag">Run AI inside your own walls. Prove nothing leaves.</p>
+        <div class="pillar-status">Shipping · 15-day free trial</div>
       </div>
       <div class="pillar-body">
         <p>
-          Every AI request the enterprise makes — from an agent, an app or a person — passes
-          through one place that governs it, routes it and records it. Today most of that
-          traffic is a black box: teams are already using models nobody approved, and the
-          executive who owns the risk has no visibility into any of it.
+          The governed runtime, and the layer <strong>underneath</strong>. Every model call —
+          from Intent Studio or from anything else — passes through it, along with the whole
+          governance plane. This is the deterministic boundary from the argument above.
         </p>
-        <p>
-          Precepta makes it a glass box. Policy is enforced in line rather than reviewed
-          afterwards: the firewall redacts, the policy engine decides, the router picks a
-          model inside your boundary, output is scanned, and <strong>every request can be
-          replayed</strong> — the decision and the reason for it.
-        </p>
-        <p>
-          It runs in your environment and nothing leaves it. Models are pluggable, so you are
-          never locked to one vendor and never buying governance from the company whose model
-          you are governing. Execution is also where the record gets made: each run emits the
-          telemetry and decision traces the rest of the stack compounds.
-        </p>
-        <div class="spec">
+        <div class="spec" style="border-top:0;padding-top:0;margin-top:0">
           <div class="spec-lbl">Every request, in line</div>
-          <div class="tags">
-            <span class="tag">Firewall</span><span class="tag">Policy</span>
-            <span class="tag">Route</span><span class="tag">Any model, in boundary</span>
-            <span class="tag">Scan</span><span class="tag">Audit + replay</span>
+          <div class="path">
+            <span>Firewall</span><i>→</i><span>Sensitivity</span><i>→</i><span>Policy</span><i>→</i><span>Smart route</span><i>→</i><span>Cache</span><i>→</i><span>Inference</span><i>→</i><span>Audit</span>
           </div>
         </div>
+        <div class="spec">
+          <div class="arch">
+            <div><b>Zero-egress by construction</b><span>With cryptographic attestation — a proof, not a promise.</span></div>
+            <div><b>Tamper-evident audit logs</b><span>The answer when compliance asks what happened.</span></div>
+            <div><b>Per-key scopes and caps</b><span>Hard cost and token limits the model cannot alter.</span></div>
+            <div><b>Smart routing</b><span>Across open-source and hosted models — swap the muscle, keep the mind.</span></div>
+          </div>
+        </div>
+        <p style="margin-top:18px">
+          Shipping today: Llama 3.2 in-boundary, the smart router, local Nomic embeddings and an
+          OpenAI-compatible API, with PII redaction, output leak scanning and signed sovereignty
+          attestation verified by live probes. Self-hosted with no public route, and on-premises,
+          are both available.
+        </p>
         <a class="pillar-link" href="https://preceptaai.com/" target="_blank" rel="noopener">
           Open Precepta <span class="arw">→</span>
         </a>
@@ -834,77 +1066,51 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
     <!-- Cerebrio -->
     <article class="pillar rv" style="--c:var(--cerebrio)">
       <div>
-        <div class="pillar-id"><span class="pillar-dot"></span><span class="pillar-role">Structural reasoning engine</span></div>
-        <h3><a class="plink" href="https://thecerebrio.ai/" target="_blank" rel="noopener">Cerebrio<span class="ext">↗</span></a></h3>
+        <div class="pillar-id"><span class="pillar-dot"></span><span class="pillar-role">The learned state</span></div>
+        <h3>Cerebrio</h3>
         <p class="pillar-tag">Turn experience into enterprise understanding.</p>
-        <div class="pillar-status">Early access</div>
+        <div class="pillar-status pillar-status--road">Roadmap · targeting next year</div>
       </div>
       <div class="pillar-body">
         <p>
-          Dictates the geometry of the reasoning process rather than trusting raw stochastic
-          generation to arrive somewhere defensible. Reasoning is orchestrated across four
-          specialised archetypes, so cognitive diversity is designed in instead of hoped for.
-        </p>
-        <div class="spec" style="border-top:0;padding-top:0;margin-top:16px">
-          <div class="arch">
-            <div><b>Utilitarian</b><span>Maximises task speed and operational efficiency.</span></div>
-            <div><b>Deontological</b><span>Enforces compliance, policy and digital responsibility.</span></div>
-            <div><b>Epistemic</b><span>Validates truth structures, factual accuracy, ontological alignment.</span></div>
-            <div><b>Exploratory</b><span>Uncovers edge cases and red-teams the system's own assumptions.</span></div>
-          </div>
-        </div>
-        <p style="margin-top:18px">
-          Underneath sits a typed, temporal knowledge graph: every fact dated, every decision
-          traced to the context that triggered it, conflicts resolved across actors, and the
-          whole thing queryable <em>as of</em> any point in time. Cerebrio compiles the telemetry
-          Precepta emits into five durable reasoning playbooks that outlive any session, any
-          model and any vendor contract.
-        </p>
-        <div class="spec">
-          <div class="spec-lbl">Five native playbooks</div>
-          <div class="tags">
-            <span class="tag">Context</span><span class="tag">Decision</span>
-            <span class="tag">Workflow</span><span class="tag">Evaluation</span>
-            <span class="tag">Governance</span>
-          </div>
-        </div>
-        <a class="pillar-link" href="https://thecerebrio.ai/" target="_blank" rel="noopener">
-          Open Cerebrio <span class="arw">→</span>
-        </a>
-      </div>
-    </article>
-
-    <!-- Forge -->
-    <article class="pillar rv" style="--c:var(--forge)">
-      <div>
-        <div class="pillar-id"><span class="pillar-dot"></span><span class="pillar-role">Algorithmic evaluation &amp; causal loop</span></div>
-        <h3>Forge</h3>
-        <p class="pillar-tag">Turn gaps into capabilities.</p>
-        <div class="pillar-status">2027</div>
-      </div>
-      <div class="pillar-body">
-        <p>
-          Replaces static, human-labelled benchmarks with continuous mathematical verification —
-          Algorithmic Information Dynamics and the Block Decomposition Method applied to the
-          system's own behaviour.
+          The enterprise understanding substrate. It grounds every intent and enables every
+          decision — served by a knowledge graph, retrieval and composition, and lineage and
+          versioning.
         </p>
         <p>
-          Rather than scoring how fluent an answer sounds, Forge perturbs the system and measures
-          the genuine causal reaction. Linguistic plausibility and causal correctness stop being
-          confused for one another. The loop is self-improving and scales without a labelling
-          budget: what it finds missing becomes the next capability the substrate acquires.
+          Memory here is <strong>constructed, not retrieved</strong>: traces are parsed,
+          contextualised, reasoned over and cross-examined before being promoted to understanding
+          the next intent can rely on. Cerebrio is what makes the loop <em>compound</em> instead
+          of merely repeat.
         </p>
         <div class="spec">
-          <div class="spec-lbl">Method</div>
+          <div class="spec-lbl">Six kinds of memory</div>
           <div class="tags">
-            <span class="tag">Algorithmic Information Dynamics</span>
-            <span class="tag">Block Decomposition Method</span>
-            <span class="tag">Causal perturbation</span>
-            <span class="tag">No labelling budget</span>
+            <span class="tag">Semantic</span><span class="tag">Procedural</span>
+            <span class="tag">Episodic</span><span class="tag">Decision</span>
+            <span class="tag">Reflection</span><span class="tag">Evidence &amp; provenance</span>
           </div>
         </div>
         <p class="mono" style="margin-top:18px;color:var(--ink-4)">
-          In development — Forge is described here first.
+          On the roadmap, targeting next year. Not available today, and not sold as if it were.
+        </p>
+      </div>
+    </article>
+
+    <!-- Forge — a function, not a fourth product -->
+    <article class="pillar pillar--aside rv" style="--c:var(--forge)">
+      <div class="pillar-id"><span class="pillar-dot"></span><span class="pillar-role">A function, not a fourth product</span></div>
+      <h3>Forge</h3>
+      <div class="pillar-body" style="max-width:74ch">
+        <p style="margin-top:12px">
+          The intelligence engineering loop — discover gaps, engineer understanding,
+          train and adapt, validate and red-team, publish. It changes the capability when
+          reconciliation keeps failing.
+        </p>
+        <p>
+          <strong>Not started.</strong> It most likely lives inside Precepta rather than becoming
+          a product of its own. It is described here because it is the half of the loop that
+          turns evaluation into improvement — not because you can buy it.
         </p>
       </div>
     </article>
@@ -912,92 +1118,141 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 </section>
 
 <!-- ================= LOOP ================= -->
-<section class="sec sec--fill" id="loop">
+<section class="sec" id="loop">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">The loop</p>
-      <h2>Four products. One continuous learning system.</h2>
+      <h2>Three states, reconciled continuously.</h2>
+    </div>
+
+    <div class="states rv">
+      <div style="--c:var(--intent)">
+        <div class="st">Desired</div>
+        <h4>Intent</h4>
+        <p>What should be true, written down and agreed by name before anything runs.</p>
+        <span class="who">Intent Studio</span>
+      </div>
+      <div style="--c:var(--precepta)">
+        <div class="st">Observed</div>
+        <h4>Trace</h4>
+        <p>What actually happened, recorded step by step as the work executes.</p>
+        <span class="who">Precepta</span>
+      </div>
+      <div style="--c:var(--cerebrio)">
+        <div class="st">Learned</div>
+        <h4>Understanding</h4>
+        <p>What we now know, constructed from the traces and kept for the next intent.</p>
+        <span class="who">Cerebrio — roadmap</span>
+      </div>
     </div>
 
     <div class="loop-grid">
       <div class="prose rv">
         <p>
-          <strong>Intent Studio</strong> bounds what is actually being asked for, and refuses to
-          let an agent fill the gaps with assumptions.
+          The control plane reconciles <strong>desired</strong> against <strong>observed</strong>.
+          Forge changes the capability when reconciliation keeps failing.
         </p>
         <p>
-          <strong>Precepta</strong> carries that intent into the live pipeline inside three gates,
-          and emits the telemetry, decision traces and interaction trails the run produces.
+          Every action leaves a trace, and every trace is evaluated three ways: did we do the
+          <strong>right work</strong>, was it <strong>disciplined</strong>, did we get the
+          <strong>right outcome</strong>.
         </p>
-        <p>
-          <strong>Cerebrio</strong> compiles those traces into typed, dated, contestable structure —
-          playbooks and a knowledge graph your organisation keeps.
+        <p style="margin-top:1.3em">
+          Read it aloud: you write down what you are trying to do, and who agreed to it. It
+          executes inside your own boundary, and every step is recorded. Then we judge it. What
+          we learn goes back into the enterprise's understanding.
+          <strong>So the next time, you start further ahead.</strong>
         </p>
-        <p>
-          <strong>Forge</strong> perturbs that structure, verifies it mathematically, and turns
-          whatever it finds missing into the next capability.
-        </p>
-        <p style="margin-top:1.4em">
-          Which returns to Intent Studio, better armed. Every intent after the first one starts
-          richer than the last: it does not re-establish the lead time, re-litigate the part, or
-          re-run the validation. <strong>That is the compounding asset.</strong>
-        </p>
+        <div class="chain" aria-label="The control loop">
+          <span>Intent</span><i>→</i><span>Understand</span><i>→</i><span>Plan</span><i>→</i><span>Execute</span><i>→</i><span>Trace</span><i>→</i><span>Evaluate</span><i>→</i><span>Reconcile</span>
+        </div>
       </div>
 
       <div class="rv" id="loopwrap">
-        <svg class="loop-svg" viewBox="0 0 560 460" role="img" aria-label="The Limina loop: Intent Studio bounds the work, Precepta executes and generates experience, Cerebrio compiles it into structure, Forge verifies and closes gaps, feeding back into Intent Studio.">
+        <svg class="loop-svg" viewBox="0 0 560 470" role="img" aria-label="The Limina loop, running clockwise: Cerebrio supplies what the enterprise knows, which grounds the intent written in Intent Studio; Precepta executes it inside the gates; every step is recorded as a trace and evaluated for intent, slop and outcome; Forge turns what is missing into new capability, which returns to Cerebrio.">
           <defs>
+            <marker id="ah-c" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0 L8 4 L0 8 z" fill="#7638C0"/>
+            </marker>
             <marker id="ah-i" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M0 0 L8 4 L0 8 z" fill="#2F5BEA"/>
+              <path d="M0 0 L8 4 L0 8 z" fill="#2A3DCC"/>
             </marker>
             <marker id="ah-p" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M0 0 L8 4 L0 8 z" fill="#A8620A"/>
             </marker>
-            <marker id="ah-c" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M0 0 L8 4 L0 8 z" fill="#6B3FBF"/>
+            <marker id="ah-n" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0 L8 4 L0 8 z" fill="#6C7593"/>
             </marker>
             <marker id="ah-f" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M0 0 L8 4 L0 8 z" fill="#0E7A4F"/>
             </marker>
           </defs>
 
-          <!-- edges, clockwise -->
-          <path class="edge d1" style="--len:230" d="M400 66 C470 80 500 118 502 168" stroke="#2F5BEA" marker-end="url(#ah-i)"/>
-          <path class="edge d2" style="--len:230" d="M502 292 C500 342 470 380 400 394" stroke="#A8620A" marker-end="url(#ah-p)"/>
-          <path class="edge d3" style="--len:230" d="M160 394 C90 380 60 342 58 292" stroke="#6B3FBF" marker-end="url(#ah-c)"/>
-          <path class="edge d4" style="--len:230" d="M58 168 C60 118 90 80 160 66" stroke="#0E7A4F" marker-end="url(#ah-f)"/>
+          <!-- edges, clockwise from KNOW -->
+          <path class="edge d1" style="--len:240" d="M362 58 C412 66 448 100 461 146" stroke="#7638C0" marker-end="url(#ah-c)"/>
+          <path class="edge d2" style="--len:240" d="M462 212 C460 268 444 320 416 350" stroke="#2A3DCC" marker-end="url(#ah-i)"/>
+          <path class="edge d3" style="--len:90"  d="M312 382 H276" stroke="#A8620A" marker-end="url(#ah-p)"/>
+          <path class="edge d4" style="--len:240" d="M144 350 C116 320 98 268 94 214" stroke="#6C7593" marker-end="url(#ah-n)"/>
+          <path class="edge d5" style="--len:240" d="M96 146 C110 100 146 70 196 62" stroke="#0E7A4F" marker-end="url(#ah-f)"/>
 
           <!-- centre -->
-          <text class="core" x="280" y="222" text-anchor="middle">A continuous</text>
-          <text class="core" x="280" y="240" text-anchor="middle">learning system</text>
+          <text class="core" x="280" y="222" text-anchor="middle">The loop compounds</text>
+          <text class="core" x="280" y="240" text-anchor="middle">enterprise capability</text>
 
           <!-- edge labels -->
-          <text class="elabel" x="474" y="152" text-anchor="end" fill="#2F5BEA">bounded intent</text>
-          <text class="elabel" x="474" y="320" text-anchor="end" fill="#A8620A">generates experience</text>
-          <text class="elabel" x="88"  y="320" fill="#6B3FBF">supplies what we know</text>
-          <text class="elabel" x="88"  y="152" fill="#0E7A4F">improves future decisions</text>
+          <text class="elabel" x="392" y="96"  fill="#7638C0">grounds the intent</text>
+          <text class="elabel" x="448" y="290" text-anchor="end" fill="#2A3DCC">bounded work</text>
+          <text class="elabel" x="294" y="336" text-anchor="middle" fill="#A8620A">every step recorded</text>
+          <text class="elabel" x="112" y="290" fill="#6C7593">intent · slop · outcome</text>
+          <text class="elabel" x="104" y="100" fill="#0E7A4F">promoted to capability</text>
 
-          <!-- node: Intent Studio (top) -->
-          <rect class="nodebox" x="160" y="20" width="240" height="66" rx="4" stroke="#2F5BEA" fill="#F2F5FE"/>
-          <text class="nname" x="178" y="46" fill="#2F5BEA">Intent Studio</text>
-          <text class="nrole" x="178" y="66">Bound what is being asked for</text>
+          <!-- node: KNOW / Cerebrio (top) -->
+          <rect class="nodebox nodebox--road" x="200" y="28" width="160" height="56" rx="4" stroke="#7638C0"/>
+          <text class="nkey"  x="218" y="50" fill="#7638C0">Know</text>
+          <text class="nname" x="218" y="70">Cerebrio — roadmap</text>
 
-          <!-- node: Precepta (right) -->
-          <rect class="nodebox" x="358" y="196" width="192" height="66" rx="4" stroke="#A8620A"/>
-          <text class="nname" x="374" y="222" fill="#A8620A">Precepta</text>
-          <text class="nrole" x="374" y="242">Execute inside the gates</text>
+          <!-- node: INTENT / Intent Studio (right) -->
+          <rect class="nodebox" x="384" y="152" width="168" height="56" rx="4" stroke="#2A3DCC" fill="#F1F4FE"/>
+          <text class="nkey"  x="402" y="174" fill="#2A3DCC">Intent</text>
+          <text class="nname" x="402" y="194">Intent Studio</text>
 
-          <!-- node: Cerebrio (bottom) -->
-          <rect class="nodebox" x="160" y="374" width="240" height="66" rx="4" stroke="#6B3FBF"/>
-          <text class="nname" x="178" y="400" fill="#6B3FBF">Cerebrio</text>
-          <text class="nrole" x="178" y="420">Compile experience into structure</text>
+          <!-- node: DO / Precepta (bottom right) -->
+          <rect class="nodebox" x="318" y="354" width="152" height="56" rx="4" stroke="#A8620A"/>
+          <text class="nkey"  x="336" y="376" fill="#A8620A">Do</text>
+          <text class="nname" x="336" y="396">Precepta</text>
 
-          <!-- node: Forge (left) -->
-          <rect class="nodebox" x="10" y="196" width="192" height="66" rx="4" stroke="#0E7A4F"/>
-          <text class="nname" x="26" y="222" fill="#0E7A4F">Forge</text>
-          <text class="nrole" x="26" y="242">Verify · close the gaps</text>
+          <!-- node: TRACE + EVALUATE (bottom left) -->
+          <rect class="nodebox" x="92" y="354" width="176" height="56" rx="4" stroke="#B4BAC9"/>
+          <text class="nkey"  x="110" y="376" fill="#6C7593">Trace + evaluate</text>
+          <text class="nname" x="110" y="396">Experience</text>
+
+          <!-- node: LEARN / Forge (left) -->
+          <rect class="nodebox nodebox--road" x="8" y="152" width="152" height="56" rx="4" stroke="#0E7A4F"/>
+          <text class="nkey"  x="26" y="174" fill="#0E7A4F">Learn</text>
+          <text class="nname" x="26" y="194">Forge — not started</text>
         </svg>
+        <p class="loop-legend">Solid — shipping today · Dashed — not yet built</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SLOP ================= -->
+<section class="sec sec--fill" id="slop">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">The idea nobody else prices</p>
+      <h2>Slop is unnecessary or unjustified autonomous activity.</h2>
+      <p class="lede">
+        Not "too many tokens" — wasted autonomy. Work an agent did that nobody needed. Everyone
+        measures whether an agent <em>succeeded</em>. Almost nobody measures whether it should
+        have done that much work at all.
+      </p>
+    </div>
+
+    <div class="pull rv" style="margin-top:0">
+      <blockquote>Maximum intent progress, with minimum unnecessary autonomous activity, inside limits the system cannot trade away.</blockquote>
+      <p class="attrib">Making slop a first-class, evaluated, optimised quantity is the most differentiated idea in the platform. Risk is a constraint, not a penalty — it is not something the optimiser is allowed to trade away.</p>
     </div>
   </div>
 </section>
@@ -1006,38 +1261,52 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 <section class="sec" id="moat">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow">Why it compounds</p>
-      <h2>The substrate appreciates while the models depreciate.</h2>
+      <p class="eyebrow">Why it holds</p>
+      <h2>The record appreciates while the models depreciate.</h2>
     </div>
 
     <div class="moat rv">
       <div>
-        <span class="num">01</span>
-        <h3>Navigate the subspace instead of paying for the search</h3>
+        <span class="num">00 · the moat</span>
+        <h3>The outer loop is the moat.</h3>
         <p>
-          Once a successful logic path is indexed into a compiled playbook, the enterprise stops
-          brute-forcing tokens to rediscover it. It navigates straight to a pre-verified causal
-          pathway. Inference cost and latency fall as a function of how much work you have
-          already done — not how much compute you can buy.
+          Everyone optimises the inner loop — get this task done. Only a system that keeps
+          traces, evaluations and reflection can run the outer loop, where the way of working
+          itself improves. That is what compounds, and it cannot be retrofitted onto a stateless
+          agent stack.
+        </p>
+      </div>
+      <div>
+        <span class="num">01</span>
+        <h3>Models commoditise; the record does not.</h3>
+        <p>
+          Anyone can rent the same model. Nobody else has your accumulated intents, evidence,
+          decisions and outcomes. That asset appreciates while the model layer depreciates.
         </p>
       </div>
       <div>
         <span class="num">02</span>
-        <h3>Commodity models, compounding substrate</h3>
+        <h3>Switching cost sits on the right side.</h3>
         <p>
-          GPT, Claude and open weights are swappable and will keep commoditising. Model choice is
-          a role in the product, configurable per deployment, not a support ticket. Value is
-          captured below the model layer, where your knowledge graph and operational memory
-          belong to you and grow indefinitely.
+          Because it is model-agnostic, you can leave any model vendor cheaply. Leaving
+          <em>us</em> means leaving the record of how your organisation actually works.
         </p>
       </div>
       <div>
         <span class="num">03</span>
-        <h3>Verification a regulator can actually accept</h3>
+        <h3>Reuse.</h3>
         <p>
-          Formal mathematical verification produces the auditability that low-tolerance industries
-          require — quantitative finance, biotech, aerospace — where a probabilistic hallucination
-          is not a bug report but a commercially unviable outcome.
+          Once an intent is specified and validated in one plant, team or business unit,
+          redeploying it costs close to nothing. Margin scales with reuse.
+        </p>
+      </div>
+      <div>
+        <span class="num">04</span>
+        <h3>Governance is a moat in regulated markets.</h3>
+        <p>
+          Attestation and tamper-evident audit are not features you add later; they are
+          architecture. Finance, healthcare and legal cannot buy the ungoverned version at any
+          price.
         </p>
       </div>
     </div>
@@ -1066,57 +1335,105 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
         <p class="eyebrow">Self-hosted enterprise</p>
         <h3>It never leaves your boundary</h3>
         <p>
-          You deploy it on your own infrastructure. Your cloud, your models, your identity
-          provider, your audit store. Licensed by key and reconciled annually —
-          <strong>no telemetry, no phone-home</strong>.
+          You deploy it on your own infrastructure, with no public route. Your models, your
+          identity provider, your audit store. On-premises is available. Licensed by key —
+          <strong>no telemetry, no phone-home</strong> — and zero-egress is verified by live
+          probes rather than asserted.
         </p>
-        <div class="boundary-lbl">Your cloud</div>
+        <div class="boundary-lbl">Your boundary</div>
         <div class="boundary">
           <div>The stack</div><div>Your models</div>
           <div>Your data</div><div>Your identity provider</div>
         </div>
-        <p class="mono" style="color:var(--ink-4);margin-top:12px">Licence key only</p>
+        <p class="mono" style="color:var(--ink-4);margin-top:12px">Licence key only · signed attestation</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= ROADMAP ================= -->
-<section class="sec" id="roadmap">
+<!-- ================= STATUS ================= -->
+<section class="sec" id="status">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow">What's coming</p>
-      <h2>Built, not planned.</h2>
+      <p class="eyebrow">Built, not planned</p>
+      <h2>What is shipping, what is roadmap, and what has not started.</h2>
       <p class="lede">
-        Collaboration, authority, evidence across every modality and the knowledge graph are
-        shipped. What follows is sequence, and the near end of it is committed.
+        We are in early access. Neither Intent Studio nor Precepta is feature-complete, and both
+        have roadmaps. Being caught overclaiming costs more than saying "that's on the roadmap".
       </p>
+    </div>
+
+    <table class="status rv">
+      <caption>Status as of August 2026</caption>
+      <thead>
+        <tr><th scope="col">Capability</th><th scope="col">Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Precepta — Llama 3.2 in-boundary, smart router, local Nomic embeddings, OpenAI-compatible API</th>
+          <td class="st-yes">Shipping · 15-day free trial</td>
+        </tr>
+        <tr>
+          <th scope="row">Precepta — firewall, sensitivity, policy, PII redaction, output leak scanning, cache, audit</th>
+          <td class="st-yes">Shipping</td>
+        </tr>
+        <tr>
+          <th scope="row">Precepta — signed sovereignty attestation, zero-egress verification via live probes</th>
+          <td class="st-yes">Shipping</td>
+        </tr>
+        <tr>
+          <th scope="row">Precepta — self-hosted with no public route; on-premises</th>
+          <td class="st-yes">Available</td>
+        </tr>
+        <tr>
+          <th scope="row">Precepta — published pricing</th>
+          <td class="st-none">None yet</td>
+        </tr>
+        <tr>
+          <th scope="row">Intent Studio — workspace, claim states, autonomy dial, collaboration</th>
+          <td class="st-yes">Public · early access</td>
+        </tr>
+        <tr>
+          <th scope="row">Cerebrio — the reasoning engine</th>
+          <td class="st-road">Roadmap · targeting next year</td>
+        </tr>
+        <tr>
+          <th scope="row">Forge — evaluation and improvement</th>
+          <td class="st-road">Not started · a function, not a product</td>
+        </tr>
+        <tr>
+          <th scope="row">Limina Labs</th>
+          <td class="st-road">Early-stage, unfunded</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= HORIZON ================= -->
+<section class="sec sec--fill" id="horizon">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Where this goes</p>
+      <h2>The way your teams work becomes a capability the enterprise owns.</h2>
     </div>
 
     <div class="road rv">
       <div class="road-col">
-        <div class="road-when">Shipped</div>
-        <div class="road-what">Collaboration, per-resource authority, evidence across documents, audio, video and images, and the knowledge graph</div>
-      </div>
-      <div class="road-col">
-        <div class="road-when">Early Sep 2026</div>
-        <div class="road-what">Self-hosted enterprise deployment</div>
-      </div>
-      <div class="road-col">
-        <div class="road-when">October 2026</div>
-        <div class="road-what">Evaluations, vocabularies and synthetic data</div>
+        <div class="road-when">Now</div>
+        <div class="road-what">Intent Studio and Precepta: specify intent, govern execution, prove what happened. Two-thirds of the loop, shipping, on the customer's own infrastructure.</div>
       </div>
       <div class="road-col future">
-        <div class="road-when">Nov – Dec 2026</div>
-        <div class="road-what">Connected knowledge sources</div>
+        <div class="road-when">Next</div>
+        <div class="road-what">Customers compose the layers, Cerebrio closes the loop, and Forge adds the improvement half.</div>
       </div>
       <div class="road-col future">
-        <div class="road-when">2027 →</div>
-        <div class="road-what">Forge, and the full loop closing on Cerebrio</div>
+        <div class="road-when">Long term</div>
+        <div class="road-what">The decisions your people and agents make every day stop evaporating. Every intent agreed, evaluation run, trace captured and correction made is your organisation deciding how it works — and the stack retains all of it.</div>
       </div>
     </div>
 
-    <p class="road-note rv">Near-term dates are commitments. Later ones are sequence.</p>
+    <p class="road-note rv">That last step is the one thing that requires the full stack — and it is what sovereign AI actually means here: not merely running models in your own walls, but owning the capability that accumulates inside them.</p>
   </div>
 </section>
 
@@ -1134,8 +1451,8 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 
     <div class="domains rv">
       <div>
-        <h4>Manufacturing &amp; plant</h4>
-        <p>Plan a line changeover · qualify a second supplier · schedule a maintenance window</p>
+        <h4>Manufacturing &amp; plant operations</h4>
+        <p>Line changeovers · exception handling · qualify a second supplier</p>
         <p class="out">→ A change plan the line, the supplier and quality all worked from</p>
       </div>
       <div>
@@ -1149,17 +1466,18 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
         <p class="out">→ An analysis and a plan, evidenced</p>
       </div>
       <div>
-        <h4>Software &amp; engineering</h4>
+        <h4>Software &amp; engineering teams</h4>
         <p>Ship a control-system change with the line · settle a contested requirement · run an RCA</p>
         <p class="out">→ A spec an agent or a developer can act on</p>
       </div>
     </div>
 
     <div class="verdict rv" style="margin-top:clamp(28px,4vw,40px)">
-      <span class="k">And one person in particular</span>
+      <span class="k">Beachhead</span>
       <span class="v">
-        The executive who owns the risk — a CISO, a CTO, a VP of operations — and who will be
-        asked afterwards why an agent was allowed to do that, who decided, and on what basis.
+        High-precision, regulated environments — finance, healthcare, legal — where deterministic
+        safety is mandatory rather than nice to have, and an ungoverned competitor is disqualified
+        rather than cheaper.
       </span>
     </div>
   </div>
@@ -1174,7 +1492,7 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
     </div>
     <div class="team">
       <article class="person rv">
-        <img src="assets/team/sarang.jpg" alt="Sarang Bondre" loading="lazy">
+        <img src="assets/team/sarang.jpg" alt="Sarang Bondre" loading="lazy" width="72" height="72">
         <div class="role">Founder</div>
         <h3>Sarang Bondre</h3>
         <p>
@@ -1184,7 +1502,7 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
         </p>
       </article>
       <article class="person rv">
-        <img src="assets/team/avinash.jpg" alt="Avinash Singh" loading="lazy">
+        <img src="assets/team/avinash.jpg" alt="Avinash Singh" loading="lazy" width="72" height="72">
         <div class="role">Co-founder</div>
         <h3>Avinash Singh</h3>
         <p>
@@ -1193,7 +1511,7 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
         </p>
       </article>
       <article class="person rv">
-        <img src="assets/team/ganesh.jpg" alt="Ganesh Iyer" loading="lazy">
+        <img src="assets/team/ganesh.jpg" alt="Ganesh Iyer" loading="lazy" width="72" height="72">
         <div class="role">Co-founder</div>
         <h3>Ganesh Iyer</h3>
         <p>
@@ -1214,35 +1532,49 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
     </div>
     <div class="qa rv">
       <div>
-        <h4>Is this a wrapper around somebody else's model?</h4>
+        <h4>How is this different from RAG?</h4>
         <p>
-          No. The models are pluggable and you choose which ones run, per deployment. What we
-          build is the layer beneath them — the intent record, the policy gates, the audit
-          trail and the knowledge graph. Swap the model and all of that survives.
+          RAG fetches text to answer a question. We govern a piece of <em>work</em>: what was
+          intended, what was permitted, what happened, what was learned. Retrieval is a step;
+          this is the loop around it.
+        </p>
+      </div>
+      <div>
+        <h4>Isn't this just guardrails?</h4>
+        <p>
+          Guardrails are usually prompt instructions, and the model can be argued past them.
+          Ours are external and deterministic — enforced outside the model, where it cannot
+          reach them.
+        </p>
+      </div>
+      <div>
+        <h4>Why not build it on the model vendor's platform?</h4>
+        <p>
+          Then your rules live in their runtime, and you rebuild when they change it. We put
+          that layer on your side of the boundary, so changing model vendor costs you nothing.
         </p>
       </div>
       <div>
         <h4>Does anything leave our network?</h4>
         <p>
-          In the self-hosted deployment, no. It runs in your cloud against your models, your
-          identity provider and your audit store, licensed by key with no telemetry and no
-          phone-home. Air-gapped operation is supported.
+          In the self-hosted deployment, no. It runs against your models, your identity provider
+          and your audit store, licensed by key with no telemetry and no phone-home. Zero-egress
+          is verified by live probes and backed by a signed attestation.
         </p>
       </div>
       <div>
-        <h4>Do we have to adopt all four products?</h4>
+        <h4>Do we have to adopt all three products?</h4>
         <p>
-          No. Each is complete and worth buying on its own. Most organisations start with one —
-          either bounding a single decision type in Intent Studio, or getting visibility of
-          existing AI traffic through Precepta — and compose the rest later.
+          No. Each is independently sellable and works on its own, inside someone else's stack.
+          Buy Precepta for sovereign model infrastructure, or Intent Studio for governed agentic
+          work. Most organisations start with one and compose later.
         </p>
       </div>
       <div>
-        <h4>Why not just wait for the models to get good enough?</h4>
+        <h4>You're early and unfunded. Why you?</h4>
         <p>
-          Because the gap is not capability. Alignment inside the weights is uncomputable for
-          expressive systems, so a better model still cannot tell you why it was allowed to
-          act. That has to be enforced outside the model, and it has to be recorded.
+          Because this has to be architecture, not a feature. Incumbents built for a world where
+          the model was trusted. We started from the assumption that it cannot be.
         </p>
       </div>
     </div>
@@ -1262,26 +1594,26 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
 
       <div class="routes">
         <a class="route" href="https://preceptaai.com/" target="_blank" rel="noopener">
-          <span class="rtag">Start with visibility</span>
+          <span class="rtag">Start with the boundary</span>
           <span class="rname">See your shadow AI <span class="arw">→</span></span>
-          <p class="rtext">Find out which models your teams are already using, and what is leaving the building. An afternoon, no re-engineering.</p>
+          <p class="rtext">Find out which models your teams are already using, and what is leaving the building. An afternoon, no re-engineering. 15-day free trial.</p>
         </a>
         <a class="route" href="https://intent.preceptaai.com/" target="_blank" rel="noopener">
           <span class="rtag">Start with one intent</span>
           <span class="rname">Walk a real piece of work <span class="arw">→</span></span>
-          <p class="rtext">Take a changeover, an outage window or a contested requirement and build it properly — claims, evidence, disagreement and all.</p>
+          <p class="rtext">Take a changeover, an outage window or a contested requirement and specify it properly — claims, evidence, disagreement and all.</p>
         </a>
-        <a class="route" href="https://thecerebrio.ai/" target="_blank" rel="noopener">
-          <span class="rtag">Start with memory</span>
-          <span class="rname">Give your agents a record <span class="arw">→</span></span>
-          <p class="rtext">A typed, temporal knowledge graph your agents reason from — every fact dated, every decision traced, free during early access.</p>
-        </a>
+        <div class="route route--flat">
+          <span class="rtag">Start inside your own walls</span>
+          <span class="rname">Self-hosted, zero-egress</span>
+          <p class="rtext">Running something regulated? We work with a small number of enterprises at a time on fully self-hosted deployments with signed attestation.</p>
+        </div>
       </div>
 
       <div class="start-foot">
         <p>
-          Running something regulated, or want the whole stack inside your own boundary?
-          We work with a small number of enterprises at a time on fully self-hosted deployments.
+          Limina Labs is early-stage and unfunded, currently in early access with a small number
+          of enterprises. We would rather tell you that now than have you find out later.
         </p>
         <a href="mailto:hello@preceptaai.com?subject=Limina%20Labs">hello@preceptaai.com →</a>
       </div>
@@ -1295,8 +1627,11 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <img src="assets/logo/limina-lockup.png" alt="Limina Labs">
-        <p>The persistent, deterministic reasoning substrate for enterprise AI.</p>
+        <span class="lockup">
+          <svg class="mark" viewBox="0 0 88 62" aria-hidden="true" focusable="false"><use href="#limina-mark"/></svg>
+          <span class="word">Limina <i>Labs</i></span>
+        </span>
+        <p>Enterprise AI that can be trusted to act. What you meant, what it did, what you learned — one governed record, inside your own walls.</p>
         <p style="margin-top:10px">Limina Labs Private Limited · Pune, India — working with enterprises in India, the EU and the US.</p>
       </div>
       <div>
@@ -1304,19 +1639,19 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
         <ul>
           <li><a href="https://intent.preceptaai.com/" target="_blank" rel="noopener">Intent Studio ↗</a></li>
           <li><a href="https://preceptaai.com/" target="_blank" rel="noopener">Precepta ↗</a></li>
-          <li><a href="https://thecerebrio.ai/" target="_blank" rel="noopener">Cerebrio ↗</a></li>
-          <li><span style="color:var(--ink-4)">Forge — 2027</span></li>
+          <li><span style="color:var(--ink-4)">Cerebrio — roadmap</span></li>
+          <li><span style="color:var(--ink-4)">Forge — a function</span></li>
         </ul>
       </div>
       <div>
         <h5>This page</h5>
         <ul>
-          <li><a href="#premise">The premise</a></li>
+          <li><a href="#problem">The problem</a></li>
+          <li><a href="#insight">The insight</a></li>
           <li><a href="#autonomy">Autonomy</a></li>
           <li><a href="#stack">The stack</a></li>
           <li><a href="#loop">The loop</a></li>
-          <li><a href="#deploy">Deployment</a></li>
-          <li><a href="#team">Team</a></li>
+          <li><a href="#status">What's built</a></li>
         </ul>
       </div>
       <div>
@@ -1331,11 +1666,37 @@ h1,h2,h3,h4{font-family:var(--sans);font-weight:600;margin:0;letter-spacing:-.02
       </div>
     </div>
     <div class="foot-base">
-      <span>© 2026 Limina Labs Private Limited</span>
+      <span>© 2026 Limina Labs Private Limited · Early access</span>
       <span>Attributable · grounded · bounded · revocable</span>
     </div>
   </div>
 </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Limina Labs",
+  "legalName": "Limina Labs Private Limited",
+  "url": "https://liminalabs.ai/",
+  "logo": "https://liminalabs.ai/assets/logo/limina-mark-cobalt.svg",
+  "slogan": "Enterprise AI that can be trusted to act.",
+  "description": "Limina Labs makes enterprise AI accountable. Intent Studio, Precepta and Cerebrio keep intent, execution and learning as one governed record — with any model, inside your own walls.",
+  "email": "hello@preceptaai.com",
+  "foundingLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN"}},
+  "founder": [
+    {"@type": "Person", "name": "Sarang Bondre"},
+    {"@type": "Person", "name": "Avinash Singh"},
+    {"@type": "Person", "name": "Ganesh Iyer"}
+  ],
+  "knowsAbout": [
+    "Sovereign AI", "AI governance", "enterprise AI", "self-hosted AI", "AI infrastructure",
+    "model gateway", "zero-egress", "AI audit and compliance", "agentic workflows",
+    "LLM routing", "data sovereignty", "enterprise knowledge"
+  ],
+  "numberOfEmployees": {"@type": "QuantitativeValue", "minValue": 2, "maxValue": 10}
+}
+</script>
 
 <script>
 (function(){

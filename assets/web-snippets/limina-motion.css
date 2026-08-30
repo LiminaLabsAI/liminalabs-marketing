@@ -1,0 +1,52 @@
+/* Limina Labs — motion primitives
+   One logo animation (lift) and three UI motifs (march, trail, relay).
+   Apply a variant class to the <svg>; bars are .lb-bar in source order,
+   longest first. Bars must be direct children of the svg. */
+
+@keyframes lb-lift  { from { opacity: 0; transform: translateY(16px); }
+                      to   { opacity: 1; transform: translateY(0); } }
+@keyframes lb-march { 0%, 100% { transform: translateX(0);    opacity: 1; }
+                      40%      { transform: translateX(14px); opacity: .6; }
+                      72%      { transform: translateX(0);    opacity: 1; } }
+@keyframes lb-trail { 0%   { transform: translateX(-26px); opacity: 0; }
+                      22%  { opacity: 1; }
+                      70%  { transform: translateX(22px);  opacity: 1; }
+                      100% { transform: translateX(40px);  opacity: 0; } }
+@keyframes lb-relay { 0%, 100% { opacity: .32; }
+                      18%      { opacity: 1; }
+                      40%      { opacity: .32; } }
+
+.lb-mark .lb-bar { transform-box: fill-box; transform-origin: 50% 100%; }
+
+/* Lift — the only logo animation. Plays once, 0.66s. */
+.lb-lift .lb-bar { animation: lb-lift .66s cubic-bezier(.2,.85,.25,1) both; }
+.lb-lift .lb-bar:nth-child(1) { animation-delay: 0s; }
+.lb-lift .lb-bar:nth-child(2) { animation-delay: .13s; }
+.lb-lift .lb-bar:nth-child(3) { animation-delay: .26s; }
+.lb-lift .lb-bar:nth-child(4) { animation-delay: .39s; }
+
+/* March — hover only. Add .lb-march on :hover, or use .lb-hover:hover. */
+.lb-march .lb-bar,
+.lb-hover:hover .lb-bar { animation: lb-march 2.4s ease-in-out infinite; }
+.lb-march .lb-bar:nth-child(1), .lb-hover:hover .lb-bar:nth-child(1) { animation-delay: .39s; }
+.lb-march .lb-bar:nth-child(2), .lb-hover:hover .lb-bar:nth-child(2) { animation-delay: .26s; }
+.lb-march .lb-bar:nth-child(3), .lb-hover:hover .lb-bar:nth-child(3) { animation-delay: .13s; }
+.lb-march .lb-bar:nth-child(4), .lb-hover:hover .lb-bar:nth-child(4) { animation-delay: 0s; }
+
+/* Trail — loading. Bars only, never labelled as the logo. */
+.lb-trail .lb-bar { animation: lb-trail 3.2s ease-in-out infinite; }
+.lb-trail .lb-bar:nth-child(1) { animation-delay: .48s; }
+.lb-trail .lb-bar:nth-child(2) { animation-delay: .32s; }
+.lb-trail .lb-bar:nth-child(3) { animation-delay: .16s; }
+.lb-trail .lb-bar:nth-child(4) { animation-delay: 0s; }
+
+/* Relay — multi-step progress. */
+.lb-relay .lb-bar { animation: lb-relay 2.8s ease-in-out infinite; }
+.lb-relay .lb-bar:nth-child(1) { animation-delay: 0s; }
+.lb-relay .lb-bar:nth-child(2) { animation-delay: .22s; }
+.lb-relay .lb-bar:nth-child(3) { animation-delay: .44s; }
+.lb-relay .lb-bar:nth-child(4) { animation-delay: .66s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lb-mark .lb-bar { animation: none !important; opacity: 1 !important; transform: none !important; }
+}

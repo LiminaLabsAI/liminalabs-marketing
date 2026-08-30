@@ -1,0 +1,770 @@
+/* ============================================================================
+   LIMEN — components
+   Containers are soft. Content marks stay sharp. One angle: -42.5°.
+   ========================================================================= */
+
+/* ---------------------------------------------------------------------------
+   1. GLASS SURFACE
+   The primitive everything else is built on. The bevel runs top-left to
+   bottom-right, the same axis as the ground gradient, so every pane reads as
+   lit from one consistent direction.
+   ------------------------------------------------------------------------ */
+.lim-pane,
+.lim-card,
+.lim-nav,
+.lim-sheet,
+.lim-stat,
+.lim-table-wrap {
+  position: relative;
+  background: var(--lim-glass);
+  -webkit-backdrop-filter: blur(var(--lim-blur)) saturate(var(--lim-sat));
+  backdrop-filter: blur(var(--lim-blur)) saturate(var(--lim-sat));
+  border: 1px solid var(--lim-hairline);
+  border-radius: var(--lim-r-xl);
+  box-shadow: var(--lim-shadow-2);
+  isolation: isolate;
+}
+
+/* The limen edge — a lit bevel, drawn as a masked gradient border. */
+.lim-pane::before,
+.lim-card::before,
+.lim-nav::before,
+.lim-sheet::before,
+.lim-stat::before,
+.lim-table-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg,
+    var(--lim-edge) 0%,
+    var(--lim-edge-dim) 38%,
+    transparent 68%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+}
+
+.lim-pane { padding: var(--lim-s-6); }
+.lim-pane--solid { background: var(--lim-glass-solid); }
+.lim-pane--thin  { background: var(--lim-glass-thin); box-shadow: var(--lim-shadow-1); }
+.lim-pane--flush { padding: 0; }
+
+/* Browsers without backdrop-filter get an opaque pane rather than a
+   transparent one — legibility first. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .lim-pane, .lim-card, .lim-nav, .lim-sheet, .lim-stat, .lim-table-wrap {
+    background: var(--lim-glass-solid);
+  }
+}
+
+/* The sweep — a band of light crossing the pane at the mark's own lean. */
+.lim-sweep { overflow: hidden; }
+.lim-sweep::after {
+  content: "";
+  position: absolute;
+  top: -25%;
+  bottom: -25%;
+  left: -45%;
+  width: 30%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, var(--lim-edge), transparent);
+  transform: skewX(var(--lim-skew));
+}
+.lim-sweep:hover::after,
+.lim-sweep:focus-within::after {
+  animation: lim-sweep 900ms var(--lim-ease-out);
+}
+@keyframes lim-sweep {
+  0%   { opacity: 0;  transform: skewX(var(--lim-skew)) translateX(0); }
+  22%  { opacity: .85; }
+  100% { opacity: 0;  transform: skewX(var(--lim-skew)) translateX(520%); }
+}
+
+/* ---------------------------------------------------------------------------
+   2. THE MARK AND THE LADDER
+   One inline <svg> serves both themes: the bars paint with --lim-bar-*.
+   ------------------------------------------------------------------------ */
+/* Size a mark with --lim-mark-size or a modifier. A plain width="" attribute
+   on the <svg> cannot win against this rule, so never rely on one. */
+.lim-mark {
+  inline-size: var(--lim-mark-size, 22px);
+  block-size: auto;
+  flex: none;
+  overflow: visible; /* the bars lean past the viewBox while animating */
+}
+.lim-mark--sm { --lim-mark-size: 16px; }
+.lim-mark--md { --lim-mark-size: 34px; }
+.lim-mark--lg { --lim-mark-size: 56px; }
+.lim-mark--xl { --lim-mark-size: 88px; }
+.lim-mark .lb-bar:nth-child(1) { fill: var(--lim-bar-1); }
+.lim-mark .lb-bar:nth-child(2) { fill: var(--lim-bar-2); }
+.lim-mark .lb-bar:nth-child(3) { fill: var(--lim-bar-3); }
+.lim-mark .lb-bar:nth-child(4) { fill: var(--lim-bar-4); }
+.lim-mark--flat .lb-bar { fill: var(--lim-accent); }
+
+/* Ladder — the mark's proportions as a UI element. Used for section markers,
+   step state and loading. The descending widths are the mark's: 124/96/68/40. */
+.lim-ladder {
+  --lim-ladder-w: 56px;
+  /* Bar height and gap are the mark's own, expressed against the longest bar:
+     24 / 124 and 12 / 124. Set only the width and the rest stays correct. */
+  --lim-ladder-bar: calc(var(--lim-ladder-w) * .1935);
+  --lim-ladder-gap: calc(var(--lim-ladder-w) * .0968);
+  display: flex;
+  flex-direction: column;
+  gap: var(--lim-ladder-gap);
+  width: var(--lim-ladder-w);
+  flex: none;
+}
+.lim-ladder > i {
+  display: block;
+  height: var(--lim-ladder-bar);
+  border-radius: 1px;
+  /* Bottom edge anchored, top edge leaning right — the mark's own construction.
+     Leave ~0.92 x bar-height of clearance to the right. */
+  transform-origin: 0 100%;
+  transform: skewX(var(--lim-skew));
+  transition: background var(--lim-d-2) var(--lim-ease),
+              opacity var(--lim-d-2) var(--lim-ease);
+}
+.lim-ladder > i:nth-child(1) { width: var(--lim-ladder-1); background: var(--lim-bar-1); }
+.lim-ladder > i:nth-child(2) { width: var(--lim-ladder-2); background: var(--lim-bar-2); }
+.lim-ladder > i:nth-child(3) { width: var(--lim-ladder-3); background: var(--lim-bar-3); }
+.lim-ladder > i:nth-child(4) { width: var(--lim-ladder-4); background: var(--lim-bar-4); }
+
+.lim-ladder--sm { --lim-ladder-w: 34px; }
+.lim-ladder--lg { --lim-ladder-w: 88px; }
+
+/* Step state: a ladder that reports progress. Reached rungs take the ramp,
+   the rest stay faint. */
+.lim-ladder--steps > i { background: var(--lim-text-faint); opacity: .5; }
+.lim-ladder--steps > i.is-reached { opacity: 1; }
+.lim-ladder--steps > i.is-reached:nth-child(1) { background: var(--lim-bar-1); }
+.lim-ladder--steps > i.is-reached:nth-child(2) { background: var(--lim-bar-2); }
+.lim-ladder--steps > i.is-reached:nth-child(3) { background: var(--lim-bar-3); }
+.lim-ladder--steps > i.is-reached:nth-child(4) { background: var(--lim-bar-4); }
+
+/* ---------------------------------------------------------------------------
+   3. FLOATING NAV
+   Fixed, inset from every edge, so the page visibly runs underneath it.
+   ------------------------------------------------------------------------ */
+.lim-nav {
+  position: fixed;
+  top: var(--lim-nav-inset);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--lim-z-nav);
+  width: min(calc(100% - var(--lim-gutter) * 2), 1280px);
+  height: var(--lim-nav-h);
+  display: flex;
+  align-items: center;
+  gap: var(--lim-s-4);
+  padding: 0 var(--lim-s-2) 0 var(--lim-s-5);
+  border-radius: var(--lim-r-pill);
+  -webkit-backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
+          backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
+  transition: background var(--lim-d-3) var(--lim-ease),
+              box-shadow var(--lim-d-3) var(--lim-ease),
+              height var(--lim-d-3) var(--lim-ease);
+}
+.lim-nav.is-scrolled {
+  background: var(--lim-glass-nav);
+  box-shadow: var(--lim-shadow-3);
+}
+
+.lim-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 1 auto;
+  min-width: 0;
+  text-decoration: none;
+  color: var(--lim-text);
+  border-radius: var(--lim-r-pill);
+}
+.lim-nav__wordmark {
+  font-family: var(--lim-font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lim-nav__wordmark span { font-weight: 400; color: var(--lim-text-soft); }
+
+.lim-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+.lim-nav__links a {
+  padding: 8px 14px;
+  border-radius: var(--lim-r-pill);
+  font-size: var(--lim-t-sm);
+  font-weight: 500;
+  color: var(--lim-text-soft);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--lim-d-2) var(--lim-ease),
+              background var(--lim-d-2) var(--lim-ease);
+}
+.lim-nav__links a:hover { color: var(--lim-text); background: var(--lim-glass-thin); }
+.lim-nav__links a.is-active,
+.lim-nav__links a[aria-current="page"] {
+  color: var(--lim-text);
+  font-weight: 600;
+  background: var(--lim-glass-raise);
+  box-shadow: var(--lim-shadow-1), inset 0 1px 0 var(--lim-edge);
+}
+
+.lim-nav__end {
+  display: flex;
+  align-items: center;
+  gap: var(--lim-s-2);
+  margin-left: auto;
+  flex: none;
+}
+
+.lim-nav__toggle { display: none; }
+
+/* Mobile: the links move into a sheet that hangs off the pill. */
+.lim-sheet {
+  position: fixed;
+  z-index: calc(var(--lim-z-nav) - 1);
+  top: calc(var(--lim-nav-inset) + var(--lim-nav-h) + var(--lim-s-2));
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(100% - var(--lim-gutter) * 2), 1280px);
+  padding: var(--lim-s-3);
+  border-radius: var(--lim-r-xl);
+  background: var(--lim-glass-solid);
+  -webkit-backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
+          backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
+  display: none;
+}
+.lim-sheet[data-open="true"] {
+  display: block;
+  animation: lim-drop var(--lim-d-3) var(--lim-ease-out) both;
+}
+.lim-sheet a {
+  display: block;
+  padding: 11px var(--lim-s-4);
+  border-radius: var(--lim-r-md);
+  font-size: var(--lim-t-sm);
+  font-weight: 500;
+  color: var(--lim-text-muted);
+  text-decoration: none;
+}
+.lim-sheet a:hover { background: var(--lim-glass-thin); color: var(--lim-text); }
+@keyframes lim-drop {
+  from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .lim-nav__links { display: none; }
+  .lim-nav__toggle { display: inline-grid; }
+}
+@media (max-width: 560px) {
+  .lim-nav { padding-left: var(--lim-s-4); gap: var(--lim-s-3); }
+  /* The mark alone still identifies the brand; the words are what has to go. */
+  .lim-nav__wordmark { display: none; }
+}
+@media (max-width: 360px) {
+  /* Specific enough to beat .lim-btn's own display. */
+  .lim-nav .lim-nav__cta { display: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   4. BUTTONS
+   ------------------------------------------------------------------------ */
+.lim-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lim-s-2);
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--lim-r-pill);
+  background: none;
+  font-family: var(--lim-font-sans);
+  font-size: var(--lim-t-sm);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.005em;
+  color: var(--lim-text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--lim-d-1) var(--lim-ease),
+              box-shadow var(--lim-d-2) var(--lim-ease),
+              background var(--lim-d-2) var(--lim-ease),
+              border-color var(--lim-d-2) var(--lim-ease),
+              color var(--lim-d-2) var(--lim-ease);
+}
+.lim-btn:active { transform: translateY(1px); }
+
+/* Flat fill, tight shadow, nothing else. The only filled control on a screen
+   should be the calmest shape on it. */
+.lim-btn--primary {
+  background: var(--lim-action);
+  color: #FFFFFF;
+  box-shadow: var(--lim-shadow-1);
+}
+.lim-btn--primary:hover {
+  background: var(--lim-action-hover);
+  color: #FFFFFF;
+}
+.lim-btn--primary:active {
+  background: var(--lim-action-press);
+  box-shadow: none;
+}
+
+.lim-btn--glass {
+  background: var(--lim-glass);
+  -webkit-backdrop-filter: blur(var(--lim-blur)) saturate(var(--lim-sat));
+          backdrop-filter: blur(var(--lim-blur)) saturate(var(--lim-sat));
+  border-color: var(--lim-hairline-strong);
+  box-shadow: var(--lim-shadow-1), inset 0 1px 0 var(--lim-edge);
+  color: var(--lim-text);
+}
+.lim-btn--glass:hover {
+  background: var(--lim-glass-solid);
+  transform: translateY(-1px);
+  box-shadow: var(--lim-shadow-2), inset 0 1px 0 var(--lim-edge);
+  color: var(--lim-text);
+}
+
+.lim-btn--ghost { color: var(--lim-text-muted); }
+.lim-btn--ghost:hover { background: var(--lim-glass-thin); color: var(--lim-text); }
+
+.lim-btn--sm { padding: 7px 14px; font-size: var(--lim-t-xs); }
+.lim-btn--lg { padding: 14px 26px; font-size: var(--lim-t-body); }
+
+.lim-btn[disabled], .lim-btn.is-disabled {
+  opacity: .45;
+  pointer-events: none;
+}
+
+.lim-icon-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border-radius: var(--lim-r-pill);
+  border: 1px solid var(--lim-hairline);
+  background: var(--lim-glass-thin);
+  color: var(--lim-text-muted);
+  transition: color var(--lim-d-2) var(--lim-ease),
+              background var(--lim-d-2) var(--lim-ease),
+              border-color var(--lim-d-2) var(--lim-ease);
+}
+.lim-icon-btn:hover {
+  background: var(--lim-glass-raise);
+  border-color: var(--lim-hairline-strong);
+  color: var(--lim-text);
+}
+.lim-icon-btn svg { width: 18px; height: 18px; }
+.lim-icon-btn--sm { width: 32px; height: 32px; }
+.lim-icon-btn--sm svg { width: 15px; height: 15px; }
+
+/* The theme toggle shows the mode you would switch to, not the one you are in. */
+.lim-theme-toggle .lim-i-moon { display: block; }
+.lim-theme-toggle .lim-i-sun  { display: none; }
+:root[data-theme="dark"] .lim-theme-toggle .lim-i-moon { display: none; }
+:root[data-theme="dark"] .lim-theme-toggle .lim-i-sun  { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .lim-theme-toggle .lim-i-moon { display: none; }
+  :root:not([data-theme="light"]) .lim-theme-toggle .lim-i-sun  { display: block; }
+}
+
+/* ---------------------------------------------------------------------------
+   5. CARDS
+   ------------------------------------------------------------------------ */
+.lim-card {
+  padding: var(--lim-s-6);
+  transition: transform var(--lim-d-3) var(--lim-ease),
+              box-shadow var(--lim-d-3) var(--lim-ease),
+              background var(--lim-d-3) var(--lim-ease);
+}
+.lim-card--tight { padding: var(--lim-s-5); }
+.lim-card--flat {
+  background: var(--lim-glass-thin);
+  box-shadow: var(--lim-shadow-1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.lim-card--lift:hover,
+.lim-card--lift:focus-within {
+  transform: translateY(-3px);
+  background: var(--lim-glass-solid);
+  box-shadow: var(--lim-shadow-3);
+}
+
+.lim-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--lim-s-4);
+  margin-bottom: var(--lim-s-3);
+}
+.lim-card__title {
+  font-family: var(--lim-font-display);
+  font-size: var(--lim-t-4);
+  font-weight: 600;
+  letter-spacing: var(--lim-track-snug);
+}
+.lim-card__body { color: var(--lim-text-muted); font-size: var(--lim-t-sm); }
+.lim-card__foot {
+  margin-top: var(--lim-s-5);
+  padding-top: var(--lim-s-4);
+  border-top: 1px solid var(--lim-hairline);
+  display: flex;
+  align-items: center;
+  gap: var(--lim-s-3);
+}
+
+/* ---------------------------------------------------------------------------
+   6. BADGES, CHIPS, KEYS
+   ------------------------------------------------------------------------ */
+.lim-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border: 1px solid transparent;
+  border-radius: var(--lim-r-pill);
+  background: var(--lim-accent-wash);
+  color: var(--lim-accent);
+  font-size: var(--lim-t-xs);
+  font-weight: 600;
+  letter-spacing: -.005em;
+  white-space: nowrap;
+}
+.lim-badge--glass {
+  background: var(--lim-glass-thin);
+  border-color: var(--lim-hairline);
+  color: var(--lim-text-muted);
+}
+.lim-badge--ok   { background: var(--lim-ok-bg);   color: var(--lim-ok); }
+.lim-badge--warn { background: var(--lim-warn-bg); color: var(--lim-warn); }
+.lim-badge--stop { background: var(--lim-stop-bg); color: var(--lim-stop); }
+.lim-badge__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.lim-kbd {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: var(--lim-r-xs);
+  border: 1px solid var(--lim-hairline-strong);
+  border-bottom-width: 2px;
+  background: var(--lim-glass-thin);
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  color: var(--lim-text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   7. FIELDS
+   ------------------------------------------------------------------------ */
+.lim-field { display: flex; flex-direction: column; gap: 6px; }
+.lim-label {
+  font-size: var(--lim-t-xs);
+  font-weight: 600;
+  color: var(--lim-text-muted);
+}
+.lim-input, .lim-select, .lim-textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--lim-hairline-strong);
+  border-radius: var(--lim-r-md);
+  background: var(--lim-glass-thin);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  color: var(--lim-text);
+  font-size: var(--lim-t-sm);
+  transition: border-color var(--lim-d-2) var(--lim-ease),
+              box-shadow var(--lim-d-2) var(--lim-ease),
+              background var(--lim-d-2) var(--lim-ease);
+}
+.lim-textarea { min-height: 108px; resize: vertical; line-height: 1.6; }
+.lim-input::placeholder, .lim-textarea::placeholder { color: var(--lim-text-faint); }
+.lim-input:focus, .lim-select:focus, .lim-textarea:focus {
+  outline: none;
+  border-color: var(--lim-accent);
+  background: var(--lim-glass-solid);
+  box-shadow: 0 0 0 3px var(--lim-accent-wash);
+}
+.lim-select {
+  appearance: none;
+  padding-right: 38px;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 19px) calc(50% + 1px), calc(100% - 14px) calc(50% + 1px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+.lim-hint  { font-size: var(--lim-t-xs); color: var(--lim-text-soft); }
+.lim-error { font-size: var(--lim-t-xs); color: var(--lim-stop); font-weight: 500; }
+.lim-field--invalid .lim-input,
+.lim-field--invalid .lim-textarea { border-color: var(--lim-stop); }
+
+/* ---------------------------------------------------------------------------
+   8. SEGMENTED CONTROL
+   ------------------------------------------------------------------------ */
+.lim-seg {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--lim-hairline);
+  border-radius: var(--lim-r-pill);
+  background: var(--lim-glass-thin);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+}
+.lim-seg button {
+  padding: 7px 16px;
+  border: 0;
+  border-radius: var(--lim-r-pill);
+  background: transparent;
+  font-size: var(--lim-t-sm);
+  font-weight: 500;
+  color: var(--lim-text-soft);
+  transition: color var(--lim-d-2) var(--lim-ease),
+              background var(--lim-d-2) var(--lim-ease);
+}
+.lim-seg button:hover { color: var(--lim-text); }
+.lim-seg button[aria-selected="true"] {
+  background: var(--lim-glass-raise);
+  color: var(--lim-text);
+  font-weight: 600;
+  box-shadow: var(--lim-shadow-1), inset 0 1px 0 var(--lim-edge);
+}
+
+/* ---------------------------------------------------------------------------
+   9. STATS
+   ------------------------------------------------------------------------ */
+.lim-stat { padding: var(--lim-s-5); border-radius: var(--lim-r-lg); }
+.lim-stat__value {
+  font-family: var(--lim-font-display);
+  font-size: clamp(1.75rem, 3vw, 2.375rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -.032em;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 6px;
+}
+.lim-stat__label {
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+}
+.lim-stat__note { margin-top: var(--lim-s-3); font-size: var(--lim-t-xs); color: var(--lim-text-soft); }
+
+/* ---------------------------------------------------------------------------
+   10. PROGRESS
+   Determinate uses a plain fill. Indeterminate uses the mark's lean as stripes.
+   ------------------------------------------------------------------------ */
+.lim-progress {
+  height: 8px;
+  border-radius: var(--lim-r-pill);
+  border: 1px solid var(--lim-hairline);
+  background: var(--lim-glass-thin);
+  overflow: hidden;
+}
+.lim-progress > i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--lim-cobalt-600), var(--lim-cobalt-400));
+  transition: width var(--lim-d-4) var(--lim-ease-out);
+}
+:root[data-theme="dark"] .lim-progress > i {
+  background: linear-gradient(90deg, var(--lim-cobalt-500), var(--lim-cobalt-300));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .lim-progress > i {
+    background: linear-gradient(90deg, var(--lim-cobalt-500), var(--lim-cobalt-300));
+  }
+}
+.lim-progress--striped > i {
+  /* Two layers: the stripes ride on top of the fill, so the fill must be
+     restated here or the shorthand above is overwritten. */
+  background-image:
+    repeating-linear-gradient(var(--lim-stripe),
+      rgba(255,255,255,.26) 0 8px,
+      transparent 8px 16px),
+    linear-gradient(90deg, var(--lim-cobalt-600), var(--lim-cobalt-400));
+  background-size: 22px 100%, 100% 100%;
+  background-repeat: repeat, no-repeat;
+  animation: lim-stripe 900ms linear infinite;
+}
+:root[data-theme="dark"] .lim-progress--striped > i {
+  background-image:
+    repeating-linear-gradient(var(--lim-stripe),
+      rgba(255,255,255,.26) 0 8px,
+      transparent 8px 16px),
+    linear-gradient(90deg, var(--lim-cobalt-500), var(--lim-cobalt-300));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .lim-progress--striped > i {
+    background-image:
+      repeating-linear-gradient(var(--lim-stripe),
+        rgba(255,255,255,.26) 0 8px,
+        transparent 8px 16px),
+      linear-gradient(90deg, var(--lim-cobalt-500), var(--lim-cobalt-300));
+  }
+}
+@keyframes lim-stripe { to { background-position: 22px 0, 0 0; } }
+
+/* ---------------------------------------------------------------------------
+   11. TABLE
+   ------------------------------------------------------------------------ */
+.lim-table-wrap { padding: var(--lim-s-5); overflow-x: auto; }
+.lim-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--lim-t-sm);
+}
+.lim-table th {
+  padding: 0 var(--lim-s-4) var(--lim-s-3);
+  text-align: left;
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+  white-space: nowrap;
+}
+.lim-table td {
+  padding: var(--lim-s-3) var(--lim-s-4);
+  border-top: 1px solid var(--lim-hairline);
+  color: var(--lim-text-muted);
+  vertical-align: top;
+}
+.lim-table td:first-child { color: var(--lim-text); font-weight: 500; }
+.lim-table tbody tr { transition: background var(--lim-d-2) var(--lim-ease); }
+.lim-table tbody tr:hover { background: var(--lim-glass-thin); }
+
+/* ---------------------------------------------------------------------------
+   12. NOTE
+   ------------------------------------------------------------------------ */
+.lim-note {
+  display: flex;
+  gap: var(--lim-s-4);
+  padding: var(--lim-s-4) var(--lim-s-5);
+  border: 1px solid var(--lim-hairline);
+  border-left: 3px solid var(--lim-accent);
+  border-radius: var(--lim-r-md);
+  background: var(--lim-glass-thin);
+  font-size: var(--lim-t-sm);
+  color: var(--lim-text-muted);
+}
+.lim-note--ok   { border-left-color: var(--lim-ok); }
+.lim-note--warn { border-left-color: var(--lim-warn); }
+.lim-note--stop { border-left-color: var(--lim-stop); }
+.lim-note strong { color: var(--lim-text); }
+
+/* ---------------------------------------------------------------------------
+   13. AVATAR
+   ------------------------------------------------------------------------ */
+.lim-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--lim-r-pill);
+  object-fit: cover;
+  border: 1px solid var(--lim-edge);
+  box-shadow: var(--lim-shadow-1);
+  flex: none;
+}
+.lim-avatar--lg { width: 64px; height: 64px; }
+.lim-avatar-group { display: flex; }
+.lim-avatar-group .lim-avatar + .lim-avatar { margin-left: -12px; }
+
+/* ---------------------------------------------------------------------------
+   14. FOOTER
+   ------------------------------------------------------------------------ */
+.lim-footer {
+  margin-top: var(--lim-section);
+  padding-block: var(--lim-s-8) var(--lim-s-7);
+  border-top: 1px solid var(--lim-hairline);
+  color: var(--lim-text-soft);
+  font-size: var(--lim-t-sm);
+}
+.lim-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lim-s-5);
+}
+
+/* ---------------------------------------------------------------------------
+   15. RAMP
+   Documentation of the palette, drawn as the mark itself. Also usable in
+   product as a legend for the four autonomy settings.
+   ------------------------------------------------------------------------ */
+.lim-ramp { --lim-ramp-w: 180px; display: flex; flex-direction: column; gap: var(--lim-s-3); }
+.lim-ramp--sm { --lim-ramp-w: 120px; }
+.lim-ramp__row { display: flex; align-items: center; gap: var(--lim-s-4); }
+/* The rows inherit the mark's descending widths: 124 / 96 / 68 / 40. */
+.lim-ramp__row:nth-child(1) .lim-ramp__bar { width: var(--lim-ramp-w); }
+.lim-ramp__row:nth-child(2) .lim-ramp__bar { width: calc(var(--lim-ramp-w) * .774); }
+.lim-ramp__row:nth-child(3) .lim-ramp__bar { width: calc(var(--lim-ramp-w) * .548); }
+.lim-ramp__row:nth-child(4) .lim-ramp__bar { width: calc(var(--lim-ramp-w) * .323); }
+.lim-ramp__bar {
+  height: 28px;
+  border-radius: 2px;
+  transform-origin: 0 100%;
+  transform: skewX(var(--lim-skew));
+  flex: none;
+  /* The lean throws the top edge right by height x 0.92 — reserve it, or the
+     next element sits under the bar. */
+  margin-right: 28px;
+  box-shadow: var(--lim-shadow-1);
+}
+.lim-ramp__meta { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.lim-ramp__name { font-size: var(--lim-t-xs); font-weight: 600; }
+.lim-ramp__hex {
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  color: var(--lim-text-soft);
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------------------
+   16. AMBIENT MARK
+   The oversized mark bleeding off the corner, as in the deck backgrounds.
+   Purely atmospheric — always aria-hidden.
+   ------------------------------------------------------------------------ */
+.lim-ambient {
+  position: fixed;
+  right: -8vw;
+  bottom: -12vh;
+  --lim-mark-size: min(32vw, 420px);
+  z-index: -1;
+  opacity: .18;
+  pointer-events: none;
+  user-select: none;
+}
+:root[data-theme="dark"] .lim-ambient { opacity: .10; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .lim-ambient { opacity: .10; }
+}

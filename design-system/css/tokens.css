@@ -1,0 +1,365 @@
+/* ============================================================================
+   LIMEN — Limina Labs design tokens
+   Every value here is derived from the brand kit in /assets:
+   the mark geometry, the cobalt and frost ramps, the lockup ink, and the
+   deck backgrounds (sampled pixel-exact).
+   Nothing in this file is invented for taste alone.
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+
+  /* ------------------------------------------------------------------
+     RAMPS — the mark's own colours
+     Cobalt is the mark on light grounds. Frost is the mark on dark.
+     200/300/500/600 are the four literal bar fills; the rest are the
+     interpolations UI needs (tints, pressed states).
+     ------------------------------------------------------------------ */
+  --lim-cobalt-50:  #EFF1FB;
+  --lim-cobalt-100: #DDE2F5;
+  --lim-cobalt-200: #B7C0EA; /* bar 4 — shortest */
+  --lim-cobalt-300: #7F8FDD; /* bar 3 */
+  --lim-cobalt-400: #576BD1;
+  --lim-cobalt-500: #2F47C4; /* bar 2 */
+  --lim-cobalt-600: #0B1FA6; /* bar 1 — longest, the anchor */
+  --lim-cobalt-700: #081678;
+
+  --lim-frost-100: #FFFFFF;  /* bar 1 on dark */
+  --lim-frost-200: #D3D9E2;  /* bar 2 */
+  --lim-frost-300: #9AA3AF;  /* bar 3 */
+  --lim-frost-400: #6B7480;  /* bar 4 */
+
+  /* Navy ink, lifted straight out of lockup/*.svg — the wordmark colours.
+     Text is never neutral grey in this system; it always carries the blue. */
+  --lim-navy-900: #0F1430;   /* "Limina" */
+  --lim-navy-700: #32385E;
+  --lim-navy-500: #565D8C;   /* "Labs" */
+  --lim-navy-300: #8B92B8;
+
+  /* Grounds, sampled from assets/background/deck-1920x1080-*.png */
+  --lim-ground-0: #FEFEFF;
+  --lim-ground-1: #F5F6FC;
+  --lim-ground-2: #ECEEFA;
+  --lim-ground-3: #E7EAF9;
+
+  --lim-abyss-0: #1A1E27;
+  --lim-abyss-1: #12141C;
+  --lim-abyss-2: #0E0F16;
+  --lim-abyss-3: #0A0B11;
+
+  /* Status — tuned to sit beside cobalt without fighting it */
+  --lim-ok:    #0E7A4F;
+  --lim-warn:  #A8620A;
+  --lim-stop:  #B3261E;
+  --lim-ok-bg:   rgba(14,122,79,.10);
+  --lim-warn-bg: rgba(168,98,10,.10);
+  --lim-stop-bg: rgba(179,38,30,.10);
+
+  /* ------------------------------------------------------------------
+     SEMANTIC — what you actually author against
+     ------------------------------------------------------------------ */
+  --lim-text:       var(--lim-navy-900);
+  --lim-text-muted: var(--lim-navy-700);
+  --lim-text-soft:  var(--lim-navy-500);
+  --lim-text-faint: var(--lim-navy-300); /* 2.8:1 — borders, dividers and
+                                            decoration only, never body copy */
+  --lim-text-on-accent: #FFFFFF;
+
+  --lim-accent:       var(--lim-cobalt-600);
+  --lim-accent-hover: var(--lim-cobalt-700);
+  --lim-accent-soft:  var(--lim-cobalt-500);
+  --lim-accent-wash:  var(--lim-cobalt-50);
+  --lim-link:         var(--lim-cobalt-600);
+  --lim-focus:        var(--lim-cobalt-500);
+
+  /* Filled controls are flat: one solid ramp value, no gradient, no glow.
+     Depth in this system belongs to the glass — a button that also glows
+     competes with every pane behind it. All three states are ramp steps, so
+     retuning the button never introduces a colour the mark does not have. */
+  --lim-action:       var(--lim-cobalt-500);
+  --lim-action-hover: var(--lim-cobalt-600);
+  --lim-action-press: var(--lim-cobalt-700);
+
+  /* The four bar fills. One inline <svg> mark serves both themes because
+     it paints with these. */
+  --lim-bar-1: var(--lim-cobalt-600);
+  --lim-bar-2: var(--lim-cobalt-500);
+  --lim-bar-3: var(--lim-cobalt-300);
+  --lim-bar-4: var(--lim-cobalt-200);
+
+  /* Page ground + the auras that make glass legible.
+     Blur over a flat fill is invisible; the auras are what the panes refract. */
+  --lim-page: linear-gradient(135deg,
+                var(--lim-ground-0) 0%,
+                var(--lim-ground-1) 42%,
+                var(--lim-ground-2) 74%,
+                var(--lim-ground-3) 100%);
+  --lim-aura-1: radial-gradient(58% 48% at 80% 4%,  rgba(47,71,196,.17), transparent 70%);
+  --lim-aura-2: radial-gradient(52% 44% at 4% 62%,  rgba(127,143,221,.16), transparent 72%);
+  --lim-aura-3: radial-gradient(46% 40% at 62% 96%, rgba(11,31,166,.08),  transparent 70%);
+
+  /* ------------------------------------------------------------------
+     GLASS
+     Two densities. `pane` is for things you read through (nav, cards);
+     `solid` is for things that must stay legible over anything (menus,
+     popovers, sticky bars).
+     ------------------------------------------------------------------ */
+  --lim-glass:        rgba(255,255,255,.62);
+  --lim-glass-solid:  rgba(255,255,255,.86);
+  --lim-glass-thin:   rgba(255,255,255,.38);
+  --lim-glass-raise:  rgba(255,255,255,.92); /* the pill inside a pill */
+  /* The scrolled nav sits between pane and solid. --lim-glass-solid is tuned
+     for menus and sheets, where text over arbitrary content has to stay
+     readable; at that weight a nav stops looking like glass at all. */
+  --lim-glass-nav:    rgba(255,255,255,.76);
+
+  --lim-edge:      rgba(255,255,255,.90);  /* the lit bevel, top-left */
+  --lim-edge-dim:  rgba(255,255,255,.45);  /* the same bevel, shaded side */
+  --lim-hairline:  rgba(15,20,48,.09);     /* outer definition against ground */
+  --lim-hairline-strong: rgba(15,20,48,.14);
+
+  --lim-blur: 20px;
+  --lim-blur-lg: 32px;
+  --lim-sat: 180%;
+
+  /* Shadows carry cobalt, not black — glass over a blue ground */
+  --lim-shadow-1: 0 1px 2px rgba(11,31,166,.05),
+                  0 4px 12px -4px rgba(11,31,166,.10);
+  --lim-shadow-2: 0 1px 2px rgba(11,31,166,.05),
+                  0 10px 24px -10px rgba(11,31,166,.18),
+                  0 28px 56px -28px rgba(11,31,166,.20);
+  --lim-shadow-3: 0 2px 4px rgba(11,31,166,.06),
+                  0 18px 40px -14px rgba(11,31,166,.24),
+                  0 44px 80px -40px rgba(11,31,166,.28);
+
+  /* ------------------------------------------------------------------
+     GEOMETRY — the one angle
+     The mark's bars lean 22 units across 24 of height: atan(22/24) = 42.5°.
+     Nothing else in this system is diagonal.
+     ------------------------------------------------------------------ */
+  --lim-skew: -42.5deg;
+  --lim-lean: 0.9167; /* tan(42.5°) — for widths that must clear the lean */
+  --lim-stripe: 132.5deg; /* the same lean expressed as a gradient angle */
+
+  /* Ladder — the bar widths as ratios of the longest (124 / 96 / 68 / 40) */
+  --lim-ladder-1: 100%;
+  --lim-ladder-2: 77.4%;
+  --lim-ladder-3: 54.8%;
+  --lim-ladder-4: 32.3%;
+
+  /* ------------------------------------------------------------------
+     SPACE — the mark's rhythm
+     gap 12, bar height 24, pitch 36. Everything else is 4px steps around it.
+     ------------------------------------------------------------------ */
+  --lim-s-1: 4px;
+  --lim-s-2: 8px;
+  --lim-s-3: 12px;   /* bar gap */
+  --lim-s-4: 16px;
+  --lim-s-5: 24px;   /* bar height */
+  --lim-s-6: 36px;   /* bar pitch */
+  --lim-s-7: 48px;
+  --lim-s-8: 64px;
+  --lim-s-9: 96px;
+  --lim-s-10: 144px;
+  --lim-section: clamp(64px, 9vw, 128px);
+
+  /* ------------------------------------------------------------------
+     RADIUS — containers are soft, content marks stay sharp
+     ------------------------------------------------------------------ */
+  --lim-r-xs: 6px;
+  --lim-r-sm: 10px;
+  --lim-r-md: 14px;
+  --lim-r-lg: 20px;
+  --lim-r-xl: 28px;
+  --lim-r-2xl: 36px;
+  --lim-r-pill: 999px;
+
+  /* ------------------------------------------------------------------
+     TYPE — Bricolage Grotesque displays, Archivo works, Plex Mono labels
+     ------------------------------------------------------------------ */
+  --lim-font-display: "Bricolage Grotesque", "Archivo", -apple-system,
+                      BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+  --lim-font-sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Helvetica, Arial, sans-serif;
+  --lim-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo,
+                   Consolas, monospace;
+
+  --lim-t-hero:   clamp(2.5rem, 5.2vw, 4.25rem);
+  --lim-t-1:      clamp(2.125rem, 4.4vw, 3.25rem);
+  --lim-t-2:      clamp(1.625rem, 2.8vw, 2.25rem);
+  --lim-t-3:      clamp(1.25rem, 1.8vw, 1.5rem);
+  --lim-t-4:      1.125rem;
+  --lim-t-lede:   clamp(1.0625rem, 1.5vw, 1.25rem);
+  --lim-t-body:   1rem;
+  --lim-t-sm:     0.875rem;
+  --lim-t-xs:     0.8125rem;
+  --lim-t-eyebrow:0.6875rem;
+
+  --lim-lh-tight: 1.06;
+  --lim-lh-snug:  1.24;
+  --lim-lh-body:  1.62;
+  --lim-track-tight: -0.028em;
+  --lim-track-snug:  -0.012em;
+  --lim-track-wide:  0.16em;
+
+  /* ------------------------------------------------------------------
+     MOTION — the kit's own curves and durations
+     ------------------------------------------------------------------ */
+  --lim-ease:      cubic-bezier(.22,.61,.36,1);
+  --lim-ease-out:  cubic-bezier(.2,.85,.25,1);   /* the lift curve */
+  --lim-ease-in:   cubic-bezier(.5,0,.75,0);
+  --lim-spring:    cubic-bezier(.34,1.32,.5,1);
+  --lim-d-1: 120ms;
+  --lim-d-2: 200ms;
+  --lim-d-3: 320ms;
+  --lim-d-4: 660ms;  /* the lift duration */
+
+  /* ------------------------------------------------------------------
+     LAYOUT
+     ------------------------------------------------------------------ */
+  --lim-wrap: 1200px;
+  --lim-wrap-narrow: 760px;
+  --lim-gutter: clamp(20px, 4.5vw, 56px);
+  --lim-nav-h: 60px;
+  --lim-nav-inset: 14px;
+
+  --lim-z-base: 0;
+  --lim-z-raised: 10;
+  --lim-z-sticky: 40;
+  --lim-z-nav: 60;
+  --lim-z-overlay: 80;
+  --lim-z-toast: 100;
+}
+
+/* ==========================================================================
+   DARK — the frost ramp takes over. Same geometry, same rhythm.
+   ======================================================================== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --lim-text:       #FFFFFF;
+  --lim-text-muted: var(--lim-frost-200);
+  --lim-text-soft:  var(--lim-frost-300);
+  --lim-text-faint: var(--lim-frost-400); /* 3.9:1 — large text, rules, disabled */
+  --lim-text-on-accent: #FFFFFF;
+
+  --lim-accent:       var(--lim-cobalt-400);
+  --lim-accent-hover: var(--lim-cobalt-300);
+  --lim-accent-soft:  var(--lim-cobalt-500);
+  --lim-accent-wash:  rgba(87,107,209,.14);
+  --lim-link:         var(--lim-cobalt-300);
+  --lim-focus:        var(--lim-cobalt-300);
+
+  /* On a near-black ground a darker hover reads as the button switching off,
+     so dark brightens on hover and settles darker on press. Cobalt-300 would
+     be the natural next step up but it is only 3.05:1 against white text —
+     600 keeps every state above AA. */
+  --lim-action:       var(--lim-cobalt-500);
+  --lim-action-hover: var(--lim-cobalt-400);
+  --lim-action-press: var(--lim-cobalt-600);
+
+  --lim-bar-1: var(--lim-frost-100);
+  --lim-bar-2: var(--lim-frost-200);
+  --lim-bar-3: var(--lim-frost-300);
+  --lim-bar-4: var(--lim-frost-400);
+
+  --lim-page: linear-gradient(135deg,
+                var(--lim-abyss-0) 0%,
+                var(--lim-abyss-1) 45%,
+                var(--lim-abyss-2) 76%,
+                var(--lim-abyss-3) 100%);
+  --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.30), transparent 70%);
+  --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.32), transparent 72%);
+  --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.14), transparent 70%);
+
+  --lim-glass:       rgba(38,44,58,.55);
+  --lim-glass-solid: rgba(26,30,39,.88);
+  --lim-glass-thin:  rgba(38,44,58,.30);
+  --lim-glass-raise: rgba(255,255,255,.10);
+  --lim-glass-nav:   rgba(26,30,39,.72);
+
+  --lim-edge:     rgba(255,255,255,.14);
+  --lim-edge-dim: rgba(255,255,255,.05);
+  --lim-hairline: rgba(255,255,255,.09);
+  --lim-hairline-strong: rgba(255,255,255,.15);
+
+  --lim-shadow-1: 0 1px 2px rgba(0,0,0,.40),
+                  0 4px 12px -4px rgba(0,0,0,.50);
+  --lim-shadow-2: 0 1px 2px rgba(0,0,0,.45),
+                  0 12px 28px -10px rgba(0,0,0,.60),
+                  0 32px 60px -30px rgba(0,0,0,.70);
+  --lim-shadow-3: 0 2px 4px rgba(0,0,0,.50),
+                  0 20px 44px -14px rgba(0,0,0,.68),
+                  0 48px 90px -40px rgba(0,0,0,.80);
+
+  --lim-ok-bg:   rgba(52,199,133,.14);
+  --lim-warn-bg: rgba(226,162,74,.14);
+  --lim-stop-bg: rgba(240,120,112,.14);
+  --lim-ok:   #4FC08A;
+  --lim-warn: #E2A24A;
+  --lim-stop: #F08A82;
+}
+
+/* System preference, unless the visitor has explicitly chosen light */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --lim-text:       #FFFFFF;
+    --lim-text-muted: var(--lim-frost-200);
+    --lim-text-soft:  var(--lim-frost-300);
+    --lim-text-faint: var(--lim-frost-400);
+
+    --lim-accent:       var(--lim-cobalt-400);
+    --lim-accent-hover: var(--lim-cobalt-300);
+    --lim-accent-soft:  var(--lim-cobalt-500);
+    --lim-accent-wash:  rgba(87,107,209,.14);
+    --lim-link:         var(--lim-cobalt-300);
+    --lim-focus:        var(--lim-cobalt-300);
+
+    --lim-action:       var(--lim-cobalt-500);
+    --lim-action-hover: var(--lim-cobalt-400);
+    --lim-action-press: var(--lim-cobalt-600);
+
+    --lim-bar-1: var(--lim-frost-100);
+    --lim-bar-2: var(--lim-frost-200);
+    --lim-bar-3: var(--lim-frost-300);
+    --lim-bar-4: var(--lim-frost-400);
+
+    --lim-page: linear-gradient(135deg,
+                  var(--lim-abyss-0) 0%,
+                  var(--lim-abyss-1) 45%,
+                  var(--lim-abyss-2) 76%,
+                  var(--lim-abyss-3) 100%);
+    --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.30), transparent 70%);
+    --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.32), transparent 72%);
+    --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.14), transparent 70%);
+
+    --lim-glass:       rgba(38,44,58,.55);
+    --lim-glass-solid: rgba(26,30,39,.88);
+    --lim-glass-thin:  rgba(38,44,58,.30);
+    --lim-glass-raise: rgba(255,255,255,.10);
+    --lim-glass-nav:   rgba(26,30,39,.72);
+
+    --lim-edge:     rgba(255,255,255,.14);
+    --lim-edge-dim: rgba(255,255,255,.05);
+    --lim-hairline: rgba(255,255,255,.09);
+    --lim-hairline-strong: rgba(255,255,255,.15);
+
+    --lim-shadow-1: 0 1px 2px rgba(0,0,0,.40),
+                    0 4px 12px -4px rgba(0,0,0,.50);
+    --lim-shadow-2: 0 1px 2px rgba(0,0,0,.45),
+                    0 12px 28px -10px rgba(0,0,0,.60),
+                    0 32px 60px -30px rgba(0,0,0,.70);
+    --lim-shadow-3: 0 2px 4px rgba(0,0,0,.50),
+                    0 20px 44px -14px rgba(0,0,0,.68),
+                    0 48px 90px -40px rgba(0,0,0,.80);
+
+    --lim-ok:   #4FC08A;
+    --lim-warn: #E2A24A;
+    --lim-stop: #F08A82;
+    --lim-ok-bg:   rgba(52,199,133,.14);
+    --lim-warn-bg: rgba(226,162,74,.14);
+    --lim-stop-bg: rgba(240,120,112,.14);
+  }
+}

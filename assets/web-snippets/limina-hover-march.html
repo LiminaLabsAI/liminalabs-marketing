@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Limina Labs — March</title>
+<link rel="stylesheet" href="limina-motion.css">
+<style>
+  body { margin: 0; font-family: Archivo, system-ui, sans-serif; display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+  .pane { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 48px; }
+  .light { background: #f4f5fa; color: #565d8c; }
+  .dark  { background: #0b0d12; color: #8f97ab; }
+  .label { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; }
+  .note  { position: fixed; left: 0; right: 0; bottom: 0; padding: 14px 20px; background: #16181f; color: #b9c1d4; font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="pane light">
+    <svg class="lb-mark lb-hover" viewBox="16 30 146 132" width="150" height="136" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+      <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z" fill="#0b1fa6"/>
+      <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z" fill="#2f47c4"/>
+      <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z" fill="#7f8fdd"/>
+      <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z" fill="#b7c0ea"/>
+    </svg>
+    <div class="label">March — cobalt</div>
+  </div>
+  <div class="pane dark">
+    <svg class="lb-mark lb-hover" viewBox="16 30 146 132" width="150" height="136" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+      <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z" fill="#ffffff"/>
+      <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z" fill="#d3d9e2"/>
+      <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z" fill="#9aa3af"/>
+      <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z" fill="#6b7480"/>
+    </svg>
+    <div class="label">March — frost</div>
+  </div>
+  <div class="note">Hover the mark — 2.4s loop, runs only while the pointer is on it. Nav and footer logos, brand buttons.</div>
+</body>
+</html>

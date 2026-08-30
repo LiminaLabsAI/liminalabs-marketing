@@ -1,0 +1,35 @@
+/* ============================================================================
+   LIMEN — utilities
+   A deliberately short list. If you need a utility that is not here, the
+   component probably wants a class of its own.
+   ========================================================================= */
+
+.lim-flow > * + * { margin-top: var(--lim-s-4); }
+.lim-flow--tight > * + * { margin-top: var(--lim-s-2); }
+.lim-flow--loose > * + * { margin-top: var(--lim-s-6); }
+
+.lim-mt-0 { margin-top: 0; }
+.lim-mt-3 { margin-top: var(--lim-s-3); }
+.lim-mt-4 { margin-top: var(--lim-s-4); }
+.lim-mt-5 { margin-top: var(--lim-s-5); }
+.lim-mt-6 { margin-top: var(--lim-s-6); }
+.lim-mt-7 { margin-top: var(--lim-s-7); }
+.lim-mb-0 { margin-bottom: 0; }
+
+.lim-center { text-align: center; }
+.lim-balance { text-wrap: balance; }
+.lim-pretty { text-wrap: pretty; }
+.lim-nowrap { white-space: nowrap; }
+
+.lim-fill { flex: 1 1 auto; min-width: 0; }
+.lim-push { margin-left: auto; }
+.lim-between { display: flex; align-items: center; justify-content: space-between; gap: var(--lim-s-4); }
+
+.lim-accent-text { color: var(--lim-accent); }
+.lim-ok-text { color: var(--lim-ok); }
+.lim-warn-text { color: var(--lim-warn); }
+.lim-stop-text { color: var(--lim-stop); }
+
+/* Content that must clear the floating nav. */
+.lim-below-nav { padding-top: calc(var(--lim-nav-inset) + var(--lim-nav-h) + var(--lim-s-6)); }
+[id] { scroll-margin-top: calc(var(--lim-nav-inset) + var(--lim-nav-h) + var(--lim-s-5)); }

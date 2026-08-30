@@ -1,0 +1,122 @@
+/* ============================================================================
+   LIMEN — motion
+   The four brand primitives (lift, march, trail, relay) plus the interface
+   motion the system needs. The primitives are identical to
+   assets/web-snippets/limina-motion.css — same names, same curves, same
+   durations — so markup written against either one works with the other.
+   ========================================================================= */
+
+/* --- Brand primitives ---------------------------------------------------- */
+@keyframes lb-lift  { from { opacity: 0; transform: translateY(16px); }
+                      to   { opacity: 1; transform: translateY(0); } }
+@keyframes lb-march { 0%, 100% { transform: translateX(0);    opacity: 1; }
+                      40%      { transform: translateX(14px); opacity: .6; }
+                      72%      { transform: translateX(0);    opacity: 1; } }
+@keyframes lb-trail { 0%   { transform: translateX(-26px); opacity: 0; }
+                      22%  { opacity: 1; }
+                      70%  { transform: translateX(22px);  opacity: 1; }
+                      100% { transform: translateX(40px);  opacity: 0; } }
+@keyframes lb-relay { 0%, 100% { opacity: .32; }
+                      18%      { opacity: 1; }
+                      40%      { opacity: .32; } }
+
+.lim-mark .lb-bar { transform-box: fill-box; transform-origin: 50% 100%; }
+
+/* Lift — the only logo animation. Once, 0.66s, on brand moments only. */
+.lb-lift .lb-bar { animation: lb-lift var(--lim-d-4) var(--lim-ease-out) both; }
+.lb-lift .lb-bar:nth-child(1) { animation-delay: 0s; }
+.lb-lift .lb-bar:nth-child(2) { animation-delay: .13s; }
+.lb-lift .lb-bar:nth-child(3) { animation-delay: .26s; }
+.lb-lift .lb-bar:nth-child(4) { animation-delay: .39s; }
+
+/* March — hover on a brand element. */
+.lb-march .lb-bar,
+.lb-hover:hover .lb-bar { animation: lb-march 2.4s ease-in-out infinite; }
+.lb-march .lb-bar:nth-child(1), .lb-hover:hover .lb-bar:nth-child(1) { animation-delay: .39s; }
+.lb-march .lb-bar:nth-child(2), .lb-hover:hover .lb-bar:nth-child(2) { animation-delay: .26s; }
+.lb-march .lb-bar:nth-child(3), .lb-hover:hover .lb-bar:nth-child(3) { animation-delay: .13s; }
+.lb-march .lb-bar:nth-child(4), .lb-hover:hover .lb-bar:nth-child(4) { animation-delay: 0s; }
+
+/* Lift on hover — for a mark whose only animation is the lift. The kit assigns
+   March to nav and footer hover; use this instead when a product wants one
+   logo animation everywhere. Still one shot per hover, never a loop. */
+.lb-lift-hover:hover .lb-bar { animation: lb-lift var(--lim-d-4) var(--lim-ease-out) both; }
+.lb-lift-hover:hover .lb-bar:nth-child(1) { animation-delay: 0s; }
+.lb-lift-hover:hover .lb-bar:nth-child(2) { animation-delay: .13s; }
+.lb-lift-hover:hover .lb-bar:nth-child(3) { animation-delay: .26s; }
+.lb-lift-hover:hover .lb-bar:nth-child(4) { animation-delay: .39s; }
+
+/* Trail — loading. Bars only; this is a motif, not the logo. */
+.lb-trail .lb-bar { animation: lb-trail 3.2s ease-in-out infinite; }
+.lb-trail .lb-bar:nth-child(1) { animation-delay: .48s; }
+.lb-trail .lb-bar:nth-child(2) { animation-delay: .32s; }
+.lb-trail .lb-bar:nth-child(3) { animation-delay: .16s; }
+.lb-trail .lb-bar:nth-child(4) { animation-delay: 0s; }
+
+/* The ladder is divs whose lean lives in a transform, so its trail has to
+   carry skewX through every frame or the bars straighten out mid-animation. */
+@keyframes lim-ladder-trail {
+  0%   { transform: skewX(var(--lim-skew)) translateX(-24%); opacity: 0; }
+  22%  { opacity: 1; }
+  70%  { transform: skewX(var(--lim-skew)) translateX(20%);  opacity: 1; }
+  100% { transform: skewX(var(--lim-skew)) translateX(36%);  opacity: 0; }
+}
+.lim-ladder--loading > i { animation: lim-ladder-trail 3.2s ease-in-out infinite; }
+.lim-ladder--loading > i:nth-child(1) { animation-delay: .48s; }
+.lim-ladder--loading > i:nth-child(2) { animation-delay: .32s; }
+.lim-ladder--loading > i:nth-child(3) { animation-delay: .16s; }
+.lim-ladder--loading > i:nth-child(4) { animation-delay: 0s; }
+
+/* Relay — multi-step progress that is genuinely in flight. */
+.lb-relay .lb-bar,
+.lim-ladder--relay > i { animation: lb-relay 2.8s ease-in-out infinite; }
+.lb-relay .lb-bar:nth-child(1), .lim-ladder--relay > i:nth-child(1) { animation-delay: 0s; }
+.lb-relay .lb-bar:nth-child(2), .lim-ladder--relay > i:nth-child(2) { animation-delay: .22s; }
+.lb-relay .lb-bar:nth-child(3), .lim-ladder--relay > i:nth-child(3) { animation-delay: .44s; }
+.lb-relay .lb-bar:nth-child(4), .lim-ladder--relay > i:nth-child(4) { animation-delay: .66s; }
+
+/* Relay only touches opacity, so the ladder's own skew survives it. */
+.lim-ladder--relay > i { transform: skewX(var(--lim-skew)); }
+
+/* --- Interface motion ---------------------------------------------------- */
+
+/* Reveal on scroll. Add .lim-reveal; the script adds .is-in when it lands. */
+.lim-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--lim-d-4) var(--lim-ease-out),
+              transform var(--lim-d-4) var(--lim-ease-out);
+}
+.lim-reveal.is-in { opacity: 1; transform: none; }
+.lim-reveal--d1 { transition-delay: 80ms; }
+.lim-reveal--d2 { transition-delay: 160ms; }
+.lim-reveal--d3 { transition-delay: 240ms; }
+.lim-reveal--d4 { transition-delay: 320ms; }
+
+/* Page-load sequence for a hero. Runs once, mirrors the lift curve. */
+@keyframes lim-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+.lim-enter { animation: lim-enter var(--lim-d-4) var(--lim-ease-out) both; }
+.lim-enter--d1 { animation-delay: 90ms; }
+.lim-enter--d2 { animation-delay: 180ms; }
+.lim-enter--d3 { animation-delay: 270ms; }
+.lim-enter--d4 { animation-delay: 360ms; }
+
+/* --- Reduced motion ------------------------------------------------------
+   Everything that moves stops. Nothing that carries meaning disappears. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .lim-mark .lb-bar { opacity: 1 !important; }
+  .lim-ladder--loading > i,
+  .lim-ladder--relay > i { transform: skewX(var(--lim-skew)) !important; opacity: 1 !important; }
+  .lim-reveal { opacity: 1; transform: none; }
+  .lim-sweep::after { display: none; }
+}

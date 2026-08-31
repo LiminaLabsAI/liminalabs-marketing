@@ -21,7 +21,7 @@ amber dashed marker, so nothing here can ship unnoticed.
 
 - **Real artifacts.** A signed attestation, live egress-probe output and a real audit-log line are deliberately absent — none exists in this repo, and inventing one is the mistake a technical buyer never forgives. When Precepta can emit real output, home §5 and /trust block 03 are where it goes. This matters more now that /status is gone: /trust is carrying the whole evidential load.
 - **301 redirects** from preceptaai.com → /precepta and intent.preceptaai.com → /intent-studio, preserving deep paths.
-- **DNS**: app.liminalabs.in (Sign in) and docs.liminalabs.in (Docs) are linked in the nav and footer but do not resolve yet. Currently live: preceptaai.com and intent.preceptaai.com.
+- **DNS**: docs.liminalabs.in is linked in the footer but does not resolve yet. The Intent Studio application link points at intent.preceptaai.com, which is live — move it to the Limina domain when DNS is pointed. There is no company-wide sign-in by design: Precepta is self-hosted, so a customer signs in to their own deployment.
 - **Contact address** is still hello@preceptaai.com, which makes Precepta look like the parent. Move to a Limina Labs address once the domain is live — it appears in the footer, /trust, /company, /sub-processors and security.txt.
 - **TLS**: support 1.2 as well as 1.3. The current Intent Studio host is 1.3-only and refuses 1.2, which breaks the TLS-inspecting corporate proxies these buyers sit behind.
 - **Analytics**: self-hosted and cookieless (Plausible, Umami or equivalent), or none. The site currently makes zero external requests — keep it that way.

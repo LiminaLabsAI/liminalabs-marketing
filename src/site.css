@@ -60,7 +60,6 @@
   font-family: var(--lim-font-mono);
   color: var(--lim-text-soft);
 }
-@media (max-width: 1120px) { .site-signin { display: none; } }
 
 /* --- Footer -------------------------------------------------------------- */
 .site-footer__cols {
@@ -126,7 +125,6 @@
   text-wrap: pretty;
 }
 .site-question p { font-size: var(--lim-t-sm); color: var(--lim-text-muted); margin: 0; }
-.site-question .lim-ladder { margin-top: auto; }
 
 /* --- Full-width statement ------------------------------------------------- */
 .site-statement { padding-block: var(--lim-section); }

@@ -37,10 +37,14 @@
   --lim-navy-300: #8B92B8;
 
   /* Grounds, sampled from assets/background/deck-1920x1080-*.png */
-  --lim-ground-0: #FEFEFF;
-  --lim-ground-1: #F5F6FC;
-  --lim-ground-2: #ECEEFA;
-  --lim-ground-3: #E7EAF9;
+  /* The canvas sits well below white on purpose. A near-white ground leaves
+     surfaces nowhere to go: every panel has to be pure white, so nothing reads
+     as raised and the chrome ends up the brightest thing on the page. Deeper
+     ground, cooler tint, and the separation does the work instead. */
+  --lim-ground-0: #F4F6FC;
+  --lim-ground-1: #E9ECF7;
+  --lim-ground-2: #E1E6F4;
+  --lim-ground-3: #DADFF0;
 
   --lim-abyss-0: #1A1E27;
   --lim-abyss-1: #12141C;
@@ -110,14 +114,18 @@
   /* Near-opaque on purpose. Glass here is a material property you barely
      notice, not an effect on display — the visible-frost look reads consumer,
      and it costs contrast we would rather spend on text. */
-  --lim-glass:        rgba(255,255,255,.90);
-  --lim-glass-solid:  rgba(255,255,255,.97);
-  --lim-glass-thin:   rgba(255,255,255,.66);
-  --lim-glass-raise:  rgba(255,255,255,.92); /* the pill inside a pill */
+  --lim-glass:        rgba(252,253,255,.93);
+  --lim-glass-solid:  rgba(253,254,255,.97);
+  --lim-glass-thin:   rgba(252,253,255,.62);
+  --lim-glass-raise:  rgba(253,254,255,.94); /* the pill inside a pill */
   /* The scrolled nav sits between pane and solid. --lim-glass-solid is tuned
      for menus and sheets, where text over arbitrary content has to stay
      readable; at that weight a nav stops looking like glass at all. */
-  --lim-glass-nav:    rgba(255,255,255,.94);
+  --lim-glass-nav:    rgba(252,253,255,.93);
+  /* At rest the nav lets the ground through — it floats over scrolling
+     content, which is the one place translucency carries information. Once
+     scrolled it thickens, because then it has arbitrary content behind it. */
+  --lim-glass-nav-rest: rgba(252,253,255,.84);
 
   --lim-edge:      rgba(255,255,255,.90);  /* the lit bevel, top-left */
   --lim-edge-dim:  rgba(255,255,255,.45);  /* the same bevel, shaded side */
@@ -286,6 +294,7 @@
   --lim-glass-thin:  rgba(38,44,58,.55);
   --lim-glass-raise: rgba(255,255,255,.09);
   --lim-glass-nav:   rgba(24,27,36,.94);
+  --lim-glass-nav-rest: rgba(27,31,41,.82);
 
   --lim-edge:     rgba(255,255,255,.14);
   --lim-edge-dim: rgba(255,255,255,.05);
@@ -347,6 +356,8 @@
     --lim-glass-thin:  rgba(38,44,58,.55);
     --lim-glass-raise: rgba(255,255,255,.09);
     --lim-glass-nav:   rgba(24,27,36,.94);
+    --lim-glass-nav-rest: rgba(27,31,41,.82);
+  --lim-glass-nav-rest: rgba(27,31,41,.82);
 
     --lim-edge:     rgba(255,255,255,.14);
     --lim-edge-dim: rgba(255,255,255,.05);

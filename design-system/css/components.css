@@ -156,6 +156,7 @@
    Fixed, inset from every edge, so the page visibly runs underneath it.
    ------------------------------------------------------------------------ */
 .lim-nav {
+  background: var(--lim-glass-nav-rest);
   position: fixed;
   top: var(--lim-nav-inset);
   left: 50%;

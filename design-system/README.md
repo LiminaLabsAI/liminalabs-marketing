@@ -79,9 +79,15 @@ reads as a company with nothing to say. Dense but organised beats airy.
 
 ### What this system deliberately does not do
 
-- **No visible glass.** Panes sit at 90–97% opacity with `blur(10px)` and
-  `saturate(108%)`. The material is real but you should not notice it working.
-  Frosted-glass-as-effect reads consumer, and it costs contrast that text needs.
+- **No visible glass, except where it means something.** Panes sit at 93–97%
+  opacity with `blur(10px)` and `saturate(108%)` — the material is real but you
+  should not notice it working. The one exception is the nav at rest (84%),
+  which floats over moving content, so letting the page through carries
+  information. Frosted-glass-as-effect reads consumer and costs contrast.
+- **The canvas sits well below white.** `--lim-ground-1` is `#E9ECF7`, not a
+  near-white. A near-white ground leaves surfaces nowhere to go, so everything
+  becomes pure white and the chrome ends up the brightest thing on the page.
+  Nothing in the palette is `#FFFFFF`.
 - **No large soft shadows.** A wide diffuse halo is the tell of a card floating
   for decoration rather than because it sits above something. Shadows are short.
 - **No decorative motion.** Animation carrying no information was removed. What

@@ -85,12 +85,22 @@ nav: products
 
 <section class="lim-wrap lim-section">
   <div class="lim-pane lim-reveal" style="padding: clamp(28px, 5vw, 56px); max-width: 640px">
-    <h2 class="lim-t3">Help shape it.</h2>
+    <div data-unless="FORM_ENDPOINT">
+      <h2 class="lim-t3">Help shape it.</h2>
+      <p class="lim-sm lim-muted lim-mt-3">
+        We are working with a small number of teams on what this layer needs to do. Email us if
+        you want to be one of them.
+      </p>
+      <p class="lim-mt-5">
+        <a class="lim-btn lim-btn--primary" href="mailto:{{CONTACT_EMAIL}}?subject=Cerebrio">Email us about Cerebrio</a>
+      </p>
+    </div>
+    <h2 class="lim-t3" data-pending>Help shape it. {{FORM_ENDPOINT}}</h2>
     <p class="lim-sm lim-muted lim-mt-3">
       We are working with a small number of teams on what this layer needs to do. One email if
       you want to be one of them.
     </p>
-    <form class="lim-mt-5" method="post" action="{{FORM_ENDPOINT}}">
+    <form class="lim-mt-5" method="post" action="{{FORM_ENDPOINT}}" data-pending>
       <div class="lim-field">
         <label class="lim-label" for="c-email">Work email</label>
         <input class="lim-input" id="c-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com">

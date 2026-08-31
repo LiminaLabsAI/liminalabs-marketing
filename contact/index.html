@@ -103,39 +103,22 @@
 <section class="lim-wrap" style="padding-bottom: var(--lim-section)">
   <div class="lim-grid lim-grid--2" style="align-items: start">
     <div class="lim-pane lim-reveal">
-      <form class="site-form" method="post" action="{{FORM_ENDPOINT}}">
-        <div class="lim-field">
-          <label class="lim-label" for="ea-name">Name</label>
-          <input class="lim-input" id="ea-name" name="name" type="text" autocomplete="name" required>
-        </div>
-        <div class="lim-field">
-          <label class="lim-label" for="ea-email">Work email</label>
-          <input class="lim-input" id="ea-email" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="lim-field">
-          <label class="lim-label" for="ea-company">Company</label>
-          <input class="lim-input" id="ea-company" name="company" type="text" autocomplete="organization" required>
-        </div>
-        <div class="lim-field">
-          <label class="lim-label" for="ea-product">Which product</label>
-          <select class="lim-select" id="ea-product" name="product">
-            <option>Intent Studio</option>
-            <option>Precepta</option>
-            <option>Both</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-        <div class="lim-field lim-grid--span-all">
-          <label class="lim-label" for="ea-process">What process would you want to run?</label>
-          <textarea class="lim-textarea" id="ea-process" name="process" placeholder="One real piece of work — a changeover, a migration, an audit response."></textarea>
-        </div>
-        <div class="lim-grid--span-all">
-          <button class="lim-btn lim-btn--primary lim-btn--lg" type="submit">Send</button>
-        </div>
-      </form>
-      <p class="lim-xs lim-soft lim-mt-5">
-        Form endpoint: <span class="site-todo">{{FORM_ENDPOINT}}</span>
-      </p>
+      <div>
+        <h2 class="lim-t3">Tell us the process</h2>
+        <p class="lim-sm lim-muted lim-mt-3">
+          One real piece of work you would want specified, governed and reconstructable — a
+          changeover, a migration, an audit response. Include your company and we will reply with
+          whether this fits it, plainly.
+        </p>
+        <p class="lim-mt-5">
+          <a class="lim-btn lim-btn--primary lim-btn--lg" href="mailto:hello@liminalabs.in?subject=Limina%20Labs%20%E2%80%94%20enquiry">Email us</a>
+        </p>
+        <p class="lim-xs lim-soft lim-mt-4">
+          <a href="mailto:hello@liminalabs.in">hello@liminalabs.in</a> — we read every one.
+        </p>
+      </div>
+      
+      
     </div>
 
     <div class="lim-reveal lim-reveal--d1">

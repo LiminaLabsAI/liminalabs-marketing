@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trust and security | Limina Labs</title>
-<meta name="description" content="How the zero-egress boundary is constructed, what we hold, how releases are built and signed, and honest answers on certification and company stage.">
+<title>Security and sovereignty | Limina Labs</title>
+<meta name="description" content="The whole stack runs on your infrastructure, over any model you choose. How the boundary is constructed, what leaves it, and how a request is reconstructed afterwards.">
 <link rel="canonical" href="https://liminalabs.in/trust">
 
 <script>try{var t=localStorage.getItem("limina-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
@@ -18,17 +18,17 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Limina Labs">
-<meta property="og:title" content="Trust and security | Limina Labs">
-<meta property="og:description" content="How the zero-egress boundary is constructed, what we hold, how releases are built and signed, and honest answers on certification and company stage.">
+<meta property="og:title" content="Security and sovereignty | Limina Labs">
+<meta property="og:description" content="The whole stack runs on your infrastructure, over any model you choose. How the boundary is constructed, what leaves it, and how a request is reconstructed afterwards.">
 <meta property="og:url" content="https://liminalabs.in/trust">
 <meta property="og:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Trust and security | Limina Labs">
-<meta name="twitter:description" content="How the zero-egress boundary is constructed, what we hold, how releases are built and signed, and honest answers on certification and company stage.">
+<meta name="twitter:title" content="Security and sovereignty | Limina Labs">
+<meta name="twitter:description" content="The whole stack runs on your infrastructure, over any model you choose. How the boundary is constructed, what leaves it, and how a request is reconstructed afterwards.">
 <meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 
-<link rel="stylesheet" href="../design-system/css/limina.css?v=3.3">
-<link rel="stylesheet" href="../src/site.css?v=3.3">
+<link rel="stylesheet" href="../design-system/css/limina.css?v=3.4">
+<link rel="stylesheet" href="../src/site.css?v=3.4">
 </head>
 
 <body>
@@ -61,7 +61,7 @@
       </div>
     </div>
     <a href="../sovereign-ai/" data-nav="sovereign-ai">Sovereign AI</a>
-    <a href="../trust/" data-nav="trust" aria-current="page" class="is-active">Trust</a>
+    <a href="../trust/" data-nav="trust" aria-current="page" class="is-active">Security</a>
     <a href="../company/" data-nav="company">Company</a>
   </nav>
 
@@ -82,7 +82,7 @@
   <a href="../precepta/">Precepta</a>
   <a href="../cerebrio/">Cerebrio</a>
   <a href="../sovereign-ai/">Sovereign AI</a>
-  <a href="../trust/">Trust</a>
+  <a href="../trust/">Security</a>
   <a href="../company/">Company</a>
   <a href="../contact/">Contact us</a>
 </div>
@@ -90,13 +90,14 @@
 
 <main id="main" class="lim-below-nav">
 <section class="lim-wrap site-hero">
-  <p class="lim-eyebrow lim-enter">Trust and security</p>
+  <p class="lim-eyebrow lim-enter">Security and sovereignty</p>
   <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance" style="margin-top: var(--lim-s-4)">
-    Most vendor risk does not apply to software you run yourself.
+    The whole stack runs on your infrastructure.
   </h1>
   <p class="lim-lede lim-enter lim-enter--d2">
-    We are early access, unfunded, and hold no certifications. This page says exactly what that
-    does and does not mean for your assessment — and nothing on it is gated.
+    Not the interface with the reasoning elsewhere — all of it. Models, gateway, policy, audit
+    and the record itself, inside your own network, over whichever models you choose to run.
+    Nothing on this page is gated.
   </p>
 </section>
 
@@ -212,29 +213,18 @@
   <article class="site-block lim-reveal">
     <div class="site-block__n">08</div>
     <div class="site-block__body">
-      <h3 class="lim-t3">The two questions you were going to ask anyway</h3>
-
-      <h4 class="lim-t4 lim-mt-5">"Are you SOC 2 certified?"</h4>
+      <h3 class="lim-t3">Any model, and you are never locked to ours</h3>
       <p>
-        Not yet — we're early access, and we'll start that as we scale. But the reason it usually
-        matters is that a vendor holds your data. We're self-hosted with zero egress: your data
-        never reaches us. Most of the vendor-risk surface simply isn't there. What you're
-        assessing is software you run yourself — and we can show you how it's built, signed and
-        patched. Here's our security overview and our vulnerability policy, and we'll happily put
-        the source in escrow.
+        Precepta is a gateway, not a model vendor. Run open-weight models in your own boundary —
+        Llama and its peers, on your hardware — or reach a hosted provider where your platform
+        owner has explicitly approved that exact host. Both paths go through the same governed
+        pipeline, and the choice is yours to change at any time.
       </p>
-      <p class="lim-sm lim-soft">
-        On the certification path: we will pursue
-        <span class="site-todo">{{ISO 27001 or SOC 2}}</span> once we have paying customers.
-        Certifying a product that is still changing weekly wastes money and freezes things that
-        should still be moving.
-      </p>
-
-      <h4 class="lim-t4 lim-mt-6">"You're unfunded — what if you disappear?"</h4>
       <p>
-        Fair question. It runs on your infrastructure, so it keeps running if we vanish.
-        Everything exports in an open format, so your knowledge isn't trapped. And we'll put the
-        source in escrow if you want the belt as well as the braces.
+        This is the point of putting the boundary outside the model. A better model arrives every
+        few months; you should be able to take it without re-architecting anything. What stays is
+        the policy, the audit record and the accumulated intent — which is the part you actually
+        own.
       </p>
     </div>
   </article>
@@ -312,8 +302,8 @@
       </div>
 
       <div>
-        <h2 class="site-footer__head">Trust</h2>
-        <a href="../trust/">Trust &amp; security</a>
+        <h2 class="site-footer__head">Security</h2>
+        <a href="../trust/">Security &amp; sovereignty</a>
         <a href="../sub-processors/">Sub-processors</a>
         <a href="../vulnerability-disclosure/">Vulnerability disclosure</a>
         <a href="../privacy/">Privacy</a>
@@ -329,14 +319,14 @@
     </div>
 
     <div class="site-footer__base">
-      <span>© 2026 Limina Labs Private Limited · Early access</span>
+      <span>© 2026 Limina Labs Private Limited</span>
       <span class="lim-mono">Attributable · grounded · bounded · revocable</span>
     </div>
   </div>
 </footer>
 
 
-<script src="../design-system/js/limina.js?v=3.3" defer></script>
-<script src="../src/site.js?v=3.3" defer></script>
+<script src="../design-system/js/limina.js?v=3.4" defer></script>
+<script src="../src/site.js?v=3.4" defer></script>
 </body>
 </html>

@@ -304,6 +304,8 @@
 .dgm-edge-label { fill: var(--lim-text-soft); font-family: var(--lim-font-mono); font-size: 10px; }
 .dgm-node { fill: var(--lim-glass-solid); stroke: var(--lim-hairline-strong); stroke-width: 1.5; }
 .dgm-node-tx { fill: var(--lim-text); font-family: var(--lim-font-sans); font-size: 12.5px; font-weight: 500; }
+.dgm-sub { fill: var(--lim-text-soft); font-family: var(--lim-font-sans); font-size: 11.5px; }
+.dgm-centre { fill: var(--lim-text-soft); font-family: var(--lim-font-display); font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
 
 /* --- Placeholders --------------------------------------------------------- */
 /* Anything still {{LIKE_THIS}} is visibly unfinished on the page, on purpose:

@@ -27,8 +27,8 @@
 <meta name="twitter:description" content="What your organisation intended, what its agents actually did, and what it learned — kept as one governed record, inside your own walls. Works with any model.">
 <meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 
-<link rel="stylesheet" href="design-system/css/limina.css?v=3.3">
-<link rel="stylesheet" href="src/site.css?v=3.3">
+<link rel="stylesheet" href="design-system/css/limina.css?v=3.4">
+<link rel="stylesheet" href="src/site.css?v=3.4">
 </head>
 
 <body>
@@ -75,7 +75,7 @@
       </div>
     </div>
     <a href="sovereign-ai/" data-nav="sovereign-ai">Sovereign AI</a>
-    <a href="trust/" data-nav="trust">Trust</a>
+    <a href="trust/" data-nav="trust">Security</a>
     <a href="company/" data-nav="company">Company</a>
   </nav>
 
@@ -96,7 +96,7 @@
   <a href="precepta/">Precepta</a>
   <a href="cerebrio/">Cerebrio</a>
   <a href="sovereign-ai/">Sovereign AI</a>
-  <a href="trust/">Trust</a>
+  <a href="trust/">Security</a>
   <a href="company/">Company</a>
   <a href="contact/">Contact us</a>
 </div>
@@ -116,7 +116,7 @@
     <a class="lim-btn lim-btn--glass lim-btn--lg" href="sovereign-ai/">Read the argument</a>
   </div>
   <p class="site-trustline lim-enter lim-enter--d4">
-    Self-hosted · Zero-egress · Works with any model · OpenAI-compatible · Early access
+    Runs on your infrastructure · Zero-egress · Any model, self-hosted or hosted · OpenAI-compatible
   </p>
 </section>
 
@@ -384,30 +384,58 @@
     <h2 style="margin-top: var(--lim-s-4)">The record appreciates while the models depreciate.</h2>
   </header>
 
-  <!-- Diagram B — the loop. Deliberately far from Diagram A. -->
-  <figure class="site-figure lim-reveal" style="max-width: 620px; margin-inline: auto">
-    <svg viewBox="0 0 620 300" role="img" aria-labelledby="dgmB-t dgmB-d">
-      <title id="dgmB-t">The loop</title>
-      <desc id="dgmB-d">A closed cycle of six stages: know, intent, do, trace, evaluate, learn,
-      and back to know. Each pass through the cycle starts from what the previous one left
-      behind.</desc>
-      <g class="dgm-cycle">
-        <ellipse cx="310" cy="150" rx="250" ry="112" fill="none" class="dgm-arrow" stroke-dasharray="3 6"/>
-        <g><rect class="dgm-node" x="252" y="16" width="116" height="38" rx="10"/><text class="dgm-node-tx" x="310" y="40" text-anchor="middle">Know</text></g>
-        <g><rect class="dgm-node" x="452" y="66" width="116" height="38" rx="10"/><text class="dgm-node-tx" x="510" y="90" text-anchor="middle">Intent</text></g>
-        <g><rect class="dgm-node" x="452" y="196" width="116" height="38" rx="10"/><text class="dgm-node-tx" x="510" y="220" text-anchor="middle">Do</text></g>
-        <g><rect class="dgm-node" x="252" y="246" width="116" height="38" rx="10"/><text class="dgm-node-tx" x="310" y="270" text-anchor="middle">Trace</text></g>
-        <g><rect class="dgm-node" x="52" y="196" width="116" height="38" rx="10"/><text class="dgm-node-tx" x="110" y="220" text-anchor="middle">Evaluate</text></g>
-        <g><rect class="dgm-node" x="52" y="66" width="116" height="38" rx="10"/><text class="dgm-node-tx" x="110" y="90" text-anchor="middle">Learn</text></g>
-        <polygon class="dgm-arrow-head" points="424,52 440,58 428,70"/>
-        <polygon class="dgm-arrow-head" points="556,158 550,142 566,148"/>
-        <polygon class="dgm-arrow-head" points="428,248 440,260 424,266"/>
-        <polygon class="dgm-arrow-head" points="192,266 180,254 196,248"/>
-        <polygon class="dgm-arrow-head" points="54,148 70,142 64,158"/>
-        <polygon class="dgm-arrow-head" points="196,70 180,64 192,52"/>
+  <!-- Diagram B — the loop, in the real product names. The internal deck shows
+       a fourth node for a capability that is still in planning; it is not a
+       product and is deliberately absent here. Naming a planned capability as
+       one would be exactly the overclaim this site exists to avoid. -->
+  <figure class="site-figure lim-reveal" style="max-width: 760px; margin-inline: auto">
+    <svg viewBox="0 0 760 400" role="img" aria-labelledby="dgmB-t dgmB-d">
+      <title id="dgmB-t">How the three products compound</title>
+      <desc id="dgmB-d">A three-stage cycle. Intent Studio specifies what the organisation
+      intends. Precepta executes it inside the boundary and records what happened. Cerebrio turns
+      that record into understanding, which makes the next intent sharper. Each product runs on
+      its own; the loop is what running them together produces.</desc>
+
+      <g>
+        <rect class="dgm-box" x="270" y="14" width="220" height="82" rx="14"/>
+        <text class="dgm-name" x="380" y="45" text-anchor="middle">Intent Studio</text>
+        <text class="dgm-role" x="380" y="63" text-anchor="middle">SPECIFY</text>
+        <text class="dgm-sub"  x="380" y="82" text-anchor="middle">What we intend, and who agreed</text>
       </g>
+
+      <g>
+        <rect class="dgm-box" x="500" y="248" width="238" height="82" rx="14"/>
+        <text class="dgm-name" x="619" y="279" text-anchor="middle">Precepta</text>
+        <text class="dgm-role" x="619" y="297" text-anchor="middle">EXECUTE</text>
+        <text class="dgm-sub"  x="619" y="316" text-anchor="middle">Governed, inside your boundary</text>
+      </g>
+
+      <g>
+        <rect class="dgm-box" x="22" y="248" width="238" height="82" rx="14"/>
+        <text class="dgm-name" x="141" y="279" text-anchor="middle">Cerebrio</text>
+        <text class="dgm-role" x="141" y="297" text-anchor="middle">UNDERSTAND</text>
+        <text class="dgm-sub"  x="141" y="316" text-anchor="middle">What the organisation learned</text>
+      </g>
+
+      <path class="dgm-arrow" d="M496 66 C 590 74, 640 140, 646 236"/>
+      <polygon class="dgm-arrow-head" points="640,238 647,252 653,237"/>
+      <text class="dgm-edge-label" x="600" y="150">every step recorded</text>
+
+      <path class="dgm-arrow" d="M496 289 L 276 289"/>
+      <polygon class="dgm-arrow-head" points="274,283 260,289 274,295"/>
+      <text class="dgm-edge-label" x="380" y="278" text-anchor="middle">evidence and outcomes</text>
+
+      <path class="dgm-arrow" d="M114 236 C 120 140, 170 74, 264 66"/>
+      <polygon class="dgm-arrow-head" points="258,59 272,66 258,73"/>
+      <text class="dgm-edge-label" x="118" y="150" text-anchor="start">what we now know</text>
+
+      <text class="dgm-centre" x="380" y="180" text-anchor="middle">Each pass starts</text>
+      <text class="dgm-centre" x="380" y="200" text-anchor="middle">further ahead</text>
     </svg>
-    <figcaption>Each pass starts further ahead than the last.</figcaption>
+    <figcaption>
+      Every governed decision leaves evidence. Evidence becomes understanding. Understanding makes
+      the next intent sharper — and each product still runs on its own.
+    </figcaption>
   </figure>
 
   <p class="lim-lede lim-mt-6 lim-reveal" style="max-width: 68ch">
@@ -461,8 +489,8 @@
       this is worth your time.
     </p>
     <p class="lim-mt-4 lim-muted" style="max-width: 68ch">
-      It runs on your infrastructure, so it keeps running if we vanish — and everything exports in
-      an open format. We will put the source in escrow if you want the belt as well as the braces.
+      Models, gateway, policy, audit and the record all sit inside your network — and everything
+      exports in an open format, so nothing you build here is trapped.
     </p>
     <div class="lim-row lim-mt-6">
       <a class="lim-btn lim-btn--primary lim-btn--lg" href="contact/">Talk to us</a>
@@ -503,8 +531,8 @@
       </div>
 
       <div>
-        <h2 class="site-footer__head">Trust</h2>
-        <a href="trust/">Trust &amp; security</a>
+        <h2 class="site-footer__head">Security</h2>
+        <a href="trust/">Security &amp; sovereignty</a>
         <a href="sub-processors/">Sub-processors</a>
         <a href="vulnerability-disclosure/">Vulnerability disclosure</a>
         <a href="privacy/">Privacy</a>
@@ -520,14 +548,14 @@
     </div>
 
     <div class="site-footer__base">
-      <span>© 2026 Limina Labs Private Limited · Early access</span>
+      <span>© 2026 Limina Labs Private Limited</span>
       <span class="lim-mono">Attributable · grounded · bounded · revocable</span>
     </div>
   </div>
 </footer>
 
 
-<script src="design-system/js/limina.js?v=3.3" defer></script>
-<script src="src/site.js?v=3.3" defer></script>
+<script src="design-system/js/limina.js?v=3.4" defer></script>
+<script src="src/site.js?v=3.4" defer></script>
 </body>
 </html>

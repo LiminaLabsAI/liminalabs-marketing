@@ -169,6 +169,11 @@ pre code { padding: 0; background: none; color: inherit; }
 .lim-section { padding-block: var(--lim-section); }
 
 .lim-section-head { margin-bottom: clamp(32px, 5vw, 56px); max-width: 68ch; }
+/* These headings are usually two short sentences, and the ragged break lands
+   mid-clause — "All three / at once". Balancing splits them where the sense
+   does. Every heading in this slot is short enough to stay within the
+   line-count ceiling browsers put on balancing. */
+.lim-section-head h2 { text-wrap: balance; }
 .lim-section-head .lim-eyebrow { margin-bottom: var(--lim-s-4); }
 .lim-section-head .lim-lede { margin-top: var(--lim-s-4); }
 

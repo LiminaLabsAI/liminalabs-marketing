@@ -336,6 +336,9 @@
 
 /* --- Diagrams ------------------------------------------------------------- */
 .site-figure { margin: 0; }
+/* A diagram carries as much weight as the block above it, so it needs air on
+   that scale rather than a paragraph gap. */
+.site-figure--spaced { margin-top: clamp(48px, 6vw, 88px); }
 .site-figure svg { width: 100%; height: auto; display: block; }
 .site-figure figcaption {
   margin-top: var(--lim-s-4);

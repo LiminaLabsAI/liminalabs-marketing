@@ -177,7 +177,7 @@
   --lim-s-8: 64px;
   --lim-s-9: 96px;
   --lim-s-10: 144px;
-  --lim-section: clamp(64px, 9vw, 128px);
+  --lim-section: clamp(56px, 7vw, 104px);
 
   /* ------------------------------------------------------------------
      RADIUS — containers are soft, content marks stay sharp

@@ -22,7 +22,7 @@ element comes back on the next build.
 
 - **Real artifacts.** A signed attestation, live egress-probe output and a real audit-log line are deliberately absent — none exists in this repo, and inventing one is the mistake a technical buyer never forgives. When Precepta can emit real output, home §5 and /trust block 03 are where it goes. This matters more now that /status is gone: /trust is carrying the whole evidential load.
 - **301 redirects** from preceptaai.com → /precepta and intent.preceptaai.com → /intent-studio, preserving deep paths.
-- **DNS and mailbox**: docs.liminalabs.in is linked in the footer but does not resolve. hello@liminalabs.in is used across the site, security.txt included, and must exist and route to a person before launch.
+- **DNS**: point liminalabs.in. The mailbox hello@liminalabs.in is live. The footer Docs link was removed because docs.liminalabs.in does not resolve — restore it from the note in src/site.config.json once it does.
 - **TLS**: support 1.2 as well as 1.3. The current Intent Studio host is 1.3-only and refuses 1.2, which breaks the TLS-inspecting corporate proxies these buyers sit behind.
 - **Analytics**: self-hosted and cookieless (Plausible, Umami or equivalent), or none. The site currently makes zero external requests — keep it that way.
 - **security.txt** expiry is set to 2027-08-31; refresh it annually or it becomes invalid.

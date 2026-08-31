@@ -33,10 +33,10 @@ Everything in `css/tokens.css` is derived from the brand kit in [`../assets`](..
 <script>try{var t=localStorage.getItem("limina-theme");
   if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 
-<link rel="stylesheet" href="design-system/css/limina.css?v=4.6">
+<link rel="stylesheet" href="design-system/css/limina.css?v=4.7">
 
 <!-- before </body> -->
-<script src="design-system/js/limina.js?v=4.6" defer></script>
+<script src="design-system/js/limina.js?v=4.7" defer></script>
 ```
 
 That is the whole integration. The typefaces are **self-hosted** in `fonts/` and
@@ -44,7 +44,7 @@ loaded by `css/fonts.css`, so a page using this system makes no external
 requests — no font CDN, nothing to block, nothing for a CISO to find in
 devtools. Ship `fonts/` next to `css/` and the relative paths resolve.
 
-Put a version on the two local URLs (`limina.css?v=4.6`, `limina.js?v=4.6`) and
+Put a version on the two local URLs (`limina.css?v=4.7`, `limina.js?v=4.7`) and
 bump it when you change them. Without it a browser will happily keep running a
 cached copy of the JS against freshly edited CSS, which looks exactly like a
 broken component.
@@ -79,13 +79,18 @@ reads as a company with nothing to say. Dense but organised beats airy.
 
 ### What this system deliberately does not do
 
-- **Frost needs edges, and it needs to reach them.** Two ways it silently dies:
-  a translucent surface over a smooth gradient looks identical to an opaque one
-  (blur has nothing to soften), and an element whose ancestor has
-  `backdrop-filter`, `filter`, `transform` or `opacity < 1` can only sample
-  inside that ancestor. The nav has both a backdrop-filter and a transform, so
-  its dropdown had to move out of it entirely. The ground carries hairline
-  bands at the mark's lean precisely so surfaces have an edge to refract.
+- **Frost shows where content passes behind glass, and nowhere else.** The nav
+  over a scrolling page and the menu panel over a headline both frost visibly,
+  because there is something with edges behind them. A card sitting on the
+  page ground does not, because a blurred gradient is the same gradient — no
+  opacity or blur value changes that. Adding texture to the ground to force
+  the effect was tried and reverted: it made the frost visible and made the
+  page look patterned, which is a worse trade.
+- **A blur can also be structurally dead.** An element whose ancestor has
+  `backdrop-filter`, `filter`, `transform` or `opacity < 1` samples only
+  inside that ancestor. `.lim-nav` has a backdrop-filter *and* a transform, so
+  its dropdown had to move out of the nav entirely to blur the page at all.
+  Neither failure is visible from reading the CSS.
 - **Frost needs two things, not one.** Surfaces sit at 82% opacity with
   `blur(20px)` / `blur(30px)` and `saturate(125%)` — but opacity alone does
   nothing. A translucent pane over a flat ground looks identical to an opaque

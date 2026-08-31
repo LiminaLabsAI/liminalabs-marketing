@@ -37,16 +37,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  /* Auras give the ground colour; the bands give it edges. Blur only shows
-     where there is an edge to soften — a blurred smooth gradient is
-     indistinguishable from the gradient, which is why glass over an empty
-     ground looks like flat paint however low the opacity goes. The bands run
-     at the mark's own 42.5 degree lean, so the texture is the brand's. */
-  background:
-    var(--lim-aura-1),
-    var(--lim-aura-2),
-    var(--lim-aura-3),
-    var(--lim-bands);
+  background: var(--lim-aura-1), var(--lim-aura-2), var(--lim-aura-3);
 }
 
 img, svg, video { display: block; max-width: 100%; }

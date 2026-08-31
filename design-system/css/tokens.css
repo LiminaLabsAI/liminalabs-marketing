@@ -111,9 +111,6 @@
   --lim-aura-1: radial-gradient(58% 48% at 80% 4%,  rgba(47,71,196,.12), transparent 70%);
   --lim-aura-2: radial-gradient(52% 44% at 4% 62%,  rgba(127,143,221,.11), transparent 72%);
   --lim-aura-3: radial-gradient(46% 40% at 62% 96%, rgba(11,31,166,.07),  transparent 70%);
-  --lim-bands: repeating-linear-gradient(var(--lim-stripe),
-                 rgba(47,71,196,.045) 0 2px,
-                 transparent 2px 116px);
 
   /* ------------------------------------------------------------------
      GLASS
@@ -302,9 +299,6 @@
   --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.20), transparent 70%);
   --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.22), transparent 72%);
   --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.10), transparent 70%);
-  --lim-bands: repeating-linear-gradient(var(--lim-stripe),
-                 rgba(160,178,255,.055) 0 2px,
-                 transparent 2px 116px);
 
   --lim-glass:       rgba(29,33,44,.82);
   --lim-glass-solid: rgba(24,27,36,.95);
@@ -368,12 +362,6 @@
     --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.20), transparent 70%);
     --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.22), transparent 72%);
     --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.10), transparent 70%);
-    --lim-bands: repeating-linear-gradient(var(--lim-stripe),
-                   rgba(160,178,255,.055) 0 2px,
-                   transparent 2px 116px);
-  --lim-bands: repeating-linear-gradient(var(--lim-stripe),
-                 rgba(160,178,255,.055) 0 2px,
-                 transparent 2px 116px);
 
     --lim-glass:       rgba(29,33,44,.82);
     --lim-glass-solid: rgba(24,27,36,.95);

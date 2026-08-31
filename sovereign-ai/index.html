@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sovereign AI is not about hosting weights | Limina Labs</title>
+<meta name="description" content="Why a limit inside a model is a request rather than a guarantee, why more compute does not close that gap, and what the engineering response actually is.">
+<link rel="canonical" href="https://liminalabs.in/sovereign-ai">
+
+<script>try{var t=localStorage.getItem("limina-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+
+<meta name="theme-color" content="#F5F6FC">
+<link rel="icon" href="../assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon/favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/app-icon/icon-180-light.png">
+<link rel="manifest" href="../assets/manifest.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Limina Labs">
+<meta property="og:title" content="Sovereign AI is not about hosting weights | Limina Labs">
+<meta property="og:description" content="Why a limit inside a model is a request rather than a guarantee, why more compute does not close that gap, and what the engineering response actually is.">
+<meta property="og:url" content="https://liminalabs.in/sovereign-ai">
+<meta property="og:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sovereign AI is not about hosting weights | Limina Labs">
+<meta name="twitter:description" content="Why a limit inside a model is a request rather than a guarantee, why more compute does not close that gap, and what the engineering response actually is.">
+<meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
+
+<link rel="stylesheet" href="../design-system/css/limina.css?v=2.1">
+<link rel="stylesheet" href="../src/site.css?v=2.1">
+</head>
+
+<body>
+<a class="lim-skip" href="#main">Skip to content</a>
+
+<svg class="lim-ambient lim-mark" viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+  <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+  <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+  <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+  <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+</svg>
+
+<header class="lim-nav" data-lim-nav>
+  <a class="lim-nav__brand lb-lift-hover" href="../" aria-label="Limina Labs — home">
+    <svg class="lim-mark" data-lim-lift viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+      <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+      <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+      <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+      <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+    </svg>
+    <span class="lim-nav__wordmark">Limina<span> Labs</span></span>
+  </a>
+
+  <nav class="lim-nav__links" aria-label="Primary">
+    <div class="site-menu" data-site-menu>
+      <button type="button" class="site-menu__button" data-nav="products" aria-expanded="false" aria-haspopup="true" aria-controls="menu-products">
+        Products
+        <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="site-menu__panel lim-pane lim-pane--flush" id="menu-products" hidden>
+        <a href="../intent-studio/"><b>Intent Studio</b><span>The work layer · available now</span></a>
+        <a href="../precepta/"><b>Precepta</b><span>The runtime layer · available now</span></a>
+        <a href="../cerebrio/"><b>Cerebrio</b><span>The understanding layer · on the roadmap</span></a>
+      </div>
+    </div>
+    <a href="../sovereign-ai/" data-nav="sovereign-ai" aria-current="page" class="is-active">Sovereign AI</a>
+    <a href="../trust/" data-nav="trust">Trust</a>
+    <a href="../pricing/" data-nav="pricing">Pricing</a>
+    <a href="../company/" data-nav="company">Company</a>
+  </nav>
+
+  <div class="lim-nav__end">
+    <button class="lim-icon-btn lim-nav__toggle" data-lim-nav-toggle aria-expanded="false" aria-controls="lim-sheet" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+    <button class="lim-icon-btn lim-theme-toggle" data-lim-theme-toggle aria-label="Switch to dark theme">
+      <svg class="lim-i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1Z"></path></svg>
+      <svg class="lim-i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"></path></svg>
+    </button>
+    <a class="lim-btn lim-btn--glass lim-btn--sm site-signin" href="https://app.liminalabs.in">Sign in</a>
+    <a class="lim-btn lim-btn--primary lim-btn--sm lim-nav__cta" href="../early-access/">Try the sandbox</a>
+  </div>
+</header>
+
+<div class="lim-sheet" id="lim-sheet" data-lim-nav-sheet data-open="false">
+  <a href="../intent-studio/">Intent Studio</a>
+  <a href="../precepta/">Precepta</a>
+  <a href="../cerebrio/">Cerebrio</a>
+  <a href="../sovereign-ai/">Sovereign AI</a>
+  <a href="../trust/">Trust</a>
+  <a href="../pricing/">Pricing</a>
+  <a href="../company/">Company</a>
+  <a href="https://app.liminalabs.in">Sign in</a>
+</div>
+
+
+<main id="main" class="lim-below-nav">
+<section class="lim-wrap site-hero" style="padding-bottom: var(--lim-s-6)">
+  <p class="lim-eyebrow lim-enter">Sovereign AI</p>
+  <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance" style="margin-top: var(--lim-s-4); max-width: 20ch">
+    Sovereign AI is not about hosting weights.
+  </h1>
+  <p class="lim-lede lim-enter lim-enter--d2">
+    Almost every conversation about sovereign AI is a conversation about where the model file
+    sits. That is the least interesting part of the problem, and solving it well can leave you
+    exactly as exposed as you were.
+  </p>
+</section>
+
+<section class="lim-wrap" style="padding-bottom: var(--lim-section)">
+  <article class="site-essay lim-reveal">
+
+    <h2 class="lim-t3">What everyone thinks it means</h2>
+    <p>
+      Ask an enterprise what sovereign AI means and you will usually get an infrastructure
+      answer: the weights are ours, the GPUs are in our data centre, nothing goes to a foreign
+      API. All of that is worth having. None of it is sovereignty.
+    </p>
+    <p>
+      A model running on your own hardware can still take an action nobody authorised, in a way
+      nobody can reconstruct afterwards, for reasons nobody wrote down. You have moved the file.
+      You have not gained control. The question a regulator asks is not <em>where did this run</em>
+      — it is <em>who decided this was allowed, and can you show me</em>.
+    </p>
+
+    <h2 class="lim-t3">A limit inside the model is a request</h2>
+    <p>
+      The standard way to constrain a model is to tell it what not to do. A system prompt, a set
+      of instructions, some fine-tuning on refusals. This works most of the time, which is the
+      dangerous part.
+    </p>
+    <p>
+      A constraint expressed in the same medium the model reasons in is a constraint the model can
+      reason about. It can be reframed, out-argued, buried under context, or simply outweighed by
+      a more compelling instruction later in the conversation. It is not a boundary. It is a
+      strong preference, held by something whose preferences are probabilistic.
+    </p>
+    <blockquote>
+      You cannot make a system safe by asking it nicely.
+    </blockquote>
+    <p>
+      The practical test is simple: if the limit and the thing being limited are made of the same
+      material, and the limited thing is the more capable reasoner, then the limit holds at the
+      pleasure of the thing it is supposed to constrain.
+    </p>
+
+    <h2 class="lim-t3">Why more compute does not close the gap</h2>
+    <p>
+      The reasonable hope is that this is temporary — a bigger model, better alignment training,
+      another generation of technique, and the constraint becomes reliable. It is worth being
+      precise about why that hope is misplaced.
+    </p>
+    <p>
+      Verifying that a sufficiently expressive system will never enter some forbidden state is not
+      merely expensive; for the general case it is <strong>undecidable</strong>. This is the same
+      family of result as the halting problem and Gödel's incompleteness theorems: a system rich
+      enough to express arbitrary computation cannot, in general, be proven to avoid an arbitrary
+      behaviour by inspecting it. Scaling makes the system more capable. It does not make the
+      general verification problem tractable, because that problem is not hard for want of
+      resources.
+    </p>
+    <p>
+      To be careful about the claim: this does not say alignment work is futile, or that a given
+      model cannot be made safer in practice for a given task. Plenty of specific properties can
+      be checked. What it says is that <em>guarantee</em> is the wrong word for anything obtained
+      by inspecting or training the model itself, and an enterprise control needs a guarantee.
+    </p>
+
+    <h2 class="lim-t3">The engineering response is encapsulation</h2>
+    <p>
+      Engineering has met this shape of problem before, and the answer has never been to solve the
+      unsolvable. It has been to <strong>wrap it</strong>. You take the component whose internals
+      you cannot fully verify, and you put it inside a deterministic boundary that can be
+      verified — one that mediates everything going in and everything coming out, and that the
+      component has no means of altering.
+    </p>
+    <p>
+      Memory-unsafe code goes in a sandbox. Untrusted input goes through a parser. A process gets
+      a set of capabilities and cannot grant itself more. In none of those cases did anyone prove
+      the inner thing well-behaved. They made its behaviour <em>not matter</em> beyond a line it
+      cannot cross.
+    </p>
+    <p>
+      Applied here: the model does not enforce policy, because it cannot be trusted to. A
+      deterministic layer outside it decides what may be asked, what may be seen, what may be
+      returned, and what is recorded. The model is a component inside a boundary rather than the
+      thing holding the boundary. That layer is what we build.
+    </p>
+
+    <h2 class="lim-t3">The mind and the muscle</h2>
+    <p>
+      Once the boundary is outside the model, something else follows, and it is the part that
+      matters commercially.
+    </p>
+    <p>
+      The model becomes <strong>muscle</strong> — rented, swappable, improving under you, and
+      genuinely interchangeable. A better one arrives every few months and you should be able to
+      take it without ceremony. What must not be interchangeable is the
+      <strong>mind</strong>: what your organisation is trying to do, what it is permitted to do,
+      and what it has learned from having done it.
+    </p>
+    <p>
+      In most enterprises today that mind is not written down anywhere durable. It lives in
+      people's heads, in prompts pasted between tools, and inside a vendor's runtime where it
+      cannot be inspected or taken with you. It is not owned. It is merely somewhere.
+    </p>
+
+    <h2 class="lim-t3">What that is worth</h2>
+    <p>
+      The commercial consequence is an asymmetry. The model layer depreciates — whatever you are
+      running is worth less every quarter, because the replacement is better and cheaper. The
+      record of how your organisation decides does the opposite. Every governed intent, every
+      piece of evidence, every decision and its outcome makes the next one cheaper to specify and
+      easier to defend.
+    </p>
+    <p>
+      That is also where the switching costs land, and they land the right way round. Because
+      the boundary is model-agnostic, leaving a <em>model</em> vendor is cheap by construction —
+      that is the point of it. What becomes expensive to leave is the accumulated record of how
+      your organisation works. That is a thing you own outright, exports in an open format, and
+      would be reluctant to abandon for the same reason you would not casually discard your
+      general ledger.
+    </p>
+    <p>
+      Anyone can rent the same frontier model this afternoon. Nobody else can rent your
+      organisation's accumulated judgement about what it should be used for.
+    </p>
+
+    <hr class="lim-rule">
+
+    <p class="lim-sm lim-soft">
+      That boundary is a product: <a href="../precepta/">Precepta</a> is the deterministic
+      layer this argument describes, and it runs inside your own network today.
+    </p>
+  </article>
+</section>
+
+</main>
+
+<footer class="lim-footer site-footer">
+  <div class="lim-wrap">
+    <div class="site-footer__cols">
+      <div class="site-footer__brand">
+        <a class="lim-nav__brand" href="../" aria-label="Limina Labs — home">
+          <svg class="lim-mark" viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+            <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+            <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+            <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+            <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+          </svg>
+          <span class="lim-nav__wordmark">Limina<span> Labs</span></span>
+        </a>
+        <p class="lim-sm lim-soft">Sovereign AI for the enterprise. Intent Studio and Precepta available now, Cerebrio next.</p>
+      </div>
+
+      <div>
+        <h2 class="site-footer__head">Products</h2>
+        <a href="../intent-studio/">Intent Studio</a>
+        <a href="../precepta/">Precepta</a>
+        <a href="../cerebrio/">Cerebrio</a>
+      </div>
+
+      <div>
+        <h2 class="site-footer__head">Resources</h2>
+        <a href="../sovereign-ai/">Sovereign AI</a>
+        <a href="../status/">Status</a>
+        <a href="https://docs.liminalabs.in">Docs</a>
+      </div>
+
+      <div>
+        <h2 class="site-footer__head">Trust</h2>
+        <a href="../trust/">Trust &amp; security</a>
+        <a href="../sub-processors/">Sub-processors</a>
+        <a href="../vulnerability-disclosure/">Vulnerability disclosure</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="../terms/">Terms</a>
+      </div>
+
+      <div>
+        <h2 class="site-footer__head">Company</h2>
+        <a href="../company/">Company</a>
+        <a href="../early-access/">Early access</a>
+        <a href="mailto:hello@preceptaai.com">Contact</a>
+      </div>
+    </div>
+
+    <div class="site-footer__base">
+      <span>© 2026 Limina Labs Private Limited · Early access</span>
+      <span class="lim-mono">Attributable · grounded · bounded · revocable</span>
+    </div>
+  </div>
+</footer>
+
+
+<script src="../design-system/js/limina.js?v=2.1" defer></script>
+<script src="../src/site.js?v=2.1" defer></script>
+</body>
+</html>

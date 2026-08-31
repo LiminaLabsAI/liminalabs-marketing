@@ -1,0 +1,197 @@
+<!--
+title: Trust and security | Limina Labs
+description: How the zero-egress boundary is constructed, what we hold, how releases are built and signed, and honest answers on certification and company stage.
+path: /trust
+nav: trust
+-->
+
+<section class="lim-wrap site-hero">
+  <p class="lim-eyebrow lim-enter">Trust and security</p>
+  <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance" style="margin-top: var(--lim-s-4)">
+    Most vendor risk does not apply to software you run yourself.
+  </h1>
+  <p class="lim-lede lim-enter lim-enter--d2">
+    We are early access, unfunded, and hold no certifications. This page says exactly what that
+    does and does not mean for your assessment — and nothing on it is gated.
+  </p>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+
+  <article class="site-block lim-reveal">
+    <div class="site-block__n">01</div>
+    <div class="site-block__body">
+      <h3 class="lim-t3">Zero-egress architecture</h3>
+      <p>
+        The boundary is a property of where the software sits, not a setting inside it. Under
+        self-hosting, Precepta runs in your cloud account or data centre with no public route.
+        Model inference happens in-boundary. There is no telemetry and no phone-home, so there
+        is no channel over which your data could reach us even if we wanted it.
+      </p>
+      <p>
+        That is the whole argument, and it is structural: we cannot lose data we never receive.
+      </p>
+    </div>
+  </article>
+
+  <article class="site-block lim-reveal">
+    <div class="site-block__n">02</div>
+    <div class="site-block__body">
+      <h3 class="lim-t3">What we hold, and what we don't</h3>
+      <p>
+        Under a self-hosted deployment: <strong>nothing</strong>. No prompts, no completions, no
+        embeddings, no audit records, no customer data of any kind. Your audit store is yours and
+        stays in your infrastructure.
+      </p>
+      <p>
+        The exception is the hosted sandbox, which runs on our infrastructure in
+        <span class="site-todo">{{REGION}}</span> and is for non-production, synthetic or
+        non-sensitive data only. Anything real belongs in a self-hosted evaluation, where nothing
+        leaves your boundary.
+      </p>
+    </div>
+  </article>
+
+  <article class="site-block lim-reveal">
+    <div class="site-block__n">03</div>
+    <div class="site-block__body">
+      <h3 class="lim-t3">Attestation and live probes</h3>
+      <p>
+        Precepta issues a signed sovereignty attestation, and continuous live probes test the
+        egress boundary rather than asserting it. This is the part of the system we most want you
+        to distrust on principle — which is why it is demonstrated during your evaluation, on your
+        own network, rather than shown as a sample here.
+      </p>
+      <p>
+        Our intent is to open-source the verifier so an attestation can be checked with code we
+        did not write. That does not exist yet, and we will not describe it as though it does.
+      </p>
+    </div>
+  </article>
+
+  <article class="site-block lim-reveal">
+    <div class="site-block__n">04</div>
+    <div class="site-block__body">
+      <h3 class="lim-t3">Tamper-evident audit</h3>
+      <p>
+        Every request, policy decision, redaction and output is recorded with lineage, so a
+        specific action can be reconstructed after the fact — what was asked, what policy said,
+        what the model saw, and what came back. Integrity is chained, so a record cannot be
+        altered after the event without the alteration being evident.
+      </p>
+    </div>
+  </article>
+
+  <article class="site-block lim-reveal">
+    <div class="site-block__n">05</div>
+    <div class="site-block__body">
+      <h3 class="lim-t3">How releases are built and signed</h3>
+      <p>
+        Dependencies are scanned, releases are signed, and the same artifact runs in the sandbox,
+        in a self-hosted deployment and on-premises — so what you evaluate is what you operate.
+        Our patching commitment and disclosure timelines are in the security overview below.
+      </p>
+      <p class="lim-sm lim-soft">
+        Full secure-SDLC detail: <span class="site-todo">{{SDLC_DETAIL}}</span>
+      </p>
+    </div>
+  </article>
+
+  <article class="site-block lim-reveal">
+    <div class="site-block__n">06</div>
+    <div class="site-block__body">
+      <h3 class="lim-t3">Sub-processors</h3>
+      <p>
+        Short, because self-hosted. A self-hosted deployment has no sub-processors at all — there
+        is no data flow for one to sit in. The hosted sandbox has a small number, listed in full.
+      </p>
+      <p><a href="{{base}}sub-processors/">Sub-processor list →</a></p>
+    </div>
+  </article>
+
+  <article class="site-block lim-reveal">
+    <div class="site-block__n">07</div>
+    <div class="site-block__body">
+      <h3 class="lim-t3">Vulnerability disclosure</h3>
+      <p>
+        Report anything you find to <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a>. We
+        will acknowledge, keep you informed, and credit you if you want to be credited. Our
+        machine-readable contact is published at
+        <a href="{{base}}.well-known/security.txt">/.well-known/security.txt</a>.
+      </p>
+      <p><a href="{{base}}vulnerability-disclosure/">Disclosure policy →</a></p>
+    </div>
+  </article>
+
+  <article class="site-block lim-reveal">
+    <div class="site-block__n">08</div>
+    <div class="site-block__body">
+      <h3 class="lim-t3">The two questions you were going to ask anyway</h3>
+
+      <h4 class="lim-t4 lim-mt-5">"Are you SOC 2 certified?"</h4>
+      <p>
+        Not yet — we're early access, and we'll start that as we scale. But the reason it usually
+        matters is that a vendor holds your data. We're self-hosted with zero egress: your data
+        never reaches us. Most of the vendor-risk surface simply isn't there. What you're
+        assessing is software you run yourself — and we can show you how it's built, signed and
+        patched. Here's our security overview and our vulnerability policy, and we'll happily put
+        the source in escrow.
+      </p>
+      <p class="lim-sm lim-soft">
+        On the certification path: we will pursue
+        <span class="site-todo">{{ISO 27001 or SOC 2}}</span> once we have paying customers.
+        Certifying a product that is still changing weekly wastes money and freezes things that
+        should still be moving.
+      </p>
+
+      <h4 class="lim-t4 lim-mt-6">"You're unfunded — what if you disappear?"</h4>
+      <p>
+        Fair question. It runs on your infrastructure, so it keeps running if we vanish.
+        Everything exports in an open format, so your knowledge isn't trapped. And we'll put the
+        source in escrow if you want the belt as well as the braces.
+      </p>
+    </div>
+  </article>
+
+  <article class="site-block lim-reveal">
+    <div class="site-block__n">09</div>
+    <div class="site-block__body">
+      <h3 class="lim-t3">Documents — none of them gated</h3>
+      <p>
+        No form, no email capture, no sales call in the way. Security documents behind a lead
+        form are a tell, and your team should not have to negotiate for them.
+      </p>
+      <ul class="lim-mt-4" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px">
+        <li><a href="{{base}}sub-processors/">Sub-processor list</a></li>
+        <li><a href="{{base}}vulnerability-disclosure/">Vulnerability disclosure policy</a></li>
+        <li>Security overview <span class="site-todo">{{NOT WRITTEN YET}}</span></li>
+        <li>Security questionnaire answer pack <span class="site-todo">{{NOT WRITTEN YET}}</span></li>
+        <li>Incident response plan <span class="site-todo">{{NOT WRITTEN YET}}</span></li>
+      </ul>
+      <p class="lim-sm lim-soft">
+        The last three are not written yet. Rather than put them behind a "request access" form
+        and let you assume they exist, we would rather say so — and send you what we do have if
+        you ask.
+      </p>
+    </div>
+  </article>
+
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+  <div class="lim-pane lim-reveal" style="padding: clamp(28px, 5vw, 56px)">
+    <h2 class="lim-t2 lim-balance">Let your security team choose the tests.</h2>
+    <p class="lim-lede lim-mt-4">
+      Sixty to ninety minutes on a live deployment, where they pick what to try — including the
+      exfiltration attempt. We do not get to set the questions.
+    </p>
+    <div class="lim-row lim-mt-6">
+      <a class="lim-btn lim-btn--primary lim-btn--lg" href="{{base}}early-access/">Book an adversarial session</a>
+      <a class="lim-btn lim-btn--glass lim-btn--lg" href="{{base}}status/">See exactly what's built</a>
+    </div>
+  </div>
+</section>

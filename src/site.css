@@ -1,0 +1,262 @@
+/* ============================================================================
+   liminalabs.in — marketing patterns
+   Layered on Limen. Adds no colour, no second diagonal, and forks no
+   component: everything here is composition of what design-system/ provides.
+   ========================================================================= */
+
+/* --- Nav: the Products menu --------------------------------------------- */
+.site-menu { position: relative; }
+.site-menu__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: var(--lim-r-pill);
+  background: transparent;
+  font-family: var(--lim-font-sans);
+  font-size: var(--lim-t-sm);
+  font-weight: 500;
+  color: var(--lim-text-soft);
+  transition: color var(--lim-d-2) var(--lim-ease), background var(--lim-d-2) var(--lim-ease);
+}
+.site-menu__button svg { width: 12px; height: 12px; transition: transform var(--lim-d-2) var(--lim-ease); }
+.site-menu__button:hover { color: var(--lim-text); background: var(--lim-glass-thin); }
+.site-menu.is-open .site-menu__button { color: var(--lim-text); background: var(--lim-glass-thin); }
+.site-menu.is-open .site-menu__button svg { transform: rotate(180deg); }
+.site-menu__button[aria-current="page"],
+.site-menu__button.is-active {
+  color: var(--lim-text);
+  font-weight: 600;
+  background: var(--lim-glass-raise);
+  box-shadow: var(--lim-shadow-1), inset 0 1px 0 var(--lim-edge);
+}
+.site-menu__panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: var(--lim-z-overlay);
+  width: 264px;
+  padding: 6px;
+  background: var(--lim-glass-solid);
+  -webkit-backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
+          backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
+  animation: site-menu-in var(--lim-d-2) var(--lim-ease-out) both;
+}
+@keyframes site-menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.site-menu__panel a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--lim-r-md);
+  text-decoration: none;
+  color: var(--lim-text);
+}
+.site-menu__panel a:hover { background: var(--lim-glass-thin); }
+.site-menu__panel b { display: block; font-size: var(--lim-t-sm); font-weight: 600; }
+.site-menu__panel span {
+  display: block;
+  margin-top: 1px;
+  font-size: var(--lim-t-eyebrow);
+  font-family: var(--lim-font-mono);
+  color: var(--lim-text-soft);
+}
+@media (max-width: 1120px) { .site-signin { display: none; } }
+
+/* --- Footer -------------------------------------------------------------- */
+.site-footer__cols {
+  display: grid;
+  gap: var(--lim-s-6);
+  grid-template-columns: 1.6fr repeat(4, 1fr);
+}
+@media (max-width: 900px) { .site-footer__cols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .site-footer__cols { grid-template-columns: 1fr; } }
+.site-footer__brand { display: flex; flex-direction: column; gap: var(--lim-s-3); max-width: 34ch; }
+.site-footer__head {
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+  margin-bottom: var(--lim-s-3);
+}
+.site-footer__cols > div > a {
+  display: block;
+  padding: 3px 0;
+  font-size: var(--lim-t-sm);
+  color: var(--lim-text-muted);
+  text-decoration: none;
+}
+.site-footer__cols > div > a:hover { color: var(--lim-accent); }
+.site-footer__base {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lim-s-4);
+  justify-content: space-between;
+  margin-top: var(--lim-s-8);
+  padding-top: var(--lim-s-5);
+  border-top: 1px solid var(--lim-hairline);
+  font-size: var(--lim-t-xs);
+  color: var(--lim-text-soft);
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+.site-hero { padding-block: var(--lim-s-8) var(--lim-s-9); }
+.site-hero h1 { margin: var(--lim-s-4) 0 0; max-width: 18ch; }
+.site-hero .lim-lede { margin-top: var(--lim-s-5); }
+.site-hero__cta { margin-top: var(--lim-s-7); }
+.site-trustline {
+  margin-top: var(--lim-s-6);
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: .04em;
+  color: var(--lim-text-soft);
+}
+
+/* --- The three questions -------------------------------------------------- */
+.site-questions { display: grid; gap: var(--lim-s-5); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .site-questions { grid-template-columns: 1fr; } }
+.site-question { padding: var(--lim-s-6); display: flex; flex-direction: column; gap: var(--lim-s-4); }
+.site-question__q {
+  font-family: var(--lim-font-display);
+  font-size: var(--lim-t-4);
+  font-weight: 600;
+  line-height: var(--lim-lh-snug);
+  letter-spacing: var(--lim-track-snug);
+  text-wrap: pretty;
+}
+.site-question p { font-size: var(--lim-t-sm); color: var(--lim-text-muted); margin: 0; }
+.site-question .lim-ladder { margin-top: auto; }
+
+/* --- Full-width statement ------------------------------------------------- */
+.site-statement { padding-block: var(--lim-section); }
+.site-statement h2 { max-width: 22ch; }
+.site-statement p { max-width: 62ch; margin-top: var(--lim-s-5); font-size: var(--lim-t-lede); color: var(--lim-text-muted); }
+
+/* --- Product cards: identical size, always -------------------------------- */
+.site-products { display: grid; gap: var(--lim-s-5); grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+@media (max-width: 900px) { .site-products { grid-template-columns: 1fr; } }
+.site-product { display: flex; flex-direction: column; gap: var(--lim-s-4); padding: var(--lim-s-6); }
+.site-product__head { display: flex; align-items: center; justify-content: space-between; gap: var(--lim-s-3); }
+.site-product h3 { font-size: var(--lim-t-3); margin: 0; }
+.site-product p { margin: 0; font-size: var(--lim-t-sm); color: var(--lim-text-muted); }
+.site-product__link { margin-top: auto; padding-top: var(--lim-s-4); }
+
+/* --- Routing ------------------------------------------------------------- */
+.site-routes { display: grid; gap: var(--lim-s-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .site-routes { grid-template-columns: 1fr; } }
+.site-route { display: flex; gap: var(--lim-s-4); padding: var(--lim-s-5); align-items: flex-start; }
+.site-route__who {
+  flex: none;
+  width: 104px;
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+  padding-top: 2px;
+}
+.site-route__body { min-width: 0; }
+.site-route__q { font-weight: 600; font-size: var(--lim-t-sm); }
+.site-route__a { font-size: var(--lim-t-sm); color: var(--lim-text-muted); margin: 4px 0 8px; }
+
+/* --- Without / with ------------------------------------------------------- */
+.site-contrast { display: grid; gap: var(--lim-s-5); grid-template-columns: 1fr 1fr; }
+@media (max-width: 700px) { .site-contrast { grid-template-columns: 1fr; } }
+.site-contrast__cell { padding: var(--lim-s-5); border-radius: var(--lim-r-lg); border: 1px solid var(--lim-hairline); }
+.site-contrast__cell--with { border-color: var(--lim-accent-soft); background: var(--lim-accent-wash); }
+.site-contrast__label {
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+  margin-bottom: var(--lim-s-3);
+}
+
+/* --- Numbered blocks (trust) ---------------------------------------------- */
+.site-block { display: flex; gap: var(--lim-s-5); padding-block: var(--lim-s-6); border-top: 1px solid var(--lim-hairline); }
+.site-block:first-of-type { border-top: 0; }
+.site-block__n {
+  flex: none;
+  width: 2.5rem;
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-sm);
+  color: var(--lim-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+.site-block__body { min-width: 0; max-width: 68ch; }
+.site-block__body h3 { margin-bottom: var(--lim-s-3); }
+.site-block__body > * + * { margin-top: var(--lim-s-3); }
+
+/* --- Essay ---------------------------------------------------------------- */
+.site-essay { max-width: 68ch; }
+.site-essay > * + * { margin-top: var(--lim-s-5); }
+.site-essay h2 { margin-top: var(--lim-s-8); }
+.site-essay h2 + p { margin-top: var(--lim-s-4); }
+.site-essay p { font-size: 1.0625rem; line-height: 1.68; color: var(--lim-text-muted); }
+.site-essay strong { color: var(--lim-text); }
+.site-essay blockquote {
+  margin: var(--lim-s-7) 0;
+  padding-left: var(--lim-s-5);
+  border-left: 3px solid var(--lim-accent);
+  font-family: var(--lim-font-display);
+  font-size: var(--lim-t-4);
+  font-weight: 500;
+  line-height: var(--lim-lh-snug);
+  color: var(--lim-text);
+}
+
+/* --- Pricing -------------------------------------------------------------- */
+.site-tiers { display: grid; gap: var(--lim-s-5); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .site-tiers { grid-template-columns: 1fr; } }
+.site-tier { display: flex; flex-direction: column; padding: var(--lim-s-6); }
+.site-tier h3 { font-size: var(--lim-t-4); }
+.site-tier__price {
+  margin: var(--lim-s-4) 0 var(--lim-s-5);
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-sm);
+  color: var(--lim-text-soft);
+}
+.site-tier ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.site-tier li { display: flex; gap: 9px; font-size: var(--lim-t-sm); color: var(--lim-text-muted); }
+.site-tier li b { color: var(--lim-text); font-weight: 600; }
+
+/* --- Form ----------------------------------------------------------------- */
+.site-form { display: grid; gap: var(--lim-s-4); grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) { .site-form { grid-template-columns: 1fr; } }
+
+/* --- Diagrams ------------------------------------------------------------- */
+.site-figure { margin: 0; }
+.site-figure svg { width: 100%; height: auto; display: block; }
+.site-figure figcaption {
+  margin-top: var(--lim-s-4);
+  font-size: var(--lim-t-xs);
+  color: var(--lim-text-soft);
+  text-align: center;
+}
+.dgm-box { fill: var(--lim-glass-solid); stroke: var(--lim-hairline-strong); stroke-width: 1.5; }
+.dgm-name { fill: var(--lim-text); font-family: var(--lim-font-display); font-size: 15px; font-weight: 600; }
+.dgm-role { fill: var(--lim-text-soft); font-family: var(--lim-font-mono); font-size: 10.5px; letter-spacing: .06em; }
+.dgm-chip-bg { fill: var(--lim-accent-wash); stroke: var(--lim-accent-soft); stroke-width: 1; }
+.dgm-chip-tx { fill: var(--lim-accent); font-family: var(--lim-font-mono); font-size: 9.5px; letter-spacing: .05em; }
+.dgm-arrow { stroke: var(--lim-text-faint); stroke-width: 1.5; fill: none; }
+.dgm-arrow-head { fill: var(--lim-text-faint); }
+.dgm-edge-label { fill: var(--lim-text-soft); font-family: var(--lim-font-mono); font-size: 10px; }
+.dgm-node { fill: var(--lim-glass-solid); stroke: var(--lim-hairline-strong); stroke-width: 1.5; }
+.dgm-node-tx { fill: var(--lim-text); font-family: var(--lim-font-sans); font-size: 12.5px; font-weight: 500; }
+
+/* --- Placeholders --------------------------------------------------------- */
+/* Anything still {{LIKE_THIS}} is visibly unfinished on the page, on purpose:
+   a placeholder that blends in is a placeholder that ships. */
+.site-todo {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: var(--lim-r-xs);
+  border: 1px dashed var(--lim-warn);
+  background: var(--lim-warn-bg);
+  color: var(--lim-warn);
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  font-weight: 500;
+}

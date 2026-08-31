@@ -33,19 +33,18 @@ Everything in `css/tokens.css` is derived from the brand kit in [`../assets`](..
 <script>try{var t=localStorage.getItem("limina-theme");
   if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="design-system/css/limina.css">
+<link rel="stylesheet" href="design-system/css/limina.css?v=2.1">
 
 <!-- before </body> -->
-<script src="design-system/js/limina.js" defer></script>
+<script src="design-system/js/limina.js?v=2.1" defer></script>
 ```
 
-The fonts are deliberately *not* fetched from inside `limina.css` — an `@import`
-in a linked stylesheet costs an extra round trip before any text can paint.
+That is the whole integration. The typefaces are **self-hosted** in `fonts/` and
+loaded by `css/fonts.css`, so a page using this system makes no external
+requests — no font CDN, nothing to block, nothing for a CISO to find in
+devtools. Ship `fonts/` next to `css/` and the relative paths resolve.
 
-Put a version on the two local URLs (`limina.css?v=1.0`, `limina.js?v=1.0`) and
+Put a version on the two local URLs (`limina.css?v=2.1`, `limina.js?v=2.1`) and
 bump it when you change them. Without it a browser will happily keep running a
 cached copy of the JS against freshly edited CSS, which looks exactly like a
 broken component.
@@ -196,12 +195,14 @@ design-system/
 ├── index.html            the living spec — every component, both themes
 ├── css/
 │   ├── limina.css        the only file you import
+│   ├── fonts.css         @font-face for the three self-hosted families
 │   ├── tokens.css        every custom property, light and dark
 │   ├── base.css          reset, ambient ground, type roles, layout primitives
 │   ├── components.css    every component
 │   ├── motion.css        brand primitives + interface motion + reduced motion
 │   └── utilities.css     a deliberately short list
-└── js/limina.js          theme, nav, reveals, segmented controls
+├── fonts/                woff2 — Bricolage Grotesque, Archivo, IBM Plex Mono
+└── js/limina.js          theme, nav, lift, reveals, segmented controls
 ```
 
 `../assets` stays the source of truth for the mark, lockups, favicons, app

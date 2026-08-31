@@ -1,0 +1,25 @@
+{
+  "_comment": "What each on-page placeholder needs before launch. Keys must match the literal {{...}} text in the built HTML.",
+
+  "{{REGION}}": "The cloud region the hosted sandbox actually runs in. Brief §5 requires it stated wherever the sandbox is offered — a sovereignty vendor asking a regulated buyer to send data somewhere unnamed is an obvious problem.",
+  "{{TBD}}": "Prices (Intent Studio Team/Business/Enterprise, pilot fee, stack pricing) and the registered office line on /company. Brief §9 says publish the structure, hold the numbers — so the structure is live and every figure is marked.",
+  "{{CONFIRM}}": "Whether SSO/SAML and SCIM actually ship. Zero evidence found anywhere in the repo. Do not put these in a tier table until confirmed.",
+  "{{CONFIRM BUILD STATE}}": "Same question on /status — SSO / SAML, SCIM, RBAC.",
+  "{{ISO 27001 or SOC 2}}": "Pick exactly one and name it. Brief §14: follow the pipeline, start one, never publish a date.",
+  "{{FORM_ENDPOINT}}": "Where /early-access and the Cerebrio list post to. Must be self-hosted or a processor you are willing to list on /sub-processors — no third-party form widget, per brief §11.",
+  "{{SDLC_DETAIL}}": "Secure-SDLC specifics on /trust block 05: scanning cadence, signing method, patch SLAs.",
+  "{{DISCLOSURE_TIMELINES}}": "Acknowledgement and remediation windows for the vulnerability disclosure policy.",
+  "{{SANDBOX_SUBPROCESSOR_LIST}}": "The actual sub-processors behind the hosted sandbox. Self-hosted has none; the sandbox does, and the list must be complete.",
+  "{{PENDING LEGAL REVIEW}}": "Full privacy notice and website/sandbox terms. Everything currently on those pages is factually accurate; the formal notices are not written. Do not substitute boilerplate.",
+  "{{NOT WRITTEN YET}}": "Security overview, questionnaire answer pack, incident response plan. Brief §5 rung 0 wants these ungated — they do not exist yet, and the page says so rather than hiding them behind a form.",
+
+  "_outOfBand": [
+    "**Real artifacts.** The strongest proof on the site — a signed attestation, live egress-probe output, a real audit-log line — is deliberately absent. None exists in this repo and hard constraint #1 forbids inventing one. When Precepta can emit real output, home §5 and /trust block 03 are where it goes.",
+    "**301 redirects** from preceptaai.com → /precepta and intent.preceptaai.com → /intent-studio, preserving deep paths.",
+    "**DNS**: app.liminalabs.in (Sign in) and docs.liminalabs.in (Docs) are linked in the nav and footer but do not resolve yet. Currently live: preceptaai.com and intent.preceptaai.com.",
+    "**Contact address** is still hello@preceptaai.com, which makes Precepta look like the parent. Move to a Limina Labs address once the domain is live — it appears in the footer, /trust, /company, /sub-processors and security.txt.",
+    "**TLS**: support 1.2 as well as 1.3. The current Intent Studio host is 1.3-only and refuses 1.2, which breaks the TLS-inspecting corporate proxies these buyers sit behind.",
+    "**Analytics**: self-hosted and cookieless (Plausible, Umami or equivalent), or none. The site currently makes zero external requests — keep it that way.",
+    "**security.txt** expiry is set to 2027-08-31; refresh it annually or it becomes invalid."
+  ]
+}

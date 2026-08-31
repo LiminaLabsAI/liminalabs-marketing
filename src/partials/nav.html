@@ -1,0 +1,52 @@
+<header class="lim-nav" data-lim-nav>
+  <a class="lim-nav__brand lb-lift-hover" href="{{base}}" aria-label="Limina Labs — home">
+    <svg class="lim-mark" data-lim-lift viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+      <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+      <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+      <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+      <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+    </svg>
+    <span class="lim-nav__wordmark">Limina<span> Labs</span></span>
+  </a>
+
+  <nav class="lim-nav__links" aria-label="Primary">
+    <div class="site-menu" data-site-menu>
+      <button type="button" class="site-menu__button" data-nav="products" aria-expanded="false" aria-haspopup="true" aria-controls="menu-products">
+        Products
+        <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="site-menu__panel lim-pane lim-pane--flush" id="menu-products" hidden>
+        <a href="{{base}}intent-studio/"><b>Intent Studio</b><span>The work layer · available now</span></a>
+        <a href="{{base}}precepta/"><b>Precepta</b><span>The runtime layer · available now</span></a>
+        <a href="{{base}}cerebrio/"><b>Cerebrio</b><span>The understanding layer · on the roadmap</span></a>
+      </div>
+    </div>
+    <a href="{{base}}sovereign-ai/" data-nav="sovereign-ai">Sovereign AI</a>
+    <a href="{{base}}trust/" data-nav="trust">Trust</a>
+    <a href="{{base}}pricing/" data-nav="pricing">Pricing</a>
+    <a href="{{base}}company/" data-nav="company">Company</a>
+  </nav>
+
+  <div class="lim-nav__end">
+    <button class="lim-icon-btn lim-nav__toggle" data-lim-nav-toggle aria-expanded="false" aria-controls="lim-sheet" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+    <button class="lim-icon-btn lim-theme-toggle" data-lim-theme-toggle aria-label="Switch to dark theme">
+      <svg class="lim-i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1Z"></path></svg>
+      <svg class="lim-i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"></path></svg>
+    </button>
+    <a class="lim-btn lim-btn--glass lim-btn--sm site-signin" href="{{SIGN_IN_URL}}">Sign in</a>
+    <a class="lim-btn lim-btn--primary lim-btn--sm lim-nav__cta" href="{{base}}early-access/">Try the sandbox</a>
+  </div>
+</header>
+
+<div class="lim-sheet" id="lim-sheet" data-lim-nav-sheet data-open="false">
+  <a href="{{base}}intent-studio/">Intent Studio</a>
+  <a href="{{base}}precepta/">Precepta</a>
+  <a href="{{base}}cerebrio/">Cerebrio</a>
+  <a href="{{base}}sovereign-ai/">Sovereign AI</a>
+  <a href="{{base}}trust/">Trust</a>
+  <a href="{{base}}pricing/">Pricing</a>
+  <a href="{{base}}company/">Company</a>
+  <a href="{{SIGN_IN_URL}}">Sign in</a>
+</div>

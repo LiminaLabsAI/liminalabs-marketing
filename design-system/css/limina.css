@@ -2,17 +2,18 @@
    LIMEN — the Limina Labs design system
    Single entry point. Import this and nothing else.
 
-   The typefaces are not fetched here on purpose: an @import inside a linked
-   stylesheet costs an extra round trip before any text can paint. Put this in
-   the document <head> instead, above this stylesheet:
-
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+   Typefaces are self-hosted in fonts/ and pulled in by fonts.css below — there
+   is no external font CDN anywhere in this system. Ship the fonts/ directory
+   alongside css/ and the relative paths resolve on their own.
    ========================================================================= */
 
-@import "tokens.css";
-@import "base.css";
-@import "components.css";
-@import "motion.css";
-@import "utilities.css";
+/* The version query has to be repeated on every import. Putting it only on the
+   link to this file busts this file alone — the browser will happily keep
+   serving cached copies of everything below, which looks exactly like a CSS
+   fix that did not work. Bump all six together. */
+@import "fonts.css?v=2.1";
+@import "tokens.css?v=2.1";
+@import "base.css?v=2.1";
+@import "components.css?v=2.1";
+@import "motion.css?v=2.1";
+@import "utilities.css?v=2.1";

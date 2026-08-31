@@ -1,0 +1,13 @@
+{
+  "_comment": "Values shared across every page. Anything still wrapped in {{...}} renders as a visible amber marker on the page and is listed in LAUNCH.md. Never guess a value here.",
+
+  "SIGN_IN_URL": "https://app.liminalabs.in",
+  "DOCS_URL": "https://docs.liminalabs.in",
+  "CONTACT_EMAIL": "hello@preceptaai.com",
+
+  "_unresolved": {
+    "SIGN_IN_URL": "brief §6 specifies app.liminalabs.in; DNS not yet pointed. Live product is currently intent.preceptaai.com.",
+    "DOCS_URL": "brief §6 specifies docs.liminalabs.in; does not exist yet.",
+    "CONTACT_EMAIL": "still a Precepta address, which makes Precepta look like the parent. Move to a Limina Labs address the day the domain is live."
+  }
+}

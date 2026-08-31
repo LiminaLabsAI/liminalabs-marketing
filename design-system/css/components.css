@@ -234,7 +234,8 @@
   flex: none;
 }
 
-.lim-nav__toggle { display: none; }
+/* Specific enough to beat .lim-icon-btn's own display, which is declared later. */
+.lim-nav .lim-nav__toggle { display: none; }
 
 /* Mobile: the links move into a sheet that hangs off the pill. */
 .lim-sheet {
@@ -272,7 +273,7 @@
 
 @media (max-width: 900px) {
   .lim-nav__links { display: none; }
-  .lim-nav__toggle { display: inline-grid; }
+  .lim-nav .lim-nav__toggle { display: inline-grid; }
 }
 @media (max-width: 560px) {
   .lim-nav { padding-left: var(--lim-s-4); gap: var(--lim-s-3); }

@@ -1,0 +1,58 @@
+<!--
+title: Privacy | Limina Labs
+description: What this website collects (nothing), what a self-hosted deployment sends us (nothing), and what the hosted sandbox holds.
+path: /privacy
+nav: none
+-->
+<section class="lim-wrap site-hero" style="padding-bottom: var(--lim-s-6)">
+  <p class="lim-eyebrow">Legal</p>
+  <h1 class="lim-t1 lim-balance" style="margin-top: var(--lim-s-4)">Privacy</h1>
+  <p class="lim-lede">
+    The short version is that there is very little to tell you, which is the intended outcome
+    rather than an oversight.
+  </p>
+</section>
+
+<section class="lim-wrap" style="padding-bottom: var(--lim-section)">
+  <div class="site-essay">
+    <h2 class="lim-t3">This website</h2>
+    <p>
+      No third-party analytics, no advertising or marketing pixels, no hosted chat widget, no
+      social embeds, and no cookies set by us. Typefaces are served from our own origin rather
+      than a font CDN, so loading a page here does not tell anyone else that you did. There is no
+      cookie banner because there is nothing to consent to.
+    </p>
+
+    <h2 class="lim-t3">Self-hosted deployments</h2>
+    <p>
+      Nothing reaches us. There is no telemetry and no phone-home. Prompts, completions,
+      embeddings and audit records stay in your infrastructure, and we have no means of reading
+      them.
+    </p>
+
+    <h2 class="lim-t3">The hosted sandbox</h2>
+    <p>
+      The evaluation sandbox runs on our infrastructure in
+      <span class="site-todo">{{REGION}}</span>. It is for non-production, synthetic or
+      non-sensitive data only, and you should not put personal data into it. Requests are retained
+      for the life of the tenant so that you can inspect the audit trail, and deleted with it.
+    </p>
+
+    <h2 class="lim-t3">If you contact us</h2>
+    <p>
+      If you apply for early access or email us, we keep what you sent so we can reply. We do not
+      sell it, and we do not add you to a marketing list you did not ask for.
+    </p>
+
+    <div class="lim-note lim-note--warn lim-mt-6">
+      <div>
+        <strong>The formal policy is still being prepared.</strong>
+        Everything above is accurate, but the complete notice — lawful bases, retention periods,
+        data-subject rights and how to exercise them — is
+        <span class="site-todo">{{PENDING LEGAL REVIEW}}</span>. We would rather publish nothing
+        than publish boilerplate we have not checked. Ask us anything in the meantime:
+        <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a>.
+      </div>
+    </div>
+  </div>
+</section>

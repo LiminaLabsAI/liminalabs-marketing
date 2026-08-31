@@ -11,10 +11,7 @@
 
 <script>try{var t=localStorage.getItem("limina-theme");if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme;}catch(e){}</script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/limina.css?v=1.3">
+<link rel="stylesheet" href="css/limina.css?v=2.1">
 
 <style>
 /* --------------------------------------------------------------------------
@@ -493,7 +490,7 @@
       <article class="lim-card lim-card--lift lim-sweep">
         <div class="lim-card__head">
           <h4 class="lim-card__title">Precepta</h4>
-          <span class="lim-badge lim-badge--glass">Beta</span>
+          <span class="lim-badge lim-badge--glass">Early access</span>
         </div>
         <p class="lim-card__body">The gate. Policy decides what may act, at which setting, on whose authority.</p>
         <div class="lim-card__foot">
@@ -735,7 +732,8 @@
     <p class="lim-lede">
       The system is plain CSS with custom properties — no build step, no framework, and
       nothing to compile. Drop <code>design-system/</code> into a project and import the
-      one entry file.
+      one entry file. The typefaces are self-hosted in <code>fonts/</code>, so the page
+      makes no external requests at all.
     </p>
   </header>
 
@@ -744,13 +742,10 @@
 &lt;script&gt;try{var t=localStorage.getItem("limina-theme");
   if(t)document.documentElement.dataset.theme=t;}catch(e){}&lt;/script&gt;
 
-&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
-&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
-&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap"&gt;
-&lt;link rel="stylesheet" href="design-system/css/limina.css"&gt;
+&lt;link rel="stylesheet" href="design-system/css/limina.css?v=2.1"&gt;
 
 &lt;!-- before &lt;/body&gt; --&gt;
-&lt;script src="design-system/js/limina.js" defer&gt;&lt;/script&gt;</code></pre>
+&lt;script src="design-system/js/limina.js?v=2.1" defer&gt;&lt;/script&gt;</code></pre>
 
     <div class="lim-grid lim-grid--3 lim-mt-6">
       <div class="lim-card lim-card--tight">
@@ -788,6 +783,6 @@
 </footer>
 </main>
 
-<script src="js/limina.js?v=1.3" defer></script>
+<script src="js/limina.js?v=2.1" defer></script>
 </body>
 </html>

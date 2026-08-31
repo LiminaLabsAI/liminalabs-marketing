@@ -55,6 +55,47 @@ Theme follows the operating system until someone chooses. `data-theme="dark"` or
 
 ---
 
+## What makes this read as premium
+
+Premium in consumer design signals desire. Premium in enterprise signals
+**evidence of judgement** — a CISO is inferring, from a website, whether you are
+the kind of organisation that stays careful when nobody is watching. Every
+visual decision is read as a proxy for engineering discipline.
+
+That gives three levers, and decoration is not one of them.
+
+**Restraint.** One accent colour, few type sizes, few components, used
+identically everywhere. A page with one accent reads as considered; a page with
+five reads as unmanaged. The message is not "we have taste" — it is "we have
+standards and we hold them."
+
+**Precision.** Tabular numerals in tables, hairlines you can actually see, real
+em-dashes, no orphans, consistent optical alignment. Nobody consciously notices
+these. Everybody unconsciously registers their absence.
+
+**Density.** The counterintuitive one. Consumer sites breathe because attention
+is scarce; an enterprise buyer *wants* information, and hero-plus-three-cards
+reads as a company with nothing to say. Dense but organised beats airy.
+
+### What this system deliberately does not do
+
+- **No visible glass.** Panes sit at 90–97% opacity with `blur(10px)` and
+  `saturate(108%)`. The material is real but you should not notice it working.
+  Frosted-glass-as-effect reads consumer, and it costs contrast that text needs.
+- **No large soft shadows.** A wide diffuse halo is the tell of a card floating
+  for decoration rather than because it sits above something. Shadows are short.
+- **No decorative motion.** Animation carrying no information was removed. What
+  remains reports state — the lift on a brand moment, the loading motifs.
+- **Quiet ground.** The auras are a tint, not a light show, and the oversized
+  ambient mark appears only on the home page, never behind body copy.
+- **The wordmark face is not the heading face.** Setting every heading in the
+  logo's typeface makes the logo ordinary. Bricolage ships as a seven-glyph
+  subset for the wordmark alone; Archivo does the reading and the scanning.
+
+The strongest premium signal available to Limina Labs is not visual at all — it
+is `/status`, which lists what is *not* built. For a company with no logos to
+show, verifiable honesty is the differentiator.
+
 ## Seven rules that are easy to get wrong
 
 1. **Glass needs something to refract.** `base.css` paints three soft auras in

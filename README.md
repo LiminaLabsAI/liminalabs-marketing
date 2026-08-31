@@ -67,8 +67,10 @@ These come from the build brief. Breaking one costs a deal, not a style point.
 3. **Never publish a roadmap.** The site covers the vision, the products and
    what is available today. No dates, no horizons, no "what isn't built yet"
    tables — and correspondingly, never imply something unbuilt is purchasable.
-4. **Never offer a self-hosted download.** The binary moves under contract, at
-   the paid pilot. Every self-hosted route says *request an evaluation*.
+4. **Never offer a self-hosted download, and never offer a sandbox.** There is
+   no hosted tier — that is a positioning asset, not a gap. It means we operate
+   no environment a customer's data could sit in, which is a stronger claim
+   than any policy. Every route says *request an evaluation* or *talk to us*.
 5. **Never present the three products as a pipeline.** They are siblings of
    equal weight. Diagram A points arrows *upward* on purpose — a left-to-right
    row tells the buyer they need all three, which is both untrue and the
@@ -79,6 +81,8 @@ These come from the build brief. Breaking one costs a deal, not a style point.
    execution is ungoverned"*. Ask the question and let them answer it. An
    asserted problem invites an argument the reader wins.
 8. **Never gate a security document.**
+9. **Never publish a price.** Pricing is a conversation, not a page. Every
+   commercial route leads to `/contact`.
 
 Voice: British spelling, sentence case headings, plain declarative sentences,
 concrete nouns. No emoji, no stock imagery, no manufactured social proof.

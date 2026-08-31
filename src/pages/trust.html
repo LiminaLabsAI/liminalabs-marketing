@@ -46,10 +46,9 @@ nav: trust
         stays in your infrastructure.
       </p>
       <p>
-        The exception is the hosted sandbox, which runs on our infrastructure in
-        <span class="site-todo">{{REGION}}</span> and is for non-production, synthetic or
-        non-sensitive data only. Anything real belongs in a self-hosted evaluation, where nothing
-        leaves your boundary.
+        There is no exception, because there is no hosted tier. We do not operate an environment
+        your data could sit in, which is a stronger statement than a policy promising we would
+        handle it carefully if we did.
       </p>
     </div>
   </article>
@@ -62,7 +61,7 @@ nav: trust
         Precepta issues a signed sovereignty attestation, and continuous live probes test the
         egress boundary rather than asserting it. This is the part of the system we most want you
         to distrust on principle — which is why it is demonstrated during your evaluation, on your
-        own network, rather than shown as a sample here.
+        own network, with your team choosing the tests, rather than shown as a sample here.
       </p>
       <p>
         Our intent is to open-source the verifier so an attestation can be checked with code we
@@ -89,8 +88,9 @@ nav: trust
     <div class="site-block__body">
       <h3 class="lim-t3">How releases are built and signed</h3>
       <p>
-        Dependencies are scanned, releases are signed, and the same artifact runs in the sandbox,
-        in a self-hosted deployment and on-premises — so what you evaluate is what you operate.
+        Dependencies are scanned, releases are signed, and the same artifact runs in an
+        evaluation, in a self-hosted deployment and on-premises — so what you evaluate is
+        precisely what you operate.
         Our patching commitment and disclosure timelines are in the security overview below.
       </p>
       <p class="lim-sm lim-soft">
@@ -104,8 +104,8 @@ nav: trust
     <div class="site-block__body">
       <h3 class="lim-t3">Sub-processors</h3>
       <p>
-        Short, because self-hosted. A self-hosted deployment has no sub-processors at all — there
-        is no data flow for one to sit in. The hosted sandbox has a small number, listed in full.
+        Short, because self-hosted. There are no sub-processors at all — there is no data flow for
+        one to sit in, and we operate no environment that holds your data.
       </p>
       <p><a href="{{base}}sub-processors/">Sub-processor list →</a></p>
     </div>
@@ -190,7 +190,7 @@ nav: trust
       exfiltration attempt. We do not get to set the questions.
     </p>
     <div class="lim-row lim-mt-6">
-      <a class="lim-btn lim-btn--primary lim-btn--lg" href="{{base}}early-access/">Book an adversarial session</a>
+      <a class="lim-btn lim-btn--primary lim-btn--lg" href="{{base}}contact/">Talk to us</a>
       <a class="lim-btn lim-btn--glass lim-btn--lg" href="{{base}}precepta/">How Precepta runs</a>
     </div>
   </div>

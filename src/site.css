@@ -150,6 +150,57 @@
 }
 .site-product__link { margin-top: auto; padding-top: var(--lim-s-4); }
 
+/* --- Slab grid ------------------------------------------------------------
+   Direction C: panels share a border instead of floating apart. The 1px grid
+   line is the grid gap showing through, which survives any number of columns
+   and any wrap — no last-child border arithmetic. Denser and more structural
+   than cards, which is what a platform team reads as real software. */
+.site-slabs {
+  display: grid;
+  /* Explicit counts, never auto-fit. The 1px gridline is the container
+     background showing through the gap, so a row that does not fill leaves a
+     solid slab of border colour where cells should be. Every count here
+     divides the six-item grids evenly. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--lim-hairline-strong);
+  border: 1px solid var(--lim-hairline-strong);
+  border-radius: var(--lim-r-lg);
+  overflow: hidden;
+}
+@media (max-width: 900px) { .site-slabs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .site-slabs { grid-template-columns: minmax(0, 1fr); } }
+.site-slab {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: var(--lim-s-5);
+  background: var(--lim-glass-solid);
+}
+.site-slab h3 { margin: 0; font-size: var(--lim-t-sm); font-weight: 600; letter-spacing: -.005em; }
+.site-slab p  { margin: 0; font-size: var(--lim-t-xs); line-height: 1.58; color: var(--lim-text-muted); }
+.site-slab__label {
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+}
+
+/* --- Essay hero -----------------------------------------------------------
+   Direction B, used on exactly one page. /sovereign-ai is a single long
+   argument, so the headline is allowed to be the largest type on the site. */
+.site-essay-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: .98;
+  letter-spacing: -.042em;
+  max-width: 16ch;
+}
+.site-essay-hero .lim-lede { max-width: 50ch; font-size: var(--lim-t-lede); }
+
+/* Digits that sit in columns must line up. */
+.lim-table, .site-slab, .lim-stat__value { font-variant-numeric: tabular-nums; }
+
 /* --- Routing ------------------------------------------------------------- */
 .site-routes { display: grid; gap: var(--lim-s-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 760px) { .site-routes { grid-template-columns: 1fr; } }

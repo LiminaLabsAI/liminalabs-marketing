@@ -5,3 +5,9 @@
 # Local editor and OS noise
 *.swp
 Thumbs.db
+
+# The pre-push hook appends to this on every push to a protected branch —
+# including the push carrying its own commit — so it can never be fully
+# committed and leaves the tree permanently dirty by one line. It duplicates
+# what git log already records. Kept local.
+.momentum/team/merge-approvals.log

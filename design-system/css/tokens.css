@@ -296,9 +296,16 @@
                 var(--lim-abyss-1) 45%,
                 var(--lim-abyss-2) 76%,
                 var(--lim-abyss-3) 100%);
-  --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.20), transparent 70%);
-  --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.22), transparent 72%);
-  --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.10), transparent 70%);
+  /* Lower alphas than the light theme, which looks wrong until you do the
+     arithmetic. The dark ground sits at RGB ~20,23,32 — so a saturated overlay
+     more than doubles the blue channel and the aura reads as a coloured blob
+     rather than a change in light. The light ground sits near 240 on every
+     channel, where the same overlay is a rounding error. These colours hold the
+     ground's own 1 : 1.12 : 1.55 channel ratio, so they lift brightness
+     without bending hue, and land at the same ~1.09:1 delta the light auras do. */
+  --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(124,138,190,.10), transparent 70%);
+  --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(116,132,182,.085), transparent 72%);
+  --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(132,144,190,.055), transparent 70%);
 
   --lim-glass:       rgba(29,33,44,.82);
   --lim-glass-solid: rgba(24,27,36,.95);
@@ -359,9 +366,9 @@
                   var(--lim-abyss-1) 45%,
                   var(--lim-abyss-2) 76%,
                   var(--lim-abyss-3) 100%);
-    --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.20), transparent 70%);
-    --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.22), transparent 72%);
-    --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.10), transparent 70%);
+    --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(124,138,190,.10), transparent 70%);
+    --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(116,132,182,.085), transparent 72%);
+    --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(132,144,190,.055), transparent 70%);
 
     --lim-glass:       rgba(29,33,44,.82);
     --lim-glass-solid: rgba(24,27,36,.95);

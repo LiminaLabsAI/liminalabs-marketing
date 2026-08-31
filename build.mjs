@@ -82,8 +82,11 @@ for (const file of pages) {
   const outPath = isHome ? "index.html" : join(slug, "index.html");
 
   // mark the current nav item
+  // Matches <a> and <button> — the Products menu is a button, and an <a>-only
+  // pattern silently left all three product pages with no current-page state.
   const navHtml = nav
-    .replace(new RegExp(`(<a [^>]*data-nav="${meta.nav}")`), '$1 aria-current="page" class="is-active"')
+    .replace(new RegExp(`(<(?:a|button)\\b[^>]*data-nav="${meta.nav}")`),
+             '$1 aria-current="page" class="is-active"')
     .replace(/\{\{base\}\}/g, base);
 
   const html = fill(shell, {

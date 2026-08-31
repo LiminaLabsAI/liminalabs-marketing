@@ -58,6 +58,20 @@ hr { border: 0; height: 1px; background: var(--lim-hairline); margin: var(--lim-
   outline-offset: 2px;
 }
 
+
+/* Theme switching --------------------------------------------------------
+   A property whose value comes from a custom property does not re-run its
+   transition when that custom property changes — the element keeps the old
+   computed value indefinitely. On a theme toggle that leaves every
+   transitioned surface (the floating nav most visibly) still wearing the
+   previous theme. limina.js sets this class for one frame while the theme
+   flips, which also spares the reader watching fifty elements cross-fade. */
+:root.lim-theming *,
+:root.lim-theming *::before,
+:root.lim-theming *::after {
+  transition: none !important;
+}
+
 /* ---------------------------------------------------------------------------
    TYPE ROLES
    Bricolage Grotesque sets anything people scan. Archivo sets anything people

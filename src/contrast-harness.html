@@ -1,0 +1,74 @@
+<!DOCTYPE html><meta charset="utf-8"><title>contrast harness</title>
+<body style="font:13px monospace"><pre id="out">running…</pre>
+<script>
+const PAGES = ["/","/precepta/","/intent-studio/","/cerebrio/","/sovereign-ai/","/trust/",
+  "/status/","/pricing/","/company/","/early-access/","/privacy/","/terms/",
+  "/sub-processors/","/vulnerability-disclosure/"];
+
+function check(win, theme){
+  const doc = win.document;
+  const hex=h=>{h=h.trim().replace('#','');if(h.length===3)h=[...h].map(c=>c+c).join('');
+    return h.length>=6?{r:parseInt(h.slice(0,2),16),g:parseInt(h.slice(2,4),16),b:parseInt(h.slice(4,6),16),a:1}:null;};
+  const parse=c=>{c=(c||'').trim();if(c.startsWith('#'))return hex(c);
+    const m=c.match(/rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?\)/);
+    return m?{r:+m[1],g:+m[2],b:+m[3],a:m[4]===undefined?1:+m[4]}:null;};
+  const over=(f,b)=>({r:f.r*f.a+b.r*(1-f.a),g:f.g*f.a+b.g*(1-f.a),b:f.b*f.a+b.b*(1-f.a),a:1});
+  const lum=c=>{const f=v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);};
+    return 0.2126*f(c.r)+0.7152*f(c.g)+0.0722*f(c.b);};
+  const ratio=(a,b)=>{const l1=Math.max(lum(a),lum(b)),l2=Math.min(lum(a),lum(b));return (l1+0.05)/(l2+0.05);};
+  const cs0=win.getComputedStyle(doc.documentElement);
+  const PAGE=parse(cs0.getPropertyValue(theme==='dark'?'--lim-abyss-1':'--lim-ground-1'));
+  const effBg=el=>{let st=[],n=el;while(n&&n!==doc.documentElement){
+      const bg=parse(win.getComputedStyle(n).backgroundColor);
+      if(bg&&bg.a>0){st.push(bg);if(bg.a===1)break;} n=n.parentElement;}
+    let base={...PAGE};for(let i=st.length-1;i>=0;i--)base=over(st[i],base);return base;};
+  const out=[],seen=new Set();
+  doc.querySelectorAll('body *').forEach(el=>{
+    if(el.closest('svg')||el.closest('.site-todo'))return;
+    const cs=win.getComputedStyle(el);
+    if(cs.display==='none'||cs.visibility==='hidden'||+cs.opacity===0)return;
+    const txt=[...el.childNodes].filter(n=>n.nodeType===3&&n.textContent.trim().length>1);
+    if(!txt.length)return;
+    const fg=parse(cs.color);if(!fg)return;
+    const bg=effBg(el);const comp=fg.a<1?over(fg,bg):fg;
+    const size=parseFloat(cs.fontSize),w=+cs.fontWeight||400;
+    const need=(size>=24||(size>=18.66&&w>=700))?3.0:4.5;
+    const r=ratio(comp,bg);
+    if(r<need){
+      const sel=el.tagName.toLowerCase()+(typeof el.className==='string'&&el.className?'.'+el.className.trim().split(/\s+/).slice(0,2).join('.'):'');
+      const k=sel+r.toFixed(2); if(seen.has(k))return; seen.add(k);
+      out.push(sel+'  '+r.toFixed(2)+':1 (needs '+need+') "'+txt.map(n=>n.textContent.trim()).join(' ').slice(0,34)+'"');}
+  });
+  return out;
+}
+
+(async () => {
+  const lines = [], f = document.createElement('iframe');
+  f.style.cssText = 'width:1280px;height:900px;border:0;position:absolute;left:-9999px';
+  document.body.appendChild(f);
+  let total = 0;
+  for (const p of PAGES) {
+    // pages carry no version query, so bust them explicitly or the iframe
+    // happily re-serves the previous build
+    await new Promise(res => { f.onload = res; f.src = p + '?cb=' + Date.now() + Math.random(); });
+    await new Promise(r => setTimeout(r, 350));
+    const w = f.contentWindow, d = w.document;
+    const res = {};
+    for (const t of ['light','dark']) {
+      d.documentElement.classList.add('lim-theming');
+      d.documentElement.dataset.theme = t;
+      void d.documentElement.offsetWidth;
+      await new Promise(r => setTimeout(r, 60));
+      res[t] = check(w, t);
+      d.documentElement.classList.remove('lim-theming');
+    }
+    total += res.light.length + res.dark.length;
+    lines.push(p.padEnd(30) + 'light ' + String(res.light.length).padStart(2) + '   dark ' + String(res.dark.length).padStart(2));
+    for (const t of ['light','dark'])
+      for (const r of res[t]) lines.push('      [' + t + '] ' + r);
+  }
+  lines.push('', 'TOTAL FAILURES: ' + total);
+  document.getElementById('out').textContent = lines.join('\n');
+  window.__done = true;
+})();
+</script>

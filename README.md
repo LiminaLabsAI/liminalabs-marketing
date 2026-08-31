@@ -84,6 +84,20 @@ concrete nouns. No emoji, no stock imagery, no manufactured social proof.
 
 ---
 
+## Checking contrast
+
+`src/contrast-harness.html` walks every page in an iframe, forces each theme,
+composites translucent glass over its real backdrop and measures every
+text/background pair against WCAG AA. Serve the repo and open:
+
+```
+http://localhost:8080/src/contrast-harness.html
+```
+
+It must report **TOTAL FAILURES: 0**. Two things it has already caught: the
+amber `--lim-warn` sitting at 4.09:1 on its own wash, and decorative-only
+`--lim-text-faint` used for numerals people are meant to read.
+
 ## Adding a page
 
 1. Create `src/pages/<slug>.html` starting with the front-matter comment:

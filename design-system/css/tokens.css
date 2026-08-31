@@ -49,7 +49,7 @@
 
   /* Status — tuned to sit beside cobalt without fighting it */
   --lim-ok:    #0E7A4F;
-  --lim-warn:  #A8620A;
+  --lim-warn:  #945508; /* 5.07:1 on its own wash — #A8620A measured 4.09 and failed AA */
   --lim-stop:  #B3261E;
   --lim-ok-bg:   rgba(14,122,79,.10);
   --lim-warn-bg: rgba(168,98,10,.10);

@@ -182,7 +182,9 @@
   width: 2.5rem;
   font-family: var(--lim-font-mono);
   font-size: var(--lim-t-sm);
-  color: var(--lim-text-faint);
+  /* Not --lim-text-faint: that token is 2.8:1 and the system reserves it for
+     rules and disabled state. These numerals are content and must be read. */
+  color: var(--lim-text-soft);
   font-variant-numeric: tabular-nums;
 }
 .site-block__body { min-width: 0; max-width: 68ch; }

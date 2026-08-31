@@ -21,12 +21,18 @@
   }
 
   function setTheme(next) {
+    /* Suppress transitions for one frame — see .lim-theming in base.css. */
+    root.classList.add("lim-theming");
     root.dataset.theme = next;
     try { localStorage.setItem(STORE, next); } catch (e) {}
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute("content", next === "dark" ? "#12141C" : "#F5F6FC");
     document.querySelectorAll("[data-lim-theme-toggle]").forEach(function (b) {
       b.setAttribute("aria-label", next === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    });
+    void root.offsetWidth; /* flush the swap before transitions come back */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { root.classList.remove("lim-theming"); });
     });
   }
 

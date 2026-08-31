@@ -83,10 +83,12 @@ These come from the build brief. Breaking one costs a deal, not a style point.
 8. **Never gate a security document.**
 9. **Never publish a price.** Pricing is a conversation, not a page. Every
    commercial route leads to `/contact`.
-10. **No company-wide sign-in.** Limina Labs is a company, not an application.
-    Only Intent Studio has a hosted application, and its entry point lives on
-    its own product page. Precepta is self-hosted — a customer signs in to
-    their own deployment, at their own URL, which we do not host or link.
+10. **No sign-in anywhere, for now.** Limina Labs is a company, not an
+    application, so there is no company-wide sign-in — and product-level entry
+    points are parked too, pending a decision. Every route on the site leads to
+    `/contact`. Worth knowing when that decision is made: Precepta could never
+    have one anyway. It is self-hosted, so a customer signs in to their own
+    deployment, at their own URL, which we neither host nor link.
 
 Voice: British spelling, sentence case headings, plain declarative sentences,
 concrete nouns. No emoji, no stock imagery, no manufactured social proof.

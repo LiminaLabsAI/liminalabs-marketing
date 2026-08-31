@@ -1,6 +1,6 @@
 /* ============================================================================
    liminalabs.in — the small amount of behaviour the site needs beyond Limen.
-   One thing only: the Products menu in the nav.
+   Two things: the Products menu in the nav, and copying the contact address.
    ========================================================================= */
 (function () {
   "use strict";
@@ -90,4 +90,49 @@
       });
     });
   });
+  /* --- Copy the address --------------------------------------------------
+     A mailto: click goes to whatever handler the visitor has registered, and
+     a visitor with none gets a blank tab and no mail window. The button is
+     markup-hidden and revealed here, so a browser without the clipboard API
+     shows nothing rather than a control that does nothing. */
+  if (navigator.clipboard) {
+    var MAC = /Mac|iPhone|iPad/.test(navigator.userAgent);
+
+    document.querySelectorAll("[data-copy]").forEach(function (btn) {
+      var label = btn.textContent;
+      var timer = null;
+      btn.hidden = false;
+
+      function say(text, done) {
+        clearTimeout(timer);
+        btn.textContent = text;
+        btn.classList.toggle("is-done", !!done);
+        timer = setTimeout(function () {
+          btn.textContent = label;
+          btn.classList.remove("is-done");
+        }, 2200);
+      }
+
+      /* A write can still be refused — permissions policy, an unfocused
+         document, a hardened profile. Selecting the address leaves the visitor
+         one keystroke away rather than back where they started, which is the
+         entire point of this control. */
+      function selectAddress() {
+        var addr = btn.previousElementSibling;
+        if (!addr) return;
+        var range = document.createRange();
+        range.selectNodeContents(addr);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+
+      btn.addEventListener("click", function () {
+        navigator.clipboard.writeText(btn.getAttribute("data-copy")).then(
+          function () { say("Copied", true); },
+          function () { selectAddress(); say(MAC ? "Press \u2318C" : "Press Ctrl+C"); }
+        );
+      });
+    });
+  }
 })();

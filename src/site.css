@@ -373,3 +373,32 @@
   font-size: var(--lim-t-eyebrow);
   font-weight: 500;
 }
+
+/* ---------------------------------------------------------------------------
+   COPY THE ADDRESS
+   mailto: hands the click to whatever the visitor's OS has registered. Plenty
+   of desktop users live in webmail and have nothing registered at all, so they
+   get a blank tab and no mail window. While the contact form is still pending
+   an endpoint, this address is the only route in — too important to leave
+   resting on a handler we do not control. site.js reveals the button only when
+   the clipboard API is actually there, so no one is shown a dead control.
+   ------------------------------------------------------------------------ */
+.site-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  padding: 1px 9px;
+  /* --lim-edge is the white highlight for the top of a glass pane, not a
+     border — it disappears on a light card. --lim-hairline is the one that
+     inverts properly across both themes. */
+  border: 1px solid var(--lim-hairline);
+  border-radius: var(--lim-r-pill);
+  background: transparent;
+  color: var(--lim-text-muted);
+  font-size: var(--lim-t-xs);
+  transition: color var(--lim-d-2) var(--lim-ease),
+              border-color var(--lim-d-2) var(--lim-ease);
+}
+.site-copy:hover { color: var(--lim-text); border-color: var(--lim-hairline-strong); }
+.site-copy.is-done { color: var(--lim-ok); border-color: currentColor; }

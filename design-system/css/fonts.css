@@ -3,30 +3,18 @@
    No external font CDN: a sovereignty brand that phones out to Google for its
    letterforms is an open goal, and a CISO will see it in devtools.
 
-   Bricolage Grotesque and Archivo are variable fonts, so one file covers every
-   weight the system uses. The latin-ext files download only when a page
-   actually contains those glyphs — that is what unicode-range is for.
+   Three roles, deliberately assigned:
 
-   Files live beside this stylesheet in fonts/. Paths are relative to css/.
+     Archivo            everything people read or scan — body AND headlines
+     IBM Plex Mono      everything people look up — labels, hex, keys, data
+     Bricolage Grotesque  the wordmark, and nothing else
+
+   Bricolage is the brand face, so it is loaded as a seven-glyph subset —
+   L a b i m n s, the letters of "Limina Labs" — at 6KB instead of 181KB.
+   Setting every heading in the logo's typeface makes the logo ordinary; the
+   mark should carry the personality and the type should carry the credibility.
    ========================================================================= */
 
-/* --- Bricolage Grotesque --- */
-@font-face {
-  font-family: "Bricolage Grotesque";
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url("../fonts/bricolage-grotesque-latin-400_800.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Bricolage Grotesque";
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url("../fonts/bricolage-grotesque-latin-ext-400_800.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 /* --- Archivo --- */
 @font-face {
   font-family: "Archivo";
@@ -76,4 +64,15 @@
   font-display: swap;
   src: url("../fonts/ibm-plex-mono-latin-ext-500.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* --- Bricolage Grotesque — wordmark only, seven glyphs --- */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 75% 100%;
+  font-display: swap;
+  src: url("../fonts/bricolage-grotesque-wordmark.woff2") format("woff2");
+  unicode-range: U+4c, U+61-62, U+69, U+6d-6e, U+73;
 }

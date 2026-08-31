@@ -94,9 +94,12 @@
                 var(--lim-ground-1) 42%,
                 var(--lim-ground-2) 74%,
                 var(--lim-ground-3) 100%);
-  --lim-aura-1: radial-gradient(58% 48% at 80% 4%,  rgba(47,71,196,.17), transparent 70%);
-  --lim-aura-2: radial-gradient(52% 44% at 4% 62%,  rgba(127,143,221,.16), transparent 72%);
-  --lim-aura-3: radial-gradient(46% 40% at 62% 96%, rgba(11,31,166,.08),  transparent 70%);
+  /* The ground is a tint, not a light show. Strong auras are the single most
+     template-looking thing a page can do; these stay just visible enough to
+     give the panes something to refract. */
+  --lim-aura-1: radial-gradient(58% 48% at 80% 4%,  rgba(47,71,196,.055), transparent 70%);
+  --lim-aura-2: radial-gradient(52% 44% at 4% 62%,  rgba(127,143,221,.05), transparent 72%);
+  --lim-aura-3: radial-gradient(46% 40% at 62% 96%, rgba(11,31,166,.03),  transparent 70%);
 
   /* ------------------------------------------------------------------
      GLASS
@@ -104,33 +107,38 @@
      `solid` is for things that must stay legible over anything (menus,
      popovers, sticky bars).
      ------------------------------------------------------------------ */
-  --lim-glass:        rgba(255,255,255,.62);
-  --lim-glass-solid:  rgba(255,255,255,.86);
-  --lim-glass-thin:   rgba(255,255,255,.38);
+  /* Near-opaque on purpose. Glass here is a material property you barely
+     notice, not an effect on display — the visible-frost look reads consumer,
+     and it costs contrast we would rather spend on text. */
+  --lim-glass:        rgba(255,255,255,.90);
+  --lim-glass-solid:  rgba(255,255,255,.97);
+  --lim-glass-thin:   rgba(255,255,255,.66);
   --lim-glass-raise:  rgba(255,255,255,.92); /* the pill inside a pill */
   /* The scrolled nav sits between pane and solid. --lim-glass-solid is tuned
      for menus and sheets, where text over arbitrary content has to stay
      readable; at that weight a nav stops looking like glass at all. */
-  --lim-glass-nav:    rgba(255,255,255,.76);
+  --lim-glass-nav:    rgba(255,255,255,.94);
 
   --lim-edge:      rgba(255,255,255,.90);  /* the lit bevel, top-left */
   --lim-edge-dim:  rgba(255,255,255,.45);  /* the same bevel, shaded side */
-  --lim-hairline:  rgba(15,20,48,.09);     /* outer definition against ground */
-  --lim-hairline-strong: rgba(15,20,48,.14);
+  /* Crisper than before: a hairline you can actually see reads as precision,
+     and precision is most of what "premium" means to this buyer. */
+  --lim-hairline:  rgba(15,20,48,.13);
+  --lim-hairline-strong: rgba(15,20,48,.20);
 
-  --lim-blur: 20px;
-  --lim-blur-lg: 32px;
-  --lim-sat: 180%;
+  --lim-blur: 10px;
+  --lim-blur-lg: 14px;
+  --lim-sat: 108%;
 
-  /* Shadows carry cobalt, not black — glass over a blue ground */
-  --lim-shadow-1: 0 1px 2px rgba(11,31,166,.05),
-                  0 4px 12px -4px rgba(11,31,166,.10);
-  --lim-shadow-2: 0 1px 2px rgba(11,31,166,.05),
-                  0 10px 24px -10px rgba(11,31,166,.18),
-                  0 28px 56px -28px rgba(11,31,166,.20);
-  --lim-shadow-3: 0 2px 4px rgba(11,31,166,.06),
-                  0 18px 40px -14px rgba(11,31,166,.24),
-                  0 44px 80px -40px rgba(11,31,166,.28);
+  /* Shadows carry cobalt, not black — glass over a blue ground.
+     Tight and short, never a soft halo: a big diffuse shadow is the tell of a
+     card floating for decoration rather than because it sits above something. */
+  --lim-shadow-1: 0 1px 1px rgba(11,31,166,.04),
+                  0 2px 6px -2px rgba(11,31,166,.07);
+  --lim-shadow-2: 0 1px 1px rgba(11,31,166,.04),
+                  0 4px 10px -3px rgba(11,31,166,.09);
+  --lim-shadow-3: 0 1px 2px rgba(11,31,166,.05),
+                  0 10px 22px -8px rgba(11,31,166,.13);
 
   /* ------------------------------------------------------------------
      GEOMETRY — the one angle
@@ -177,8 +185,9 @@
   /* ------------------------------------------------------------------
      TYPE — Bricolage Grotesque displays, Archivo works, Plex Mono labels
      ------------------------------------------------------------------ */
-  --lim-font-display: "Bricolage Grotesque", "Archivo", -apple-system,
-                      BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+  /* Headlines are Archivo, not the wordmark face — see fonts.css. */
+  --lim-font-display: Archivo, -apple-system, "system-ui", "Segoe UI", Helvetica, sans-serif;
+  --lim-font-wordmark: "Bricolage Grotesque", Archivo, Helvetica, sans-serif;
   --lim-font-sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI",
                    Helvetica, Arial, sans-serif;
   --lim-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo,
@@ -268,29 +277,27 @@
                 var(--lim-abyss-1) 45%,
                 var(--lim-abyss-2) 76%,
                 var(--lim-abyss-3) 100%);
-  --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.30), transparent 70%);
-  --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.32), transparent 72%);
-  --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.14), transparent 70%);
+  --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.11), transparent 70%);
+  --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.12), transparent 72%);
+  --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.05), transparent 70%);
 
-  --lim-glass:       rgba(38,44,58,.55);
-  --lim-glass-solid: rgba(26,30,39,.88);
-  --lim-glass-thin:  rgba(38,44,58,.30);
-  --lim-glass-raise: rgba(255,255,255,.10);
-  --lim-glass-nav:   rgba(26,30,39,.72);
+  --lim-glass:       rgba(29,33,44,.90);
+  --lim-glass-solid: rgba(24,27,36,.97);
+  --lim-glass-thin:  rgba(38,44,58,.55);
+  --lim-glass-raise: rgba(255,255,255,.09);
+  --lim-glass-nav:   rgba(24,27,36,.94);
 
   --lim-edge:     rgba(255,255,255,.14);
   --lim-edge-dim: rgba(255,255,255,.05);
-  --lim-hairline: rgba(255,255,255,.09);
-  --lim-hairline-strong: rgba(255,255,255,.15);
+  --lim-hairline: rgba(255,255,255,.12);
+  --lim-hairline-strong: rgba(255,255,255,.20);
 
-  --lim-shadow-1: 0 1px 2px rgba(0,0,0,.40),
-                  0 4px 12px -4px rgba(0,0,0,.50);
-  --lim-shadow-2: 0 1px 2px rgba(0,0,0,.45),
-                  0 12px 28px -10px rgba(0,0,0,.60),
-                  0 32px 60px -30px rgba(0,0,0,.70);
-  --lim-shadow-3: 0 2px 4px rgba(0,0,0,.50),
-                  0 20px 44px -14px rgba(0,0,0,.68),
-                  0 48px 90px -40px rgba(0,0,0,.80);
+  --lim-shadow-1: 0 1px 1px rgba(0,0,0,.30),
+                  0 2px 6px -2px rgba(0,0,0,.36);
+  --lim-shadow-2: 0 1px 1px rgba(0,0,0,.34),
+                  0 4px 10px -3px rgba(0,0,0,.42);
+  --lim-shadow-3: 0 1px 2px rgba(0,0,0,.38),
+                  0 10px 22px -8px rgba(0,0,0,.52);
 
   --lim-ok-bg:   rgba(52,199,133,.14);
   --lim-warn-bg: rgba(226,162,74,.14);
@@ -331,29 +338,27 @@
                   var(--lim-abyss-1) 45%,
                   var(--lim-abyss-2) 76%,
                   var(--lim-abyss-3) 100%);
-    --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.30), transparent 70%);
-    --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.32), transparent 72%);
-    --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.14), transparent 70%);
+    --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.11), transparent 70%);
+    --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.12), transparent 72%);
+    --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.05), transparent 70%);
 
-    --lim-glass:       rgba(38,44,58,.55);
-    --lim-glass-solid: rgba(26,30,39,.88);
-    --lim-glass-thin:  rgba(38,44,58,.30);
-    --lim-glass-raise: rgba(255,255,255,.10);
-    --lim-glass-nav:   rgba(26,30,39,.72);
+    --lim-glass:       rgba(29,33,44,.90);
+    --lim-glass-solid: rgba(24,27,36,.97);
+    --lim-glass-thin:  rgba(38,44,58,.55);
+    --lim-glass-raise: rgba(255,255,255,.09);
+    --lim-glass-nav:   rgba(24,27,36,.94);
 
     --lim-edge:     rgba(255,255,255,.14);
     --lim-edge-dim: rgba(255,255,255,.05);
-    --lim-hairline: rgba(255,255,255,.09);
-    --lim-hairline-strong: rgba(255,255,255,.15);
+    --lim-hairline: rgba(255,255,255,.12);
+    --lim-hairline-strong: rgba(255,255,255,.20);
 
-    --lim-shadow-1: 0 1px 2px rgba(0,0,0,.40),
-                    0 4px 12px -4px rgba(0,0,0,.50);
-    --lim-shadow-2: 0 1px 2px rgba(0,0,0,.45),
-                    0 12px 28px -10px rgba(0,0,0,.60),
-                    0 32px 60px -30px rgba(0,0,0,.70);
-    --lim-shadow-3: 0 2px 4px rgba(0,0,0,.50),
-                    0 20px 44px -14px rgba(0,0,0,.68),
-                    0 48px 90px -40px rgba(0,0,0,.80);
+    --lim-shadow-1: 0 1px 1px rgba(0,0,0,.30),
+                    0 2px 6px -2px rgba(0,0,0,.36);
+    --lim-shadow-2: 0 1px 1px rgba(0,0,0,.34),
+                    0 4px 10px -3px rgba(0,0,0,.42);
+    --lim-shadow-3: 0 1px 2px rgba(0,0,0,.38),
+                    0 10px 22px -8px rgba(0,0,0,.52);
 
     --lim-ok:   #4FC08A;
     --lim-warn: #E2A24A;

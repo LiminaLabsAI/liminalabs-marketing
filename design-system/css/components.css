@@ -190,7 +190,7 @@
   border-radius: var(--lim-r-pill);
 }
 .lim-nav__wordmark {
-  font-family: var(--lim-font-display);
+  font-family: var(--lim-font-wordmark);
   font-size: 15px;
   font-weight: 600;
   letter-spacing: -.02em;
@@ -761,11 +761,11 @@
   bottom: -12vh;
   --lim-mark-size: min(32vw, 420px);
   z-index: -1;
-  opacity: .18;
+  opacity: .10;
   pointer-events: none;
   user-select: none;
 }
-:root[data-theme="dark"] .lim-ambient { opacity: .10; }
+:root[data-theme="dark"] .lim-ambient { opacity: .07; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .lim-ambient { opacity: .10; }
+  :root:not([data-theme="light"]) .lim-ambient { opacity: .07; }
 }

@@ -68,6 +68,7 @@ const shared = Object.fromEntries(
 const shell = partial("shell");
 const nav = partial("nav");
 const footer = partial("footer");
+const ambient = partial("ambient");
 
 const pages = readdirSync(join(SRC, "pages")).filter((f) => f.endsWith(".html")).sort();
 const built = [];
@@ -92,6 +93,9 @@ for (const file of pages) {
   const html = fill(shell, {
     ...shared,
     ...meta,
+    /* After ...meta, not before: the front-matter value is the flag, and
+       spreading meta later would paste the literal word into the page. */
+    ambient: meta.ambient === "yes" ? ambient : "",
     base,
     nav: fill(navHtml, shared),
     footer: fill(footer.replace(/\{\{base\}\}/g, base), shared),

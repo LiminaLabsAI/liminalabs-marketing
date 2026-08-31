@@ -27,8 +27,8 @@
 <meta name="twitter:description" content="Specify the work before anything runs, govern every model request inside your own infrastructure, and keep what the organisation learns. Any model, your walls.">
 <meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 
-<link rel="stylesheet" href="design-system/css/limina.css?v=4.3">
-<link rel="stylesheet" href="src/site.css?v=4.3">
+<link rel="stylesheet" href="design-system/css/limina.css?v=4.5">
+<link rel="stylesheet" href="src/site.css?v=4.5">
 </head>
 
 <body>
@@ -68,11 +68,6 @@
         Products
         <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <div class="site-menu__panel lim-pane lim-pane--flush" id="menu-products" hidden>
-        <a href="intent-studio/"><b>Intent Studio</b><span>The work layer · available now</span></a>
-        <a href="precepta/"><b>Precepta</b><span>The control plane · available now</span></a>
-        <a href="cerebrio/"><b>Cerebrio</b><span>The understanding layer</span></a>
-      </div>
     </div>
     <a href="sovereign-ai/" data-nav="sovereign-ai">Sovereign AI</a>
     <a href="trust/" data-nav="trust">Security</a>
@@ -90,6 +85,12 @@
     <a class="lim-btn lim-btn--primary lim-btn--sm lim-nav__cta" href="contact/">Contact us</a>
   </div>
 </header>
+
+<div class="site-menu__panel lim-pane lim-pane--flush" id="menu-products" hidden>
+    <a href="intent-studio/"><b>Intent Studio</b><span>The work layer · available now</span></a>
+    <a href="precepta/"><b>Precepta</b><span>The control plane · available now</span></a>
+    <a href="cerebrio/"><b>Cerebrio</b><span>The understanding layer</span></a>
+  </div>
 
 <div class="lim-sheet" id="lim-sheet" data-lim-nav-sheet data-open="false">
   <a href="intent-studio/">Intent Studio</a>
@@ -265,41 +266,58 @@
     </article>
   </div>
 
-  <!-- Diagram A — layers, never a left-to-right sequence -->
-  <figure class="site-figure lim-mt-7 lim-reveal" style="max-width: 720px; margin-inline: auto">
-    <svg viewBox="0 0 720 292" role="img" aria-labelledby="dgmA-t dgmA-d">
-      <title id="dgmA-t">How the three products relate</title>
-      <desc id="dgmA-d">Intent Studio, the work layer, sits above. Precepta, the control plane,
-      sits below left as the control plane and runs on beneath it. Cerebrio, the understanding layer, sits below right
-      and grounds it. Each product is sold and runs on its own; none requires another.</desc>
+  <!-- The loop is the company's core idea, so it sits with the products rather
+       than three sections further down. It shows how the three relate *and*
+       why the record compounds, which is what the old layers diagram did in a
+       weaker way — that one is retired. The internal deck has a fourth node
+       for a capability still in planning; it is not a product and is
+       deliberately absent. -->
+  <figure class="site-figure lim-mt-8 lim-reveal" style="max-width: 800px; margin-inline: auto">
+    <svg viewBox="0 0 800 432" role="img" aria-labelledby="dgmB-t dgmB-d">
+      <title id="dgmB-t">How the three products work together</title>
+      <desc id="dgmB-d">A three-stage cycle. Intent Studio sets down what the company intends.
+      Precepta runs it inside your own network and records every step. Cerebrio turns that record
+      into understanding, which makes the next intent sharper. Each product is sold and runs on
+      its own.</desc>
 
       <g>
-        <rect class="dgm-box" x="238" y="16" width="244" height="74" rx="14"/>
-        <text class="dgm-name" x="360" y="49" text-anchor="middle">Intent Studio</text>
-        <text class="dgm-role" x="360" y="68" text-anchor="middle">THE WORK LAYER</text>
+        <rect class="dgm-box" x="290" y="14" width="220" height="84" rx="14"/>
+        <text class="dgm-name" x="400" y="46" text-anchor="middle">Intent Studio</text>
+        <text class="dgm-role" x="400" y="64" text-anchor="middle">AGREE THE WORK</text>
+        <text class="dgm-sub"  x="400" y="84" text-anchor="middle">What we intend, and who agreed</text>
       </g>
-
       <g>
-        <rect class="dgm-box" x="16" y="202" width="244" height="74" rx="14"/>
-        <text class="dgm-name" x="138" y="235" text-anchor="middle">Precepta</text>
-        <text class="dgm-role" x="138" y="254" text-anchor="middle">THE CONTROL PLANE</text>
+        <rect class="dgm-box" x="530" y="268" width="256" height="84" rx="14"/>
+        <text class="dgm-name" x="658" y="300" text-anchor="middle">Precepta</text>
+        <text class="dgm-role" x="658" y="318" text-anchor="middle">RUN IT SAFELY</text>
+        <text class="dgm-sub"  x="658" y="338" text-anchor="middle">Governed, on your own servers</text>
       </g>
-
       <g>
-        <rect class="dgm-box" x="460" y="202" width="244" height="74" rx="14"/>
-        <text class="dgm-name" x="582" y="235" text-anchor="middle">Cerebrio</text>
-        <text class="dgm-role" x="582" y="254" text-anchor="middle">THE UNDERSTANDING LAYER</text>
+        <rect class="dgm-box" x="14" y="268" width="256" height="84" rx="14"/>
+        <text class="dgm-name" x="142" y="300" text-anchor="middle">Cerebrio</text>
+        <text class="dgm-role" x="142" y="318" text-anchor="middle">LEARN FROM IT</text>
+        <text class="dgm-sub"  x="142" y="338" text-anchor="middle">What the company learned</text>
       </g>
 
-      <path class="dgm-arrow" d="M138 202 L138 152 Q138 138 152 138 L296 138 Q310 138 310 124 L310 102"/>
-      <polygon class="dgm-arrow-head" points="304,102 310,90 316,102"/>
-      <text class="dgm-edge-label" x="160" y="130">runs on</text>
+      <path class="dgm-arrow" d="M516 66 C 618 78, 676 152, 682 254"/>
+      <polygon class="dgm-arrow-head" points="676,256 683,270 689,255"/>
+      <text class="dgm-edge-label" x="648" y="168" text-anchor="end">every step recorded</text>
 
-      <path class="dgm-arrow" d="M582 202 L582 152 Q582 138 568 138 L424 138 Q410 138 410 124 L410 102"/>
-      <polygon class="dgm-arrow-head" points="404,102 410,90 416,102"/>
-      <text class="dgm-edge-label" x="560" y="130" text-anchor="end">grounded by</text>
+      <path class="dgm-arrow" d="M524 310 L 296 310"/>
+      <polygon class="dgm-arrow-head" points="294,304 280,310 294,316"/>
+      <text class="dgm-edge-label" x="400" y="298" text-anchor="middle">evidence and outcomes</text>
+
+      <path class="dgm-arrow" d="M118 254 C 124 152, 182 78, 284 66"/>
+      <polygon class="dgm-arrow-head" points="278,59 292,66 278,73"/>
+      <text class="dgm-edge-label" x="152" y="168" text-anchor="start">what we now know</text>
+
+      <text class="dgm-centre" x="400" y="196" text-anchor="middle">Each pass starts</text>
+      <text class="dgm-centre" x="400" y="218" text-anchor="middle">further ahead</text>
     </svg>
-    <figcaption>Each one is sold and runs on its own — composing is not depending.</figcaption>
+    <figcaption>
+      Every governed decision leaves evidence. Evidence becomes understanding. Understanding makes
+      the next intent sharper — and each product is still sold and run on its own.
+    </figcaption>
   </figure>
 </section>
 
@@ -411,59 +429,6 @@
     <h2 style="margin-top: var(--lim-s-4)">The record appreciates while the models depreciate.</h2>
   </header>
 
-  <!-- Diagram B — the loop, in the real product names. The internal deck shows
-       a fourth node for a capability that is still in planning; it is not a
-       product and is deliberately absent here. Naming a planned capability as
-       one would be exactly the overclaim this site exists to avoid. -->
-  <figure class="site-figure lim-reveal" style="max-width: 760px; margin-inline: auto">
-    <svg viewBox="0 0 760 400" role="img" aria-labelledby="dgmB-t dgmB-d">
-      <title id="dgmB-t">How the three products compound</title>
-      <desc id="dgmB-d">A three-stage cycle. Intent Studio specifies what the organisation
-      intends. Precepta executes it inside the boundary and records what happened. Cerebrio turns
-      that record into understanding, which makes the next intent sharper. Each product runs on
-      its own; the loop is what running them together produces.</desc>
-
-      <g>
-        <rect class="dgm-box" x="270" y="14" width="220" height="82" rx="14"/>
-        <text class="dgm-name" x="380" y="45" text-anchor="middle">Intent Studio</text>
-        <text class="dgm-role" x="380" y="63" text-anchor="middle">SPECIFY</text>
-        <text class="dgm-sub"  x="380" y="82" text-anchor="middle">What we intend, and who agreed</text>
-      </g>
-
-      <g>
-        <rect class="dgm-box" x="500" y="248" width="238" height="82" rx="14"/>
-        <text class="dgm-name" x="619" y="279" text-anchor="middle">Precepta</text>
-        <text class="dgm-role" x="619" y="297" text-anchor="middle">EXECUTE</text>
-        <text class="dgm-sub"  x="619" y="316" text-anchor="middle">Governed, inside your boundary</text>
-      </g>
-
-      <g>
-        <rect class="dgm-box" x="22" y="248" width="238" height="82" rx="14"/>
-        <text class="dgm-name" x="141" y="279" text-anchor="middle">Cerebrio</text>
-        <text class="dgm-role" x="141" y="297" text-anchor="middle">UNDERSTAND</text>
-        <text class="dgm-sub"  x="141" y="316" text-anchor="middle">What the organisation learned</text>
-      </g>
-
-      <path class="dgm-arrow" d="M496 66 C 590 74, 640 140, 646 236"/>
-      <polygon class="dgm-arrow-head" points="640,238 647,252 653,237"/>
-      <text class="dgm-edge-label" x="600" y="150">every step recorded</text>
-
-      <path class="dgm-arrow" d="M496 289 L 276 289"/>
-      <polygon class="dgm-arrow-head" points="274,283 260,289 274,295"/>
-      <text class="dgm-edge-label" x="380" y="278" text-anchor="middle">evidence and outcomes</text>
-
-      <path class="dgm-arrow" d="M114 236 C 120 140, 170 74, 264 66"/>
-      <polygon class="dgm-arrow-head" points="258,59 272,66 258,73"/>
-      <text class="dgm-edge-label" x="118" y="150" text-anchor="start">what we now know</text>
-
-      <text class="dgm-centre" x="380" y="180" text-anchor="middle">Each pass starts</text>
-      <text class="dgm-centre" x="380" y="200" text-anchor="middle">further ahead</text>
-    </svg>
-    <figcaption>
-      Every governed decision leaves evidence. Evidence becomes understanding. Understanding makes
-      the next intent sharper — and each product still runs on its own.
-    </figcaption>
-  </figure>
 
   <p class="lim-lede lim-mt-6 lim-reveal" style="max-width: 68ch">
     You write down what you're trying to do, and who agreed to it. It executes inside your own
@@ -580,7 +545,7 @@
 </footer>
 
 
-<script src="design-system/js/limina.js?v=4.3" defer></script>
-<script src="src/site.js?v=4.3" defer></script>
+<script src="design-system/js/limina.js?v=4.5" defer></script>
+<script src="src/site.js?v=4.5" defer></script>
 </body>
 </html>

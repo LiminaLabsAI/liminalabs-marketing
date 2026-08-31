@@ -1,0 +1,47 @@
+<!DOCTYPE html><meta charset="utf-8"><title>responsive harness</title>
+<body style="font:13px monospace"><pre id="out">running…</pre>
+<script>
+const PAGES=["/","/precepta/","/intent-studio/","/cerebrio/","/sovereign-ai/","/trust/",
+  "/company/","/contact/","/privacy/","/terms/","/sub-processors/","/vulnerability-disclosure/"];
+const WIDTHS=[375,768,1280];
+(async()=>{
+  const lines=[], f=document.createElement('iframe');
+  f.style.cssText='border:0;position:absolute;left:-9999px;height:900px';
+  document.body.appendChild(f);
+  let problems=0;
+  for(const w of WIDTHS){
+    f.style.width=w+'px';
+    lines.push('── '+w+'px ──');
+    for(const p of PAGES){
+      await new Promise(r=>{f.onload=r; f.src=p+'?rb='+Date.now()+Math.random();});
+      await new Promise(r=>setTimeout(r,260));
+      const d=f.contentDocument, win=f.contentWindow;
+      d.querySelectorAll('.lim-reveal,.lim-enter').forEach(e=>{e.classList.add('is-in');e.style.opacity=1;e.style.transform='none';});
+      await new Promise(r=>setTimeout(r,80));
+      const de=d.documentElement;
+      const overflow=de.scrollWidth-de.clientWidth;
+      // elements poking past the viewport that are not fixed and not inside a scroller
+      const over=[...d.querySelectorAll('body *')].filter(el=>{
+        const r=el.getBoundingClientRect(), cs=win.getComputedStyle(el);
+        return r.right>de.clientWidth+1 && cs.position!=='fixed' && !el.closest('.lim-table-wrap') && !el.closest('svg');
+      }).length;
+      // any svg text spilling its own viewBox
+      let svgBad=0;
+      d.querySelectorAll('.site-figure svg').forEach(s=>{
+        const vb=s.getAttribute('viewBox').split(/\s+/).map(Number);
+        s.querySelectorAll('text').forEach(t=>{const b=t.getBBox();
+          if(b.x<vb[0]-1||b.x+b.width>vb[0]+vb[2]+1) svgBad++;});
+      });
+      const bad = overflow>0 || over>0 || svgBad>0;
+      if(bad) problems++;
+      lines.push('  '+(bad?'FAIL':'ok  ')+' '+p.padEnd(28)+
+        (overflow>0?('scroll +'+overflow+'px '):'')+
+        (over>0?(over+' overflowing els '):'')+
+        (svgBad>0?(svgBad+' svg text out of box'):''));
+    }
+  }
+  lines.push('', 'PROBLEMS: '+problems);
+  document.getElementById('out').textContent=lines.join('\n');
+  window.__done=true;
+})();
+</script>

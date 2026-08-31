@@ -165,6 +165,38 @@
 }
 .site-product__link { margin-top: auto; padding-top: var(--lim-s-4); }
 
+/* --- Rhythm ---------------------------------------------------------------
+   These were 36 inline margin-top declarations and three different paddings
+   for the same closing panel. Spacing that lives in the markup drifts; spacing
+   that lives in one rule cannot. */
+.lim-eyebrow + h1,
+.lim-eyebrow + h2 { margin-top: var(--lim-s-4); }
+
+.site-measure { max-width: 68ch; }
+
+/* The closing call to action, identical on every page that has one. */
+.site-cta { padding: clamp(28px, 5vw, 54px); }
+
+/* A section whose own content already ends in a panel needs less below it. */
+.site-section--tail { padding-bottom: var(--lim-section); }
+.site-section--tight { padding-bottom: var(--lim-s-6); }
+
+/* Hero variants: the amount of air under a hero depends on what follows it. */
+.site-hero--tight { padding-bottom: var(--lim-s-6); }
+.site-hero--mid   { padding-bottom: var(--lim-s-7); }
+
+/* A pipeline or list set in mono needs looser leading than prose. */
+.site-mono-flow { line-height: 2.1; }
+
+/* Bulleted lists inside the contrast cells. */
+.site-bullets {
+  margin: 0;
+  padding-left: 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 /* --- Slab grid ------------------------------------------------------------
    Direction C: panels share a border instead of floating apart. The 1px grid
    line is the grid gap showing through, which survives any number of columns

@@ -95,6 +95,21 @@ concrete nouns. No emoji, no stock imagery, no manufactured social proof.
 
 ---
 
+## Checking layout and contrast
+
+Two harnesses, both run in the browser against the built pages. Serve the repo
+and open them; each must report zero.
+
+```
+http://localhost:8080/src/responsive-harness.html   layout at 375 / 768 / 1280
+http://localhost:8080/src/contrast-harness.html     WCAG AA, both themes
+```
+
+The responsive one walks every page at three widths and fails on horizontal
+overflow, on any element poking past the viewport, and on SVG text escaping its
+own viewBox — the three ways a page breaks that a screenshot at one width will
+not show you.
+
 ## Checking contrast
 
 `src/contrast-harness.html` walks every page in an iframe, forces each theme,

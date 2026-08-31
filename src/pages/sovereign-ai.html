@@ -11,9 +11,8 @@ nav: sovereign-ai
     Sovereign AI is not about hosting weights.
   </h1>
   <p class="lim-lede lim-enter lim-enter--d2">
-    Almost every conversation about sovereign AI is a conversation about where the model file
-    sits. That is the least interesting part of the problem, and solving it well can leave you
-    exactly as exposed as you were.
+    Almost every conversation about sovereign AI is about where the model file sits. That is the
+    least interesting part of the problem, and solving it can leave you just as exposed as before.
   </p>
 </section>
 
@@ -22,15 +21,15 @@ nav: sovereign-ai
 
     <h2 class="lim-t3">What everyone thinks it means</h2>
     <p>
-      Ask an enterprise what sovereign AI means and you will usually get an infrastructure
-      answer: the weights are ours, the GPUs are in our data centre, nothing goes to a foreign
-      API. All of that is worth having. None of it is sovereignty.
+      Ask a company what sovereign AI means and you usually get an answer about hardware: the model
+      is ours, the GPUs are in our data centre, nothing goes to an outside API. All of that is
+      worth having. None of it is sovereignty.
     </p>
     <p>
-      A model running on your own hardware can still take an action nobody authorised, in a way
-      nobody can reconstruct afterwards, for reasons nobody wrote down. You have moved the file.
-      You have not gained control. The question a regulator asks is not <em>where did this run</em>
-      — it is <em>who decided this was allowed, and can you show me</em>.
+      A model on your own hardware can still do something nobody approved, in a way nobody can
+      trace afterwards, for reasons nobody wrote down. You have moved the file. You have not
+      gained control. A regulator does not ask <em>where did this run</em>. They ask <em>who
+      decided this was allowed, and can you show me</em>.
     </p>
 
     <h2 class="lim-t3">A limit inside the model is a request</h2>
@@ -40,61 +39,60 @@ nav: sovereign-ai
       dangerous part.
     </p>
     <p>
-      A constraint expressed in the same medium the model reasons in is a constraint the model can
-      reason about. It can be reframed, out-argued, buried under context, or simply outweighed by
-      a more compelling instruction later in the conversation. It is not a boundary. It is a
-      strong preference, held by something whose preferences are probabilistic.
+      A rule written in the same language the model thinks in is a rule the model can think about.
+      It can be reworded, argued down, buried under other text, or simply outweighed by a better
+      instruction later in the conversation. That is not a limit. It is a strong preference, held
+      by something whose preferences are a matter of chance.
     </p>
     <blockquote>
       You cannot make a system safe by asking it nicely.
     </blockquote>
     <p>
-      The practical test is simple: if the limit and the thing being limited are made of the same
-      material, and the limited thing is the more capable reasoner, then the limit holds at the
-      pleasure of the thing it is supposed to constrain.
+      The test is simple. If the limit and the thing being limited are made of the same stuff, and
+      the limited thing is the better arguer, then the limit only holds for as long as that thing
+      allows it.
     </p>
 
     <h2 class="lim-t3">Why more compute does not close the gap</h2>
     <p>
-      The reasonable hope is that this is temporary — a bigger model, better alignment training,
-      another generation of technique, and the constraint becomes reliable. It is worth being
-      precise about why that hope is misplaced.
+      The reasonable hope is that this is temporary: a bigger model, better training, one more
+      generation of technique, and the rule becomes reliable. It is worth being precise about why
+      that hope is misplaced.
     </p>
     <p>
-      Verifying that a sufficiently expressive system will never enter some forbidden state is not
-      merely expensive; for the general case it is <strong>undecidable</strong>. This is the same
-      family of result as the halting problem and Gödel's incompleteness theorems: a system rich
-      enough to express arbitrary computation cannot, in general, be proven to avoid an arbitrary
-      behaviour by inspecting it. Scaling makes the system more capable. It does not make the
-      general verification problem tractable, because that problem is not hard for want of
-      resources.
+      Proving that a system this flexible will never do a forbidden thing is not just expensive.
+      In the general case it is <strong>impossible</strong> — not impossible for us, impossible
+      in principle. This is the same result as the halting problem and Gödel's incompleteness
+      theorems: a system powerful enough to run any computation cannot, in general, be checked
+      from the inside to prove it avoids some behaviour. A bigger model is more capable. It does
+      not make that proof possible, because the difficulty was never a shortage of computing
+      power.
     </p>
     <p>
-      To be careful about the claim: this does not say alignment work is futile, or that a given
-      model cannot be made safer in practice for a given task. Plenty of specific properties can
-      be checked. What it says is that <em>guarantee</em> is the wrong word for anything obtained
-      by inspecting or training the model itself, and an enterprise control needs a guarantee.
+      To be careful about the claim: this does not mean alignment work is pointless, or that a
+      model cannot be made safer for a particular task. Plenty of specific things can be checked.
+      It means <em>guarantee</em> is the wrong word for anything you get by inspecting or training
+      the model itself — and a company control has to be a guarantee.
     </p>
 
-    <h2 class="lim-t3">The engineering response is encapsulation</h2>
+    <h2 class="lim-t3">The answer is to wrap it, not fix it</h2>
     <p>
-      Engineering has met this shape of problem before, and the answer has never been to solve the
-      unsolvable. It has been to <strong>wrap it</strong>. You take the component whose internals
-      you cannot fully verify, and you put it inside a deterministic boundary that can be
-      verified — one that mediates everything going in and everything coming out, and that the
-      component has no means of altering.
+      Engineering has met this shape of problem before, and the answer was never to solve the
+      unsolvable. It was to <strong>wrap it</strong>. You take the part you cannot fully check,
+      and put it inside a boundary you can check — one that handles everything going in and
+      coming out, and that the part inside has no way to change.
     </p>
     <p>
-      Memory-unsafe code goes in a sandbox. Untrusted input goes through a parser. A process gets
-      a set of capabilities and cannot grant itself more. In none of those cases did anyone prove
-      the inner thing well-behaved. They made its behaviour <em>not matter</em> beyond a line it
+      Risky code goes in a sandbox. Untrusted input goes through a checker. A program gets a set
+      of permissions and cannot give itself more. In none of those cases did anyone prove the
+      inner thing was well behaved. They made its behaviour <em>not matter</em> beyond a line it
       cannot cross.
     </p>
     <p>
-      Applied here: the model does not enforce policy, because it cannot be trusted to. A
-      deterministic layer outside it decides what may be asked, what may be seen, what may be
-      returned, and what is recorded. The model is a component inside a boundary rather than the
-      thing holding the boundary. That layer is what we build.
+      Here, that means the model does not enforce the rules, because it cannot be trusted to. A
+      fixed layer outside it decides what may be asked, what may be seen, what may come back, and
+      what gets recorded. The model sits inside the boundary instead of holding it. That layer is
+      what we build.
     </p>
 
     <h2 class="lim-t3">The mind and the muscle</h2>
@@ -110,26 +108,24 @@ nav: sovereign-ai
       and what it has learned from having done it.
     </p>
     <p>
-      In most enterprises today that mind is not written down anywhere durable. It lives in
-      people's heads, in prompts pasted between tools, and inside a vendor's runtime where it
-      cannot be inspected or taken with you. It is not owned. It is merely somewhere.
+      In most companies that mind is not written down anywhere lasting. It lives in people's
+      heads, in prompts copied between tools, and inside a vendor's software where you cannot
+      inspect it or take it with you. It is not owned. It is just somewhere.
     </p>
 
     <h2 class="lim-t3">What that is worth</h2>
     <p>
-      The commercial consequence is an asymmetry. The model layer depreciates — whatever you are
-      running is worth less every quarter, because the replacement is better and cheaper. The
-      record of how your organisation decides does the opposite. Every governed intent, every
-      piece of evidence, every decision and its outcome makes the next one cheaper to specify and
-      easier to defend.
+      The commercial result is lopsided, in your favour. The model is worth less every quarter,
+      because the next one is better and cheaper. The record of how your company decides does the
+      opposite. Every agreed piece of work, every piece of evidence, every decision and its result
+      makes the next one cheaper to write and easier to defend.
     </p>
     <p>
-      That is also where the switching costs land, and they land the right way round. Because
-      the boundary is model-agnostic, leaving a <em>model</em> vendor is cheap by construction —
-      that is the point of it. What becomes expensive to leave is the accumulated record of how
-      your organisation works. That is a thing you own outright, exports in an open format, and
-      would be reluctant to abandon for the same reason you would not casually discard your
-      general ledger.
+      It is also where the switching costs land, and they land the right way round. The boundary
+      works with any model, so leaving a <em>model</em> vendor is cheap — that is the whole point.
+      What becomes expensive to leave is the built-up record of how your company works. You own
+      that outright, it exports in an open format, and you would be reluctant to give it up for
+      the same reason you would not throw away your accounts.
     </p>
     <p>
       Anyone can rent the same frontier model this afternoon. Nobody else can rent your

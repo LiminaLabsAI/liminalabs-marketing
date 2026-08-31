@@ -84,6 +84,10 @@
   --lim-action-hover: var(--lim-cobalt-600);
   --lim-action-press: var(--lim-cobalt-700);
 
+  /* Inline code sits on its own accent wash, so it needs its own colour —
+     reusing --lim-accent measured 3.1:1 on dark and failed AA. */
+  --lim-code: var(--lim-cobalt-600);
+
   /* The four bar fills. One inline <svg> mark serves both themes because
      it paints with these. */
   --lim-bar-1: var(--lim-cobalt-600);
@@ -277,6 +281,7 @@
   --lim-action:       var(--lim-cobalt-500);
   --lim-action-hover: var(--lim-cobalt-400);
   --lim-action-press: var(--lim-cobalt-600);
+  --lim-code: #9AA9E8;
 
   --lim-bar-1: var(--lim-frost-100);
   --lim-bar-2: var(--lim-frost-200);
@@ -339,6 +344,7 @@
     --lim-action:       var(--lim-cobalt-500);
     --lim-action-hover: var(--lim-cobalt-400);
     --lim-action-press: var(--lim-cobalt-600);
+    --lim-code: #9AA9E8;
 
     --lim-bar-1: var(--lim-frost-100);
     --lim-bar-2: var(--lim-frost-200);

@@ -142,7 +142,7 @@ code {
   padding: .15em .4em;
   border-radius: var(--lim-r-xs);
   background: var(--lim-accent-wash);
-  color: var(--lim-accent);
+  color: var(--lim-code);
 }
 pre {
   margin: 0;

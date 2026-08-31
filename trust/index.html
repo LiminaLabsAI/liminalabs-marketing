@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Security and sovereignty | Limina Labs</title>
-<meta name="description" content="The whole stack runs on your infrastructure, over any model you choose. How the boundary is constructed, what leaves it, and how a request is reconstructed afterwards.">
+<meta name="description" content="The whole stack runs on your infrastructure, over any model you choose. How the boundary is built, what a request leaves behind, and how releases are signed.">
 <link rel="canonical" href="https://liminalabs.in/trust">
 
 <script>try{var t=localStorage.getItem("limina-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
@@ -19,12 +19,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Limina Labs">
 <meta property="og:title" content="Security and sovereignty | Limina Labs">
-<meta property="og:description" content="The whole stack runs on your infrastructure, over any model you choose. How the boundary is constructed, what leaves it, and how a request is reconstructed afterwards.">
+<meta property="og:description" content="The whole stack runs on your infrastructure, over any model you choose. How the boundary is built, what a request leaves behind, and how releases are signed.">
 <meta property="og:url" content="https://liminalabs.in/trust">
 <meta property="og:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Security and sovereignty | Limina Labs">
-<meta name="twitter:description" content="The whole stack runs on your infrastructure, over any model you choose. How the boundary is constructed, what leaves it, and how a request is reconstructed afterwards.">
+<meta name="twitter:description" content="The whole stack runs on your infrastructure, over any model you choose. How the boundary is built, what a request leaves behind, and how releases are signed.">
 <meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 
 <link rel="stylesheet" href="../design-system/css/limina.css?v=3.5">
@@ -89,7 +89,7 @@
 
 
 <main id="main" class="lim-below-nav">
-<section class="lim-wrap site-hero">
+<section class="lim-wrap site-hero" style="padding-bottom: var(--lim-s-6)">
   <p class="lim-eyebrow lim-enter">Security and sovereignty</p>
   <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance" style="margin-top: var(--lim-s-4)">
     The whole stack runs on your infrastructure.
@@ -97,159 +97,135 @@
   <p class="lim-lede lim-enter lim-enter--d2">
     Not the interface with the reasoning elsewhere — all of it. Models, gateway, policy, audit
     and the record itself, inside your own network, over whichever models you choose to run.
-    Nothing on this page is gated.
   </p>
+</section>
+
+<!-- The summary before the detail: a security team scans for its own question. -->
+<section class="lim-wrap" style="padding-bottom: var(--lim-section)">
+  <div class="lim-table-wrap lim-reveal">
+    <table class="lim-table">
+      <caption class="lim-visually-hidden">Short answers to the questions security teams ask</caption>
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>Does our data reach you?</td><td>No. There is no environment of ours for it to sit in — <a href="#boundary">how the boundary is built</a></td></tr>
+        <tr><td>Where does inference happen?</td><td>In your boundary, on models you run — or a hosted provider your platform owner has explicitly approved</td></tr>
+        <tr><td>What do you hold about us?</td><td>Nothing. No prompts, completions, embeddings or audit records</td></tr>
+        <tr><td>Is there telemetry?</td><td>None. No phone-home, no usage reporting, no licence check that calls out</td></tr>
+        <tr><td>Can we prove what happened?</td><td>Yes — <a href="#record">every stage of a request is recorded</a>, with integrity chained</td></tr>
+        <tr><td>Which models can we use?</td><td>Any. Open-weight in boundary, or an approved hosted provider — <a href="#models">never locked to ours</a></td></tr>
+        <tr><td>Who are your sub-processors?</td><td>None, because nothing flows to us — <a href="../sub-processors/">the full list</a></td></tr>
+        <tr><td>How do we report a vulnerability?</td><td><a href="mailto:hello@liminalabs.in">hello@liminalabs.in</a> — <a href="../vulnerability-disclosure/">disclosure policy</a></td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <hr class="lim-rule">
 
-<section class="lim-wrap lim-section">
+<section class="lim-wrap lim-section" id="boundary">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">How the boundary is built</p>
+    <h2 style="margin-top: var(--lim-s-4)">We cannot lose data we never receive.</h2>
+    <p class="lim-lede">
+      The boundary is a property of where the software sits, not a setting inside it. That is the
+      whole argument, and it is structural rather than a promise.
+    </p>
+  </header>
 
-  <article class="site-block lim-reveal">
-    <div class="site-block__n">01</div>
-    <div class="site-block__body">
-      <h3 class="lim-t3">Zero-egress architecture</h3>
-      <p>
-        The boundary is a property of where the software sits, not a setting inside it. Under
-        self-hosting, Precepta runs in your cloud account or data centre with no public route.
-        Model inference happens in-boundary. There is no telemetry and no phone-home, so there
-        is no channel over which your data could reach us even if we wanted it.
+  <div class="site-slabs lim-reveal">
+    <article class="site-slab">
+      <span class="site-slab__label">Placement</span>
+      <h3>No public route</h3>
+      <p>Precepta runs in your cloud account or data centre with no route to the public internet.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Inference</span>
+      <h3>In-boundary by default</h3>
+      <p>Models run on your hardware. Reaching an external host is impossible unless your platform owner approves that exact host.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Telemetry</span>
+      <h3>No channel back to us</h3>
+      <p>No phone-home and no usage reporting, so there is no path over which your data could reach us.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Proof</span>
+      <h3>Probed, not asserted</h3>
+      <p>A live egress probe tests the boundary at boot and on demand, and a signed attestation records the posture.</p>
+    </article>
+  </div>
+
+  <div class="lim-note lim-mt-6 lim-reveal">
+    <div>
+      <strong>Demonstrated on your network, not on this page.</strong>
+      The attestation is the part we most want you to distrust on principle, so it is shown during
+      an evaluation inside your own infrastructure, with your team choosing the tests — including
+      the exfiltration attempt.
+    </div>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section" id="record">
+  <div class="lim-grid lim-grid--2">
+    <div class="lim-reveal">
+      <p class="lim-eyebrow">What a request leaves behind</p>
+      <h2 style="margin-top: var(--lim-s-4)">The whole governed journey, replayable.</h2>
+      <p class="lim-lede">
+        Every request is recorded at each stage it passes through, with the decision taken and the
+        reason for it. Integrity is chained, so a record cannot be altered after the event without
+        the alteration being evident.
       </p>
-      <p>
-        That is the whole argument, and it is structural: we cannot lose data we never receive.
+      <p class="lim-mt-4 lim-muted">
+        That is what makes an answer possible when compliance asks what happened to a specific
+        request, months later.
       </p>
     </div>
-  </article>
+    <div class="lim-reveal lim-reveal--d1">
+      <div class="lim-pane">
+        <p class="lim-eyebrow">Recorded at every stage</p>
+        <p class="lim-mono lim-sm lim-mt-4" style="line-height: 2.1">
+          Firewall → Sensitivity → Policy → Smart&nbsp;Route → Cache → Inference → Audit
+        </p>
+        <p class="lim-xs lim-soft lim-mt-4">
+          Redaction happens before a model sees the request; the output is scanned for leaks on
+          the way back. Both are recorded.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <article class="site-block lim-reveal">
-    <div class="site-block__n">02</div>
-    <div class="site-block__body">
-      <h3 class="lim-t3">What we hold, and what we don't</h3>
-      <p>
-        Under a self-hosted deployment: <strong>nothing</strong>. No prompts, no completions, no
-        embeddings, no audit records, no customer data of any kind. Your audit store is yours and
-        stays in your infrastructure.
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section" id="models">
+  <div class="lim-grid lim-grid--2">
+    <div class="lim-reveal">
+      <p class="lim-eyebrow">Model freedom</p>
+      <h2 style="margin-top: var(--lim-s-4)">Any model, and never locked to ours.</h2>
+      <p class="lim-lede">
+        Precepta is a control plane, not a model vendor. Run open-weight models in your own
+        boundary, or reach a hosted provider where your platform owner has approved that exact
+        host. Both paths take the same governed pipeline.
       </p>
-      <p>
-        There is no exception, because there is no hosted tier. We do not operate an environment
-        your data could sit in, which is a stronger statement than a policy promising we would
-        handle it carefully if we did.
+      <p class="lim-mt-4 lim-muted">
+        This is the point of putting the boundary outside the model. A better one arrives every
+        few months and you should be able to take it without re-architecting anything. What stays
+        is the policy, the record and the accumulated intent — the part you actually own.
       </p>
     </div>
-  </article>
-
-  <article class="site-block lim-reveal">
-    <div class="site-block__n">03</div>
-    <div class="site-block__body">
-      <h3 class="lim-t3">Attestation and live probes</h3>
-      <p>
-        Precepta issues a signed sovereignty attestation, and continuous live probes test the
-        egress boundary rather than asserting it. This is the part of the system we most want you
-        to distrust on principle — which is why it is demonstrated during your evaluation, on your
-        own network, with your team choosing the tests, rather than shown as a sample here.
-      </p>
-      <p>
-        Our intent is to open-source the verifier so an attestation can be checked with code we
-        did not write. That does not exist yet, and we will not describe it as though it does.
-      </p>
-    </div>
-  </article>
-
-  <article class="site-block lim-reveal">
-    <div class="site-block__n">04</div>
-    <div class="site-block__body">
-      <h3 class="lim-t3">Tamper-evident audit</h3>
-      <p>
-        Every request, policy decision, redaction and output is recorded with lineage, so a
-        specific action can be reconstructed after the fact — what was asked, what policy said,
-        what the model saw, and what came back. Integrity is chained, so a record cannot be
-        altered after the event without the alteration being evident.
-      </p>
-    </div>
-  </article>
-
-  <article class="site-block lim-reveal">
-    <div class="site-block__n">05</div>
-    <div class="site-block__body">
-      <h3 class="lim-t3">How releases are built and signed</h3>
-      <p>
-        Dependencies are scanned, releases are signed, and the same artifact runs in an
-        evaluation, in a self-hosted deployment and on-premises — so what you evaluate is
-        precisely what you operate.
-        Our patching commitment and disclosure timelines are in the security overview below.
+    <div class="lim-reveal lim-reveal--d1">
+      <p class="lim-eyebrow">How releases are built</p>
+      <h2 style="margin-top: var(--lim-s-4)">The same artifact you evaluate is the one you run.</h2>
+      <p class="lim-lede">
+        Dependencies are scanned and releases are signed. The identical artifact runs in an
+        evaluation, in a self-hosted deployment and on-premises — there is no separate build with
+        different behaviour.
       </p>
       
     </div>
-  </article>
-
-  <article class="site-block lim-reveal">
-    <div class="site-block__n">06</div>
-    <div class="site-block__body">
-      <h3 class="lim-t3">Sub-processors</h3>
-      <p>
-        Short, because self-hosted. There are no sub-processors at all — there is no data flow for
-        one to sit in, and we operate no environment that holds your data.
-      </p>
-      <p><a href="../sub-processors/">Sub-processor list →</a></p>
-    </div>
-  </article>
-
-  <article class="site-block lim-reveal">
-    <div class="site-block__n">07</div>
-    <div class="site-block__body">
-      <h3 class="lim-t3">Vulnerability disclosure</h3>
-      <p>
-        Report anything you find to <a href="mailto:hello@liminalabs.in">hello@liminalabs.in</a>. We
-        will acknowledge, keep you informed, and credit you if you want to be credited. Our
-        machine-readable contact is published at
-        <a href="../.well-known/security.txt">/.well-known/security.txt</a>.
-      </p>
-      <p><a href="../vulnerability-disclosure/">Disclosure policy →</a></p>
-    </div>
-  </article>
-
-  <article class="site-block lim-reveal">
-    <div class="site-block__n">08</div>
-    <div class="site-block__body">
-      <h3 class="lim-t3">Any model, and you are never locked to ours</h3>
-      <p>
-        Precepta is a gateway, not a model vendor. Run open-weight models in your own boundary —
-        Llama and its peers, on your hardware — or reach a hosted provider where your platform
-        owner has explicitly approved that exact host. Both paths go through the same governed
-        pipeline, and the choice is yours to change at any time.
-      </p>
-      <p>
-        This is the point of putting the boundary outside the model. A better model arrives every
-        few months; you should be able to take it without re-architecting anything. What stays is
-        the policy, the audit record and the accumulated intent — which is the part you actually
-        own.
-      </p>
-    </div>
-  </article>
-
-  <article class="site-block lim-reveal">
-    <div class="site-block__n">09</div>
-    <div class="site-block__body">
-      <h3 class="lim-t3">Documents — none of them gated</h3>
-      <p>
-        No form, no email capture, no sales call in the way. Security documents behind a lead
-        form are a tell, and your team should not have to negotiate for them.
-      </p>
-      <ul class="lim-mt-4" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px">
-        <li><a href="../sub-processors/">Sub-processor list</a></li>
-        <li><a href="../vulnerability-disclosure/">Vulnerability disclosure policy</a></li>
-        
-        
-        
-      </ul>
-      <p class="lim-sm lim-soft">
-        The last three are not written yet. Rather than put them behind a "request access" form
-        and let you assume they exist, we would rather say so — and send you what we do have if
-        you ask.
-      </p>
-    </div>
-  </article>
-
+  </div>
 </section>
 
 <hr class="lim-rule">
@@ -259,7 +235,7 @@
     <h2 class="lim-t2 lim-balance">Let your security team choose the tests.</h2>
     <p class="lim-lede lim-mt-4">
       Sixty to ninety minutes on a live deployment, where they pick what to try — including the
-      exfiltration attempt. We do not get to set the questions.
+      exfiltration attempt. We do not get to set the questions, and nothing here is behind a form.
     </p>
     <div class="lim-row lim-mt-6">
       <a class="lim-btn lim-btn--primary lim-btn--lg" href="../contact/">Talk to us</a>
@@ -296,7 +272,6 @@
       <div>
         <h2 class="site-footer__head">Resources</h2>
         <a href="../sovereign-ai/">Sovereign AI</a>
-        <a href="https://docs.liminalabs.in">Docs</a>
       </div>
 
       <div>

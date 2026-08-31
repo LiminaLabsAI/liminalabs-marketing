@@ -1,0 +1,90 @@
+<!--
+title: Contact | Limina Labs
+description: Bring one real process. We will show you what it looks like specified, governed and reconstructable inside your own boundary.
+path: /contact
+nav: contact
+-->
+
+<section class="lim-wrap site-hero site-hero--mid">
+  <p class="lim-eyebrow lim-enter">Contact</p>
+  <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance">
+    We're selecting a small number of design partners.
+  </h1>
+  <p class="lim-lede lim-enter lim-enter--d2">
+    Companies who want to shape what we build next, while we make it stronger. We will tell you
+    exactly what a deployment covers before you commit to anything.
+  </p>
+</section>
+
+<section class="lim-wrap">
+  <div class="lim-grid lim-grid--2" style="align-items: start">
+    <div class="lim-pane lim-reveal">
+      <div data-unless="FORM_ENDPOINT">
+        <h2 class="lim-t3">Tell us the process</h2>
+        <p class="lim-sm lim-muted lim-mt-3">
+          Tell us about one real piece of work — a changeover, a migration, an audit response.
+          Include your company, and we will tell you plainly whether this fits.
+        </p>
+        <p class="lim-mt-5">
+          <a class="lim-btn lim-btn--primary lim-btn--lg" href="mailto:{{CONTACT_EMAIL}}?subject=Limina%20Labs%20%E2%80%94%20enquiry">Email us</a>
+        </p>
+        <p class="lim-xs lim-soft lim-mt-4">
+          <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a> — we read every one.
+        </p>
+      </div>
+      <form class="site-form" method="post" action="{{FORM_ENDPOINT}}" data-pending>
+        <div class="lim-field">
+          <label class="lim-label" for="ea-name">Name</label>
+          <input class="lim-input" id="ea-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="lim-field">
+          <label class="lim-label" for="ea-email">Work email</label>
+          <input class="lim-input" id="ea-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="lim-field">
+          <label class="lim-label" for="ea-company">Company</label>
+          <input class="lim-input" id="ea-company" name="company" type="text" autocomplete="organization" required>
+        </div>
+        <div class="lim-field">
+          <label class="lim-label" for="ea-product">Which product</label>
+          <select class="lim-select" id="ea-product" name="product">
+            <option>Intent Studio</option>
+            <option>Precepta</option>
+            <option>Both</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="lim-field lim-grid--span-all">
+          <label class="lim-label" for="ea-process">What process would you want to run?</label>
+          <textarea class="lim-textarea" id="ea-process" name="process" placeholder="One real piece of work — a changeover, a migration, an audit response."></textarea>
+        </div>
+        <div class="lim-grid--span-all">
+          <button class="lim-btn lim-btn--primary lim-btn--lg" type="submit">Send</button>
+        </div>
+      </form>
+      <p class="lim-xs lim-soft lim-mt-5" data-pending>
+        Form endpoint: {{FORM_ENDPOINT}}</p>
+    </div>
+
+    <div class="lim-reveal lim-reveal--d1">
+      <h2 class="lim-t3">What happens next</h2>
+      <div class="lim-stack lim-mt-5">
+        <div class="lim-pane lim-pane--thin">
+          <b class="lim-sm">A conversation, not a demo</b>
+          <p class="lim-xs lim-soft lim-mt-3">Tell us the process. We will say plainly whether this fits.</p>
+        </div>
+        <div class="lim-pane lim-pane--thin">
+          <b class="lim-sm">A session with your security team</b>
+          <p class="lim-xs lim-soft lim-mt-3">On a live deployment, where they choose the tests.</p>
+        </div>
+        <div class="lim-pane lim-pane--thin">
+          <b class="lim-sm">An evaluation on your infrastructure</b>
+          <p class="lim-xs lim-soft lim-mt-3">One process, with what counts as success agreed in writing first.</p>
+        </div>
+      </div>
+      <p class="lim-xs lim-soft lim-mt-5">
+        Nothing leaves your network at any stage. There is nowhere of ours for it to go.
+      </p>
+    </div>
+  </div>
+</section>

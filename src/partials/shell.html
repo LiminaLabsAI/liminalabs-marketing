@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="https://liminalabs.in{{path}}">
+
+<script>try{var t=localStorage.getItem("limina-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+
+<meta name="theme-color" content="#F5F6FC">
+<link rel="icon" href="{{base}}assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{{base}}assets/favicon/favicon.ico" sizes="any">
+<link rel="icon" href="{{base}}assets/favicon/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="{{base}}assets/app-icon/icon-180-light.png">
+<link rel="manifest" href="{{base}}manifest.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Limina Labs">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="https://liminalabs.in{{path}}">
+<meta property="og:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
+
+<link rel="stylesheet" href="{{base}}design-system/css/limina.css?v=4.8">
+<link rel="stylesheet" href="{{base}}src/site.css?v=4.8">
+</head>
+
+<body>
+<a class="lim-skip" href="#main">Skip to content</a>
+
+{{ambient}}
+{{ambient}}
+
+{{nav}}
+
+<main id="main" class="lim-below-nav">
+{{content}}
+</main>
+
+{{footer}}
+
+<script src="{{base}}design-system/js/limina.js?v=4.8" defer></script>
+<script src="{{base}}src/site.js?v=4.8" defer></script>
+</body>
+</html>

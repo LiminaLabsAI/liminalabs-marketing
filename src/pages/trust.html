@@ -1,0 +1,163 @@
+<!--
+title: Security and sovereignty | Limina Labs
+description: The whole stack runs on your infrastructure, over any model you choose. How the boundary is built, what a request leaves behind, and how releases are signed.
+path: /trust
+nav: trust
+-->
+
+<section class="lim-wrap site-hero site-hero--tight">
+  <p class="lim-eyebrow lim-enter">Security and sovereignty</p>
+  <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance">
+    The whole stack runs on your infrastructure.
+  </h1>
+  <p class="lim-lede lim-enter lim-enter--d2">
+    Not the interface with the reasoning elsewhere — all of it. Models, gateway, policy, audit
+    and the record itself, inside your own network, over whichever models you choose to run.
+  </p>
+</section>
+
+<!-- The summary before the detail: a security team scans for its own question. -->
+<section class="lim-wrap">
+  <div class="lim-table-wrap lim-reveal">
+    <table class="lim-table">
+      <caption class="lim-visually-hidden">Short answers to the questions security teams ask</caption>
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>Does our data reach you?</td><td>No. There is no environment of ours for it to sit in — <a href="#boundary">how the boundary is built</a></td></tr>
+        <tr><td>Where does inference happen?</td><td>In your boundary, on models you run — or a hosted provider your platform owner has explicitly approved</td></tr>
+        <tr><td>What do you hold about us?</td><td>Nothing. No prompts, completions, embeddings or audit records</td></tr>
+        <tr><td>Is there telemetry?</td><td>None. No phone-home, no usage reporting, no licence check that calls out</td></tr>
+        <tr><td>Can we prove what happened?</td><td>Yes — <a href="#record">every stage of a request is recorded</a>, with integrity chained</td></tr>
+        <tr><td>Which models can we use?</td><td>Any. Open-weight in boundary, or an approved hosted provider — <a href="#models">never locked to ours</a></td></tr>
+        <tr><td>Who are your sub-processors?</td><td>None, because nothing flows to us — <a href="{{base}}sub-processors/">the full list</a></td></tr>
+        <tr><td>How do we report a vulnerability?</td><td><a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a> — <a href="{{base}}vulnerability-disclosure/">disclosure policy</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section" id="boundary">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">How the boundary is built</p>
+    <h2>We cannot lose data we never receive.</h2>
+    <p class="lim-lede">
+      The boundary is a property of where the software sits, not a setting inside it. That is the
+      whole argument, and it is structural rather than a promise.
+    </p>
+  </header>
+
+  <div class="site-slabs lim-reveal">
+    <article class="site-slab">
+      <span class="site-slab__label">Placement</span>
+      <h3>No public route</h3>
+      <p>Precepta runs in your cloud account or data centre with no route to the public internet.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Inference</span>
+      <h3>In-boundary by default</h3>
+      <p>Models run on your hardware. Reaching an external host is impossible unless your platform owner approves that exact host.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Telemetry</span>
+      <h3>No channel back to us</h3>
+      <p>No phone-home and no usage reporting, so there is no path over which your data could reach us.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Proof</span>
+      <h3>Probed, not asserted</h3>
+      <p>A live egress probe tests the boundary at boot and on demand, and a signed attestation records the posture.</p>
+    </article>
+  </div>
+
+  <div class="lim-note lim-mt-6 lim-reveal">
+    <div>
+      <strong>Demonstrated on your network, not on this page.</strong>
+      The attestation is the part we most want you to distrust on principle, so it is shown during
+      an evaluation inside your own infrastructure, with your team choosing the tests — including
+      the exfiltration attempt.
+    </div>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section" id="record">
+  <div class="lim-grid lim-grid--2">
+    <div class="lim-reveal">
+      <p class="lim-eyebrow">What a request leaves behind</p>
+      <h2>The whole governed journey, replayable.</h2>
+      <p class="lim-lede">
+        Every request is recorded at each stage it passes through, with the decision taken and the
+        reason for it. Integrity is chained, so a record cannot be altered after the event without
+        the alteration being evident.
+      </p>
+      <p class="lim-mt-4 lim-muted">
+        That is what makes an answer possible when compliance asks what happened to a specific
+        request, months later.
+      </p>
+    </div>
+    <div class="lim-reveal lim-reveal--d1">
+      <div class="lim-pane">
+        <p class="lim-eyebrow">Recorded at every stage</p>
+        <p class="lim-mono lim-sm lim-mt-4 site-mono-flow">
+          Firewall → Sensitivity → Policy → Smart&nbsp;Route → Cache → Inference → Audit
+        </p>
+        <p class="lim-xs lim-soft lim-mt-4">
+          Redaction happens before a model sees the request; the output is scanned for leaks on
+          the way back. Both are recorded.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section" id="models">
+  <div class="lim-grid lim-grid--2">
+    <div class="lim-reveal">
+      <p class="lim-eyebrow">Model freedom</p>
+      <h2>Any model, and never locked to ours.</h2>
+      <p class="lim-lede">
+        Precepta is a control plane, not a model vendor. Run open-weight models in your own
+        boundary, or reach a hosted provider where your platform owner has approved that exact
+        host. Both paths take the same governed pipeline.
+      </p>
+      <p class="lim-mt-4 lim-muted">
+        This is the point of putting the boundary outside the model. A better one arrives every few
+        months and you should be able to take it without rebuilding anything. What stays is the
+        rules, the record and the work you have already agreed — the part you actually own.
+      </p>
+    </div>
+    <div class="lim-reveal lim-reveal--d1">
+      <p class="lim-eyebrow">How releases are built</p>
+      <h2>The same artifact you evaluate is the one you run.</h2>
+      <p class="lim-lede">
+        Dependencies are scanned and releases are signed. The identical artifact runs in an
+        evaluation, in a self-hosted deployment and on-premises — there is no separate build with
+        different behaviour.
+      </p>
+      <p class="lim-sm lim-soft lim-mt-4" data-pending>
+        Full secure-SDLC detail: {{SDLC_DETAIL}}
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+  <div class="lim-pane site-cta lim-reveal">
+    <h2 class="lim-t2 lim-balance">Let your security team choose the tests.</h2>
+    <p class="lim-lede lim-mt-4">
+      Sixty to ninety minutes on a live deployment, where they pick what to try — including the
+      exfiltration attempt. We do not get to set the questions, and nothing here is behind a form.
+    </p>
+    <div class="lim-row lim-mt-6">
+      <a class="lim-btn lim-btn--primary lim-btn--lg" href="{{base}}contact/">Talk to us</a>
+      <a class="lim-btn lim-btn--glass lim-btn--lg" href="{{base}}precepta/">How Precepta runs</a>
+    </div>
+  </div>
+</section>

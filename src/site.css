@@ -1,0 +1,375 @@
+/* ============================================================================
+   liminalabs.in — marketing patterns
+   Layered on Limen. Adds no colour, no second diagonal, and forks no
+   component: everything here is composition of what design-system/ provides.
+   ========================================================================= */
+
+/* --- Nav: the Products menu --------------------------------------------- */
+.site-menu { position: relative; }
+.site-menu__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: var(--lim-r-pill);
+  background: transparent;
+  font-family: var(--lim-font-sans);
+  font-size: var(--lim-t-sm);
+  font-weight: 500;
+  color: var(--lim-text-soft);
+  transition: color var(--lim-d-2) var(--lim-ease), background var(--lim-d-2) var(--lim-ease);
+}
+.site-menu__button svg { width: 12px; height: 12px; transition: transform var(--lim-d-2) var(--lim-ease); }
+.site-menu__button:hover { color: var(--lim-text); background: var(--lim-glass-thin); }
+.site-menu.is-open .site-menu__button { color: var(--lim-text); background: var(--lim-glass-thin); }
+.site-menu.is-open .site-menu__button svg { transform: rotate(180deg); }
+.site-menu__button[aria-current="page"],
+.site-menu__button.is-active {
+  color: var(--lim-text);
+  font-weight: 600;
+  background: var(--lim-glass-raise);
+  box-shadow: var(--lim-shadow-1), inset 0 1px 0 var(--lim-edge);
+}
+/* Fixed and outside the nav in the DOM, on purpose. .lim-nav carries both a
+   backdrop-filter and a transform, either of which makes it a backdrop root —
+   a panel nested inside it can only blur what is inside the nav, which is
+   nothing where it overhangs. That is why it looked transparent rather than
+   frosted. JS positions it under the button. */
+.site-menu__panel {
+  position: fixed;
+  z-index: var(--lim-z-overlay);
+  width: 264px;
+  padding: 6px;
+  background: var(--lim-glass-nav);
+  -webkit-backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
+          backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
+}
+/* The entrance runs off .is-open, never off the panel itself. With the
+   animation on the base rule its "both" fill left the panel parked at
+   opacity 0 — which reads as a see-through panel, not a hidden one. */
+.site-menu.is-open .site-menu__panel { animation: site-menu-in var(--lim-d-2) var(--lim-ease-out); }
+@keyframes site-menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+/* Bridges the 10px gap between the button and the panel. Without it the
+   pointer leaves .site-menu on the way down, mouseleave fires, and the panel
+   closes before it can be clicked — which is exactly what it did. */
+.site-menu__panel::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+.site-menu__panel a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--lim-r-md);
+  text-decoration: none;
+  color: var(--lim-text);
+}
+.site-menu__panel a:hover { background: var(--lim-glass-thin); }
+.site-menu__panel b { display: block; font-size: var(--lim-t-sm); font-weight: 600; }
+.site-menu__panel span {
+  display: block;
+  margin-top: 1px;
+  font-size: var(--lim-t-eyebrow);
+  font-family: var(--lim-font-mono);
+  color: var(--lim-text-soft);
+}
+
+/* --- Footer -------------------------------------------------------------- */
+.site-footer__cols {
+  display: grid;
+  gap: var(--lim-s-6);
+  grid-template-columns: 1.6fr repeat(4, 1fr);
+}
+@media (max-width: 900px) { .site-footer__cols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .site-footer__cols { grid-template-columns: 1fr; } }
+.site-footer__brand { display: flex; flex-direction: column; gap: var(--lim-s-3); max-width: 34ch; }
+.site-footer__head {
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+  margin-bottom: var(--lim-s-3);
+}
+.site-footer__cols > div > a {
+  display: block;
+  padding: 3px 0;
+  font-size: var(--lim-t-sm);
+  color: var(--lim-text-muted);
+  text-decoration: none;
+}
+.site-footer__cols > div > a:hover { color: var(--lim-accent); }
+.site-footer__base {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lim-s-4);
+  justify-content: space-between;
+  margin-top: var(--lim-s-8);
+  padding-top: var(--lim-s-5);
+  border-top: 1px solid var(--lim-hairline);
+  font-size: var(--lim-t-xs);
+  color: var(--lim-text-soft);
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+.site-hero { padding-block: var(--lim-s-8) var(--lim-s-9); }
+.site-hero h1 { margin: var(--lim-s-4) 0 0; max-width: 18ch; }
+.site-hero .lim-lede { margin-top: var(--lim-s-5); }
+.site-hero__cta { margin-top: var(--lim-s-7); }
+.site-trustline {
+  margin-top: var(--lim-s-6);
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: .04em;
+  color: var(--lim-text-soft);
+}
+
+/* --- The three questions -------------------------------------------------- */
+.site-questions { display: grid; gap: var(--lim-s-5); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .site-questions { grid-template-columns: 1fr; } }
+.site-question { padding: var(--lim-s-6); display: flex; flex-direction: column; gap: var(--lim-s-4); }
+.site-question__q {
+  font-family: var(--lim-font-display);
+  font-size: var(--lim-t-4);
+  font-weight: 600;
+  line-height: var(--lim-lh-snug);
+  letter-spacing: var(--lim-track-snug);
+  text-wrap: pretty;
+}
+.site-question p { font-size: var(--lim-t-sm); color: var(--lim-text-muted); margin: 0; }
+
+/* --- Full-width statement ------------------------------------------------- */
+.site-statement { padding-block: var(--lim-section); }
+.site-statement h2 { max-width: 22ch; }
+.site-statement p { max-width: 62ch; margin-top: var(--lim-s-5); font-size: var(--lim-t-lede); color: var(--lim-text-muted); }
+
+/* --- Product cards: identical size, always -------------------------------- */
+.site-products { display: grid; gap: var(--lim-s-5); grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+@media (max-width: 900px) { .site-products { grid-template-columns: 1fr; } }
+.site-product { display: flex; flex-direction: column; gap: var(--lim-s-4); padding: var(--lim-s-6); }
+.site-product__head { display: flex; align-items: center; justify-content: space-between; gap: var(--lim-s-3); }
+.site-product h3 { font-size: var(--lim-t-3); margin: 0; }
+/* :not() rather than a more specific link rule. A bare-element descendant
+   selector (0,1,1) silently outranks the component class it was meant to leave
+   alone (0,1,0) — which is how the card CTAs stopped bottom-aligning. Exclude
+   explicitly instead of escalating specificity. */
+.site-product p:not(.site-product__link) {
+  margin: 0;
+  font-size: var(--lim-t-sm);
+  color: var(--lim-text-muted);
+}
+.site-product__link { margin-top: auto; padding-top: var(--lim-s-4); }
+
+/* --- Rhythm ---------------------------------------------------------------
+   These were 36 inline margin-top declarations and three different paddings
+   for the same closing panel. Spacing that lives in the markup drifts; spacing
+   that lives in one rule cannot. */
+.lim-eyebrow + h1,
+.lim-eyebrow + h2 { margin-top: var(--lim-s-4); }
+
+.site-measure { max-width: 68ch; }
+
+/* The closing call to action, identical on every page that has one. */
+.site-cta { padding: clamp(28px, 5vw, 54px); }
+
+/* A section whose own content already ends in a panel needs less below it. */
+.site-section--tail { padding-bottom: var(--lim-section); }
+.site-section--tight { padding-bottom: var(--lim-s-6); }
+
+/* Hero variants: the amount of air under a hero depends on what follows it. */
+.site-hero--tight { padding-bottom: var(--lim-s-6); }
+.site-hero--mid   { padding-bottom: var(--lim-s-7); }
+
+/* A pipeline or list set in mono needs looser leading than prose. */
+.site-mono-flow { line-height: 2.1; }
+
+/* Bulleted lists inside the contrast cells. */
+.site-bullets {
+  margin: 0;
+  padding-left: 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* --- Slab grid ------------------------------------------------------------
+   Direction C: panels share a border instead of floating apart. The 1px grid
+   line is the grid gap showing through, which survives any number of columns
+   and any wrap — no last-child border arithmetic. Denser and more structural
+   than cards, which is what a platform team reads as real software. */
+.site-slabs {
+  display: grid;
+  /* Explicit counts, never auto-fit. The 1px gridline is the container
+     background showing through the gap, so a row that does not fill leaves a
+     solid slab of border colour where cells should be. Every count here
+     divides the six-item grids evenly. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--lim-hairline-strong);
+  border: 1px solid var(--lim-hairline-strong);
+  border-radius: var(--lim-r-lg);
+  overflow: hidden;
+}
+@media (max-width: 900px) { .site-slabs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .site-slabs { grid-template-columns: minmax(0, 1fr); } }
+.site-slab {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: var(--lim-s-5);
+  background: var(--lim-glass-solid);
+}
+.site-slab h3 { margin: 0; font-size: var(--lim-t-sm); font-weight: 600; letter-spacing: -.005em; }
+.site-slab p  { margin: 0; font-size: var(--lim-t-xs); line-height: 1.58; color: var(--lim-text-muted); }
+.site-slab__label {
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+}
+
+/* --- Essay hero -----------------------------------------------------------
+   Direction B, used on exactly one page. /sovereign-ai is a single long
+   argument, so the headline is allowed to be the largest type on the site. */
+.site-essay-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: .98;
+  letter-spacing: -.042em;
+  max-width: 16ch;
+}
+.site-essay-hero .lim-lede { max-width: 50ch; font-size: var(--lim-t-lede); }
+
+/* Digits that sit in columns must line up. */
+.lim-table, .site-slab, .lim-stat__value { font-variant-numeric: tabular-nums; }
+
+/* --- Routing ------------------------------------------------------------- */
+.site-routes { display: grid; gap: var(--lim-s-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .site-routes { grid-template-columns: 1fr; } }
+.site-route { display: flex; gap: var(--lim-s-4); padding: var(--lim-s-5); align-items: flex-start; }
+.site-route__who {
+  flex: none;
+  width: 104px;
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+  padding-top: 2px;
+}
+.site-route__body { min-width: 0; }
+.site-route__q { font-weight: 600; font-size: var(--lim-t-sm); }
+.site-route__a { font-size: var(--lim-t-sm); color: var(--lim-text-muted); margin: 4px 0 8px; }
+
+/* --- Without / with ------------------------------------------------------- */
+.site-contrast { display: grid; gap: var(--lim-s-5); grid-template-columns: 1fr 1fr; }
+@media (max-width: 700px) { .site-contrast { grid-template-columns: 1fr; } }
+.site-contrast__cell { padding: var(--lim-s-5); border-radius: var(--lim-r-lg); border: 1px solid var(--lim-hairline); }
+.site-contrast__cell--with { border-color: var(--lim-accent-soft); background: var(--lim-accent-wash); }
+.site-contrast__label {
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+  margin-bottom: var(--lim-s-3);
+}
+
+/* --- Numbered blocks (trust) ---------------------------------------------- */
+.site-block { display: flex; gap: var(--lim-s-5); padding-block: var(--lim-s-6); border-top: 1px solid var(--lim-hairline); }
+.site-block:first-of-type { border-top: 0; }
+.site-block__n {
+  flex: none;
+  width: 2.5rem;
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-sm);
+  /* Not --lim-text-faint: that token is 2.8:1 and the system reserves it for
+     rules and disabled state. These numerals are content and must be read. */
+  color: var(--lim-text-soft);
+  font-variant-numeric: tabular-nums;
+}
+.site-block__body { min-width: 0; max-width: 68ch; }
+.site-block__body h3 { margin-bottom: var(--lim-s-3); }
+.site-block__body > * + * { margin-top: var(--lim-s-3); }
+
+/* --- Essay ---------------------------------------------------------------- */
+.site-essay { max-width: 68ch; }
+.site-essay > * + * { margin-top: var(--lim-s-5); }
+.site-essay h2 { margin-top: var(--lim-s-8); }
+.site-essay h2 + p { margin-top: var(--lim-s-4); }
+.site-essay p { font-size: 1.0625rem; line-height: 1.68; color: var(--lim-text-muted); }
+.site-essay strong { color: var(--lim-text); }
+.site-essay blockquote {
+  margin: var(--lim-s-7) 0;
+  padding-left: var(--lim-s-5);
+  border-left: 3px solid var(--lim-accent);
+  font-family: var(--lim-font-display);
+  font-size: var(--lim-t-4);
+  font-weight: 500;
+  line-height: var(--lim-lh-snug);
+  color: var(--lim-text);
+}
+
+/* --- Pricing -------------------------------------------------------------- */
+.site-tiers { display: grid; gap: var(--lim-s-5); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .site-tiers { grid-template-columns: 1fr; } }
+.site-tier { display: flex; flex-direction: column; padding: var(--lim-s-6); }
+.site-tier h3 { font-size: var(--lim-t-4); }
+.site-tier__price {
+  margin: var(--lim-s-4) 0 var(--lim-s-5);
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-sm);
+  color: var(--lim-text-soft);
+}
+.site-tier ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.site-tier li { display: flex; gap: 9px; font-size: var(--lim-t-sm); color: var(--lim-text-muted); }
+.site-tier li b { color: var(--lim-text); font-weight: 600; }
+
+/* --- Form ----------------------------------------------------------------- */
+.site-form { display: grid; gap: var(--lim-s-4); grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) { .site-form { grid-template-columns: 1fr; } }
+
+/* --- Diagrams ------------------------------------------------------------- */
+.site-figure { margin: 0; }
+/* A diagram carries as much weight as the block above it, so it needs air on
+   that scale rather than a paragraph gap. */
+.site-figure--spaced { margin-top: clamp(48px, 6vw, 88px); }
+.site-figure svg { width: 100%; height: auto; display: block; }
+.site-figure figcaption {
+  margin-top: var(--lim-s-4);
+  font-size: var(--lim-t-xs);
+  color: var(--lim-text-soft);
+  text-align: center;
+}
+.dgm-box { fill: var(--lim-glass-solid); stroke: var(--lim-hairline-strong); stroke-width: 1.5; }
+.dgm-name { fill: var(--lim-text); font-family: var(--lim-font-display); font-size: 15px; font-weight: 600; }
+.dgm-role { fill: var(--lim-text-soft); font-family: var(--lim-font-mono); font-size: 10.5px; letter-spacing: .06em; }
+.dgm-chip-bg { fill: var(--lim-accent-wash); stroke: var(--lim-accent-soft); stroke-width: 1; }
+.dgm-chip-tx { fill: var(--lim-accent); font-family: var(--lim-font-mono); font-size: 9.5px; letter-spacing: .05em; }
+.dgm-arrow { stroke: var(--lim-text-faint); stroke-width: 1.5; fill: none; }
+.dgm-arrow-head { fill: var(--lim-text-faint); }
+.dgm-edge-label { fill: var(--lim-text-soft); font-family: var(--lim-font-mono); font-size: 10px; }
+.dgm-node { fill: var(--lim-glass-solid); stroke: var(--lim-hairline-strong); stroke-width: 1.5; }
+.dgm-node-tx { fill: var(--lim-text); font-family: var(--lim-font-sans); font-size: 12.5px; font-weight: 500; }
+.dgm-sub { fill: var(--lim-text-soft); font-family: var(--lim-font-sans); font-size: 11.5px; }
+.dgm-centre { fill: var(--lim-text-soft); font-family: var(--lim-font-display); font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+
+/* --- Placeholders --------------------------------------------------------- */
+/* Anything still {{LIKE_THIS}} is visibly unfinished on the page, on purpose:
+   a placeholder that blends in is a placeholder that ships. */
+.site-todo {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: var(--lim-r-xs);
+  border: 1px dashed var(--lim-warn);
+  background: var(--lim-warn-bg);
+  color: var(--lim-warn);
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  font-weight: 500;
+}

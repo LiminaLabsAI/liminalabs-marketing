@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limen — the Limina Labs design system</title>
+<meta name="description" content="Limen is the interface system for Limina Labs: tokens, glass surfaces and components built from the mark's four bars, one 42.5° lean and the cobalt ramp.">
+<meta name="theme-color" content="#F5F6FC">
+<link rel="icon" href="../assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon/favicon.ico" sizes="any">
+
+<script>try{var t=localStorage.getItem("limina-theme");if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme;}catch(e){}</script>
+
+<link rel="stylesheet" href="css/limina.css?v=4.8">
+
+<style>
+/* --------------------------------------------------------------------------
+   Documentation-only styles. Prefixed .dsx- so nothing here can be mistaken
+   for part of the system. The system itself is entirely in css/.
+   ----------------------------------------------------------------------- */
+.dsx-spec { display: grid; gap: var(--lim-s-5); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+.dsx-demo {
+  padding: var(--lim-s-6);
+  border: 1px dashed var(--lim-hairline-strong);
+  border-radius: var(--lim-r-lg);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--lim-s-4);
+}
+.dsx-demo--stack { flex-direction: column; align-items: stretch; }
+.dsx-api {
+  margin-top: var(--lim-s-3);
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  color: var(--lim-text-soft);
+  letter-spacing: .01em;
+}
+.dsx-block { margin-bottom: var(--lim-s-8); }
+.dsx-block:last-child { margin-bottom: 0; }
+.dsx-block > h3 { margin-bottom: var(--lim-s-2); }
+.dsx-block > p  { margin-bottom: var(--lim-s-4); color: var(--lim-text-muted); font-size: var(--lim-t-sm); max-width: 64ch; }
+
+/* Hero — the four bars are the four invariants, read through glass. */
+.dsx-hero { display: grid; gap: clamp(40px, 6vw, 72px); grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 940px) { .dsx-hero { grid-template-columns: 1.15fr .85fr; } }
+
+.dsx-thresh { margin: 0; width: 100%; max-width: 460px; padding-right: 48px; box-sizing: border-box; }
+.dsx-thresh ol { list-style: none; margin: 0 0 var(--lim-s-4); padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.dsx-thresh li { position: relative; height: 46px; display: flex; align-items: center; }
+.dsx-thresh__bar {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  border-radius: 2px;
+  transform-origin: 0 100%;
+  transform: skewX(var(--lim-skew));
+}
+.dsx-thresh li:nth-child(1) .dsx-thresh__bar { width: var(--lim-ladder-1); background: var(--lim-bar-1); }
+.dsx-thresh li:nth-child(2) .dsx-thresh__bar { width: var(--lim-ladder-2); background: var(--lim-bar-2); }
+.dsx-thresh li:nth-child(3) .dsx-thresh__bar { width: var(--lim-ladder-3); background: var(--lim-bar-3); }
+.dsx-thresh li:nth-child(4) .dsx-thresh__bar { width: var(--lim-ladder-4); background: var(--lim-bar-4); }
+.dsx-thresh__chip {
+  --dsx-chip-bg: rgba(255,255,255,.74);
+  position: relative;
+  margin-left: 22px;
+  padding: 7px 15px;
+  border-radius: var(--lim-r-pill);
+  background: var(--dsx-chip-bg);
+  -webkit-backdrop-filter: blur(10px) saturate(var(--lim-sat));
+          backdrop-filter: blur(10px) saturate(var(--lim-sat));
+  border: 1px solid var(--lim-edge-dim);
+  box-shadow: var(--lim-shadow-1);
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-eyebrow);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--lim-text);
+  white-space: nowrap;
+}
+.dsx-thresh figcaption { font-size: var(--lim-t-xs); color: var(--lim-text-soft); max-width: 42ch; }
+:root[data-theme="dark"] .dsx-thresh__chip { --dsx-chip-bg: rgba(10,11,17,.70); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dsx-thresh__chip { --dsx-chip-bg: rgba(10,11,17,.70); }
+}
+
+
+/* Type specimen */
+.dsx-spec-line { display: flex; align-items: baseline; gap: var(--lim-s-5); padding-block: var(--lim-s-3); border-bottom: 1px solid var(--lim-hairline); }
+.dsx-spec-line:last-child { border-bottom: 0; }
+.dsx-spec-line__tag { font-family: var(--lim-font-mono); font-size: var(--lim-t-eyebrow); color: var(--lim-text-soft); width: 88px; flex: none; letter-spacing: .06em; }
+.dsx-spec-line__eg { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* The angle, shown */
+.dsx-angle { border-radius: var(--lim-r-md); background: var(--lim-glass-thin); border: 1px solid var(--lim-hairline); padding: var(--lim-s-4); }
+.dsx-angle svg { width: 100%; height: auto; }
+.dsx-angle .a-fill  { fill: var(--lim-accent); opacity: .14; }
+.dsx-angle .a-plumb { stroke: var(--lim-text-soft); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.dsx-angle .a-lean  { stroke: var(--lim-accent); stroke-width: 2.5; }
+.dsx-angle .a-arc   { stroke: var(--lim-accent); stroke-width: 1.5; fill: none; }
+.dsx-angle .a-base  { stroke: var(--lim-hairline-strong); stroke-width: 1.5; }
+.dsx-angle .a-text  { fill: var(--lim-accent); font-family: var(--lim-font-mono); font-size: 15px; font-weight: 500; }
+.dsx-angle .a-sub   { fill: var(--lim-text-soft); font-family: var(--lim-font-mono); font-size: 11px; }
+
+/* Space scale */
+.dsx-space { display: flex; align-items: flex-end; gap: var(--lim-s-3); flex-wrap: wrap; }
+.dsx-space span { display: flex; flex-direction: column; align-items: center; gap: 6px; font-family: var(--lim-font-mono); font-size: 10px; color: var(--lim-text-soft); }
+.dsx-space i { display: block; width: 22px; background: var(--lim-accent); opacity: .28; border-radius: 2px; }
+
+/* Surfaces comparison — the panes need colour behind them to differ at all */
+.dsx-surfaces-bed { position: relative; padding: var(--lim-s-6); border-radius: var(--lim-r-lg); overflow: hidden; border: 1px solid var(--lim-hairline); }
+.dsx-surfaces-bed__art { position: absolute; inset: 0; opacity: .62; display: flex; flex-direction: column; justify-content: center; gap: 16px; padding-left: 3%; }
+.dsx-surfaces-bed__art i { display: block; height: 30px; border-radius: 2px; transform-origin: 0 100%; transform: skewX(var(--lim-skew)); }
+.dsx-surfaces-bed__art i:nth-child(1) { width: 92%; background: var(--lim-bar-1); }
+.dsx-surfaces-bed__art i:nth-child(2) { width: 71%; background: var(--lim-bar-2); }
+.dsx-surfaces-bed__art i:nth-child(3) { width: 50%; background: var(--lim-bar-3); }
+.dsx-surfaces-bed__art i:nth-child(4) { width: 30%; background: var(--lim-bar-4); }
+.dsx-surfaces { position: relative; display: grid; gap: var(--lim-s-4); grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.dsx-surface { padding: var(--lim-s-5); border-radius: var(--lim-r-lg); border: 1px solid var(--lim-hairline); text-align: center; font-family: var(--lim-font-mono); font-size: var(--lim-t-eyebrow); letter-spacing: .08em; text-transform: uppercase; color: var(--lim-text-muted); }
+.dsx-surface--thin  { background: var(--lim-glass-thin);  -webkit-backdrop-filter: blur(8px);  backdrop-filter: blur(8px); }
+.dsx-surface--pane  { background: var(--lim-glass);       -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); box-shadow: var(--lim-shadow-2); }
+.dsx-surface--solid { background: var(--lim-glass-solid); -webkit-backdrop-filter: blur(32px) saturate(180%); backdrop-filter: blur(32px) saturate(180%); box-shadow: var(--lim-shadow-3); }
+
+/* Motion demos */
+.dsx-motion { display: grid; gap: var(--lim-s-4); grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.dsx-motion__cell { padding: var(--lim-s-5); border-radius: var(--lim-r-lg); border: 1px solid var(--lim-hairline); background: var(--lim-glass-thin); display: flex; flex-direction: column; gap: var(--lim-s-4); }
+.dsx-motion__stage { min-height: 84px; display: flex; align-items: center; }
+
+.dsx-swatch-note { font-family: var(--lim-font-mono); font-size: var(--lim-t-eyebrow); color: var(--lim-text-soft); }
+</style>
+</head>
+
+<body>
+<a class="lim-skip" href="#main">Skip to content</a>
+
+<!-- The oversized mark bleeding off the corner, as in the deck backgrounds. -->
+<svg class="lim-ambient lim-mark" viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+  <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+  <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+  <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+  <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+</svg>
+
+<!-- ============================== NAV ============================== -->
+<header class="lim-nav" data-lim-nav>
+  <a class="lim-nav__brand lb-lift-hover" href="#top">
+    <svg class="lim-mark" data-lim-lift viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+      <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+      <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+      <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+      <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+    </svg>
+    <span class="lim-nav__wordmark">Limina<span> Labs</span></span>
+  </a>
+
+  <nav class="lim-nav__links" aria-label="Primary">
+    <a href="#top" class="is-active" aria-current="page">Overview</a>
+    <a href="#foundations">Foundations</a>
+    <a href="#components">Components</a>
+    <a href="#motion">Motion</a>
+    <a href="#setup">Setup</a>
+  </nav>
+
+  <div class="lim-nav__end">
+    <button class="lim-icon-btn lim-nav__toggle" data-lim-nav-toggle
+            aria-expanded="false" aria-controls="lim-sheet" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+    </button>
+
+    <button class="lim-icon-btn lim-theme-toggle" data-lim-theme-toggle aria-label="Switch to dark theme">
+      <svg class="lim-i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1Z"></path>
+      </svg>
+      <svg class="lim-i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"></circle>
+        <path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"></path>
+      </svg>
+    </button>
+
+    <a class="lim-btn lim-btn--primary lim-btn--sm lim-nav__cta" href="#setup">Start building</a>
+  </div>
+</header>
+
+<div class="lim-sheet" id="lim-sheet" data-lim-nav-sheet data-open="false">
+  <a href="#foundations">Foundations</a>
+  <a href="#components">Components</a>
+  <a href="#motion">Motion</a>
+  <a href="#setup">Setup</a>
+</div>
+
+<main id="main" class="lim-below-nav">
+<span id="top"></span>
+
+<!-- ============================== HERO ============================== -->
+<section class="lim-wrap lim-section" style="padding-top: var(--lim-s-8)">
+  <div class="dsx-hero">
+    <div>
+      <p class="lim-eyebrow lim-enter">Limina Labs · Design system · v1.0</p>
+      <h1 class="lim-hero-type lim-enter lim-enter--d1 lim-balance" style="margin: var(--lim-s-4) 0 0">
+        Every surface shows what is underneath.
+      </h1>
+      <p class="lim-lede lim-enter lim-enter--d2" style="margin-top: var(--lim-s-5)">
+        Limen turns the Limina mark into an interface. Four bars become the rhythm,
+        one 42.5° lean becomes the only diagonal in the system, and the cobalt ramp
+        becomes every accent. Glass is not styling here — it is the product's promise
+        rendered literally: you can see through it, and it still holds.
+      </p>
+      <div class="lim-row lim-enter lim-enter--d3" style="margin-top: var(--lim-s-6)">
+        <a class="lim-btn lim-btn--primary lim-btn--lg" href="#components">Browse components</a>
+        <a class="lim-btn lim-btn--glass lim-btn--lg" href="#foundations">Read the foundations</a>
+      </div>
+    </div>
+
+    <figure class="dsx-thresh lim-enter lim-enter--d2">
+      <ol>
+        <li><i class="dsx-thresh__bar"></i><span class="dsx-thresh__chip">Attributable</span></li>
+        <li><i class="dsx-thresh__bar"></i><span class="dsx-thresh__chip">Grounded</span></li>
+        <li><i class="dsx-thresh__bar"></i><span class="dsx-thresh__chip">Bounded</span></li>
+        <li><i class="dsx-thresh__bar"></i><span class="dsx-thresh__chip">Revocable</span></li>
+      </ol>
+      <figcaption>
+        Four bars, four invariants. The glass sits on top and the colour still reads
+        through it — which is the whole argument for using it.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<!-- ============================== FOUNDATIONS ============================== -->
+<section class="lim-wrap lim-section" id="foundations">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">Foundations</p>
+    <h2 style="margin-top: var(--lim-s-4)">Nothing here was chosen for taste alone.</h2>
+    <p class="lim-lede">
+      Every value comes from something already in the brand kit: the ramps are the
+      mark's four fills, the grounds are sampled from the deck backgrounds, the ink
+      is lifted out of the lockup, and the spacing scale is the mark's own geometry.
+    </p>
+  </header>
+
+  <!-- Colour -->
+  <div class="dsx-block lim-reveal">
+    <h3>Colour</h3>
+    <p>
+      Cobalt carries light grounds, frost carries dark. The four named steps are the
+      literal bar fills in <code>mark/*.svg</code> — never re-mix them, and never
+      recolour a single bar.
+    </p>
+    <div class="lim-grid lim-grid--2">
+      <div class="lim-card lim-card--tight">
+        <div class="lim-card__head">
+          <h4 class="lim-card__title">Cobalt</h4>
+          <span class="lim-badge lim-badge--glass">Light grounds</span>
+        </div>
+        <div class="lim-ramp lim-mt-4">
+          <div class="lim-ramp__row"><i class="lim-ramp__bar" style="background:#0B1FA6"></i>
+            <span class="lim-ramp__meta"><b class="lim-ramp__name">cobalt-600</b><span class="lim-ramp__hex">#0B1FA6 · anchor</span></span></div>
+          <div class="lim-ramp__row"><i class="lim-ramp__bar" style="background:#2F47C4"></i>
+            <span class="lim-ramp__meta"><b class="lim-ramp__name">cobalt-500</b><span class="lim-ramp__hex">#2F47C4</span></span></div>
+          <div class="lim-ramp__row"><i class="lim-ramp__bar" style="background:#7F8FDD"></i>
+            <span class="lim-ramp__meta"><b class="lim-ramp__name">cobalt-300</b><span class="lim-ramp__hex">#7F8FDD</span></span></div>
+          <div class="lim-ramp__row"><i class="lim-ramp__bar" style="background:#B7C0EA"></i>
+            <span class="lim-ramp__meta"><b class="lim-ramp__name">cobalt-200</b><span class="lim-ramp__hex">#B7C0EA</span></span></div>
+        </div>
+        <p class="dsx-swatch-note lim-mt-4">Plus 50 / 100 / 400 / 700 for washes and pressed states.</p>
+      </div>
+
+      <div class="lim-card lim-card--tight">
+        <div class="lim-card__head">
+          <h4 class="lim-card__title">Frost</h4>
+          <span class="lim-badge lim-badge--glass">Dark grounds</span>
+        </div>
+        <div class="lim-ramp lim-mt-4">
+          <div class="lim-ramp__row"><i class="lim-ramp__bar" style="background:#FFFFFF"></i>
+            <span class="lim-ramp__meta"><b class="lim-ramp__name">frost-100</b><span class="lim-ramp__hex">#FFFFFF · anchor</span></span></div>
+          <div class="lim-ramp__row"><i class="lim-ramp__bar" style="background:#D3D9E2"></i>
+            <span class="lim-ramp__meta"><b class="lim-ramp__name">frost-200</b><span class="lim-ramp__hex">#D3D9E2</span></span></div>
+          <div class="lim-ramp__row"><i class="lim-ramp__bar" style="background:#9AA3AF"></i>
+            <span class="lim-ramp__meta"><b class="lim-ramp__name">frost-300</b><span class="lim-ramp__hex">#9AA3AF</span></span></div>
+          <div class="lim-ramp__row"><i class="lim-ramp__bar" style="background:#6B7480"></i>
+            <span class="lim-ramp__meta"><b class="lim-ramp__name">frost-400</b><span class="lim-ramp__hex">#6B7480</span></span></div>
+        </div>
+        <p class="dsx-swatch-note lim-mt-4">The deepest value always sits on the longest bar. On dark, the order flips.</p>
+      </div>
+    </div>
+
+    <div class="lim-table-wrap lim-mt-5">
+      <table class="lim-table">
+        <caption class="lim-visually-hidden">Semantic colour tokens and their measured contrast</caption>
+        <thead>
+          <tr><th>Token</th><th>Light</th><th>Dark</th><th>Contrast on ground</th><th>Use for</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>--lim-text</td><td>#0F1430</td><td>#FFFFFF</td><td class="lim-tabular">16.5 / 17.7</td><td>Headings and primary copy</td></tr>
+          <tr><td>--lim-text-muted</td><td>#32385E</td><td>#D3D9E2</td><td class="lim-tabular">10.9 / 13.2</td><td>Body copy, card text</td></tr>
+          <tr><td>--lim-text-soft</td><td>#565D8C</td><td>#9AA3AF</td><td class="lim-tabular">5.8 / 7.3</td><td>Captions, labels, table headers</td></tr>
+          <tr><td>--lim-text-faint</td><td>#8B92B8</td><td>#6B7480</td><td class="lim-tabular">2.8 / 3.9</td><td>Rules and disabled state only — never body copy</td></tr>
+          <tr><td>--lim-accent</td><td>#0B1FA6</td><td>#576BD1</td><td class="lim-tabular">11.1 / 5.4</td><td>Links, primary action, focus</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="dsx-api">tokens.css · ratios measured against --lim-ground-1 and --lim-abyss-1</p>
+  </div>
+
+  <!-- Type -->
+  <div class="dsx-block lim-reveal">
+    <h3>Type</h3>
+    <p>
+      Bricolage Grotesque sets anything people scan; it is the wordmark's own face, so
+      headlines and the logo are visibly the same voice. Archivo sets anything people
+      read. IBM Plex Mono sets anything people look up — labels, hex values, keys.
+    </p>
+    <div class="lim-pane">
+      <div class="dsx-spec-line">
+        <span class="dsx-spec-line__tag">hero</span>
+        <span class="dsx-spec-line__eg lim-hero-type">Permission</span>
+      </div>
+      <div class="dsx-spec-line">
+        <span class="dsx-spec-line__tag">t1 / h1</span>
+        <span class="dsx-spec-line__eg lim-t1">Four layers, each worth buying alone</span>
+      </div>
+      <div class="dsx-spec-line">
+        <span class="dsx-spec-line__tag">t2 / h2</span>
+        <span class="dsx-spec-line__eg lim-t2">Set autonomy, then move it</span>
+      </div>
+      <div class="dsx-spec-line">
+        <span class="dsx-spec-line__tag">t3 / h3</span>
+        <span class="dsx-spec-line__eg lim-t3">Verification a regulator accepts</span>
+      </div>
+      <div class="dsx-spec-line">
+        <span class="dsx-spec-line__tag">lede</span>
+        <span class="dsx-spec-line__eg lim-lede" style="max-width:none">The record of how your organisation decides does not depreciate.</span>
+      </div>
+      <div class="dsx-spec-line">
+        <span class="dsx-spec-line__tag">body</span>
+        <span class="dsx-spec-line__eg">Archivo, 16px, 1.62 line height, for everything read in sequence.</span>
+      </div>
+      <div class="dsx-spec-line">
+        <span class="dsx-spec-line__tag">eyebrow</span>
+        <span class="dsx-spec-line__eg lim-eyebrow">Evidence recorded · 04 of 04</span>
+      </div>
+      <div class="dsx-spec-line">
+        <span class="dsx-spec-line__tag">mono</span>
+        <span class="dsx-spec-line__eg lim-mono">intent.limina/spec/8841 · sha 9c2f01a</span>
+      </div>
+    </div>
+    <p class="dsx-api">.lim-hero-type · .lim-t1 … .lim-t4 · .lim-lede · .lim-eyebrow · .lim-mono</p>
+  </div>
+
+  <!-- Geometry and space -->
+  <div class="dsx-block lim-reveal">
+    <h3>Geometry and rhythm</h3>
+    <p>
+      The mark's bars lean 22 units across 24 of height. That is 42.5°, and it is the
+      only diagonal the system permits — accents, sweeps, stripes and step markers all
+      use it, and nothing else tilts. The spacing scale is the same geometry: 12 is the
+      gap between bars, 24 is a bar's height, 36 is the pitch from one bar to the next.
+    </p>
+    <div class="lim-grid lim-grid--2">
+      <div class="lim-card lim-card--tight">
+        <h4 class="lim-card__title">The angle</h4>
+        <div class="dsx-angle lim-mt-4">
+          <svg viewBox="0 0 320 150" role="img" aria-label="The mark's bars lean 22 units right across 24 of height, which is 42.5 degrees from vertical">
+            <polygon class="a-fill" points="40,124 84,80 244,80 200,124"></polygon>
+            <line class="a-base"  x1="24" y1="124" x2="296" y2="124"></line>
+            <line class="a-plumb" x1="40" y1="124" x2="40" y2="72"></line>
+            <line class="a-lean"  x1="40" y1="124" x2="84" y2="80"></line>
+            <path  class="a-arc"  d="M40 90 A 34 34 0 0 0 63 99"></path>
+            <text class="a-text" x="98" y="104">42.5°</text>
+            <text class="a-sub"  x="98" y="120">22 across, 24 down</text>
+          </svg>
+        </div>
+        <p class="dsx-swatch-note lim-mt-3">--lim-skew: -42.5deg &middot; --lim-stripe: 132.5deg</p>
+      </div>
+      <div class="lim-card lim-card--tight">
+        <h4 class="lim-card__title">The scale</h4>
+        <div class="dsx-space lim-mt-5">
+          <span><i style="height:4px"></i>4</span>
+          <span><i style="height:8px"></i>8</span>
+          <span><i style="height:12px; opacity:.6"></i>12</span>
+          <span><i style="height:16px"></i>16</span>
+          <span><i style="height:24px; opacity:.6"></i>24</span>
+          <span><i style="height:36px; opacity:.6"></i>36</span>
+          <span><i style="height:48px"></i>48</span>
+          <span><i style="height:64px"></i>64</span>
+          <span><i style="height:96px"></i>96</span>
+        </div>
+        <p class="dsx-swatch-note lim-mt-4">The three highlighted steps are the mark's gap, bar height and pitch.</p>
+      </div>
+    </div>
+    <p class="dsx-api">--lim-skew · --lim-stripe · --lim-s-1 … --lim-s-10 · --lim-ladder-1 … 4</p>
+  </div>
+
+  <!-- Surfaces -->
+  <div class="dsx-block lim-reveal">
+    <h3>Surfaces</h3>
+    <p>
+      Three densities, and the choice between them is legibility, not taste. Use
+      <code>thin</code> where the pane is a container, <code>pane</code> where content
+      sits over the page, and <code>solid</code> where the content must stay readable
+      over anything at all — menus, sheets, and the nav once it has scrolled.
+    </p>
+    <div class="dsx-surfaces-bed">
+      <div class="dsx-surfaces-bed__art" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="dsx-surfaces">
+        <div class="dsx-surface dsx-surface--thin">Thin · 38%</div>
+        <div class="dsx-surface dsx-surface--pane">Pane · 62%</div>
+        <div class="dsx-surface dsx-surface--solid">Solid · 86%</div>
+      </div>
+    </div>
+    <div class="lim-note lim-mt-5">
+      <div>
+        <strong>Glass needs something to refract.</strong>
+        The page's aura layer is structural, not decoration — over a flat fill,
+        <code>backdrop-filter</code> produces a grey rectangle and every pane in the
+        system collapses. It ships in <code>base.css</code> as <code>body::before</code>.
+      </div>
+    </div>
+    <p class="dsx-api">.lim-pane · .lim-pane--thin · .lim-pane--solid · .lim-sweep</p>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<!-- ============================== COMPONENTS ============================== -->
+<section class="lim-wrap lim-section" id="components">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">Components</p>
+    <h2 style="margin-top: var(--lim-s-4)">Built to be assembled, not decorated.</h2>
+    <p class="lim-lede">
+      Every component below is live. Switch the theme in the nav and check it again —
+      light and dark are equal citizens here, not a mode and an afterthought.
+    </p>
+  </header>
+
+  <div class="dsx-block lim-reveal">
+    <h3>Floating nav</h3>
+    <p>
+      Fixed and inset from every edge, so the page runs visibly underneath it. The
+      current page takes a raised pill rather than an underline, and the bar thickens
+      to <code>solid</code> once you scroll — the one at the top of this page is it.
+    </p>
+    <p>
+      Lift is the brand mark's only animation here: it plays once when the page
+      loads (<code>data-lim-lift</code>) and once more each time you hover it
+      (<code>.lb-lift-hover</code>). March stays in the system for other brand
+      surfaces, but the nav does not use it.
+    </p>
+    <p class="dsx-api">.lim-nav · .lim-nav__brand · .lim-nav__links a.is-active · .lim-sheet · data-lim-nav · data-lim-lift · .lb-lift-hover</p>
+  </div>
+
+  <div class="dsx-block lim-reveal">
+    <h3>Buttons</h3>
+    <p>Primary carries the cobalt gradient and is the only filled control on a screen. Glass is the second action. Ghost is for anything that is really a link.</p>
+    <div class="dsx-demo">
+      <a class="lim-btn lim-btn--primary" href="#components">Talk to us</a>
+      <a class="lim-btn lim-btn--glass" href="#components">Read the argument</a>
+      <a class="lim-btn lim-btn--ghost" href="#components">Not now</a>
+      <button class="lim-btn lim-btn--primary lim-btn--sm">Small</button>
+      <button class="lim-btn lim-btn--glass lim-btn--lg">Large</button>
+      <button class="lim-btn lim-btn--primary" disabled>Disabled</button>
+      <button class="lim-icon-btn" aria-label="More">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+      </button>
+    </div>
+    <p class="dsx-api">.lim-btn + --primary | --glass | --ghost · --sm | --lg · .lim-icon-btn</p>
+  </div>
+
+  <div class="dsx-block lim-reveal">
+    <h3>Cards</h3>
+    <p>Hover the first one: the sweep crosses at 42.5°, the same lean as the mark. Use it on cards that lead somewhere, not on every card.</p>
+    <div class="lim-grid lim-grid--3">
+      <article class="lim-card lim-card--lift">
+        <div class="lim-card__head">
+          <h4 class="lim-card__title">Intent Studio</h4>
+          <span class="lim-badge">Live</span>
+        </div>
+        <p class="lim-card__body">Where an intent is written, argued and signed before anything acts on it.</p>
+        <div class="lim-card__foot">
+          <div class="lim-ladder lim-ladder--sm lim-ladder--steps" role="img" aria-label="Four of four steps complete"><i class="is-reached"></i><i class="is-reached"></i><i class="is-reached"></i><i class="is-reached"></i></div>
+          <span class="lim-xs lim-soft">Specification</span>
+        </div>
+      </article>
+
+      <article class="lim-card lim-card--lift">
+        <div class="lim-card__head">
+          <h4 class="lim-card__title">Precepta</h4>
+          <span class="lim-badge lim-badge--glass">Early access</span>
+        </div>
+        <p class="lim-card__body">The gate. Policy decides what may act, at which setting, on whose authority.</p>
+        <div class="lim-card__foot">
+          <div class="lim-ladder lim-ladder--sm lim-ladder--steps" role="img" aria-label="Three of four steps complete">
+            <i class="is-reached"></i><i class="is-reached"></i><i class="is-reached"></i><i></i>
+          </div>
+          <span class="lim-xs lim-soft">Enforcement</span>
+        </div>
+      </article>
+
+      <article class="lim-card lim-card--flat">
+        <div class="lim-card__head">
+          <h4 class="lim-card__title">Flat card</h4>
+        </div>
+        <p class="lim-card__body">For dense grids where a full pane would be too much weight. No shadow, less blur.</p>
+        <div class="lim-card__foot">
+          <span class="lim-xs lim-soft">.lim-card--flat</span>
+        </div>
+      </article>
+    </div>
+    <p class="dsx-api">.lim-card + --lift | --flat | --tight · .lim-sweep · .lim-card__head / __body / __foot</p>
+  </div>
+
+  <div class="dsx-block lim-reveal">
+    <h3>Badges and keys</h3>
+    <div class="dsx-demo">
+      <span class="lim-badge">Default</span>
+      <span class="lim-badge lim-badge--glass">Glass</span>
+      <span class="lim-badge lim-badge--ok"><i class="lim-badge__dot"></i>Attested</span>
+      <span class="lim-badge lim-badge--warn"><i class="lim-badge__dot"></i>Escalated</span>
+      <span class="lim-badge lim-badge--stop"><i class="lim-badge__dot"></i>Revoked</span>
+      <span class="lim-kbd">⌘</span><span class="lim-kbd">K</span>
+    </div>
+    <p class="dsx-api">.lim-badge + --glass | --ok | --warn | --stop · .lim-badge__dot · .lim-kbd</p>
+  </div>
+
+  <div class="dsx-block lim-reveal">
+    <h3>Fields</h3>
+    <p>Fields are glass too, so a form sits in the page rather than on it. Focus is a cobalt border plus a wash ring — never a colour swap that hides what you typed.</p>
+    <div class="lim-pane">
+      <div class="lim-grid lim-grid--2">
+        <div class="lim-field">
+          <label class="lim-label" for="f-name">Intent name</label>
+          <input class="lim-input" id="f-name" type="text" placeholder="Line 3 changeover">
+          <span class="lim-hint">Shown in the audit record.</span>
+        </div>
+        <div class="lim-field">
+          <label class="lim-label" for="f-setting">Autonomy setting</label>
+          <select class="lim-select" id="f-setting">
+            <option>Propose</option>
+            <option>Settle the immaterial</option>
+            <option selected>Settle within a domain</option>
+            <option>Build and prepare</option>
+            <option>Act, with gates</option>
+          </select>
+          <span class="lim-hint">Can be lowered at any time; raising it needs an approver.</span>
+        </div>
+        <div class="lim-field lim-field--invalid">
+          <label class="lim-label" for="f-owner">Accountable owner</label>
+          <input class="lim-input" id="f-owner" type="text" value="—" aria-invalid="true" aria-describedby="f-owner-err">
+          <span class="lim-error" id="f-owner-err">Name a person. An intent without an owner cannot be signed.</span>
+        </div>
+        <div class="lim-field lim-grid--span-all">
+          <label class="lim-label" for="f-scope">Scope</label>
+          <textarea class="lim-textarea" id="f-scope" placeholder="What this intent may touch, and what it may never touch."></textarea>
+        </div>
+      </div>
+    </div>
+    <p class="dsx-api">.lim-field · .lim-label · .lim-input · .lim-select · .lim-textarea · .lim-hint · .lim-error</p>
+  </div>
+
+  <div class="dsx-block lim-reveal">
+    <h3>Segmented control</h3>
+    <p>Arrow keys move between options and the panel follows. Use it for views of the same thing, never for navigation between pages.</p>
+    <div class="dsx-demo dsx-demo--stack">
+      <div class="lim-seg" role="tablist" data-lim-seg data-lim-seg-target="#seg-panels" aria-label="Deployment">
+        <button role="tab" aria-selected="true">We operate it</button>
+        <button role="tab" aria-selected="false">Your boundary</button>
+        <button role="tab" aria-selected="false">Air-gapped</button>
+      </div>
+      <div id="seg-panels" class="lim-sm lim-muted">
+        <p data-panel>Runs in our environment. You get the artifact, the evidence and the audit record.</p>
+        <p data-panel hidden>Runs inside your cloud account, against your identity provider and your audit store.</p>
+        <p data-panel hidden>Ships as a signed image. No egress, and the same artifact as the other two.</p>
+      </div>
+    </div>
+    <p class="dsx-api">.lim-seg · data-lim-seg · data-lim-seg-target · [data-panel]</p>
+  </div>
+
+  <div class="dsx-block lim-reveal">
+    <h3>Stats and progress</h3>
+    <div class="lim-grid lim-grid--4">
+      <div class="lim-stat">
+        <div class="lim-stat__value">04</div>
+        <div class="lim-stat__label">Invariants held</div>
+        <p class="lim-stat__note">At every autonomy setting.</p>
+      </div>
+      <div class="lim-stat">
+        <div class="lim-stat__value">2.4s</div>
+        <div class="lim-stat__label">Median gate decision</div>
+      </div>
+      <div class="lim-stat">
+        <div class="lim-stat__value lim-accent-text">100%</div>
+        <div class="lim-stat__label">Actions reconstructable</div>
+      </div>
+      <div class="lim-stat">
+        <div class="lim-stat__value">0</div>
+        <div class="lim-stat__label">Weights retrained</div>
+      </div>
+    </div>
+    <div class="lim-grid lim-grid--2 lim-mt-5">
+      <div class="lim-card lim-card--tight">
+        <h4 class="lim-card__title">Determinate</h4>
+        <div class="lim-progress lim-mt-4"><i style="width:68%"></i></div>
+        <p class="lim-xs lim-soft lim-mt-3">Evidence collected · 68%</p>
+      </div>
+      <div class="lim-card lim-card--tight">
+        <h4 class="lim-card__title">In flight</h4>
+        <div class="lim-progress lim-progress--striped lim-mt-4"><i style="width:100%"></i></div>
+        <p class="lim-xs lim-soft lim-mt-3">Stripes run at the mark's lean, so waiting still looks like the brand.</p>
+      </div>
+    </div>
+    <p class="dsx-api">.lim-stat · .lim-progress · .lim-progress--striped</p>
+  </div>
+
+  <div class="dsx-block lim-reveal">
+    <h3>Table</h3>
+    <div class="lim-table-wrap">
+      <table class="lim-table">
+        <thead><tr><th>Setting</th><th>What it may do alone</th><th>Requires</th><th>State</th></tr></thead>
+        <tbody>
+          <tr><td>Propose</td><td>Suggest claims, questions and evidence</td><td>Nothing — the safe floor</td><td><span class="lim-badge lim-badge--ok"><i class="lim-badge__dot"></i>Open</span></td></tr>
+          <tr><td>Settle the immaterial</td><td>Close low-consequence items</td><td>Materiality set by policy</td><td><span class="lim-badge lim-badge--ok"><i class="lim-badge__dot"></i>Open</span></td></tr>
+          <tr><td>Settle within a domain</td><td>Act unsupervised inside one intent type</td><td>A measured record in that domain</td><td><span class="lim-badge lim-badge--warn"><i class="lim-badge__dot"></i>Approver</span></td></tr>
+          <tr><td>Act, with gates</td><td>Carry the work through</td><td>Instant halt and revoke</td><td><span class="lim-badge lim-badge--stop"><i class="lim-badge__dot"></i>Named human</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="dsx-api">.lim-table-wrap · .lim-table · .lim-tabular</p>
+  </div>
+
+  <div class="dsx-block lim-reveal">
+    <h3>Notes and people</h3>
+    <div class="lim-stack">
+      <div class="lim-note"><div><strong>Default.</strong> Carries the accent edge. Use for anything the reader has to know before continuing.</div></div>
+      <div class="lim-note lim-note--warn"><div><strong>Escalation.</strong> Something is waiting on a named person.</div></div>
+      <div class="lim-note lim-note--stop"><div><strong>Revoked.</strong> The grant was withdrawn; nothing further will run under it.</div></div>
+    </div>
+    <div class="dsx-demo lim-mt-5">
+      <div class="lim-avatar-group">
+        <img class="lim-avatar" src="../assets/team/sarang.jpg" alt="Sarang Bondre">
+        <img class="lim-avatar" src="../assets/team/avinash.jpg" alt="Avinash Singh">
+        <img class="lim-avatar" src="../assets/team/ganesh.jpg" alt="Ganesh Iyer">
+      </div>
+      <span class="lim-sm lim-soft">.lim-avatar-group overlaps by 12px</span>
+    </div>
+    <p class="dsx-api">.lim-note + --ok | --warn | --stop · .lim-avatar · .lim-avatar-group</p>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<!-- ============================== MOTION ============================== -->
+<section class="lim-wrap lim-section" id="motion">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">Motion</p>
+    <h2 style="margin-top: var(--lim-s-4)">One logo animation. Three motifs that may loop.</h2>
+    <p class="lim-lede">
+      Lift is the only animation the logo itself is allowed, and it plays once. The
+      other three are the bars alone — they carry no logo status, which is exactly why
+      they are permitted to repeat.
+    </p>
+  </header>
+
+  <div class="dsx-motion lim-reveal">
+    <div class="dsx-motion__cell">
+      <div class="dsx-motion__stage"><svg class="lim-mark lim-mark--xl" id="lift-demo" data-lim-lift viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+        <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+        <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+        <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+        <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+      </svg></div>
+      <div>
+        <b class="lim-sm">Lift</b>
+        <p class="lim-xs lim-soft">0.66s, once. Launch, splash, hero, first slide.</p>
+        <button class="lim-btn lim-btn--glass lim-btn--sm lim-mt-3" data-lim-lift-replay="#lift-demo">Play again</button>
+      </div>
+    </div>
+    <div class="dsx-motion__cell lb-hover">
+      <div class="dsx-motion__stage">
+        <svg class="lim-mark lim-mark--xl" viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+          <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+          <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+          <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+          <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+        </svg>
+      </div>
+      <div><b class="lim-sm">March</b><p class="lim-xs lim-soft">2.4s, while hovered. Hover this card.</p></div>
+    </div>
+    <div class="dsx-motion__cell">
+      <div class="dsx-motion__stage">
+      <svg class="lim-mark lim-mark--xl lb-trail" role="img" aria-label="Loading" viewBox="16 30 146 132" focusable="false">
+        <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+        <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+        <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+        <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+      </svg></div>
+      <div><b class="lim-sm">Trail</b><p class="lim-xs lim-soft">3.2s, loops. Loading and in-flight requests.</p></div>
+    </div>
+    <div class="dsx-motion__cell">
+      <div class="dsx-motion__stage">
+      <svg class="lim-mark lim-mark--xl lb-relay" role="img" aria-label="Working" viewBox="16 30 146 132" focusable="false">
+        <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+        <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+        <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+        <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+      </svg></div>
+      <div><b class="lim-sm">Relay</b><p class="lim-xs lim-soft">2.8s, loops. Multi-step progress.</p></div>
+    </div>
+  </div>
+
+  <div class="lim-note lim-mt-6 lim-reveal">
+    <div>
+      <strong>Reduced motion is honoured system-wide.</strong>
+      Under <code>prefers-reduced-motion</code> every animation stops and the sweep is
+      removed — but nothing that carries meaning disappears. A ladder mid-progress still
+      shows how far it got.
+    </div>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<!-- ============================== SETUP ============================== -->
+<section class="lim-wrap lim-section" id="setup">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">Setup</p>
+    <h2 style="margin-top: var(--lim-s-4)">Two links, one script.</h2>
+    <p class="lim-lede">
+      The system is plain CSS with custom properties — no build step, no framework, and
+      nothing to compile. Drop <code>design-system/</code> into a project and import the
+      one entry file. The typefaces are self-hosted in <code>fonts/</code>, so the page
+      makes no external requests at all.
+    </p>
+  </header>
+
+  <div class="lim-reveal">
+<pre><code>&lt;!-- Set the theme before paint so there is no flash --&gt;
+&lt;script&gt;try{var t=localStorage.getItem("limina-theme");
+  if(t)document.documentElement.dataset.theme=t;}catch(e){}&lt;/script&gt;
+
+&lt;link rel="stylesheet" href="design-system/css/limina.css?v=4.8"&gt;
+
+&lt;!-- before &lt;/body&gt; --&gt;
+&lt;script src="design-system/js/limina.js?v=4.8" defer&gt;&lt;/script&gt;</code></pre>
+
+    <div class="lim-grid lim-grid--3 lim-mt-6">
+      <div class="lim-card lim-card--tight">
+        <h4 class="lim-card__title">Theme</h4>
+        <p class="lim-card__body">Follows the system unless someone chooses. <code>data-theme="dark"</code> on
+        <code>&lt;html&gt;</code> wins in both directions, and the choice persists.</p>
+      </div>
+      <div class="lim-card lim-card--tight">
+        <h4 class="lim-card__title">Overriding</h4>
+        <p class="lim-card__body">Redefine tokens on <code>:root</code> after the import. Never override a
+        component rule — if a component does not fit, it needs a modifier, not a patch.</p>
+      </div>
+      <div class="lim-card lim-card--tight">
+        <h4 class="lim-card__title">Products</h4>
+        <p class="lim-card__body">A product may take one colour from the ramp as its accent. It never gets its
+        own mark, its own geometry, or a second diagonal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="lim-footer">
+  <div class="lim-wrap lim-footer__row">
+    <div class="lim-row">
+      <svg class="lim-mark lim-mark--sm" viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+        <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+        <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+        <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+        <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+      </svg>
+      <span class="lim-sm">Limen — the Limina Labs design system</span>
+    </div>
+    <span class="lim-mono">v1.0 · built from /assets</span>
+  </div>
+</footer>
+</main>
+
+<script src="js/limina.js?v=4.8" defer></script>
+</body>
+</html>

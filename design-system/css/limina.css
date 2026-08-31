@@ -1,0 +1,19 @@
+/* ============================================================================
+   LIMEN — the Limina Labs design system
+   Single entry point. Import this and nothing else.
+
+   Typefaces are self-hosted in fonts/ and pulled in by fonts.css below — there
+   is no external font CDN anywhere in this system. Ship the fonts/ directory
+   alongside css/ and the relative paths resolve on their own.
+   ========================================================================= */
+
+/* The version query has to be repeated on every import. Putting it only on the
+   link to this file busts this file alone — the browser will happily keep
+   serving cached copies of everything below, which looks exactly like a CSS
+   fix that did not work. Bump all six together. */
+@import "fonts.css?v=4.8";
+@import "tokens.css?v=4.8";
+@import "base.css?v=4.8";
+@import "components.css?v=4.8";
+@import "motion.css?v=4.8";
+@import "utilities.css?v=4.8";

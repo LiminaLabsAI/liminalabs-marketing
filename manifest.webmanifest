@@ -1,0 +1,15 @@
+{
+  "name": "Limina Labs",
+  "short_name": "Limina",
+  "description": "Sovereign AI for the enterprise.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F5F6FC",
+  "theme_color": "#0B1FA6",
+  "icons": [
+    { "src": "/assets/app-icon/icon-192-light.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/app-icon/icon-512-light.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/app-icon/icon-512-maskable-light.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

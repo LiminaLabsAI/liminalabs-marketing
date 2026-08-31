@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Precepta — run AI inside your own walls | Limina Labs</title>
+<meta name="description" content="Sovereign, governed AI infrastructure. Every model request passes through policy, redaction and audit, with cryptographic proof that nothing crossed your boundary.">
+<link rel="canonical" href="https://liminalabs.in/precepta">
+
+<script>try{var t=localStorage.getItem("limina-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+
+<meta name="theme-color" content="#F5F6FC">
+<link rel="icon" href="../assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon/favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/app-icon/icon-180-light.png">
+<link rel="manifest" href="../manifest.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Limina Labs">
+<meta property="og:title" content="Precepta — run AI inside your own walls | Limina Labs">
+<meta property="og:description" content="Sovereign, governed AI infrastructure. Every model request passes through policy, redaction and audit, with cryptographic proof that nothing crossed your boundary.">
+<meta property="og:url" content="https://liminalabs.in/precepta">
+<meta property="og:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Precepta — run AI inside your own walls | Limina Labs">
+<meta name="twitter:description" content="Sovereign, governed AI infrastructure. Every model request passes through policy, redaction and audit, with cryptographic proof that nothing crossed your boundary.">
+<meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
+
+<link rel="stylesheet" href="../design-system/css/limina.css?v=4.8">
+<link rel="stylesheet" href="../src/site.css?v=4.8">
+</head>
+
+<body>
+<a class="lim-skip" href="#main">Skip to content</a>
+
+
+
+
+<header class="lim-nav" data-lim-nav>
+  <a class="lim-nav__brand lb-lift-hover" href="../" aria-label="Limina Labs — home">
+    <svg class="lim-mark" data-lim-lift viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+      <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+      <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+      <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+      <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+    </svg>
+    <span class="lim-nav__wordmark">Limina<span> Labs</span></span>
+  </a>
+
+  <nav class="lim-nav__links" aria-label="Primary">
+    <div class="site-menu" data-site-menu>
+      <button type="button" class="site-menu__button" data-nav="products" aria-current="page" class="is-active" aria-expanded="false" aria-haspopup="true" aria-controls="menu-products">
+        Products
+        <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <a href="../sovereign-ai/" data-nav="sovereign-ai">Sovereign AI</a>
+    <a href="../trust/" data-nav="trust">Security</a>
+    <a href="../company/" data-nav="company">Company</a>
+  </nav>
+
+  <div class="lim-nav__end">
+    <button class="lim-icon-btn lim-nav__toggle" data-lim-nav-toggle aria-expanded="false" aria-controls="lim-sheet" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+    <button class="lim-icon-btn lim-theme-toggle" data-lim-theme-toggle aria-label="Switch to dark theme">
+      <svg class="lim-i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1Z"></path></svg>
+      <svg class="lim-i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6"></path></svg>
+    </button>
+    <a class="lim-btn lim-btn--primary lim-btn--sm lim-nav__cta" href="../contact/">Contact us</a>
+  </div>
+</header>
+
+<div class="site-menu__panel lim-pane lim-pane--flush" id="menu-products" hidden>
+    <a href="../intent-studio/"><b>Intent Studio</b><span>The work layer · available now</span></a>
+    <a href="../precepta/"><b>Precepta</b><span>The control plane · available now</span></a>
+    <a href="../cerebrio/"><b>Cerebrio</b><span>The understanding layer</span></a>
+  </div>
+
+<div class="lim-sheet" id="lim-sheet" data-lim-nav-sheet data-open="false">
+  <a href="../intent-studio/">Intent Studio</a>
+  <a href="../precepta/">Precepta</a>
+  <a href="../cerebrio/">Cerebrio</a>
+  <a href="../sovereign-ai/">Sovereign AI</a>
+  <a href="../trust/">Security</a>
+  <a href="../company/">Company</a>
+  <a href="../contact/">Contact us</a>
+</div>
+
+
+<main id="main" class="lim-below-nav">
+<section class="lim-wrap site-hero">
+  <p class="lim-eyebrow lim-enter">Precepta · The control plane</p>
+  <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance">
+    Run AI inside your own walls. Prove nothing leaves.
+  </h1>
+  <p class="lim-lede lim-enter lim-enter--d2">
+    One place every AI request goes through, running on your own servers. Each request is
+    checked against your rules, stripped of sensitive data and recorded — with a signed proof
+    that nothing left your network.
+  </p>
+  <div class="lim-row site-hero__cta lim-enter lim-enter--d3">
+    <a class="lim-btn lim-btn--primary lim-btn--lg" href="../contact/">Request an evaluation</a>
+    <a class="lim-btn lim-btn--glass lim-btn--lg" href="../trust/">How it is secured</a>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">The problem</p>
+    <h2>Three gaps stop most companies deploying AI safely.</h2>
+  </header>
+  <div class="site-slabs lim-reveal">
+    <article class="site-slab">
+      <span class="site-slab__label">Egress</span>
+      <h3>Prompts and data leave the building</h3>
+      <p>Every call to an outside AI service takes your data somewhere you cannot see.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Governance</span>
+      <h3>No consistent rules across teams</h3>
+      <p>Each team writes its own limits into prompts, which the AI can be talked around.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Evidence</span>
+      <h3>No answer when the auditor asks</h3>
+      <p>What was asked, what the rules said, what the AI saw — none of it can be pieced back together.</p>
+    </article>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">What it does</p>
+    <h2>The rails are fixed. The routing is yours.</h2>
+    <p class="lim-lede">
+      There is no way round it. Every call takes the same checked path, before and after it
+      reaches a model.
+    </p>
+  </header>
+
+  <div class="lim-table-wrap lim-reveal">
+    <p class="lim-mono lim-sm site-mono-flow">
+      Firewall → Sensitivity → Policy → Smart&nbsp;Route → Cache → Inference → Audit
+    </p>
+  </div>
+
+  <div class="site-slabs lim-mt-6 lim-reveal">
+    <article class="site-slab">
+      <span class="site-slab__label">Boundary</span>
+      <h3>Nothing can leave</h3>
+      <p>A signed proof that nothing left, plus continuous checks that the exit really is closed.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Record</span>
+      <h3>A record that cannot be quietly changed</h3>
+      <p>Every request, decision and answer is recorded and linked. That is your answer when compliance asks what happened.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Policy</span>
+      <h3>Hard limits</h3>
+      <p>Limits per API key, and caps on cost and usage. They sit outside the model, so it cannot talk its way around them.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Models</span>
+      <h3>Smart routing</h3>
+      <p>Set the model to <code>auto</code> and it picks the best one available, balancing quality, cost and speed.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Redaction</span>
+      <h3>Data protection</h3>
+      <p>Personal data is removed before the model sees it, and the answer is checked for leaks on the way back.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Interface</span>
+      <h3>Change one line</h3>
+      <p>It speaks the OpenAI API, so you point your existing code at it and change the address. Nothing else.</p>
+    </article>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">How it runs</p>
+    <h2>Not a setting you trust. A property you can prove.</h2>
+    <p class="lim-lede">
+      Not "we look after your data carefully" — there is nowhere of ours for it to sit. The
+      models, the gateway, the rules and the records are all on your servers.
+    </p>
+  </header>
+  <div class="lim-grid lim-grid--3">
+    <article class="lim-card lim-card--tight lim-reveal">
+      <h3 class="lim-card__title">Self-hosted</h3>
+      <p class="lim-card__body lim-mt-3">Runs inside your cloud account or data centre, with no public route. Nothing reaches us — there is no telemetry and no phone-home.</p>
+    </article>
+    <article class="lim-card lim-card--tight lim-reveal lim-reveal--d1">
+      <h3 class="lim-card__title">On-premises</h3>
+      <p class="lim-card__body lim-mt-3">Including networks with no egress at all. The same artifact runs in both, so what you evaluate is what you operate.</p>
+    </article>
+    <article class="lim-card lim-card--tight lim-reveal lim-reveal--d2">
+      <h3 class="lim-card__title">Air-gapped</h3>
+      <p class="lim-card__body lim-mt-3">Networks with no outside connection at all are what this was built for, not an awkward exception.</p>
+    </article>
+  </div>
+  <div class="lim-note lim-mt-6 lim-reveal">
+    <div>
+      <strong>Zero-egress is proven where it matters, not on a web page.</strong>
+      It needs the software inside your network, so it is demonstrated during an evaluation on
+      your own infrastructure — with your security team choosing the tests.
+    </div>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+  <div class="lim-grid lim-grid--2">
+    <div class="lim-reveal">
+      <p class="lim-eyebrow">Who it's for</p>
+      <h2>CIOs, CISOs and platform teams.</h2>
+      <p class="lim-lede">
+        The people who have to answer for what the AI touched — and who already own the servers it
+        should run on.
+      </p>
+    </div>
+    <div class="lim-reveal lim-reveal--d1">
+      <p class="lim-eyebrow">How we price it</p>
+      <h2>By environment, then by throughput.</h2>
+      <p class="lim-lede">
+        Because nothing leaves your network, we cannot meter your usage remotely. Capacity is agreed
+        up front and checked against your own logs. That comes from how it is built, not from a
+        gap in our billing.
+      </p>
+      <p class="lim-mt-4"><a href="../contact/">Talk to us about your deployment →</a></p>
+    </div>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">What you get</p>
+    <h2>Running today, in your boundary.</h2>
+  </header>
+  <div class="lim-table-wrap lim-reveal">
+    <table class="lim-table">
+      <caption class="lim-visually-hidden">Capabilities available today</caption>
+      <thead><tr><th>Capability</th><th>Deployment</th></tr></thead>
+      <tbody>
+        <tr><td>Llama 3.2 in-boundary, Smart Router, local Nomic embeddings, OpenAI-compatible API</td><td>Self-hosted · on-premises · air-gapped</td></tr>
+        <tr><td>Firewall, sensitivity, policy, PII redaction, output leak scanning, cache, audit</td><td>Self-hosted · on-premises · air-gapped</td></tr>
+        <tr><td>Signed sovereignty attestation, zero-egress verification via live probes</td><td>Self-hosted · on-premises</td></tr>
+        <tr><td>No public route, no telemetry, no phone-home</td><td>Self-hosted · on-premises</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+  <div class="lim-pane site-cta lim-reveal">
+    <h2 class="lim-t2 lim-balance">Put it in front of your security team.</h2>
+    <p class="lim-lede lim-mt-4">
+      We set it up on your own servers and your team picks the tests — including trying to get
+      data out.
+    </p>
+    <div class="lim-row lim-mt-6">
+      <a class="lim-btn lim-btn--primary lim-btn--lg" href="../contact/">Request an evaluation</a>
+      <a class="lim-btn lim-btn--glass lim-btn--lg" href="../trust/">Read how it is secured</a>
+    </div>
+  </div>
+  <p class="lim-sm lim-soft lim-mt-6 lim-reveal">
+    Every model call is now traced. <a href="../intent-studio/">Intent Studio</a> governs what
+    work they were doing in the first place.
+  </p>
+</section>
+
+</main>
+
+<footer class="lim-footer site-footer">
+  <div class="lim-wrap">
+    <div class="site-footer__cols">
+      <div class="site-footer__brand">
+        <a class="lim-nav__brand" href="../" aria-label="Limina Labs — home">
+          <svg class="lim-mark" viewBox="16 30 146 132" aria-hidden="true" focusable="false">
+            <path class="lb-bar" d="M38 30L162 30L140 54L16 54Z"></path>
+            <path class="lb-bar" d="M38 66L134 66L112 90L16 90Z"></path>
+            <path class="lb-bar" d="M38 102L106 102L84 126L16 126Z"></path>
+            <path class="lb-bar" d="M38 138L78 138L56 162L16 162Z"></path>
+          </svg>
+          <span class="lim-nav__wordmark">Limina<span> Labs</span></span>
+        </a>
+        <p class="lim-sm lim-soft">Sovereign AI for the enterprise. Intent Studio and Precepta available now, Cerebrio next.</p>
+      </div>
+
+      <div>
+        <h2 class="site-footer__head">Products</h2>
+        <a href="../intent-studio/">Intent Studio</a>
+        <a href="../precepta/">Precepta</a>
+        <a href="../cerebrio/">Cerebrio</a>
+      </div>
+
+      <div>
+        <h2 class="site-footer__head">Resources</h2>
+        <a href="../sovereign-ai/">Sovereign AI</a>
+      </div>
+
+      <div>
+        <h2 class="site-footer__head">Security</h2>
+        <a href="../trust/">Security &amp; sovereignty</a>
+        <a href="../sub-processors/">Sub-processors</a>
+        <a href="../vulnerability-disclosure/">Vulnerability disclosure</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="../terms/">Terms</a>
+      </div>
+
+      <div>
+        <h2 class="site-footer__head">Company</h2>
+        <a href="../company/">Company</a>
+        <a href="../contact/">Contact us</a>
+        <a href="mailto:hello@liminalabs.in">Email us</a>
+      </div>
+    </div>
+
+    <div class="site-footer__base">
+      <span>© 2026 Limina Labs Private Limited</span>
+      <span class="lim-mono">Attributable · grounded · bounded · revocable</span>
+    </div>
+  </div>
+</footer>
+
+
+<script src="../design-system/js/limina.js?v=4.8" defer></script>
+<script src="../src/site.js?v=4.8" defer></script>
+</body>
+</html>

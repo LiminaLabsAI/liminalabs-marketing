@@ -1,144 +1,154 @@
-# Limina Labs — website
+# liminalabs.in
 
-Marketing site for Limina Labs. **Limina Labs makes enterprise AI accountable** — intent,
-execution and learning kept as one governed record, with any model, inside the customer's
-own walls.
-
-Single static page. No build step, no framework, no dependencies beyond one Google Fonts
-request.
-
-## Source of truth
-
-The copy on this page is generated from **`limina-labs-vision.md`** (the company vision
-document). When the story changes, change it there first, then update this page. Do not let
-this page become the place the real thinking lives.
-
-Rules the vision document imposes on this page, which must not drift:
-
-- **Three products, not four.** Intent Studio, Precepta, Cerebrio. Forge is a *function*,
-  not a product — it is not started and most likely lives inside Precepta.
-- **Cerebrio is roadmap.** Never listed as available, never linked, and never with a
-  published quarter.
-- **Say "early access", never "beta".** Some enterprises cannot procure beta software.
-- **Do not claim funding or customers.** "Early-stage and unfunded, in early access with a
-  small number of enterprises" is true and reads as deliberate.
-- The `#status` table is the honesty contract. Update it before demoing anything new.
-
-## Structure
-
-```
-index.html              the whole site — markup, CSS and JS in one file
-assets/logo/            the mark, favicons and the Open Graph card
-assets/team/            founder photographs
-favicon.ico             root fallback — browsers request this path automatically
-```
-
-## Local preview
+The Limina Labs marketing site. Ten marketing pages plus four utility pages,
+static, no framework, no runtime dependencies, and **no external requests at
+all** — not for fonts, not for analytics, not for anything.
 
 ```bash
-python3 -m http.server 8080
+node build.mjs          # build every page
+node bump-version.mjs 2.2   # bump the design system cache-busting version
 ```
 
-Then open http://localhost:8080. Opening `index.html` over `file://` also works.
+Then serve the repo root. `.claude/launch.json` defines a local server on :8080.
 
-`.claude/launch.json` runs the same thing from Claude Code's preview pane. It is local dev
-config, not part of the site — gitignore it if you would rather not commit it. Port 8080
-rather than the usual 8000 because OrbStack holds 8000 on this machine.
+---
 
-## Before you deploy
+## How it is put together
 
-One thing needs changing, and it is flagged with a comment block at the top of `<head>`:
+```
+src/
+  partials/       shell · nav · footer          shared by every page
+  pages/          one file per URL, front matter in an HTML comment
+  site.css        marketing patterns layered on the design system
+  site.js         one thing: the Products menu
+  site.config.json  shared URLs and contact, so ten pages cannot drift
+  placeholders.json what each {{PLACEHOLDER}} still needs
+build.mjs         expands partials → writes index.html, precepta/index.html, …
+design-system/    Limen — tokens, components, both themes, self-hosted fonts
+assets/           the brand kit: mark, lockups, favicons, app icons, social
+```
 
-**Replace `https://liminalabs.ai` with the live origin** in the canonical link, `og:url`,
-`og:image`, `twitter:image`, and in the JSON-LD block at the foot of the page. Everything
-else on the page is relative. Open Graph images must be absolute URLs — a relative one will
-not render a link preview.
+Output is committed to the repo root, so `/precepta` is served from
+`precepta/index.html` by GitHub Pages with no rewrite rules and no CI.
 
-## Deployment
+**Never edit the built HTML at the repo root** — it is regenerated. Edit
+`src/pages/` and rebuild.
 
-Static, so anything that serves files will host it.
+---
 
-**GitHub Pages** — Settings → Pages → Source: *Deploy from a branch* → `main` / `/ (root)`.
-Add a `CNAME` file containing the custom domain if one is pointed at it.
+## The build enforces the copy rules
 
-**Netlify / Vercel / Cloudflare Pages** — no build command, publish directory `.`.
+`build.mjs` fails rather than emitting a page that breaks one. It checks for:
 
-## Brand
+- the hard constraints — `beta`, `coming soon`, Forge, and the slop material
+- every word on the never-use list — `enterprise-grade`, `seamless`, `leverage`,
+  `unlock`, `AI-powered`, `10x` and the rest
+- any external font CDN or analytics reference
 
-The identity comes from the Limina Labs asset kit, **cobalt light theme**.
+It also writes [`LAUNCH.md`](LAUNCH.md) from the built pages, listing every
+`{{PLACEHOLDER}}` and where it appears. That file is generated, so it cannot
+quietly disagree with the site.
 
-- **The mark** is four right-leaning bars in a descending cobalt ramp
-  (`#141F8F → #2A3DCC → #7C8CEB → #B3BEF6`). It is defined once as an inline SVG
-  `<symbol id="limina-mark">` near the top of `<body>` and referenced with `<use>`
-  everywhere else.
-- **Retinting** is done with the custom properties `--m1`…`--m4`, not with classes.
-  Custom properties inherit into the `<use>` shadow tree; class selectors do not, so
-  `.mark .b1{fill:…}` silently renders black. The variants are `.mark` (cobalt light),
-  `.mark--frost` (for dark backgrounds) and `.mark--flat` (one flat cobalt, per the kit's
-  rule for sizes under ~24px).
-- **The wordmark** is Bricolage Grotesque 700 with Archivo and IBM Plex Sans as fallbacks —
-  "Limina" in ink, "Labs" in `--ink-3`.
-- **Motion.** The kit allows the *Lift* animation on the logo once per page load and nowhere
-  else. It is on the nav mark via `.mark--lift`, plays for 0.66s, and then stays still.
-  Disabled under `prefers-reduced-motion`.
+Placeholders render on the page as **amber dashed markers**. A placeholder that
+blends in is a placeholder that ships.
 
-### The mark was rebuilt, not exported
+---
 
-The SVG geometry here was redrawn from the asset kit's rendering, because the kit's files
-were not available to copy. It matches, but if you export the real kit, drop
-`limina-mark-cobalt.svg` in and replace the `<symbol>` paths — nothing else needs to change.
+## Rules that are not negotiable
 
-The kit's own filenames, for when that happens: `limina-mark-cobalt.svg`,
-`limina-mark-frost.svg`, `limina-mark-cobalt-flat.svg`,
-`lockup/limina-lockup-horizontal-{light,dark}.svg`, `favicon/favicon.ico`,
-`app-icon/icon-512-maskable-*.png`, `og-image-1200x630-{light,dark}.png`.
+These come from the build brief. Breaking one costs a deal, not a style point.
 
-`assets/logo/limina-lockup.png` and `limina-mark.png` are the **superseded** monochrome mark.
-Nothing references them; delete them once you are happy with the new identity.
+1. **Never fabricate an artifact.** Any attestation, probe output or audit log
+   shown on the site must be real output from a real environment. There is none
+   in this repo, so the site shows none — it describes the architecture instead.
+   A fabricated log line is the one thing a technical buyer never forgives.
+2. **Never name a customer**, claim a certification, funding, or a team size.
+   None exist.
+3. **Never publish a roadmap.** The site covers the vision, the products and
+   what is available today. No dates, no horizons, no "what isn't built yet"
+   tables — and correspondingly, never imply something unbuilt is purchasable.
+4. **Never offer a self-hosted download, and never offer a sandbox.** There is
+   no hosted tier — that is a positioning asset, not a gap. It means we operate
+   no environment a customer's data could sit in, which is a stronger claim
+   than any policy. Every route says *request an evaluation* or *talk to us*.
+5. **Never present the three products as a pipeline.** They are siblings of
+   equal weight. Diagram A points arrows *upward* on purpose — a left-to-right
+   row tells the buyer they need all three, which is both untrue and the
+   strongest objection procurement can raise.
+6. **Never make Cerebrio visually subordinate.** Identical card, identical box,
+   status in a chip. Never greyed, dimmed or dashed.
+7. **Never assert what is true inside the reader's organisation.** Not *"your
+   execution is ungoverned"*. Ask the question and let them answer it. An
+   asserted problem invites an argument the reader wins.
+8. **Never gate a security document.**
+9. **Never publish a price.** Pricing is a conversation, not a page. Every
+   commercial route leads to `/contact`.
+10. **No sign-in anywhere, for now.** Limina Labs is a company, not an
+    application, so there is no company-wide sign-in — and product-level entry
+    points are parked too, pending a decision. Every route on the site leads to
+    `/contact`. Worth knowing when that decision is made: Precepta could never
+    have one anyway. It is self-hosted, so a customer signs in to their own
+    deployment, at their own URL, which we neither host nor link.
 
-## Editing notes
+Voice: British spelling, sentence case headings, plain declarative sentences,
+concrete nouns. No emoji, no stock imagery, no manufactured social proof.
 
-- **Design tokens** live in the `:root` block at the top of the `<style>` element: the
-  surface ramp, the cobalt ramp, the three product accents, type families and layout widths.
-  Change a colour there rather than hunting through rules.
-- **Typography** is IBM Plex — Sans for headings, Serif for body copy, Mono for labels and
-  data — plus Bricolage Grotesque for the wordmark only. All four load in one request.
-- **The autonomy dial** is driven by the `SETTINGS` array in the script at the bottom. Each
-  entry has `title`, `grant`, `needs` and `conseq`. The track, keyboard handling and fill bar
-  adapt to the array length.
-- **The loop diagram** is inline SVG in `#loop`, laid out on a `0 0 560 470` viewBox running
-  clockwise: Know (Cerebrio) → Intent (Intent Studio) → Do (Precepta) → Trace + evaluate →
-  Learn (Forge). Dashed node borders mean *not yet built* — keep that convention honest.
-  Edge draw-in is CSS (`.edge` with `stroke-dasharray`) and is disabled under
-  `prefers-reduced-motion`.
-- **Watch out for class-name collisions.** `.road` is the horizon grid; the status table's
-  cell states are namespaced `.st-yes` / `.st-road` / `.st-none` for exactly this reason.
-- **Scroll reveals** use the `.rv` class plus an `IntersectionObserver`. Elements are only
-  hidden when JavaScript is running (`.js .rv`), so the page degrades to fully visible
-  without JS, and a 4-second timeout reveals everything if the observer never fires.
+---
 
-## Accessibility
+## Checking layout and contrast
 
-Keyboard-navigable throughout, visible focus rings, a skip link, `prefers-reduced-motion`
-respected, and the autonomy dial implemented as an ARIA radiogroup with roving tabindex and
-arrow-key support. The loop diagram carries a full `aria-label` describing the cycle. Keep
-these intact when editing.
+Two harnesses, both run in the browser against the built pages. Serve the repo
+and open them; each must report zero.
 
-Verified with no horizontal overflow at 390px, 768px and desktop widths.
+```
+http://localhost:8080/src/responsive-harness.html   layout at 375 / 768 / 1280
+http://localhost:8080/src/contrast-harness.html     WCAG AA, both themes
+```
 
-## Outbound product links
+The responsive one walks every page at three widths and fails on horizontal
+overflow, on any element poking past the viewport, and on SVG text escaping its
+own viewBox — the three ways a page breaks that a screenshot at one width will
+not show you.
 
-- Intent Studio — https://intent.preceptaai.com/
-- Precepta — https://preceptaai.com/
-- Cerebrio — **not linked.** It is roadmap; `thecerebrio.ai` must not be presented as an
-  available product.
-- Forge — a function, described on this page only
+## Checking contrast
 
-## Open items
+`src/contrast-harness.html` walks every page in an iframe, forces each theme,
+composites translucent glass over its real backdrop and measures every
+text/background pair against WCAG AA. Serve the repo and open:
 
-- Confirm the registered entity and location line in the footer.
-- Settle the Limina Labs / Precepta brand relationship — `hello@preceptaai.com` is still the
-  contact address, which makes Precepta look like the parent. Move to a Limina Labs address
-  the day the domain is live.
-- No customer proof, logos or product screenshots yet.
-- Precepta has no published pricing.
+```
+http://localhost:8080/src/contrast-harness.html
+```
+
+It must report **TOTAL FAILURES: 0**. Two things it has already caught: the
+amber `--lim-warn` sitting at 4.09:1 on its own wash, and decorative-only
+`--lim-text-faint` used for numerals people are meant to read.
+
+## Adding a page
+
+1. Create `src/pages/<slug>.html` starting with the front-matter comment:
+   ```html
+   <!--
+   title: Page title | Limina Labs
+   description: One sentence for search and link previews.
+   path: /slug
+   nav: trust
+   -->
+   ```
+   `nav` marks the matching nav item current; use `none` for utility pages.
+2. Write the body. `{{base}}` resolves to the correct relative prefix.
+3. `node build.mjs`.
+
+---
+
+## Design system
+
+[`design-system/`](design-system/) is Limen — see its
+[README](design-system/README.md). It carries the tokens, components, both
+themes and the self-hosted typefaces, and everything on this site is composed
+from it. If a component does not fit, it needs a modifier, not a patch.
+
+Its cache-busting version has to move on every file at once — the entry file,
+its `@import`s, and the JS. `bump-version.mjs` does all of them together, which
+matters: version only the entry file and a browser will serve cached copies of
+everything it imports, which looks exactly like a CSS fix that did not work.

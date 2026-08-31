@@ -52,7 +52,7 @@
   --lim-abyss-3: #0A0B11;
 
   /* Status — tuned to sit beside cobalt without fighting it */
-  --lim-ok:    #0E7A4F;
+  --lim-ok:    #0B6A44; /* 5.4:1 on its own wash; #0E7A4F measured 4.45 once the cards went translucent */
   --lim-warn:  #945508; /* 5.07:1 on its own wash — #A8620A measured 4.09 and failed AA */
   --lim-stop:  #B3261E;
   --lim-ok-bg:   rgba(14,122,79,.10);
@@ -105,9 +105,12 @@
   /* The ground is a tint, not a light show. Strong auras are the single most
      template-looking thing a page can do; these stay just visible enough to
      give the panes something to refract. */
-  --lim-aura-1: radial-gradient(58% 48% at 80% 4%,  rgba(47,71,196,.055), transparent 70%);
-  --lim-aura-2: radial-gradient(52% 44% at 4% 62%,  rgba(127,143,221,.05), transparent 72%);
-  --lim-aura-3: radial-gradient(46% 40% at 62% 96%, rgba(11,31,166,.03),  transparent 70%);
+  /* Enough variation for a translucent surface to actually refract something.
+     Too faint and the frost is invisible; too strong and it is a light show.
+     These sit deliberately between the two. */
+  --lim-aura-1: radial-gradient(58% 48% at 80% 4%,  rgba(47,71,196,.12), transparent 70%);
+  --lim-aura-2: radial-gradient(52% 44% at 4% 62%,  rgba(127,143,221,.11), transparent 72%);
+  --lim-aura-3: radial-gradient(46% 40% at 62% 96%, rgba(11,31,166,.07),  transparent 70%);
 
   /* ------------------------------------------------------------------
      GLASS
@@ -118,9 +121,9 @@
   /* Near-opaque on purpose. Glass here is a material property you barely
      notice, not an effect on display — the visible-frost look reads consumer,
      and it costs contrast we would rather spend on text. */
-  --lim-glass:        rgba(252,253,255,.93);
-  --lim-glass-solid:  rgba(253,254,255,.97);
-  --lim-glass-thin:   rgba(252,253,255,.62);
+  --lim-glass:        rgba(252,253,255,.82);
+  --lim-glass-solid:  rgba(253,254,255,.95);
+  --lim-glass-thin:   rgba(252,253,255,.55);
   --lim-glass-raise:  rgba(253,254,255,.94); /* the pill inside a pill */
   /* The scrolled nav sits between pane and solid. --lim-glass-solid is tuned
      for menus and sheets, where text over arbitrary content has to stay
@@ -293,13 +296,13 @@
                 var(--lim-abyss-1) 45%,
                 var(--lim-abyss-2) 76%,
                 var(--lim-abyss-3) 100%);
-  --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.11), transparent 70%);
-  --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.12), transparent 72%);
-  --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.05), transparent 70%);
+  --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.20), transparent 70%);
+  --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.22), transparent 72%);
+  --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.10), transparent 70%);
 
-  --lim-glass:       rgba(29,33,44,.90);
-  --lim-glass-solid: rgba(24,27,36,.97);
-  --lim-glass-thin:  rgba(38,44,58,.55);
+  --lim-glass:       rgba(29,33,44,.82);
+  --lim-glass-solid: rgba(24,27,36,.95);
+  --lim-glass-thin:  rgba(38,44,58,.48);
   --lim-glass-raise: rgba(255,255,255,.09);
   --lim-glass-nav:   rgba(24,27,36,.94);
   --lim-glass-nav-rest: rgba(27,31,41,.82);
@@ -356,13 +359,13 @@
                   var(--lim-abyss-1) 45%,
                   var(--lim-abyss-2) 76%,
                   var(--lim-abyss-3) 100%);
-    --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.11), transparent 70%);
-    --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.12), transparent 72%);
-    --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.05), transparent 70%);
+    --lim-aura-1: radial-gradient(58% 48% at 80% 2%,  rgba(47,71,196,.20), transparent 70%);
+    --lim-aura-2: radial-gradient(52% 44% at 2% 64%,  rgba(11,31,166,.22), transparent 72%);
+    --lim-aura-3: radial-gradient(46% 40% at 64% 98%, rgba(87,107,209,.10), transparent 70%);
 
-    --lim-glass:       rgba(29,33,44,.90);
-    --lim-glass-solid: rgba(24,27,36,.97);
-    --lim-glass-thin:  rgba(38,44,58,.55);
+    --lim-glass:       rgba(29,33,44,.82);
+    --lim-glass-solid: rgba(24,27,36,.95);
+    --lim-glass-thin:  rgba(38,44,58,.48);
     --lim-glass-raise: rgba(255,255,255,.09);
     --lim-glass-nav:   rgba(24,27,36,.94);
     --lim-glass-nav-rest: rgba(27,31,41,.82);

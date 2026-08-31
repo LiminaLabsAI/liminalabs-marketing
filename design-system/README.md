@@ -33,10 +33,10 @@ Everything in `css/tokens.css` is derived from the brand kit in [`../assets`](..
 <script>try{var t=localStorage.getItem("limina-theme");
   if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 
-<link rel="stylesheet" href="design-system/css/limina.css?v=4.1">
+<link rel="stylesheet" href="design-system/css/limina.css?v=4.3">
 
 <!-- before </body> -->
-<script src="design-system/js/limina.js?v=4.1" defer></script>
+<script src="design-system/js/limina.js?v=4.3" defer></script>
 ```
 
 That is the whole integration. The typefaces are **self-hosted** in `fonts/` and
@@ -44,7 +44,7 @@ loaded by `css/fonts.css`, so a page using this system makes no external
 requests — no font CDN, nothing to block, nothing for a CISO to find in
 devtools. Ship `fonts/` next to `css/` and the relative paths resolve.
 
-Put a version on the two local URLs (`limina.css?v=4.1`, `limina.js?v=4.1`) and
+Put a version on the two local URLs (`limina.css?v=4.3`, `limina.js?v=4.3`) and
 bump it when you change them. Without it a browser will happily keep running a
 cached copy of the JS against freshly edited CSS, which looks exactly like a
 broken component.
@@ -79,14 +79,18 @@ reads as a company with nothing to say. Dense but organised beats airy.
 
 ### What this system deliberately does not do
 
-- **Blur has to match the transparency.** Panes sit at 93–97% opacity, the nav
-  at rest at 84%, all with `blur(20px)` / `blur(30px)` and `saturate(125%)`.
-  Weak blur on a translucent surface is the worst of both worlds: the page
-  stays readable through it, and it does not look like a material either. The
-  frost only *shows* where something varied sits behind — the nav over
-  scrolling content, the menu panel over a headline. On a card sitting on a
-  flat ground there is nothing to refract, so those stay near-opaque and spend
-  the budget on text contrast instead.
+- **Frost needs two things, not one.** Surfaces sit at 82% opacity with
+  `blur(20px)` / `blur(30px)` and `saturate(125%)` — but opacity alone does
+  nothing. A translucent pane over a flat ground looks identical to an opaque
+  one, because the blur has nothing to work on. The auras exist to give it
+  something: enough variation for a surface to refract, well short of a light
+  show. Change one without the other and the effect disappears.
+- **Opacity is not the contrast constraint here.** Body text measures about
+  17:1 on a card at any opacity between 76% and 93%, because the canvas
+  underneath is already light. What *does* move is small coloured text on a
+  wash — the status badges shifted by 0.2 when the cards went translucent, and
+  one of them fell under AA. Re-run the contrast harness after touching any
+  glass value.
 - **The canvas sits well below white.** `--lim-ground-1` is `#E9ECF7`, not a
   near-white. A near-white ground leaves surfaces nowhere to go, so everything
   becomes pure white and the chrome ends up the brightest thing on the page.

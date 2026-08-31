@@ -44,6 +44,17 @@
   animation: site-menu-in var(--lim-d-2) var(--lim-ease-out) both;
 }
 @keyframes site-menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+/* Bridges the 10px gap between the button and the panel. Without it the
+   pointer leaves .site-menu on the way down, mouseleave fires, and the panel
+   closes before it can be clicked — which is exactly what it did. */
+.site-menu__panel::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
 .site-menu__panel a {
   display: block;
   padding: 10px 12px;

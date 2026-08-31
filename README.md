@@ -64,8 +64,9 @@ These come from the build brief. Breaking one costs a deal, not a style point.
    A fabricated log line is the one thing a technical buyer never forgives.
 2. **Never name a customer**, claim a certification, funding, or a team size.
    None exist.
-3. **Never publish a date** for anything on the roadmap. A horizon, never a
-   quarter.
+3. **Never publish a roadmap.** The site covers the vision, the products and
+   what is available today. No dates, no horizons, no "what isn't built yet"
+   tables — and correspondingly, never imply something unbuilt is purchasable.
 4. **Never offer a self-hosted download.** The binary moves under contract, at
    the paid pilot. Every self-hosted route says *request an evaluation*.
 5. **Never present the three products as a pipeline.** They are siblings of

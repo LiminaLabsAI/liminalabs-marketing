@@ -92,9 +92,11 @@ reads as a company with nothing to say. Dense but organised beats airy.
   logo's typeface makes the logo ordinary. Bricolage ships as a seven-glyph
   subset for the wordmark alone; Archivo does the reading and the scanning.
 
-The strongest premium signal available to Limina Labs is not visual at all — it
-is `/status`, which lists what is *not* built. For a company with no logos to
-show, verifiable honesty is the differentiator.
+The site does not publish a roadmap: it describes the vision, the products and
+what is available today. That places the whole evidential load on `/trust` and
+on things a buyer can drive themselves — the sandbox, an adversarial session,
+the architecture argument. Keep those sharp; they are doing the work a reference
+customer would normally do.
 
 ## Seven rules that are easy to get wrong
 

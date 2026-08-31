@@ -139,7 +139,15 @@
 .site-product { display: flex; flex-direction: column; gap: var(--lim-s-4); padding: var(--lim-s-6); }
 .site-product__head { display: flex; align-items: center; justify-content: space-between; gap: var(--lim-s-3); }
 .site-product h3 { font-size: var(--lim-t-3); margin: 0; }
-.site-product p { margin: 0; font-size: var(--lim-t-sm); color: var(--lim-text-muted); }
+/* :not() rather than a more specific link rule. A bare-element descendant
+   selector (0,1,1) silently outranks the component class it was meant to leave
+   alone (0,1,0) — which is how the card CTAs stopped bottom-aligning. Exclude
+   explicitly instead of escalating specificity. */
+.site-product p:not(.site-product__link) {
+  margin: 0;
+  font-size: var(--lim-t-sm);
+  color: var(--lim-text-muted);
+}
 .site-product__link { margin-top: auto; padding-top: var(--lim-s-4); }
 
 /* --- Routing ------------------------------------------------------------- */

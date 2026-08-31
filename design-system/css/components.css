@@ -755,11 +755,18 @@
    The oversized mark bleeding off the corner, as in the deck backgrounds.
    Purely atmospheric — always aria-hidden.
    ------------------------------------------------------------------------ */
+/* Absolute, not fixed. The brand kit uses this device on deck backgrounds,
+   where the composition is fixed and designed — a slide does not move. Fixed
+   positioning on a scrolling page destroys exactly what made it work: the mark
+   stops belonging to any section, content and section rules slide across it at
+   arbitrary offsets, and it reads as a rendering artifact rather than a
+   composition. Anchored to the document it sits with the hero and scrolls
+   away, which is the same idea behaving properly. */
 .lim-ambient {
-  position: fixed;
-  right: -8vw;
-  bottom: -12vh;
-  --lim-mark-size: min(32vw, 420px);
+  position: absolute;
+  top: 96px;
+  right: 0;
+  --lim-mark-size: min(30vw, 400px);
   z-index: -1;
   opacity: .10;
   pointer-events: none;

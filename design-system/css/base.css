@@ -11,6 +11,8 @@ html {
 }
 
 body {
+  position: relative; /* anchors .lim-ambient to the document, not the viewport */
+  overflow-x: clip; /* the mark's bars lean past their box; clip, never scroll */
   margin: 0;
   min-height: 100dvh;
   background: var(--lim-page) fixed;

@@ -2,11 +2,11 @@
   "_comment": "Values shared across every page. Anything still wrapped in {{...}} renders as a visible amber marker on the page and is listed in LAUNCH.md. Never guess a value here.",
 
   "DOCS_URL": "https://docs.liminalabs.in",
-  "CONTACT_EMAIL": "hello@preceptaai.com",
+  "CONTACT_EMAIL": "hello@liminalabs.in",
 
   "_unresolved": {
     "_parked_INTENT_STUDIO_APP": "https://intent.preceptaai.com is the live Intent Studio application. Deliberately NOT linked anywhere: the sign-in question is open and being decided separately. To restore, move this key out of _unresolved (dropping the _parked_ prefix) and add the action back to the hero in src/pages/intent-studio.html. Precepta would never get an equivalent — it is self-hosted, so a customer signs in to their own deployment, at their own URL.",
     "DOCS_URL": "brief §6 specifies docs.liminalabs.in; does not exist yet.",
-    "CONTACT_EMAIL": "still a Precepta address, which makes Precepta look like the parent. Move to a Limina Labs address the day the domain is live."
+    "CONTACT_EMAIL": "hello@liminalabs.in — must exist and route to a person before launch. It replaced hello@preceptaai.com, which made Precepta look like the parent of Limina."
   }
 }

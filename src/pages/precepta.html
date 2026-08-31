@@ -6,13 +6,14 @@ nav: products
 -->
 
 <section class="lim-wrap site-hero">
-  <p class="lim-eyebrow lim-enter">Precepta · The runtime layer</p>
+  <p class="lim-eyebrow lim-enter">Precepta · The control plane</p>
   <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance" style="margin-top: var(--lim-s-4)">
     Run AI inside your own walls. Prove nothing leaves.
   </h1>
   <p class="lim-lede lim-enter lim-enter--d2">
-    Sovereign, governed AI infrastructure. Every model request passes through policy, redaction
-    and audit — with cryptographic proof that nothing crossed your boundary.
+    A self-hosted control plane for open-weight and hosted models. Every request is
+    policy-checked, redacted and audited — and a signed attestation proves your data never
+    crossed the boundary.
   </p>
   <div class="lim-row site-hero__cta lim-enter lim-enter--d3">
     <a class="lim-btn lim-btn--primary lim-btn--lg" href="{{base}}contact/">Request an evaluation</a>
@@ -24,10 +25,37 @@ nav: products
 
 <section class="lim-wrap lim-section">
   <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">The problem</p>
+    <h2 style="margin-top: var(--lim-s-4)">Three gaps stop most companies deploying AI safely.</h2>
+  </header>
+  <div class="site-slabs lim-reveal">
+    <article class="site-slab">
+      <span class="site-slab__label">Egress</span>
+      <h3>Prompts and data leave the building</h3>
+      <p>Every third-party API call takes your context somewhere you cannot see it.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Governance</span>
+      <h3>No consistent rules across teams</h3>
+      <p>Each team invents its own limits, in prompts the model can be argued past.</p>
+    </article>
+    <article class="site-slab">
+      <span class="site-slab__label">Evidence</span>
+      <h3>No answer when the auditor asks</h3>
+      <p>What was requested, what policy said, what the model saw — none of it reconstructable.</p>
+    </article>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<section class="lim-wrap lim-section">
+  <header class="lim-section-head lim-reveal">
     <p class="lim-eyebrow">What it does</p>
-    <h2 style="margin-top: var(--lim-s-4)">One path, and everything takes it.</h2>
+    <h2 style="margin-top: var(--lim-s-4)">The rails are fixed. The routing is yours.</h2>
     <p class="lim-lede">
-      There is no bypass route. A request either goes through the whole path or it does not run.
+      There is no bypass route. Every call flows through the same governed pipeline before — and
+      after — it reaches a model.
     </p>
   </header>
 
@@ -76,7 +104,7 @@ nav: products
 <section class="lim-wrap lim-section">
   <header class="lim-section-head lim-reveal">
     <p class="lim-eyebrow">How it runs</p>
-    <h2 style="margin-top: var(--lim-s-4)">We hold none of it.</h2>
+    <h2 style="margin-top: var(--lim-s-4)">Not a setting you trust. A property you can prove.</h2>
     <p class="lim-lede">
       Not "we handle your data carefully" — there is no environment of ours for it to sit in.
       Models, gateway, policy and the audit record are all inside your network.

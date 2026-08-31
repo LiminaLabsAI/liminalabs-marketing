@@ -1,7 +1,7 @@
 # Limina Labs — security contact
 # https://liminalabs.in/trust
 
-Contact: mailto:hello@preceptaai.com
+Contact: mailto:hello@liminalabs.in
 Expires: 2027-08-31T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://liminalabs.in/.well-known/security.txt

@@ -33,10 +33,10 @@ Everything in `css/tokens.css` is derived from the brand kit in [`../assets`](..
 <script>try{var t=localStorage.getItem("limina-theme");
   if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 
-<link rel="stylesheet" href="design-system/css/limina.css?v=3.7">
+<link rel="stylesheet" href="design-system/css/limina.css?v=3.9">
 
 <!-- before </body> -->
-<script src="design-system/js/limina.js?v=3.7" defer></script>
+<script src="design-system/js/limina.js?v=3.9" defer></script>
 ```
 
 That is the whole integration. The typefaces are **self-hosted** in `fonts/` and
@@ -44,7 +44,7 @@ loaded by `css/fonts.css`, so a page using this system makes no external
 requests — no font CDN, nothing to block, nothing for a CISO to find in
 devtools. Ship `fonts/` next to `css/` and the relative paths resolve.
 
-Put a version on the two local URLs (`limina.css?v=3.7`, `limina.js?v=3.7`) and
+Put a version on the two local URLs (`limina.css?v=3.9`, `limina.js?v=3.9`) and
 bump it when you change them. Without it a browser will happily keep running a
 cached copy of the JS against freshly edited CSS, which looks exactly like a
 broken component.
@@ -79,11 +79,14 @@ reads as a company with nothing to say. Dense but organised beats airy.
 
 ### What this system deliberately does not do
 
-- **No visible glass, except where it means something.** Panes sit at 93–97%
-  opacity with `blur(10px)` and `saturate(108%)` — the material is real but you
-  should not notice it working. The one exception is the nav at rest (84%),
-  which floats over moving content, so letting the page through carries
-  information. Frosted-glass-as-effect reads consumer and costs contrast.
+- **Blur has to match the transparency.** Panes sit at 93–97% opacity, the nav
+  at rest at 84%, all with `blur(20px)` / `blur(30px)` and `saturate(125%)`.
+  Weak blur on a translucent surface is the worst of both worlds: the page
+  stays readable through it, and it does not look like a material either. The
+  frost only *shows* where something varied sits behind — the nav over
+  scrolling content, the menu panel over a headline. On a card sitting on a
+  flat ground there is nothing to refract, so those stay near-opaque and spend
+  the budget on text contrast instead.
 - **The canvas sits well below white.** `--lim-ground-1` is `#E9ECF7`, not a
   near-white. A near-white ground leaves surfaces nowhere to go, so everything
   becomes pure white and the chrome ends up the brightest thing on the page.

@@ -38,11 +38,14 @@
   z-index: var(--lim-z-overlay);
   width: 264px;
   padding: 6px;
-  background: var(--lim-glass-solid);
+  background: var(--lim-glass-nav);
   -webkit-backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
           backdrop-filter: blur(var(--lim-blur-lg)) saturate(var(--lim-sat));
-  animation: site-menu-in var(--lim-d-2) var(--lim-ease-out) both;
 }
+/* The entrance runs off .is-open, never off the panel itself. With the
+   animation on the base rule its "both" fill left the panel parked at
+   opacity 0 — which reads as a see-through panel, not a hidden one. */
+.site-menu.is-open .site-menu__panel { animation: site-menu-in var(--lim-d-2) var(--lim-ease-out); }
 @keyframes site-menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 /* Bridges the 10px gap between the button and the panel. Without it the
    pointer leaves .site-menu on the way down, mouseleave fires, and the panel

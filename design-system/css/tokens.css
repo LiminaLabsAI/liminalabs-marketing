@@ -134,9 +134,12 @@
   --lim-hairline:  rgba(15,20,48,.13);
   --lim-hairline-strong: rgba(15,20,48,.20);
 
-  --lim-blur: 10px;
-  --lim-blur-lg: 14px;
-  --lim-sat: 108%;
+  /* Blur has to be strong enough to actually frost what is behind it. Weak
+     blur on a translucent surface is the worst of both: you can still read
+     the page through it, and it does not look like a material. */
+  --lim-blur: 20px;
+  --lim-blur-lg: 30px;
+  --lim-sat: 125%;
 
   /* Shadows carry cobalt, not black — glass over a blue ground.
      Tight and short, never a soft halo: a big diffuse shadow is the tell of a

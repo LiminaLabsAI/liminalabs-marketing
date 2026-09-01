@@ -1,0 +1,203 @@
+<!--
+title: Pricing — what we charge on | Limina Labs
+description: What each product is priced on. Intent Studio for a team, Intent Studio Enterprise and Precepta for an organisation running them on its own infrastructure.
+path: /pricing
+nav: pricing
+-->
+
+<section class="lim-wrap site-hero site-hero--tight">
+  <p class="lim-eyebrow lim-enter">Pricing</p>
+  <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance">
+    What we charge on, and why.
+  </h1>
+  <p class="lim-lede lim-enter lim-enter--d2">
+    Two ways to buy, because they are bought differently. A team picks a plan and starts.
+    An organisation running this on its own infrastructure needs a conversation first — the
+    scope varies more than the software does.
+  </p>
+
+  <!-- Two anchors rather than tabs. Tabs would hide a price, and a hidden price
+       on the one page whose job is trust reads as evasion. -->
+  <div class="lim-row site-hero__cta lim-enter lim-enter--d3">
+    <a class="lim-btn lim-btn--glass" href="#team">Buying for a team ↓</a>
+    <a class="lim-btn lim-btn--glass" href="#enterprise">Buying for an enterprise ↓</a>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<!-- ================= FOR A TEAM ================= -->
+<section class="lim-wrap lim-section" id="team">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">For a team</p>
+    <h2>Intent Studio, managed by us.</h2>
+    <p class="lim-lede">
+      You use it in a browser. Connect your own model key and pay your provider directly, or
+      use ours and let us include the inference.
+    </p>
+  </header>
+
+  <div class="site-plans" data-unless="MANAGED_PRICES">
+    <article class="lim-card site-plan lim-reveal">
+      <h3>Intent Studio</h3>
+      <p class="site-plan__price">Talk to us</p>
+      <p class="site-plan__on">Priced on the people contributing, the workspaces they
+        work in, how far the autonomy dial goes, and how long the record is kept.</p>
+      <p class="site-plan__cta"><a class="lim-btn lim-btn--primary" href="{{base}}contact/">Talk to us</a></p>
+    </article>
+  </div>
+
+  <div class="site-plans" data-pending>
+    {{MANAGED_PRICES}}
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<!-- ================= FOR AN ENTERPRISE ================= -->
+<section class="lim-wrap lim-section" id="enterprise">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">For an enterprise</p>
+    <h2>Runs on your infrastructure. We deploy it with you and support it.</h2>
+    <p class="lim-lede">
+      Your data centre, your own cloud account, any provider. Your team uses it in a browser,
+      the same as any internal system. The language model is yours — self-hosted, or your
+      existing provider contract.
+    </p>
+  </header>
+
+  <!-- Three cards at identical size and treatment. A ladder here would say
+       Precepta is a higher Intent Studio tier, which is the single most
+       expensive misunderstanding this page could create. -->
+  <div class="site-plans lim-reveal">
+    <article class="lim-card site-plan">
+      <h3>Intent Studio Enterprise</h3>
+      <p class="site-plan__role">Agree the work</p>
+      <p class="site-plan__on">
+        Priced on the people contributing, the workspaces they work in, and how long the
+        record is kept.
+      </p>
+      <ul class="site-bullets site-plan__list">
+        <li class="lim-sm lim-muted">Unlimited people and workspaces</li>
+        <li class="lim-sm lim-muted">The full autonomy dial, levels 1 to 5</li>
+        <li class="lim-sm lim-muted">Retention scoped to your regulatory period</li>
+        <li class="lim-sm lim-muted">A named contact, and onboarding run with your team</li>
+      </ul>
+      <p class="site-plan__cta"><a class="lim-btn lim-btn--primary" href="{{base}}contact/">Talk to us</a></p>
+    </article>
+
+    <article class="lim-card site-plan">
+      <h3>Precepta</h3>
+      <p class="site-plan__role">Govern every model request</p>
+      <p class="site-plan__on">
+        Priced on how many production environments it runs in, the throughput you need, and
+        how long evidence has to be kept.
+      </p>
+      <ul class="site-bullets site-plan__list">
+        <li class="lim-sm lim-muted">Firewall, sensitivity, policy, routing, cache and audit</li>
+        <li class="lim-sm lim-muted">A signed attestation that nothing left, and a live egress probe</li>
+        <li class="lim-sm lim-muted">An auditor export pack, with replay</li>
+        <li class="lim-sm lim-muted">Any model, self-hosted or from any provider</li>
+      </ul>
+      <p class="site-plan__cta"><a class="lim-btn lim-btn--primary" href="{{base}}contact/">Talk to us</a></p>
+    </article>
+
+    <article class="lim-card site-plan">
+      <h3>Both together</h3>
+      <p class="site-plan__role">One deployment, one contract</p>
+      <p class="site-plan__on">
+        Running both costs less than running them separately.
+      </p>
+      <ul class="site-bullets site-plan__list">
+        <li class="lim-sm lim-muted">The work is agreed in one place and governed in the other</li>
+        <li class="lim-sm lim-muted">Evidence is attributable back to the intent it came from</li>
+        <li class="lim-sm lim-muted">One deployment conversation, one contract, one renewal</li>
+      </ul>
+      <p class="site-plan__cta"><a class="lim-btn lim-btn--primary" href="{{base}}contact/">Talk to us</a></p>
+    </article>
+  </div>
+
+  <p class="lim-sm lim-soft lim-mt-5 lim-reveal site-measure">
+    There is no hosted Precepta, and there will not be one. It governs the boundary, so it has
+    to sit inside it.
+  </p>
+</section>
+
+<hr class="lim-rule">
+
+<!-- ================= WHAT WE NEVER CHARGE FOR ================= -->
+<section class="lim-wrap lim-section">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">No meter on these</p>
+    <h2>What we never charge for.</h2>
+    <p class="lim-lede">
+      Some things get more valuable the more you use them. Pricing that discouraged coverage
+      would make the product worse, so we do not tax those.
+    </p>
+  </header>
+
+  <div class="site-questions">
+    <article class="lim-pane lim-pane--flush site-question lim-reveal">
+      <h3 class="site-question__q">Policies</h3>
+      <p>Write as many as your governance needs. A rule you left out to save money is a rule
+        that was not enforced.</p>
+    </article>
+    <article class="lim-pane lim-pane--flush site-question lim-reveal lim-reveal--d1">
+      <h3 class="site-question__q">Models</h3>
+      <p>Connect as many as you want. Being able to leave a model vendor cheaply is the whole
+        point, so we do not charge you for the option.</p>
+    </article>
+    <article class="lim-pane lim-pane--flush site-question lim-reveal lim-reveal--d2">
+      <h3 class="site-question__q">People who only read</h3>
+      <p>Only contributors count. An incomplete record is worth less to you than a complete
+        one.</p>
+    </article>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<!-- ================= THE TWO EXPLANATIONS ================= -->
+<section class="lim-wrap lim-section">
+  <div class="lim-grid lim-grid--2">
+    <div class="lim-pane lim-reveal">
+      <h2 class="lim-t3">Deployment is quoted separately</h2>
+      <p class="lim-sm lim-muted lim-mt-3">
+        Deployment and onboarding are quoted as their own line, never folded into the licence,
+        so you can see what you are paying for and what it is for.
+      </p>
+    </div>
+    <div class="lim-pane lim-reveal lim-reveal--d1">
+      <h2 class="lim-t3">Why we price in conversation</h2>
+      <p class="lim-sm lim-muted lim-mt-3">
+        Two organisations running the same product can need very different environments,
+        retention and assurance. We would rather tell you what it costs for your scope than
+        publish a number that is wrong for almost everybody.
+      </p>
+    </div>
+  </div>
+
+  <!-- Sits with the other candour, not in the hero. Leading a pricing page with
+       "we have not settled this" undercuts it; grouped with the explanations it
+       reads as openness, which is what it is. -->
+  <div class="lim-note lim-mt-6 lim-reveal">
+    <div>
+      We are early, and still settling how this is priced. What is on this page holds for the
+      next three months.
+    </div>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<!-- ================= CLOSE ================= -->
+<section class="lim-wrap site-statement lim-reveal">
+  <h2 class="lim-t1 lim-balance">Bring one process. We will show you it governed.</h2>
+  <p class="site-measure">
+    Tell us about one real piece of work — a changeover, a migration, an audit response. We
+    will tell you plainly whether this fits, and what it would cost for your scope.
+  </p>
+  <p class="lim-mt-6">
+    <a class="lim-btn lim-btn--primary lim-btn--lg" href="{{base}}contact/">Talk to us</a>
+  </p>
+</section>

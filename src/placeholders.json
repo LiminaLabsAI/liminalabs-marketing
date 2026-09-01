@@ -7,7 +7,6 @@
   "{{DISCLOSURE_TIMELINES}}": "Acknowledgement and remediation windows for the vulnerability disclosure policy.",
   "{{PENDING LEGAL REVIEW}}": "Full privacy notice and website/sandbox terms. Everything currently on those pages is factually accurate; the formal notices are not written. Do not substitute boilerplate.",
   "{{NOT WRITTEN YET}}": "Security overview, questionnaire answer pack, incident response plan. Brief §5 rung 0 wants these ungated — they do not exist yet, and the page says so rather than hiding them behind a form.",
-
   "_outOfBand": [
     "**Real artifacts.** A signed attestation, live egress-probe output and a real audit-log line are deliberately absent — none exists in this repo, and inventing one is the mistake a technical buyer never forgives. When Precepta can emit real output, home §5 and /trust block 03 are where it goes. This matters more now that /status is gone: /trust is carrying the whole evidential load.",
     "**301 redirects** from preceptaai.com → /precepta and intent.preceptaai.com → /intent-studio, preserving deep paths.",
@@ -15,5 +14,6 @@
     "**TLS**: support 1.2 as well as 1.3. The current Intent Studio host is 1.3-only and refuses 1.2, which breaks the TLS-inspecting corporate proxies these buyers sit behind.",
     "**Analytics**: self-hosted and cookieless (Plausible, Umami or equivalent), or none. The site currently makes zero external requests — keep it that way.",
     "**security.txt** expiry is set to 2027-08-31; refresh it annually or it becomes invalid."
-  ]
+  ],
+  "{{MANAGED_PRICES}}": "The three managed Intent Studio tiers — Starter, Team and Business — with their prices. Blocked until sign-up, payment and self-serve onboarding exist: a published price with no way to buy converts interest into a dead end. When they ship they drop into the For a team section above the shape-only card, which is then removed."
 }

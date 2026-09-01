@@ -402,3 +402,49 @@
 }
 .site-copy:hover { color: var(--lim-text); border-color: var(--lim-hairline-strong); }
 .site-copy.is-done { color: var(--lim-ok); border-color: currentColor; }
+
+/* ---------------------------------------------------------------------------
+   PLANS
+   Three cards at identical size and treatment. The moment one is taller, wider
+   or differently coloured, the row reads as a ladder — and a ladder says
+   Precepta is a higher Intent Studio tier, which is the most expensive
+   misunderstanding this page could create. Same grid as .site-products for
+   exactly that reason.
+   ------------------------------------------------------------------------ */
+.site-plans {
+  display: grid;
+  gap: var(--lim-s-5);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+@media (max-width: 900px) { .site-plans { grid-template-columns: 1fr; } }
+
+/* One card alone should not stretch to a third of the row and look orphaned. */
+.site-plans:has(> :only-child) { grid-template-columns: minmax(0, 420px); }
+
+.site-plan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lim-s-4);
+  padding: var(--lim-s-6);
+}
+.site-plan h3 { font-size: var(--lim-t-3); margin: 0; }
+.site-plan__role {
+  margin: 0;
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-xs);
+  letter-spacing: var(--lim-track-wide);
+  text-transform: uppercase;
+  color: var(--lim-text-soft);
+}
+.site-plan__price {
+  margin: 0;
+  font-family: var(--lim-font-display);
+  font-size: var(--lim-t-3);
+  font-weight: 600;
+}
+.site-plan__on { margin: 0; font-size: var(--lim-t-sm); color: var(--lim-text-muted); }
+.site-plan__list { margin: 0; }
+/* Pushes the button to the bottom so three cards of unequal prose still line
+   their actions up. */
+.site-plan__cta { margin: auto 0 0; }

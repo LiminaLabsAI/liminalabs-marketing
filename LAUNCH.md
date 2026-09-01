@@ -7,7 +7,7 @@ carrying `data-pending`, which the build strips, so a visitor never sees a
 placeholder. Supply the value in `src/site.config.json` or in the page and the
 element comes back on the next build.
 
-5 values still to supply, across 13 pages.
+4 values still to supply, across 13 pages.
 
 ## Hidden until you supply them
 
@@ -15,7 +15,6 @@ element comes back on the next build.
 |---|---|---|
 | `{{DISCLOSURE_TIMELINES}}` | /vulnerability-disclosure | Acknowledgement and remediation windows for the vulnerability disclosure policy. |
 | `{{FORM_ENDPOINT}}` | /cerebrio, /contact | Where /contact and the Cerebrio form post to. Must be self-hosted or a processor you are willing to list on /sub-processors — no third-party form widget, per brief §11. |
-| `{{MANAGED_PRICES}}` | /pricing | The three managed Intent Studio tiers — Starter, Team and Business — with their prices. Blocked until sign-up, payment and self-serve onboarding exist: a published price with no way to buy converts interest into a dead end. When they ship they drop into the For a team section above the shape-only card, which is then removed. |
 | `{{SDLC_DETAIL}}` | /trust | Secure-SDLC specifics on /trust block 05: scanning cadence, signing method, patch SLAs. |
 | `{{TBD}}` | /company | The registered office and governing jurisdiction on /company. Enterprises ask, and an answer that looks avoided costs more than the answer. |
 

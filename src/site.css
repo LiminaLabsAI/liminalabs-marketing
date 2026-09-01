@@ -448,3 +448,16 @@
 /* Pushes the button to the bottom so three cards of unequal prose still line
    their actions up. */
 .site-plan__cta { margin: auto 0 0; }
+
+/* A tier that is priced but not yet open. Same size and weight as the others —
+   it is a real part of the ladder, not an advert for a missing thing. */
+.site-plan__head { display: flex; align-items: center; justify-content: space-between; gap: var(--lim-s-3); }
+.site-plan__head h3 { margin: 0; }
+.site-plan__later {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--lim-font-sans);
+  font-size: var(--lim-t-xs);
+  font-weight: 400;
+  color: var(--lim-text-soft);
+}

@@ -27,8 +27,8 @@
 <meta name="twitter:description" content="What each product is priced on. Intent Studio for a team, Intent Studio Enterprise and Precepta for an organisation running them on its own infrastructure.">
 <meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 
-<link rel="stylesheet" href="../design-system/css/limina.css?v=5.6">
-<link rel="stylesheet" href="../src/site.css?v=5.6">
+<link rel="stylesheet" href="../design-system/css/limina.css?v=5.7">
+<link rel="stylesheet" href="../src/site.css?v=5.7">
 </head>
 
 <body>
@@ -117,37 +117,66 @@
 <section class="lim-wrap lim-section" id="team">
   <header class="lim-section-head lim-reveal">
     <p class="lim-eyebrow">For a team</p>
-    <h2>Free while we are in early access.</h2>
+    <h2>Two tiers are free right now.</h2>
     <p class="lim-lede">
-      Intent Studio is free to use right now. You bring your own model key and pay your
-      provider directly at their rates. We are not taking payments yet, so there is nothing to
-      buy and nothing to cancel.
+      Intent Studio is bought by the team that uses it. Starter and Team are open and free
+      during early access, so you can run real work through it today and decide later.
     </p>
   </header>
 
-  <div class="site-plans">
-    <article class="lim-card site-plan lim-reveal">
-      <h3>Early access</h3>
-      <p class="site-plan__price">Free</p>
-      <p class="site-plan__on">
-        Bring your own model key. You pay your provider directly, at your own rates, for
-        whichever models you connect.
-      </p>
+  <div class="site-plans lim-reveal">
+    <article class="lim-card site-plan">
+      <div class="site-plan__head">
+        <h3>Starter</h3>
+        <span class="lim-badge lim-badge--ok"><i class="lim-badge__dot"></i>Free now</span>
+      </div>
+      <p class="site-plan__price">Free<span class="site-plan__later">$29/mo once payments open</span></p>
       <ul class="site-bullets site-plan__list">
-        <li class="lim-sm lim-muted">The workspace, written intents and claim states with attribution</li>
-        <li class="lim-sm lim-muted">The autonomy dial, so you set how much the agents settle alone</li>
-        <li class="lim-sm lim-muted">What you tell us shapes what ships next</li>
+        <li class="lim-sm lim-muted">2 people contributing</li>
+        <li class="lim-sm lim-muted">2 workspaces</li>
+        <li class="lim-sm lim-muted">Autonomy levels 1–2</li>
+        <li class="lim-sm lim-muted">Record kept 6 months</li>
       </ul>
       <p class="site-plan__cta"><a class="lim-btn lim-btn--primary" href="../contact/">Request early access</a></p>
+    </article>
+
+    <article class="lim-card site-plan">
+      <div class="site-plan__head">
+        <h3>Team</h3>
+        <span class="lim-badge lim-badge--ok"><i class="lim-badge__dot"></i>Free now</span>
+      </div>
+      <p class="site-plan__price">Free<span class="site-plan__later">$79/mo once payments open</span></p>
+      <ul class="site-bullets site-plan__list">
+        <li class="lim-sm lim-muted">6 people contributing</li>
+        <li class="lim-sm lim-muted">5 workspaces</li>
+        <li class="lim-sm lim-muted">Autonomy levels 1–3</li>
+        <li class="lim-sm lim-muted">Record kept 1 year</li>
+      </ul>
+      <p class="site-plan__cta"><a class="lim-btn lim-btn--primary" href="../contact/">Request early access</a></p>
+    </article>
+
+    <!-- The vague two-word phrase for this is on the build's banned list, and rightly:
+         it says nothing. The specific reason is true and more reassuring. -->
+    <article class="lim-card site-plan site-plan--later">
+      <div class="site-plan__head">
+        <h3>Business</h3>
+      </div>
+      <p class="site-plan__price">$179<span class="site-plan__later">a month, once payments open</span></p>
+      <ul class="site-bullets site-plan__list">
+        <li class="lim-sm lim-muted">15 people contributing</li>
+        <li class="lim-sm lim-muted">10 workspaces</li>
+        <li class="lim-sm lim-muted">Autonomy levels 1–4</li>
+        <li class="lim-sm lim-muted">Record kept 2 years</li>
+      </ul>
+      <p class="site-plan__cta"><a class="lim-btn lim-btn--glass" href="../contact/">Tell us you want it</a></p>
     </article>
   </div>
 
   <p class="lim-sm lim-soft lim-mt-5 lim-reveal site-measure">
-    Paid plans open once we can take payments. They will appear here first, and early access
-    does not roll into one automatically — you decide then.
+    Every tier is bring-your-own-key: you connect your model and pay your provider directly, at
+    your rates. Starter and Team are free while we are in early access — the company is still
+    being registered, so we cannot take payments yet. Nothing rolls into a paid plan on its own.
   </p>
-
-  
 </section>
 
 <hr class="lim-rule">
@@ -354,7 +383,7 @@
 </footer>
 
 
-<script src="../design-system/js/limina.js?v=5.6" defer></script>
-<script src="../src/site.js?v=5.6" defer></script>
+<script src="../design-system/js/limina.js?v=5.7" defer></script>
+<script src="../src/site.js?v=5.7" defer></script>
 </body>
 </html>

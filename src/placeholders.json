@@ -14,6 +14,5 @@
     "**TLS**: support 1.2 as well as 1.3. The current Intent Studio host is 1.3-only and refuses 1.2, which breaks the TLS-inspecting corporate proxies these buyers sit behind.",
     "**Analytics**: self-hosted and cookieless (Plausible, Umami or equivalent), or none. The site currently makes zero external requests — keep it that way.",
     "**security.txt** expiry is set to 2027-08-31; refresh it annually or it becomes invalid."
-  ],
-  "{{MANAGED_PRICES}}": "The three managed Intent Studio tiers — Starter, Team and Business — with their prices. Blocked until sign-up, payment and self-serve onboarding exist: a published price with no way to buy converts interest into a dead end. When they ship they drop into the For a team section above the shape-only card, which is then removed."
+  ]
 }

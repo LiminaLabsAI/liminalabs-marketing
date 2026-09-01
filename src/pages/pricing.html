@@ -1,5 +1,5 @@
 <!--
-title: Pricing — what we charge on | Limina Labs
+title: Pricing — start free, or talk to us | Limina Labs
 description: What each product is priced on. Intent Studio for a team, Intent Studio Enterprise and Precepta for an organisation running them on its own infrastructure.
 path: /pricing
 nav: pricing
@@ -8,19 +8,19 @@ nav: pricing
 <section class="lim-wrap site-hero site-hero--tight">
   <p class="lim-eyebrow lim-enter">Pricing</p>
   <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance">
-    What we charge on, and why.
+    Two ways to start.
   </h1>
   <p class="lim-lede lim-enter lim-enter--d2">
-    Two ways to buy, because they are bought differently. A team picks a plan and starts.
-    An organisation running this on its own infrastructure needs a conversation first — the
-    scope varies more than the software does.
+    A team can start on Intent Studio today, free, using its own model key. An organisation
+    running this on its own infrastructure needs a conversation first — the scope varies more
+    than the software does.
   </p>
 
   <!-- Two anchors rather than tabs. Tabs would hide a price, and a hidden price
        on the one page whose job is trust reads as evasion. -->
   <div class="lim-row site-hero__cta lim-enter lim-enter--d3">
-    <a class="lim-btn lim-btn--glass" href="#team">Buying for a team ↓</a>
-    <a class="lim-btn lim-btn--glass" href="#enterprise">Buying for an enterprise ↓</a>
+    <a class="lim-btn lim-btn--glass" href="#team">For a team</a>
+    <a class="lim-btn lim-btn--glass" href="#enterprise">For an enterprise</a>
   </div>
 </section>
 
@@ -30,22 +30,35 @@ nav: pricing
 <section class="lim-wrap lim-section" id="team">
   <header class="lim-section-head lim-reveal">
     <p class="lim-eyebrow">For a team</p>
-    <h2>Intent Studio, managed by us.</h2>
+    <h2>Free while we are in early access.</h2>
     <p class="lim-lede">
-      You use it in a browser. Connect your own model key and pay your provider directly, or
-      use ours and let us include the inference.
+      Intent Studio is free to use right now. You bring your own model key and pay your
+      provider directly at their rates. We are not taking payments yet, so there is nothing to
+      buy and nothing to cancel.
     </p>
   </header>
 
   <div class="site-plans" data-unless="MANAGED_PRICES">
     <article class="lim-card site-plan lim-reveal">
-      <h3>Intent Studio</h3>
-      <p class="site-plan__price">Talk to us</p>
-      <p class="site-plan__on">Priced on the people contributing, the workspaces they
-        work in, how far the autonomy dial goes, and how long the record is kept.</p>
-      <p class="site-plan__cta"><a class="lim-btn lim-btn--primary" href="{{base}}contact/">Talk to us</a></p>
+      <h3>Early access</h3>
+      <p class="site-plan__price">Free</p>
+      <p class="site-plan__on">
+        Bring your own model key. You pay your provider directly, at your own rates, for
+        whichever models you connect.
+      </p>
+      <ul class="site-bullets site-plan__list">
+        <li class="lim-sm lim-muted">The workspace, written intents and claim states with attribution</li>
+        <li class="lim-sm lim-muted">The autonomy dial, so you set how much the agents settle alone</li>
+        <li class="lim-sm lim-muted">What you tell us shapes what ships next</li>
+      </ul>
+      <p class="site-plan__cta"><a class="lim-btn lim-btn--primary" href="{{base}}contact/">Request early access</a></p>
     </article>
   </div>
+
+  <p class="lim-sm lim-soft lim-mt-5 lim-reveal site-measure">
+    Paid plans open once we can take payments. They will appear here first, and early access
+    does not roll into one automatically — you decide then.
+  </p>
 
   <div class="site-plans" data-pending>
     {{MANAGED_PRICES}}
@@ -60,9 +73,8 @@ nav: pricing
     <p class="lim-eyebrow">For an enterprise</p>
     <h2>Runs on your infrastructure. We deploy it with you and support it.</h2>
     <p class="lim-lede">
-      Your data centre, your own cloud account, any provider. Your team uses it in a browser,
-      the same as any internal system. The language model is yours — self-hosted, or your
-      existing provider contract.
+      Your data centre, your own cloud account, any provider. The language model is yours —
+      self-hosted, or your existing provider contract.
     </p>
   </header>
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Precepta — run AI inside your own walls | Limina Labs</title>
-<meta name="description" content="Sovereign, governed AI infrastructure. Every model request passes through policy, redaction and audit, with cryptographic proof that nothing crossed your boundary.">
+<meta name="description" content="The control plane every AI request in your company passes through — policy, redaction, smart routing, cache and audit — running on your own infrastructure.">
 <link rel="canonical" href="https://liminalabs.in/precepta">
 
 <script>try{var t=localStorage.getItem("limina-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
@@ -19,16 +19,16 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Limina Labs">
 <meta property="og:title" content="Precepta — run AI inside your own walls | Limina Labs">
-<meta property="og:description" content="Sovereign, governed AI infrastructure. Every model request passes through policy, redaction and audit, with cryptographic proof that nothing crossed your boundary.">
+<meta property="og:description" content="The control plane every AI request in your company passes through — policy, redaction, smart routing, cache and audit — running on your own infrastructure.">
 <meta property="og:url" content="https://liminalabs.in/precepta">
 <meta property="og:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Precepta — run AI inside your own walls | Limina Labs">
-<meta name="twitter:description" content="Sovereign, governed AI infrastructure. Every model request passes through policy, redaction and audit, with cryptographic proof that nothing crossed your boundary.">
+<meta name="twitter:description" content="The control plane every AI request in your company passes through — policy, redaction, smart routing, cache and audit — running on your own infrastructure.">
 <meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 
-<link rel="stylesheet" href="../design-system/css/limina.css?v=5.5">
-<link rel="stylesheet" href="../src/site.css?v=5.5">
+<link rel="stylesheet" href="../design-system/css/limina.css?v=5.6">
+<link rel="stylesheet" href="../src/site.css?v=5.6">
 </head>
 
 <body>
@@ -95,12 +95,13 @@
 <section class="lim-wrap site-hero">
   <p class="lim-eyebrow lim-enter">Precepta · The control plane</p>
   <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance">
-    Run AI inside your own walls. Prove nothing leaves.
+    One control plane for every AI request your company makes.
   </h1>
   <p class="lim-lede lim-enter lim-enter--d2">
-    One place every AI request goes through, running on your own servers. Each request is
-    checked against your rules, stripped of sensitive data and recorded — with a signed proof
-    that nothing left your network.
+    Precepta sits in front of every model your organisation uses. Each request is checked
+    against your rules, routed to the right model, answered from cache when it repeats,
+    stripped of sensitive data and recorded. It runs on your own servers, and nothing leaves
+    your network.
   </p>
   <div class="lim-row site-hero__cta lim-enter lim-enter--d3">
     <a class="lim-btn lim-btn--primary lim-btn--lg" href="../contact/">Request an evaluation</a>
@@ -217,6 +218,46 @@
       It needs the software inside your network, so it is demonstrated during an evaluation on
       your own infrastructure — with your security team choosing the tests.
     </div>
+  </div>
+</section>
+
+<hr class="lim-rule">
+
+<!-- The governance story sells the CISO. This one is why finance signs: being
+     in the path of every request means it can also route, cache and compress.
+     Capabilities only — no savings figure, because we have not measured one. -->
+<section class="lim-wrap lim-section">
+  <header class="lim-section-head lim-reveal">
+    <p class="lim-eyebrow">What being in the path is worth</p>
+    <h2>The same position that governs a request can also make it cheaper.</h2>
+    <p class="lim-lede">
+      Anything that sees every request can do more than check it. Precepta is already in that
+      position, so the controls that make AI defensible also make it cost less to run.
+    </p>
+  </header>
+
+  <div class="site-questions">
+    <article class="lim-pane lim-pane--flush site-question lim-reveal">
+      <h3 class="site-question__q">It picks the model</h3>
+      <p>
+        Ask for <code>auto</code> and the smart router sends the request to the model that can
+        answer it inside your boundary. Not every question needs your most expensive one.
+      </p>
+    </article>
+    <article class="lim-pane lim-pane--flush site-question lim-reveal lim-reveal--d1">
+      <h3 class="site-question__q">It answers twice for the price of once</h3>
+      <p>
+        Deterministic answers are cached. A request served from cache is a request you did not
+        pay to run again.
+      </p>
+    </article>
+    <article class="lim-pane lim-pane--flush site-question lim-reveal lim-reveal--d2">
+      <h3 class="site-question__q">It holds the ceiling</h3>
+      <p>
+        Prompts are compressed before they are sent, and every key carries its own scopes and
+        spending caps. Nobody finds out about a runaway job from the invoice.
+      </p>
+    </article>
   </div>
 </section>
 
@@ -341,7 +382,7 @@
 </footer>
 
 
-<script src="../design-system/js/limina.js?v=5.5" defer></script>
-<script src="../src/site.js?v=5.5" defer></script>
+<script src="../design-system/js/limina.js?v=5.6" defer></script>
+<script src="../src/site.js?v=5.6" defer></script>
 </body>
 </html>

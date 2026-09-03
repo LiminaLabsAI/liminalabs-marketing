@@ -27,8 +27,8 @@
 <meta name="twitter:description" content="Specify the work before anything runs, govern every model request inside your own infrastructure, and keep what the organisation learns. Any model, your walls.">
 <meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 
-<link rel="stylesheet" href="design-system/css/limina.css?v=6.1">
-<link rel="stylesheet" href="src/site.css?v=6.1">
+<link rel="stylesheet" href="design-system/css/limina.css?v=6.2">
+<link rel="stylesheet" href="src/site.css?v=6.2">
 </head>
 
 <body>
@@ -274,46 +274,52 @@
        for a capability still in planning; it is not a product and is
        deliberately absent. -->
   <figure class="site-figure site-figure--spaced lim-reveal" style="max-width: 800px; margin-inline: auto">
-    <svg viewBox="0 0 800 432" role="img" aria-labelledby="dgmB-t dgmB-d">
+    <svg viewBox="0 0 800 404" role="img" aria-labelledby="dgmB-t dgmB-d">
       <title id="dgmB-t">How the three products work together</title>
-      <desc id="dgmB-d">A three-stage cycle. Intent Studio sets down what the company intends.
-      Precepta runs it inside your own network and records every step. Cerebrio turns that record
-      into understanding, which makes the next intent sharper. Each product is sold and runs on
-      its own.</desc>
+      <desc id="dgmB-d">Intent Studio sets down what the company intends. Cerebrio turns what
+      happened into understanding, which makes the next intent sharper. Precepta sits underneath
+      both: every model call either of them makes passes through it, governed, on your own
+      servers. Each product is sold and runs on its own.</desc>
 
       <g>
-        <rect class="dgm-box" x="290" y="14" width="220" height="84" rx="14"/>
-        <text class="dgm-name" x="400" y="46" text-anchor="middle">Intent Studio</text>
-        <text class="dgm-role" x="400" y="64" text-anchor="middle">AGREE THE WORK</text>
-        <text class="dgm-sub"  x="400" y="84" text-anchor="middle">What we intend, and who agreed</text>
+        <rect class="dgm-box" x="60" y="14" width="256" height="84" rx="14"/>
+        <text class="dgm-name" x="188" y="46" text-anchor="middle">Intent Studio</text>
+        <text class="dgm-role" x="188" y="64" text-anchor="middle">AGREE THE WORK</text>
+        <text class="dgm-sub"  x="188" y="84" text-anchor="middle">What we intend, and who agreed</text>
       </g>
       <g>
-        <rect class="dgm-box" x="530" y="268" width="256" height="84" rx="14"/>
-        <text class="dgm-name" x="658" y="300" text-anchor="middle">Precepta</text>
-        <text class="dgm-role" x="658" y="318" text-anchor="middle">RUN IT SAFELY</text>
-        <text class="dgm-sub"  x="658" y="338" text-anchor="middle">Governed, on your own servers</text>
+        <rect class="dgm-box" x="484" y="14" width="256" height="84" rx="14"/>
+        <text class="dgm-name" x="612" y="46" text-anchor="middle">Cerebrio</text>
+        <text class="dgm-role" x="612" y="64" text-anchor="middle">LEARN FROM IT</text>
+        <text class="dgm-sub"  x="612" y="84" text-anchor="middle">What the company learned</text>
       </g>
+
+      <!-- Out along the top, back along the bottom: a cycle between two peers. -->
+      <path class="dgm-arrow" d="M316 42 L 470 42"/>
+      <polygon class="dgm-arrow-head" points="468,36 482,42 468,48"/>
+      <text class="dgm-edge-label" x="393" y="32" text-anchor="middle">every step recorded</text>
+
+      <path class="dgm-arrow" d="M484 76 L 330 76"/>
+      <polygon class="dgm-arrow-head" points="332,70 318,76 332,82"/>
+      <text class="dgm-edge-label" x="401" y="94" text-anchor="middle">what we now know</text>
+
+      <text class="dgm-centre" x="400" y="152" text-anchor="middle">Each pass starts further ahead</text>
+
+      <!-- Precepta is the floor, not a third stage: every model call the two above
+           it make goes through it. Drawn wide and underneath so the relationship
+           reads without a caption. -->
       <g>
-        <rect class="dgm-box" x="14" y="268" width="256" height="84" rx="14"/>
-        <text class="dgm-name" x="142" y="300" text-anchor="middle">Cerebrio</text>
-        <text class="dgm-role" x="142" y="318" text-anchor="middle">LEARN FROM IT</text>
-        <text class="dgm-sub"  x="142" y="338" text-anchor="middle">What the company learned</text>
+        <rect class="dgm-box dgm-floor" x="14" y="196" width="772" height="104" rx="14"/>
+        <text class="dgm-name" x="400" y="234" text-anchor="middle">Precepta</text>
+        <text class="dgm-role" x="400" y="252" text-anchor="middle">EVERY MODEL CALL PASSES THROUGH</text>
+        <text class="dgm-sub"  x="400" y="276" text-anchor="middle">Governed, on your own servers · any model · nothing leaves</text>
       </g>
 
-      <path class="dgm-arrow" d="M516 66 C 618 78, 676 152, 682 254"/>
-      <polygon class="dgm-arrow-head" points="676,256 683,270 689,255"/>
-      <text class="dgm-edge-label" x="648" y="168" text-anchor="end">every step recorded</text>
+      <path class="dgm-arrow dgm-tick" d="M188 106 L 188 190"/>
+      <path class="dgm-arrow dgm-tick" d="M612 106 L 612 190"/>
 
-      <path class="dgm-arrow" d="M524 310 L 296 310"/>
-      <polygon class="dgm-arrow-head" points="294,304 280,310 294,316"/>
-      <text class="dgm-edge-label" x="400" y="298" text-anchor="middle">evidence and outcomes</text>
-
-      <path class="dgm-arrow" d="M118 254 C 124 152, 182 78, 284 66"/>
-      <polygon class="dgm-arrow-head" points="278,59 292,66 278,73"/>
-      <text class="dgm-edge-label" x="152" y="168" text-anchor="start">what we now know</text>
-
-      <text class="dgm-centre" x="400" y="196" text-anchor="middle">Each pass starts</text>
-      <text class="dgm-centre" x="400" y="218" text-anchor="middle">further ahead</text>
+      <text class="dgm-edge-label" x="400" y="340" text-anchor="middle">Humans keep the decision gate. The system prepares the decision;</text>
+      <text class="dgm-edge-label" x="400" y="358" text-anchor="middle">people approve it and govern what runs.</text>
     </svg>
     <figcaption>
       Every governed decision leaves evidence. Evidence becomes understanding. Understanding makes
@@ -546,7 +552,7 @@
 </footer>
 
 
-<script src="design-system/js/limina.js?v=6.1" defer></script>
-<script src="src/site.js?v=6.1" defer></script>
+<script src="design-system/js/limina.js?v=6.2" defer></script>
+<script src="src/site.js?v=6.2" defer></script>
 </body>
 </html>

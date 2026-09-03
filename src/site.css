@@ -461,3 +461,8 @@
   font-weight: 400;
   color: var(--lim-text-soft);
 }
+
+/* The floor of the loop diagram. Slightly recessed so it reads as the surface the
+   two products sit on rather than a third box of equal standing. */
+.dgm-floor { fill: var(--lim-glass); }
+.dgm-tick { stroke-dasharray: 3 4; }

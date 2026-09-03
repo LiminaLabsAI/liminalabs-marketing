@@ -466,3 +466,15 @@
    two products sit on rather than a third box of equal standing. */
 .dgm-floor { fill: var(--lim-glass); }
 .dgm-tick { stroke-dasharray: 3 4; }
+
+/* A two-sentence hero. At 18ch and full hero size the second sentence starts
+   mid-line — "runs. It is who owns" — which is the break a display line can
+   least afford. Longer measure, one step down in size, and each sentence gets
+   its own line above the fold-width; below that they wrap together normally. */
+.site-hero--statement h1 {
+  max-width: 34ch;
+  font-size: clamp(30px, 4vw, 52px);
+}
+@media (min-width: 900px) {
+  .site-hero--statement h1 span { display: block; }
+}

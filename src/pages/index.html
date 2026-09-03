@@ -1,5 +1,5 @@
 <!--
-title: Limina Labs — Enterprise AI that can be trusted to act
+title: Limina Labs — Sovereignty is not where the model runs
 description: Specify the work before anything runs, govern every model request inside your own infrastructure, and keep what the organisation learns. Any model, your walls.
 path: /
 nav: home
@@ -7,9 +7,9 @@ ambient: yes
 -->
 
 <!-- ================= §1 HERO ================= -->
-<section class="lim-wrap site-hero">
+<section class="lim-wrap site-hero site-hero--statement">
   <p class="lim-eyebrow lim-enter">Limina Labs · Sovereign AI</p>
-  <h1 class="lim-hero-type lim-enter lim-enter--d1 lim-balance">Enterprise AI that can be trusted to act.</h1>
+  <h1 class="lim-hero-type lim-enter lim-enter--d1"><span>Sovereignty is not where the model runs.</span> <span>It is who owns the reasoning.</span></h1>
   <p class="lim-lede lim-enter lim-enter--d2">
     AI agents usually fail for two reasons: nobody wrote down clearly enough what they were
     meant to do, and nothing was watching what they actually did. Neither is fixed by a better
@@ -174,52 +174,50 @@ ambient: yes
        for a capability still in planning; it is not a product and is
        deliberately absent. -->
   <figure class="site-figure site-figure--spaced lim-reveal" style="max-width: 800px; margin-inline: auto">
-    <svg viewBox="0 0 800 404" role="img" aria-labelledby="dgmB-t dgmB-d">
+    <svg viewBox="0 0 800 452" role="img" aria-labelledby="dgmB-t dgmB-d">
       <title id="dgmB-t">How the three products work together</title>
-      <desc id="dgmB-d">Intent Studio sets down what the company intends. Cerebrio turns what
-      happened into understanding, which makes the next intent sharper. Precepta sits underneath
-      both: every model call either of them makes passes through it, governed, on your own
-      servers. Each product is sold and runs on its own.</desc>
+      <desc id="dgmB-d">A cycle. Intent Studio sets down what the company intends, and every step
+      of the work is recorded. Cerebrio turns that record into understanding, which makes the next
+      intent sharper. Precepta sits underneath both: every model call either of them makes passes
+      through it, governed, on your own servers. Each product is sold and runs on its own.</desc>
 
       <g>
-        <rect class="dgm-box" x="60" y="14" width="256" height="84" rx="14"/>
-        <text class="dgm-name" x="188" y="46" text-anchor="middle">Intent Studio</text>
-        <text class="dgm-role" x="188" y="64" text-anchor="middle">AGREE THE WORK</text>
-        <text class="dgm-sub"  x="188" y="84" text-anchor="middle">What we intend, and who agreed</text>
+        <rect class="dgm-box" x="260" y="14" width="280" height="84" rx="14"/>
+        <text class="dgm-name" x="400" y="46" text-anchor="middle">Intent Studio</text>
+        <text class="dgm-role" x="400" y="64" text-anchor="middle">AGREE THE WORK</text>
+        <text class="dgm-sub"  x="400" y="84" text-anchor="middle">What we intend, and who agreed</text>
       </g>
       <g>
-        <rect class="dgm-box" x="484" y="14" width="256" height="84" rx="14"/>
-        <text class="dgm-name" x="612" y="46" text-anchor="middle">Cerebrio</text>
-        <text class="dgm-role" x="612" y="64" text-anchor="middle">LEARN FROM IT</text>
-        <text class="dgm-sub"  x="612" y="84" text-anchor="middle">What the company learned</text>
+        <rect class="dgm-box" x="260" y="176" width="280" height="84" rx="14"/>
+        <text class="dgm-name" x="400" y="208" text-anchor="middle">Cerebrio</text>
+        <text class="dgm-role" x="400" y="226" text-anchor="middle">LEARN FROM IT</text>
+        <text class="dgm-sub"  x="400" y="246" text-anchor="middle">What the company learned</text>
       </g>
 
-      <!-- Out along the top, back along the bottom: a cycle between two peers. -->
-      <path class="dgm-arrow" d="M316 42 L 470 42"/>
-      <polygon class="dgm-arrow-head" points="468,36 482,42 468,48"/>
-      <text class="dgm-edge-label" x="393" y="32" text-anchor="middle">every step recorded</text>
+      <!-- The two arcs close into one circle, which is what makes it read as a
+           loop rather than two boxes passing things back and forth. -->
+      <path class="dgm-arrow" d="M544 52 C 648 58, 648 214, 556 220"/>
+      <polygon class="dgm-arrow-head" points="560,214 546,220 560,226"/>
+      <text class="dgm-edge-label" x="664" y="142" text-anchor="start">every step recorded</text>
 
-      <path class="dgm-arrow" d="M484 76 L 330 76"/>
-      <polygon class="dgm-arrow-head" points="332,70 318,76 332,82"/>
-      <text class="dgm-edge-label" x="401" y="94" text-anchor="middle">what we now know</text>
+      <path class="dgm-arrow" d="M256 220 C 152 214, 152 58, 244 52"/>
+      <polygon class="dgm-arrow-head" points="240,46 254,52 240,58"/>
+      <text class="dgm-edge-label" x="136" y="142" text-anchor="end">what we now know</text>
 
-      <text class="dgm-centre" x="400" y="152" text-anchor="middle">Each pass starts further ahead</text>
+      <text class="dgm-centre" x="400" y="143" text-anchor="middle">Each pass starts further ahead</text>
 
-      <!-- Precepta is the floor, not a third stage: every model call the two above
-           it make goes through it. Drawn wide and underneath so the relationship
-           reads without a caption. -->
+      <!-- Precepta is the floor, not a third stage: every model call the loop
+           makes goes through it. -->
+      <path class="dgm-arrow dgm-tick" d="M400 264 L 400 292"/>
       <g>
-        <rect class="dgm-box dgm-floor" x="14" y="196" width="772" height="104" rx="14"/>
-        <text class="dgm-name" x="400" y="234" text-anchor="middle">Precepta</text>
-        <text class="dgm-role" x="400" y="252" text-anchor="middle">EVERY MODEL CALL PASSES THROUGH</text>
-        <text class="dgm-sub"  x="400" y="276" text-anchor="middle">Governed, on your own servers · any model · nothing leaves</text>
+        <rect class="dgm-box dgm-floor" x="14" y="298" width="772" height="100" rx="14"/>
+        <text class="dgm-name" x="400" y="334" text-anchor="middle">Precepta</text>
+        <text class="dgm-role" x="400" y="352" text-anchor="middle">EVERY MODEL CALL PASSES THROUGH</text>
+        <text class="dgm-sub"  x="400" y="376" text-anchor="middle">Governed, on your own servers · any model · nothing leaves</text>
       </g>
 
-      <path class="dgm-arrow dgm-tick" d="M188 106 L 188 190"/>
-      <path class="dgm-arrow dgm-tick" d="M612 106 L 612 190"/>
-
-      <text class="dgm-edge-label" x="400" y="340" text-anchor="middle">Humans keep the decision gate. The system prepares the decision;</text>
-      <text class="dgm-edge-label" x="400" y="358" text-anchor="middle">people approve it and govern what runs.</text>
+      <text class="dgm-edge-label" x="400" y="428" text-anchor="middle">Humans keep the decision gate. The system prepares the decision;</text>
+      <text class="dgm-edge-label" x="400" y="444" text-anchor="middle">people approve it and govern what runs.</text>
     </svg>
     <figcaption>
       Every governed decision leaves evidence. Evidence becomes understanding. Understanding makes

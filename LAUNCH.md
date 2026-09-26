@@ -7,7 +7,7 @@ carrying `data-pending`, which the build strips, so a visitor never sees a
 placeholder. Supply the value in `src/site.config.json` or in the page and the
 element comes back on the next build.
 
-4 values still to supply, across 13 pages.
+5 values still to supply, across 13 pages.
 
 ## Hidden until you supply them
 
@@ -17,6 +17,7 @@ element comes back on the next build.
 | `{{FORM_ENDPOINT}}` | /cerebrio, /contact | Where /contact and the Cerebrio form post to. Must be self-hosted or a processor you are willing to list on /sub-processors — no third-party form widget, per brief §11. |
 | `{{SDLC_DETAIL}}` | /trust | Secure-SDLC specifics on /trust block 05: scanning cadence, signing method, patch SLAs. |
 | `{{TBD}}` | /company | The registered office and governing jurisdiction on /company. Enterprises ask, and an answer that looks avoided costs more than the answer. |
+| `{{TEAM_PUBLIC}}` | /company | The Team section on /company is held back until we decide to introduce the team publicly. Restore by deleting the comment and the data-pending attribute in src/pages/company.html — and split founders from mentors first, since Ganesh is a mentor. |
 
 ## Out of band — not fixable in this repo
 

@@ -54,7 +54,13 @@ nav: company
 
 <hr class="lim-rule">
 
-<section class="lim-wrap lim-section">
+<section class="lim-wrap lim-section" data-pending>
+  <!-- Held back until we decide to introduce the team publicly. To publish:
+       delete this comment and the data-pending attribute. The marker below is
+       what the build keys on. {{TEAM_PUBLIC}}
+       Note when restoring: Ganesh is a mentor, not a co-founder, so three equal
+       cards under one "Team" heading misstates it. Split founders from mentors
+       before this goes live. -->
   <header class="lim-section-head lim-reveal">
     <h2>Team</h2>
   </header>
@@ -80,7 +86,7 @@ nav: company
     <article class="lim-card lim-reveal lim-reveal--d2">
       <img class="lim-avatar lim-avatar--lg" src="{{base}}assets/team/ganesh.jpg" alt="" width="64" height="64" loading="lazy">
       <h3 class="lim-card__title lim-mt-4">Ganesh Iyer</h3>
-      <p class="lim-xs lim-soft">Co-founder</p>
+      <p class="lim-xs lim-soft">Mentor</p>
       <p class="lim-card__body lim-mt-3">
         Former CTO and engineering leader. Has scaled AI platforms, and the teams that run them.
       </p>

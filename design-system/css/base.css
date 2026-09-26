@@ -210,6 +210,9 @@ pre code { padding: 0; background: none; color: inherit; }
     transparent, var(--lim-hairline-strong) 12%,
     var(--lim-hairline-strong) 88%, transparent);
 }
+/* A section held back by data-pending leaves the rules either side of it
+   adjacent. Collapse the second rather than authoring around every case. */
+.lim-rule + .lim-rule { display: none; }
 
 /* Skip link — visible the moment it is focused, never before. */
 .lim-skip {

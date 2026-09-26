@@ -158,12 +158,33 @@
    selector (0,1,1) silently outranks the component class it was meant to leave
    alone (0,1,0) — which is how the card CTAs stopped bottom-aligning. Exclude
    explicitly instead of escalating specificity. */
-.site-product p:not(.site-product__link) {
+.site-product p:not(.site-product__link):not(.site-product__role) {
   margin: 0;
   font-size: var(--lim-t-sm);
   color: var(--lim-text-muted);
 }
 .site-product__link { margin-top: auto; padding-top: var(--lim-s-4); }
+
+/* Two products, not three. A pair stretched across a three-column grid reads as
+   a gap where a third used to be, so the pair gets its own column count and a
+   width that keeps the cards from running long. */
+.site-products--pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 900px;
+  margin-inline: auto;
+}
+@media (max-width: 900px) { .site-products--pair { grid-template-columns: 1fr; } }
+
+/* The one-line role under a product name — what it does, before how it does it.
+   --lim-accent fails AA on the dark ground at 3.48:1. --lim-code is the accent
+   already tuned to clear it in both themes; the harness caught this. */
+.site-product__role {
+  font-family: var(--lim-font-mono);
+  font-size: var(--lim-t-xs);
+  letter-spacing: .04em;
+  color: var(--lim-code);
+  margin-top: calc(var(--lim-s-4) * -1);
+}
 
 /* --- Rhythm ---------------------------------------------------------------
    These were 36 inline margin-top declarations and three different paddings

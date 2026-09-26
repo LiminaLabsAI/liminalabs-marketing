@@ -1,20 +1,20 @@
 <!--
-title: Precepta — run AI inside your own walls | Limina Labs
-description: The control plane every AI request in your company passes through — policy, redaction, smart routing, cache and audit — running on your own infrastructure.
+title: Precepta — AI governance inside your company | Limina Labs
+description: You set the rules — which data is hidden, which models teams may use, what they may spend. Every AI request passes through and is recorded, on your own servers.
 path: /precepta
 nav: products
 -->
 
 <section class="lim-wrap site-hero">
-  <p class="lim-eyebrow lim-enter">Precepta · The control plane</p>
+  <p class="lim-eyebrow lim-enter">Precepta · AI governance</p>
   <h1 class="lim-t1 lim-enter lim-enter--d1 lim-balance">
-    One control plane for every AI request your company makes.
+    Every AI request your company makes, under your rules.
   </h1>
   <p class="lim-lede lim-enter lim-enter--d2">
-    Precepta sits in front of every model your organisation uses. Each request is checked
-    against your rules, routed to the right model, answered from cache when it repeats,
-    stripped of sensitive data and recorded. It runs on your own servers, and nothing leaves
-    your network.
+    You set the rules: which data is hidden, which models teams may use, and how much they may
+    spend. Precepta sits in front of every model your company uses, so every request is checked
+    against those rules, sent to the right model, answered from memory when it repeats, stripped
+    of anything sensitive, and written down. It runs on your own servers, and nothing leaves.
   </p>
   <div class="lim-row site-hero__cta lim-enter lim-enter--d3">
     <a class="lim-btn lim-btn--primary lim-btn--lg" href="{{base}}contact/">Request an evaluation</a>
@@ -27,12 +27,12 @@ nav: products
 <section class="lim-wrap lim-section">
   <header class="lim-section-head lim-reveal">
     <p class="lim-eyebrow">The problem</p>
-    <h2>Three gaps between a pilot and production.</h2>
+    <h2>Three things that stop a pilot becoming production.</h2>
   </header>
   <div class="site-slabs lim-reveal">
     <article class="site-slab">
-      <span class="site-slab__label">Egress</span>
-      <h3>Prompts and data leave the building</h3>
+      <span class="site-slab__label">Your data</span>
+      <h3>It leaves the building</h3>
       <p>Every call to an outside AI service takes your data somewhere you cannot see.</p>
     </article>
     <article class="site-slab">
@@ -53,9 +53,9 @@ nav: products
 <section class="lim-wrap lim-section">
   <header class="lim-section-head lim-reveal">
     <p class="lim-eyebrow">What it does</p>
-    <h2>The rails are fixed. The routing is yours.</h2>
+    <h2>The path is fixed. What happens on it is yours to set.</h2>
     <p class="lim-lede">
-      There is no way round it. Every call takes the same checked path, before and after it
+      There is no way round it. Every request takes the same checked path, before and after it
       reaches a model.
     </p>
   </header>
@@ -105,10 +105,10 @@ nav: products
 <section class="lim-wrap lim-section">
   <header class="lim-section-head lim-reveal">
     <p class="lim-eyebrow">How it runs</p>
-    <h2>Not a setting you trust. A property you can prove.</h2>
+    <h2>Not something you have to trust. Something you can check.</h2>
     <p class="lim-lede">
       Not "we look after your data carefully" — there is nowhere of ours for it to sit. The
-      models, the gateway, the rules and the records are all on your servers.
+      models, the rules and the records are all on your own servers.
     </p>
   </header>
   <div class="lim-grid lim-grid--3">
@@ -118,7 +118,7 @@ nav: products
     </article>
     <article class="lim-card lim-card--tight lim-reveal lim-reveal--d1">
       <h3 class="lim-card__title">On-premises</h3>
-      <p class="lim-card__body lim-mt-3">Including networks with no egress at all. The same artifact runs in both, so what you evaluate is what you operate.</p>
+      <p class="lim-card__body lim-mt-3">In your own data centre. The same build runs in both, so what you test is what you run.</p>
     </article>
     <article class="lim-card lim-card--tight lim-reveal lim-reveal--d2">
       <h3 class="lim-card__title">Air-gapped</h3>
@@ -127,9 +127,9 @@ nav: products
   </div>
   <div class="lim-note lim-mt-6 lim-reveal">
     <div>
-      <strong>Zero-egress is proven where it matters, not on a web page.</strong>
-      It needs the software inside your network, so it is demonstrated during an evaluation on
-      your own infrastructure — with your security team choosing the tests.
+      <strong>We prove this where it matters, not on a web page.</strong>
+      Showing that nothing leaves needs the software running inside your network, so we show it
+      during an evaluation on your own servers — with your security team choosing the tests.
     </div>
   </div>
 </section>
@@ -141,11 +141,11 @@ nav: products
      Capabilities only — no savings figure, because we have not measured one. -->
 <section class="lim-wrap lim-section">
   <header class="lim-section-head lim-reveal">
-    <p class="lim-eyebrow">What being in the path is worth</p>
-    <h2>The same position that governs a request can also make it cheaper.</h2>
+    <p class="lim-eyebrow">The cost side</p>
+    <h2>The same position that checks a request can also make it cheaper.</h2>
     <p class="lim-lede">
-      Anything that sees every request can do more than check it. Precepta is already in that
-      position, so the controls that make AI defensible also make it cost less to run.
+      Anything that sees every request can do more than check it. Precepta already sees them
+      all, so the same controls that make AI safe also bring the bill down.
     </p>
   </header>
 
@@ -153,8 +153,8 @@ nav: products
     <article class="lim-pane lim-pane--flush site-question lim-reveal">
       <h3 class="site-question__q">It picks the model</h3>
       <p>
-        Ask for <code>auto</code> and the smart router sends the request to the model that can
-        answer it inside your boundary. Not every question needs your most expensive one.
+        Ask for <code>auto</code> and it sends the request to the cheapest model that can
+        actually answer it. Not every question needs your most expensive one.
       </p>
     </article>
     <article class="lim-pane lim-pane--flush site-question lim-reveal lim-reveal--d1">
@@ -204,7 +204,7 @@ nav: products
 <section class="lim-wrap lim-section">
   <header class="lim-section-head lim-reveal">
     <p class="lim-eyebrow">What you get</p>
-    <h2>Running today, in your boundary.</h2>
+    <h2>Running today, on your own servers.</h2>
   </header>
   <div class="lim-table-wrap lim-reveal">
     <table class="lim-table">

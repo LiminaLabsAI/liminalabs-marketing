@@ -499,3 +499,34 @@
 @media (min-width: 900px) {
   .site-hero--statement h1 span { display: block; }
 }
+
+/* --- Download (the owner's decision, 2026-09-26) ---------------------------
+   One button for the platform that exists, the browser as the other way in, and
+   each platform's status in a chip — never greyed, never a dead button. */
+.site-download { margin-top: var(--lim-s-6); }
+.site-download__primary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--lim-s-3) var(--lim-s-4);
+}
+.site-download__section { padding-top: 0; }
+.site-platforms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--lim-s-4);
+}
+.site-platform {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lim-s-3);
+  padding: var(--lim-s-4) var(--lim-s-5);
+  border-radius: var(--lim-r-md);
+  background: var(--lim-glass-thin);
+  box-shadow: var(--lim-shadow-1);
+}
+.site-platform__name { font-weight: 600; }

@@ -25,7 +25,10 @@ const OUT = ".";
 const BANNED = [
   // hard constraints
   [/\bbeta\b/i,                    "hard constraint: never use the word 'beta'"],
-  [/coming soon/i,                 "hard constraint: never say 'coming soon'"],
+  // Never about a product or a feature. The one place it is said is a platform an available
+  // product is not yet built for — the download page's status chip (the owner, 2026-09-26) —
+  // and the check below strips exactly that element before it looks.
+  [/coming soon/i,                 "hard constraint: never say 'coming soon' (a platform's status chip is the one exception)"],
   [/\bforge\b/i,                   "hard constraint: never mention Forge"],
   [/\bslop\b/i,                    "hard constraint: never mention slop"],
   [/fonts\.(googleapis|gstatic)\.com/i, "no external font CDN (brief §11)"],
@@ -133,8 +136,13 @@ for (const file of pages) {
   const pending = [...new Set(html.match(/\{\{[A-Z][^}]*\}\}/g) || [])];
   html = hidePending(html);
 
+  // A platform's status chip may say it is not built yet, in those two words and nothing more.
+  const checked = html.replace(
+    /<span class="[^"]*\bsite-platform__status\b[^"]*">Coming soon<\/span>/g,
+    "",
+  );
   for (const [re, why] of BANNED) {
-    const hit = html.match(re);
+    const hit = checked.match(re);
     if (hit) problems.push(`  ${outPath}: "${hit[0]}" — ${why}`);
   }
 

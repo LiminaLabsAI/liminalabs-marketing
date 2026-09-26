@@ -7,7 +7,7 @@ carrying `data-pending`, which the build strips, so a visitor never sees a
 placeholder. Supply the value in `src/site.config.json` or in the page and the
 element comes back on the next build.
 
-4 values still to supply, across 12 pages.
+4 values still to supply, across 13 pages.
 
 ## Hidden until you supply them
 

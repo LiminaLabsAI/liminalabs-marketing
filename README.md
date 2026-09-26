@@ -41,6 +41,8 @@ Output is committed to the repo root, so `/precepta` is served from
 `build.mjs` fails rather than emitting a page that breaks one. It checks for:
 
 - the hard constraints — `beta`, `coming soon`, Forge, and the slop material
+  (`Coming soon` is allowed in one place only: a platform's status chip on
+  `/download`, `site-platform__status` — the owner's decision of 2026-09-26)
 - every word on the never-use list — `enterprise-grade`, `seamless`, `leverage`,
   `unlock`, `AI-powered`, `10x` and the rest
 - any external font CDN or analytics reference
@@ -71,6 +73,11 @@ These come from the build brief. Breaking one costs a deal, not a style point.
    no hosted tier — that is a positioning asset, not a gap. It means we operate
    no environment a customer's data could sit in, which is a stronger claim
    than any policy. Every route says *request an evaluation* or *talk to us*.
+   *Since then:* Intent Studio is offered hosted at `INTENT_STUDIO_APP`, and
+   its **Mac app** is offered on `/download` (the owner, 2026-09-26) — a window
+   onto that same hosted app, not a self-hosted deployment. The link goes to the
+   app's own download page, which serves the current build and the steps to
+   open it; this site never names a version.
 5. **Never present the three products as a pipeline.** They are siblings of
    equal weight. Diagram A points arrows *upward* on purpose — a left-to-right
    row tells the buyer they need all three, which is both untrue and the

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy | Limina Labs</title>
-<meta name="description" content="What this website collects (nothing), what a deployment in your own environment sends us (nothing), and what we hold when you use Intent Studio hosted by us.">
-<link rel="canonical" href="https://liminalabs.in/privacy">
+<title>Download Intent Studio | Limina Labs</title>
+<meta name="description" content="The Intent Studio app for Mac — the same workspace you use in the browser, in its own window.">
+<link rel="canonical" href="https://liminalabs.in/download">
 
 <script>try{var t=localStorage.getItem("limina-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 
@@ -18,17 +18,17 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Limina Labs">
-<meta property="og:title" content="Privacy | Limina Labs">
-<meta property="og:description" content="What this website collects (nothing), what a deployment in your own environment sends us (nothing), and what we hold when you use Intent Studio hosted by us.">
-<meta property="og:url" content="https://liminalabs.in/privacy">
+<meta property="og:title" content="Download Intent Studio | Limina Labs">
+<meta property="og:description" content="The Intent Studio app for Mac — the same workspace you use in the browser, in its own window.">
+<meta property="og:url" content="https://liminalabs.in/download">
 <meta property="og:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Privacy | Limina Labs">
-<meta name="twitter:description" content="What this website collects (nothing), what a deployment in your own environment sends us (nothing), and what we hold when you use Intent Studio hosted by us.">
+<meta name="twitter:title" content="Download Intent Studio | Limina Labs">
+<meta name="twitter:description" content="The Intent Studio app for Mac — the same workspace you use in the browser, in its own window.">
 <meta name="twitter:image" content="https://liminalabs.in/assets/social/og-image-1200x630-light.png">
 
-<link rel="stylesheet" href="../design-system/css/limina.css?v=6.0">
-<link rel="stylesheet" href="../src/site.css?v=6.0">
+<link rel="stylesheet" href="../design-system/css/limina.css?v=5.8">
+<link rel="stylesheet" href="../src/site.css?v=5.8">
 </head>
 
 <body>
@@ -55,9 +55,9 @@
         <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </div>
-    <a href="../sovereign-ai/" data-nav="sovereign-ai">Sovereign AI</a>
+    <a href="../sovereign-ai/" data-nav="sovereign-ai">The argument</a>
     <a href="../pricing/" data-nav="pricing">Pricing</a>
-    <a href="../download/" data-nav="download">Download</a>
+    <a href="../download/" data-nav="download" aria-current="page" class="is-active">Download</a>
     <a href="../trust/" data-nav="trust">Security</a>
     <a href="../company/" data-nav="company">Company</a>
   </nav>
@@ -82,7 +82,7 @@
 <div class="lim-sheet" id="lim-sheet" data-lim-nav-sheet data-open="false">
   <a href="../intent-studio/">Intent Studio</a>
   <a href="../precepta/">Precepta</a>
-  <a href="../sovereign-ai/">Sovereign AI</a>
+  <a href="../sovereign-ai/">The argument</a>
   <a href="../pricing/">Pricing</a>
   <a href="../download/">Download</a>
   <a href="../trust/">Security</a>
@@ -92,59 +92,40 @@
 
 
 <main id="main" class="lim-below-nav">
-<section class="lim-wrap site-hero site-hero--tight">
-  <p class="lim-eyebrow">Legal</p>
-  <h1 class="lim-t1 lim-balance">Privacy</h1>
-  <p class="lim-lede">
-    There is very little to tell you. That is the point, not an oversight.
+<section class="lim-wrap site-hero site-hero--mid">
+  <h1 class="lim-t1 lim-enter lim-balance">Download Intent Studio</h1>
+  <p class="lim-lede lim-enter lim-enter--d1">
+    The Intent Studio app for Mac: the same workspace you use in the browser, in its own window.
+    It can also work with folders on your Mac — only the ones you choose.
   </p>
+  <div class="site-download lim-enter lim-enter--d2">
+    <div class="site-download__primary">
+      <!-- The app's own download page reads the release it serves, so this link never names a
+           version that has moved on — and it gives the steps to open an app from outside the App
+           Store. -->
+      <a class="lim-btn lim-btn--primary lim-btn--lg" href="https://app.intent.liminalabs.in/download">Download for Mac</a>
+      <span class="lim-sm lim-soft">Apple silicon (M1 or later)</span>
+    </div>
+    <p class="lim-mt-4"><a href="https://app.intent.liminalabs.in">Or use it in your browser →</a></p>
+  </div>
 </section>
 
-<section class="lim-wrap">
-  <div class="site-essay">
-    <h2 class="lim-t3">This website</h2>
-    <p>
-      No analytics, no ad or marketing pixels, no chat widget, no social embeds, and no cookies
-      from us. Even the fonts come from our own server, so opening this page tells nobody else
-      that you did. There is no cookie banner because there is nothing to agree to.
-    </p>
-
-    <h2 class="lim-t3">Deployed in your own environment</h2>
-    <p>
-      This covers Precepta always, and Intent Studio when you deploy it yourself. Nothing reaches
-      us. The software never calls home. Everything it handles and everything it records stays on
-      your infrastructure, and we have no way to read any of it. That is not a promise you have to
-      trust — it is something you can check.
-    </p>
-
-    <h2 class="lim-t3">Intent Studio, hosted by us</h2>
-    <p>
-      Intent Studio is also available hosted, so a team can sign up and start without deploying
-      anything. If you use it that way, your workspaces, intents and the record of what was agreed
-      are held on our infrastructure rather than yours. We do not sell that data, and we do not use
-      it to train models. If that is not acceptable for your work, deploy Intent Studio in your own
-      environment instead — it is the same product.
-    </p>
-    <p>
-      <strong>Precepta has no hosted version</strong>, and will not have one. It only ever runs on
-      your own infrastructure.
-    </p>
-
-    <h2 class="lim-t3">If you contact us</h2>
-    <p>
-      If you email us, we keep what you sent so we can reply. We do not sell it, and we will not
-      add you to a mailing list you did not ask for.
-    </p>
-
-    <div class="lim-note lim-note--warn lim-mt-6">
-      <div>
-        <strong>The full notice is in preparation.</strong>
-        Everything above is accurate. The full document is with our lawyers. We would rather publish
-        nothing than copy someone else's wording without checking it. Ask us anything in the
-        meantime: <a href="mailto:hello@liminalabs.in">hello@liminalabs.in</a>.
-      </div>
-    </div>
-  </div>
+<section class="lim-wrap lim-section site-download__section">
+  <ul class="site-platforms lim-reveal" aria-label="Where Intent Studio runs">
+    <li class="site-platform">
+      <span class="site-platform__name">macOS</span>
+      <span class="lim-badge lim-badge--ok"><i class="lim-badge__dot"></i>Available</span>
+    </li>
+    <li class="site-platform">
+      <span class="site-platform__name">Windows</span>
+      <!-- The owner's words (2026-09-26): a platform the app is not yet built for is marked so. -->
+      <span class="lim-badge lim-badge--glass site-platform__status">Coming soon</span>
+    </li>
+    <li class="site-platform">
+      <span class="site-platform__name">Linux</span>
+      <span class="lim-badge lim-badge--glass site-platform__status">Coming soon</span>
+    </li>
+  </ul>
 </section>
 
 </main>
@@ -174,7 +155,7 @@
 
       <div>
         <h2 class="site-footer__head">Resources</h2>
-        <a href="../sovereign-ai/">Sovereign AI</a>
+        <a href="../sovereign-ai/">The argument</a>
       </div>
 
       <div>
@@ -202,7 +183,7 @@
 </footer>
 
 
-<script src="../design-system/js/limina.js?v=6.0" defer></script>
-<script src="../src/site.js?v=6.0" defer></script>
+<script src="../design-system/js/limina.js?v=5.8" defer></script>
+<script src="../src/site.js?v=5.8" defer></script>
 </body>
 </html>

@@ -20,11 +20,14 @@ The site links to the hosted Intent Studio but offers no download, and the prici
 - A `/download` page, as the owner approved on the review canvas
   (https://claude.ai/artifact/46EKfMEooQQT9k2SvgMvhW, heading "Download Intent Studio"):
   *Download for Mac* (Apple silicon) → the app's own `/download` page; *Or use it in your
-  browser*; macOS **Available**, Windows and Linux **Coming soon**.
+  browser*; macOS **Available**, Windows and Linux **Coming soon**. The lead says what the app
+  is in plain words (the owner asked for "a normal way… legitimate"): *The Intent Studio app for
+  Mac: the same workspace you use in the browser, in its own window. It can also work with
+  folders on your Mac — only the ones you choose.*
 - *Download* in the nav and the phone menu, *Download Intent Studio* in the footer, and a line
   under the Intent Studio hero.
-- *Start free* on Starter and Team opens `…/signup?plan=starter|team`, so the new organization
-  starts on that plan (frontend phase 106, backend phase 168).
+- The pricing page is unchanged (the owner, 2026-09-26: "do not change anything on the
+  pricing… three plans, let it be as it is").
 
 ## Decisions
 
@@ -47,10 +50,10 @@ no external requests beyond the existing app link.
 - The narrowed rule, checked on four cases: the status chip passes; "coming soon" in a sentence,
   in a chip without the status class, and "Coming soon to Linux" in a status chip all still fail.
 - Walked `/download/` at 1280 (dark) and 320 (light and dark): no sideways scroll, the three
-  platforms stack; `/intent-studio/` shows the new line; the built pricing page links
-  `…/signup?plan=starter` and `…/signup?plan=team`.
+  platforms stack; `/intent-studio/` shows the new line; `src/pages/pricing.html` is identical
+  to `main` (only the shared nav gains *Download*).
 
 ## Waits on the owner
 
 Merging and deploying. **Deploy only after release 0.6.5 is on production** — the app's public
-`/download` page arrives with it (production runs 0.6.4), and `?plan=` is read from phase 106.
+`/download` page arrives with it (production runs 0.6.4).

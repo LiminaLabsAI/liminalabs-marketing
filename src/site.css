@@ -360,6 +360,20 @@
 /* A diagram carries as much weight as the block above it, so it needs air on
    that scale rather than a paragraph gap. */
 .site-figure--spaced { margin-top: clamp(48px, 6vw, 88px); }
+/* The four-step flow on the home page: its SVG is drawn on an 820-wide
+   viewBox and looks adrift when it stretches past that. Was an inline
+   style attribute; it moved here so the published CSP can keep
+   style-src 'self' with no 'unsafe-inline' and no 'unsafe-hashes'. */
+.site-figure--narrow { max-width: 820px; margin-inline: auto; }
+
+/* --- Former inline style attributes --------------------------------------
+   Each of these was a style="..." on a single element. They are classes now
+   because the published Content-Security-Policy sets style-src 'self', which
+   drops a style attribute without a word in the console that a reader would
+   connect to the layout being wrong. publish.mjs fails on a new one. */
+.site-grid--top   { align-items: start; }
+.site-hero--tight-foot { padding-bottom: var(--lim-s-6); }
+.site-hero__title--dropped { margin-top: var(--lim-s-5); }
 .site-figure svg { width: 100%; height: auto; display: block; }
 .site-figure figcaption {
   margin-top: var(--lim-s-4);

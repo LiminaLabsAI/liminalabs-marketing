@@ -109,9 +109,16 @@ for (const file of pages) {
   const { meta, body } = parse(read(join(SRC, "pages", file)));
   const slug = file.replace(/\.html$/, "");
   const isHome = slug === "index";
+  /* Pages live at <slug>/index.html so the URL is /slug with no rewrite rules.
+     Two are served from the root instead: index.html, and 404.html — every
+     static host, Cloudflare Pages and GitHub Pages alike, looks for the not-
+     found page at /404.html and nowhere else. Put it at 404/index.html and the
+     host never finds it, so unknown URLs answer 200 with the home page, which
+     a search engine reads as a soft 404 and indexes as duplicates. */
+  const atRoot = isHome || slug === "404";
   // depth-aware asset prefix: root pages use "", nested use "../"
-  const base = isHome ? "" : "../";
-  const outPath = isHome ? "index.html" : join(slug, "index.html");
+  const base = atRoot ? "" : "../";
+  const outPath = atRoot ? `${slug}.html` : join(slug, "index.html");
 
   // mark the current nav item
   // Matches <a> and <button> — the Products menu is a button, and an <a>-only

@@ -11,3 +11,9 @@ Thumbs.db
 # committed and leaves the tree permanently dirty by one line. It duplicates
 # what git log already records. Kept local.
 .momentum/team/merge-approvals.log
+
+# Assembled by publish.mjs for Cloudflare Pages. Generated, never committed.
+dist/
+
+# Wrangler local state (deploy cache, logs). Machine-specific.
+.wrangler/

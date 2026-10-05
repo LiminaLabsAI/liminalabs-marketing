@@ -1,0 +1,74 @@
+# Deploys liminalabs.in to Cloudflare Pages on every push to main.
+#
+# Nothing here decides what is publishable — build.mjs and publish.mjs already
+# do, and both fail rather than ship something wrong. This file only runs them
+# in order and uploads what they produce, so a deploy from CI and a deploy from
+# a laptop are the same deploy.
+#
+# Requires one secret: CLOUDFLARE_API_TOKEN, scoped to Cloudflare Pages → Edit.
+# See DEPLOY.md for how to mint it.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deploy at a time, and never cancel one in flight: a half-uploaded
+# deployment is worse than a queued one.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Fails on a banned word, a hard constraint from the brief, or a
+      # placeholder that would render in public.
+      - name: Build
+        run: node build.mjs
+
+      # Fails on a link that would 404, or anything the published CSP
+      # would silently drop.
+      - name: Assemble dist/
+        run: node publish.mjs
+
+      # The built pages are committed to the repo root, so the tree is meant to
+      # read as what is actually served. A source edit pushed without a rebuild
+      # breaks that: CI would deploy the fresh build while the committed HTML
+      # said something else, and the next person to read the repo would be
+      # reading a lie. Catch it here — the fix is `node build.mjs` and commit.
+      #
+      # .momentum/ is excluded: it holds the push-approval sentinel, which the
+      # pre-push hook consumes on every push and so is legitimately in flux.
+      # It is governance state, not build output, and gating a deploy on it
+      # would make this check fail for reasons that have nothing to do with
+      # whether the site is correct.
+      - name: Committed output matches source
+        run: |
+          if ! git diff --quiet -- . ':!.momentum'; then
+            echo "::error::Built output is stale — run 'node build.mjs' and commit the result."
+            git diff --stat -- . ':!.momentum'
+            exit 1
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # Not a secret — an account id appears in every dashboard URL.
+          accountId: 71236e8f29df684b6a0be65a2b5a9d99
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy dist --project-name=liminalabs-marketing --branch=main
